@@ -1,0 +1,38 @@
+.content-groups {
+  width: 95%;
+}
+.content-groups p{
+  float: right;
+  padding-right: 40px;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid #58C2CE;
+  border-radius: 8px; 
+}
+th {
+  background-color: #58C2CE;
+  color: #FFFFFF;
+}
+th, td {
+  padding: 10px;
+  border: 1px solid #9cc9ce;
+  text-align: left;
+  border-right: none;
+  border-left: none;
+}
+// tr:nth-child(even) {
+//   background-color: #f2f2f2;
+// }
+th:first-child {
+  padding-left: 30px;
+}
+td:first-child {
+  padding-left: 30px; 
+}
+
+
+

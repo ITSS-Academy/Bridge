@@ -8,12 +8,13 @@ import { KitModule } from '../kit/kit.module';
 import { CoreModule } from '../core/core.module';
 import { CdkModule } from '../cdk/cdk.module';
 import { AddOnModule } from '../add-on/add-on.module';
+import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
 
 
 
 
 @NgModule({
-  declarations: [FirstNavbarComponent, NavbarUserManagementComponent],
+  declarations: [FirstNavbarComponent, NavbarUserManagementComponent,SidebarComponent],
   imports: [
     CommonModule,
     KitModule,
@@ -31,6 +32,7 @@ import { AddOnModule } from '../add-on/add-on.module';
     //components
     FirstNavbarComponent,
     NavbarUserManagementComponent,
+    SidebarComponent,
   ],
   providers: [
     tuiSvgOptionsProvider({
