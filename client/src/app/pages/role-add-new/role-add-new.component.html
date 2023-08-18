@@ -1,0 +1,62 @@
+<div class="NavBar1" style="height: 70px; width: 100%; background-color: blue;"></div>
+<div class="NavBar2" style="height: 70px; width: 100%; background-color: lightblue;"></div>
+<div class="Body" style="display: flex;">
+    <div class="SideBar" style="width: 189px; background-color: blue;"></div>
+    <div class="container">
+        <div class="field roleName">
+            <div class="label roleNameLabel">Role Name</div>
+            <div class="input"><input class="Input roleNameInput" type="text" placeholder="Role Name"></div>
+        </div>
+
+        <div class="field reportTo">
+            <div class="label">Report To</div>
+            <div class="input"><input class="Input reportToInput" type="text" placeholder="Report To"></div>
+        </div>
+
+        <div class="field canAssignReportTo">
+            <div class="label">Can Assign Report To</div>
+            <div class="input canAssignReportToInput">
+                <div class="canAssignReportToInputBox"></div>
+                <div class="optionHolder">
+                    <div class="collumn">
+                        <button class="button active">All Users</button>
+                        <button class="button">Same Role Members</button>
+                        <button class="button">Role Subordinate</button>
+                    </div>
+                    <div class="collumn">
+                        <button class="button active">All Groups</button>
+                        <button class="button">Same Groups</button>
+                        <button class="button">Selected Groups</button>
+                        <button class="button">Cannot Assign</button>
+                    </div>
+                    <!-- <div class="collumn">
+                        <button class="button active">All User</button>
+                        <button class="button">Same Role Members</button>
+                        <button class="button">Role Subordinate</button>
+                    </div> -->
+                </div>         
+            </div>
+        </div>
+
+        <div class="field privileges">
+            <div class="label">Privileges</div>
+            <div class="input"><button class="button active">Assign Directly</button><button class="button">Use Privilege Profile</button></div>
+        </div>
+
+        <div class="field license">
+            <div class="label">License Type</div>
+            <div class="input"></div>
+        </div>
+
+        <div class="field copyPrivilege">
+            <div class="label">Copy Privileges From</div>
+            <div class="input"></div>
+        </div>
+
+        <!-- <div class="field assignProfile">
+            <div class="label">Assign Profiles</div>
+            <div class="input"></div>
+        </div> -->
+    </div>
+
+</div>
