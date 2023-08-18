@@ -1,0 +1,160 @@
+.introduce-about-us {
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+  }
+  
+  .big-word {
+    width: 21rem;
+    height: fit-content;
+    justify-content: center;
+    padding-top: 2.5rem;
+  
+    #upper-content {
+      margin: 0;
+      color: #2c698d;
+      text-align: center;
+      font-size: 1.75rem;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: 0.1rem;
+    }
+  
+    #lower-content {
+      margin: 0;
+      color: #58c2ce;
+      text-align: center;
+      font-size: 4.5rem;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: 0.3rem;
+      text-shadow: 0rem 0rem 0.2rem rgb(7, 5, 5);
+    }
+  }
+  
+  .slogan-container {
+    width: 21rem;
+    height: fit-content;
+    padding-top: 0.625rem;
+    border-top: 0.125rem solid #2c698d;
+  
+    #slogan-content {
+      margin: 0;
+      color: #2c698d;
+      text-align: center;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: 1.2px;
+    }
+  }
+  
+  .about-page-main-contents {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  
+  .photo-container {
+    width: fit-content;
+    height: fit-content;
+  
+    #photo {
+      width: 33rem;
+      height: 33rem;
+    }
+  }
+  
+  .contents-container {
+    width: 40.625rem;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.188rem;
+    padding-left: 1rem;
+  }
+  
+  .container-fact {
+    width: 40rem;
+    height: 6.25rem;
+    border-bottom: 2px solid #2c698d;
+  
+    #title-fact {
+      margin: 0;
+      color: #2c698d;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      letter-spacing: 1.6px;
+    }
+  
+    #content-fact {
+      margin: 0;
+      padding-top: 5px;
+      color: #58c2ce;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 0.7px;
+    }
+  }
+  
+  .container-vision {
+    width: 40rem;
+    height: 6.25rem;
+    border-bottom: 2px solid #2c698d;
+  
+    #title-vision {
+      margin: 0;
+      color: #2c698d;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      letter-spacing: 1.6px;
+    }
+  
+    #content-vision {
+      margin: 0;
+      padding-top: 5px;
+      color: #58c2ce;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 0.7px;
+    }
+  }
+  
+  .container-approach {
+    width: 40rem;
+    height: 6.25rem;
+    border-bottom: 2px solid #2c698d;
+  
+    #title-approach {
+      margin: 0;
+      color: #2c698d;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      letter-spacing: 1.6px;
+    }
+  
+    #content-approach {
+      margin: 0;
+      padding-top: 5px;
+      color: #58c2ce;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 0.7px;
+    }
+  }
+  
