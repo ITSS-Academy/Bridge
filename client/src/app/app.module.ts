@@ -18,6 +18,7 @@ import { WarningComponent } from './components/warning/warning.component';
 import { ErrorComponent } from './components/error/error.component';
 import { SecondNavbarComponent } from './components/second-navbar/second-navbar.component';
 import { SubNavbarMainComponent } from './components/sub-navbar-main/sub-navbar-main.component';
+import { NavbarUserManagementComponent } from './components/navbar-user-management/navbar-user-management.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SubNavbarMainComponent } from './components/sub-navbar-main/sub-navbar-
     WarningComponent,
     ErrorComponent,
     SecondNavbarComponent,
-    SubNavbarMainComponent
+    SubNavbarMainComponent,
+    NavbarUserManagementComponent
   ],
   imports: [
     BrowserModule,
