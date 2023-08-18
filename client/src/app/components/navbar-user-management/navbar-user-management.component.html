@@ -1,1 +1,19 @@
-<p>navbar-user-management works!</p>
+<div class="top-container">
+    <div id="back-icon">
+        <span id="arrow-back" class="material-symbols-outlined">arrow_back</span>
+    </div>
+
+    <div id="user-icon">
+        <span id class="material-symbols-outlined">account_circle</span>
+    </div>
+</div>
+
+<div class="low-container">
+    <div class="view-pages-container">
+        <p  id="view-pages-contents"><span *ngFor="let tag of tags" (click)="backToUser()"> {{this.tag}} </span></p>
+    </div>
+
+    <div class="edit-user-container">
+        <p id="edit-user-contents">Edit User</p>
+    </div>
+</div>

@@ -7,9 +7,9 @@ import { AppComponent } from './app/app.component';
 import { importProvidersFrom } from '@angular/core';
 import { provideAnimations, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-bootstrapApplication(AppComponent, {
-  providers:[importProvidersFrom(TuiRootModule, TuiDialogModule, TuiAlertModule, BrowserAnimationsModule), provideAnimations()],
-}).catch(err => console.error(err));
+// bootstrapApplication(AppComponent, {
+//   providers:[importProvidersFrom(TuiRootModule, TuiDialogModule, TuiAlertModule, BrowserAnimationsModule), provideAnimations()],
+// }).catch(err => console.error(err));
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

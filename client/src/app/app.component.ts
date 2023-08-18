@@ -14,20 +14,4 @@ export class AppComponent {
   constructor(private http: HttpClient){
   }
 
-  open = false;
- 
-    onClick(): void {
-        this.open = !this.open;
-    }
- 
-    onObscured(obscured: any): void {
-        if (obscured) {
-            this.open = false;
-        }
-    }
- 
-    onActiveZone(active: any): void {
-        this.open = active && this.open;
-    }
-
 }
