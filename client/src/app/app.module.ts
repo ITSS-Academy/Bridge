@@ -19,6 +19,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { SecondNavbarComponent } from './components/second-navbar/second-navbar.component';
 import { SubNavbarMainComponent } from './components/sub-navbar-main/sub-navbar-main.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,7 @@ import { SubNavbarMainComponent } from './components/sub-navbar-main/sub-navbar-
     WarningComponent,
     ErrorComponent,
     SecondNavbarComponent,
-    SubNavbarMainComponent
+    SubNavbarMainComponent,
   ],
   imports: [
     BrowserModule,

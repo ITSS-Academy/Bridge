@@ -4,13 +4,14 @@ import {TuiArcChartModule} from '@taiga-ui/addon-charts';
 
 import { FirstNavbarComponent } from 'src/app/components/first-navbar/first-navbar.component';
 import { TuiSvgModule } from '@taiga-ui/core';
+import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
 
 
 
 
 
 @NgModule({
-  declarations: [FirstNavbarComponent],
+  declarations: [FirstNavbarComponent, SidebarComponent],
   imports: [
     CommonModule,
     TuiArcChartModule,
@@ -19,7 +20,8 @@ import { TuiSvgModule } from '@taiga-ui/core';
   exports: [
     TuiArcChartModule,
     FirstNavbarComponent,
-    TuiSvgModule
+    TuiSvgModule,
+    SidebarComponent
 
   ]
 })
