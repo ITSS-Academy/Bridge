@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import {TuiArcChartModule} from '@taiga-ui/addon-charts';
 
 import { FirstNavbarComponent } from 'src/app/components/first-navbar/first-navbar.component';
-import { TuiSvgModule } from '@taiga-ui/core';
+import { TuiDropdownModule, TuiRootModule, TuiSvgModule } from '@taiga-ui/core';
 import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
-
-
+import { TuiDataListModule } from '@taiga-ui/core';
 
 
 
@@ -16,12 +15,18 @@ import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
     CommonModule,
     TuiArcChartModule,
     TuiSvgModule,
+    TuiDataListModule,
+    TuiDropdownModule,
+    TuiRootModule,
   ],
   exports: [
     TuiArcChartModule,
     FirstNavbarComponent,
     TuiSvgModule,
-    SidebarComponent
+    SidebarComponent,
+    TuiDataListModule,
+    TuiDropdownModule,
+    TuiRootModule,
 
   ]
 })

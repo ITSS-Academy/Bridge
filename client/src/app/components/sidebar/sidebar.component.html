@@ -1,1 +1,77 @@
-<p>sidebar works!</p>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<div class="sidebar">
+  <input type="text" name="search" id="" placeholder="Search" >
+  <button class="option"  (click)="toggleDropdown('dropdown-1')"> 
+    <span class="material-symbols-outlined">
+    chevron_right
+    </span>
+    User Management
+  </button>
+  <div class="dropdown" id="dropdown-1">
+    <a >Users</a>
+    <a >Authentication</a>
+    <a >Roles</a>
+    <a >Sharing Rules</a>
+    <a >Groups</a>
+  </div>
+  <button class="option" (click)="toggleDropdown('dropdown-2') ">
+    <span class="material-symbols-outlined">
+      chevron_right
+      </span>
+      Module Management
+    </button>
+  <div class="dropdown" id="dropdown-2">
+    <a >Option 2-1</a>
+    <a >Option 2-2</a>
+  </div>
+  <button class="option"  (click)="toggleDropdown('dropdown-3')">
+    <span class="material-symbols-outlined">
+      chevron_right
+      </span>
+      Automation
+    </button>
+  <div class="dropdown" id="dropdown-3">
+    <a >Option 1-1</a>
+    <a >Option 1-2</a>
+  </div>
+  <button class="option"  (click)="toggleDropdown('dropdown-4')">
+    <span class="material-symbols-outlined">
+    chevron_right
+    </span>
+    Configuration
+  </button>
+  <div class="dropdown" id="dropdown-4">
+    <a >Option 1-1</a>
+    <a >Option 1-2</a>
+  </div>
+  <button class="option"  (click)="toggleDropdown('dropdown-5')">
+    <span class="material-symbols-outlined">
+      chevron_right
+      </span>
+      Marketing & Sales
+    </button>
+  <div class="dropdown" id="dropdown-5">
+    <a >Option 1-1</a>
+    <a >Option 1-2</a>
+  </div>
+  <button class="option"  (click)="toggleDropdown('dropdown-6')">
+    <span class="material-symbols-outlined">
+      chevron_right
+      </span>
+      Inventory
+    </button>
+  <div class="dropdown" id="dropdown-6">
+    <a >Option 1-1</a>
+    <a >Option 1-2</a>
+  </div>
+  <button class="option"  (click)="toggleDropdown('dropdown-7')">
+    <span class="material-symbols-outlined">
+      chevron_right
+      </span>
+      My Preferences
+    </button>
+  <div class="dropdown"  id="dropdown-7">
+    <a >Option 1-1</a>
+    <a >Option 1-2</a>
+  </div>
+</div>
