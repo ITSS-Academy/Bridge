@@ -3,13 +3,9 @@ import { TuiRootModule, TuiDialogModule, TuiAlertModule, TUI_SANITIZER } from "@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-
 import {HttpClientModule} from '@angular/common/http'
-
 
 //Taiga UI
 import { SharedModule } from './shared/shared/shared.module';
@@ -18,8 +14,6 @@ import { WarningComponent } from './components/warning/warning.component';
 import { ErrorComponent } from './components/error/error.component';
 import { SecondNavbarComponent } from './components/second-navbar/second-navbar.component';
 import { SubNavbarMainComponent } from './components/sub-navbar-main/sub-navbar-main.component';
-import { NavbarUserManagementComponent } from './components/navbar-user-management/navbar-user-management.component';
-// import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -30,8 +24,6 @@ import { NavbarUserManagementComponent } from './components/navbar-user-manageme
     ErrorComponent,
     SecondNavbarComponent,
     SubNavbarMainComponent,
-    NavbarUserManagementComponent,
-    // LoginComponent
   ],
   imports: [
     BrowserModule,
