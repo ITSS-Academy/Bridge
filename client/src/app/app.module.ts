@@ -19,6 +19,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { SecondNavbarComponent } from './components/second-navbar/second-navbar.component';
 import { SubNavbarMainComponent } from './components/sub-navbar-main/sub-navbar-main.component';
 import { NavbarUserManagementComponent } from './components/navbar-user-management/navbar-user-management.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NavbarUserManagementComponent } from './components/navbar-user-manageme
     ErrorComponent,
     SecondNavbarComponent,
     SubNavbarMainComponent,
-    NavbarUserManagementComponent
+    NavbarUserManagementComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
