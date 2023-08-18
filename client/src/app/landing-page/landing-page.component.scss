@@ -1,0 +1,198 @@
+$Blue: #58c2ce;
+$bLUE2: #2c698d;
+$Blue3: #272643;
+$White: #ffff;
+
+.NavBar {
+  //   border: 2px solid red;
+
+  background-color: $Blue;
+  width: 100%;
+  height: 69px;
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+  justify-items: center;
+
+  align-content: center;
+  justify-content: center;
+}
+
+.BlueBackground {
+  //   border: 2px solid red;
+
+  background-color: $Blue;
+  width: 100%;
+  height: 88vh;
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+  justify-items: center;
+
+  align-content: center;
+  justify-content: center;
+}
+
+.BridgeLOGO {
+  display: block;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  //   border: 2px solid red;
+}
+
+.WhiteBackground {
+  //   border: 2px solid red;
+
+  background-color: $White;
+  width: 100%;
+  height: 85vh;
+  box-sizing: border-box;
+
+  display: block;
+}
+
+.CardContainer {
+  //   border: 2px solid yellow;
+  display: flex;
+
+  align-items: center;
+  justify-items: center;
+
+  align-content: center;
+  justify-content: center;
+  min-height: 10vh;
+
+  height: 40vh;
+}
+
+.Footer {
+  margin-top: 20vh;
+  //   border: 2px solid blue;
+
+  background-color: $White;
+  width: 100%;
+  max-height: max-content;
+  min-height: 10vh;
+  box-sizing: border-box;
+  align-items: center;
+  justify-items: center;
+
+  align-content: center;
+  justify-content: center;
+}
+
+.BridgeCRM {
+  color: $bLUE2;
+  text-align: center;
+  font-family: Oswald;
+  font-size: 48px;
+  font-style: normal;
+  font-weight:bold;
+  line-height: normal;
+  letter-spacing: 19.2px;
+}
+
+.FooterGraphic {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+
+  align-content: center;
+  justify-content: center;
+}
+
+.TryTheBest {
+  margin-top: 1%;
+  color: #2c698d;
+  text-align: center;
+  font-family: Oswald;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 4.48px;
+}
+
+.card {
+  width: 410px;
+  height: 440px;
+  flex-shrink: 0;
+
+  background-color: $bLUE2;
+  margin: 0 1%;
+
+  border-radius: 15px;
+
+
+  border: 8px solid $White;
+
+  font-size: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  //   justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.card .text {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 18px;
+  text-align: center;
+  font-weight: 400;
+  margin-top: 20px;
+  color: white;
+  font-weight: 200;
+  letter-spacing: 2px;
+  opacity: 0;
+  max-height: 0;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  height: 520px;
+  width: 410px;
+  filter: brightness(1.2);
+  box-shadow: 0px 2px 24px $bLUE2;
+}
+
+.card:hover .text {
+  transition: all 0.3s ease;
+  opacity: 1;
+  max-height: 40px;
+
+}
+
+h1 {
+  color: #fff;
+  text-align: center;
+  font-family: Oswald;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 8px;
+  margin-top: 30px;
+}
+
+.CardImage{
+    margin: 0;
+    padding: 0;
+    height: 300px;
+    width: 300px;
+    transition: all 0.3s ease;
+}
+
+.card:hover .CardImage {
+    height: 320px;
+    width: 320px;
+  }
