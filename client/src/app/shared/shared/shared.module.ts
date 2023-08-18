@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
+import {tuiSvgOptionsProvider, TUI_SANITIZER} from '@taiga-ui/core';
+import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import { CommonModule } from '@angular/common';
-import {TuiArcChartModule} from '@taiga-ui/addon-charts';
 import { FirstNavbarComponent } from 'src/app/components/first-navbar/first-navbar.component';
 import { NavbarUserManagementComponent } from 'src/app/components/navbar-user-management/navbar-user-management.component';
-import { TuiSvgModule } from '@taiga-ui/core';
+import { KitModule } from '../kit/kit.module';
+import { CoreModule } from '../core/core.module';
+import { CdkModule } from '../cdk/cdk.module';
+import { AddOnModule } from '../add-on/add-on.module';
 
 
 
@@ -12,14 +16,30 @@ import { TuiSvgModule } from '@taiga-ui/core';
   declarations: [FirstNavbarComponent, NavbarUserManagementComponent],
   imports: [
     CommonModule,
-    TuiArcChartModule,
-    TuiSvgModule,
+    KitModule,
+    CoreModule,
+    CdkModule,
+    AddOnModule,
   ],
   exports: [
-    TuiArcChartModule,
+    //modules
+    KitModule,
+    CoreModule,
+    CdkModule,
+    AddOnModule,
+
+    //components
     FirstNavbarComponent,
-    TuiSvgModule,
-    NavbarUserManagementComponent
+    NavbarUserManagementComponent,
+  ],
+  providers: [
+    tuiSvgOptionsProvider({
+      path: 'https://taiga-ui.dev/assets/taiga-ui/icons',
+    }),
+    {
+      provide: TUI_SANITIZER,
+      useClass: NgDompurifySanitizer, 
+    },
   ]
 })
 export class SharedModule { }
