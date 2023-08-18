@@ -12,6 +12,10 @@ import {HttpClientModule} from '@angular/common/http'
 
 
 //Taiga UI
+import {TuiDropdownModule} from '@taiga-ui/core';
+
+
+
 import { SharedModule } from './shared/shared/shared.module';
 import { LoadingComponent } from './components/loading/loading.component';
 import { WarningComponent } from './components/warning/warning.component';
@@ -28,7 +32,7 @@ import { NavbarUserManagementComponent } from './components/navbar-user-manageme
     ErrorComponent,
     SecondNavbarComponent,
     SubNavbarMainComponent,
-    NavbarUserManagementComponent
+    NavbarUserManagementComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +43,8 @@ import { NavbarUserManagementComponent } from './components/navbar-user-manageme
       TuiDialogModule,
       TuiAlertModule,
       SharedModule,
+    TuiDropdownModule,
+
 ],
   providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],
   bootstrap: [AppComponent]
