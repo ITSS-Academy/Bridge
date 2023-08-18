@@ -1,16 +1,18 @@
 #container{
     width: 100%;
-    height: 3rem;
+    height: 4rem;
     background-color: #58c2ce;
     display: flex;
     color: white;
     font-size: 1.2rem;
+    // border: 1px red solid;
 }
 
 #left-navbar{
     width: 50%;
     height: 100%;
     // background-color: bisque;
+    padding-left: 2rem;
 }
 
 #right-navbar{
@@ -19,6 +21,7 @@
     // background-color: beige;
     display: flex;
     justify-content: flex-end;
+    padding-right: 2rem;
 }
 
 .right-navbar-content{
@@ -61,4 +64,42 @@
 .sign-up{
     background-color: #2C698D;
     border-radius: 8px;
+    padding: 0 2rem;
+}
+.logo{
+    margin: 0 1rem;
+}
+.contact{
+    // background-color: #2C698D;
+    padding: 0 2rem;
+}
+.contact:hover{
+    background-color: #2C698D;
+    border-radius: 8px;
+    padding: 0 2rem;
+    height: 100%;
+    width: 4rem;
+}
+
+.about-us{
+    padding: 0 2rem;
+}
+
+.login{
+    padding: 0 2rem;
+}
+
+.about-us:hover{
+    background-color: #2C698D;
+    border-radius: 8px;
+    height: 100%;
+    padding: 0 2rem;
+}
+
+.login:hover{
+    background-color: #2C698D;
+    border-radius: 8px;
+    padding: 0 2rem;
+    height: 100%;
+    width: 4rem;
 }

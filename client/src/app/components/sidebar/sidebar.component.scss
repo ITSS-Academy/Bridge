@@ -50,7 +50,7 @@
 .dropdown {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease-in-out; /* Adjust duration and easing as needed */
+  transition: max-height 0.3s ease-in-out; /* Adjust duration and easing as needed */
 }
 .dropdown.open {
   max-height: 200px; /* Adjust max-height to match the content height */
