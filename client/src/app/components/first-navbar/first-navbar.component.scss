@@ -1,3 +1,8 @@
+$Blue: #58c2ce;
+$Blue2: #2c698d;
+$Blue3: #272643;
+$White: #ffff;
+
 #container{
     width: 100%;
     height: 4rem;
@@ -53,7 +58,7 @@
 }
 
 .left-navbar-content div{
-    width: 20%;
+    width: 40%;
     height: 70%;
     // background-color: red;
     display: flex;
@@ -61,45 +66,43 @@
     align-items: center;
     font-weight:normal;
 }
+
+.button{
+    background-color: $Blue;
+    border-radius: 8px;
+    padding: 0 2rem;
+    margin: 0 0.2rem;
+}
+
+.logo{
+    margin: 0 1.5rem;
+}
+
+.button:hover{
+    background-color: #2C698D;
+    border-radius: 8px;
+    padding: 0 2rem;
+    height: 100%;
+    width: 4rem;
+    transition: all 0.2s ease;
+}
+
 .sign-up{
     background-color: #2C698D;
-    border-radius: 8px;
-    padding: 0 2rem;
 }
-.logo{
-    margin: 0 1rem;
-}
-.contact{
-    // background-color: #2C698D;
-    padding: 0 2rem;
-}
-.contact:hover{
-    background-color: #2C698D;
+
+.sign-up:hover{
+    filter: brightness(1.5);
+    // box-shadow: 0px 8px 24px $Blue2;
     border-radius: 8px;
     padding: 0 2rem;
     height: 100%;
     width: 4rem;
+    transition: all 0.3s ease;
 }
 
-.about-us{
-    padding: 0 2rem;
-}
-
-.login{
-    padding: 0 2rem;
-}
-
-.about-us:hover{
-    background-color: #2C698D;
-    border-radius: 8px;
-    height: 100%;
-    padding: 0 2rem;
-}
-
-.login:hover{
-    background-color: #2C698D;
-    border-radius: 8px;
-    padding: 0 2rem;
-    height: 100%;
-    width: 4rem;
+a{
+    color: #ffff;
+    text-decoration: none;
+    width: 100px;
 }

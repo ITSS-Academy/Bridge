@@ -8,28 +8,31 @@
     width: 21rem;
     height: fit-content;
     justify-content: center;
-    padding-top: 2.5rem;
+    padding-top: 2rem;
+    align-items: center;
+    display: flex;
+    margin: 1rem 0;
+    
+    // #upper-content {
+    //   margin: 0;
+    //   color: #2c698d;
+    //   text-align: center;
+    //   font-size: 1.75rem;
+    //   font-style: normal;
+    //   font-weight: 500;
+    //   letter-spacing: 0.1rem;
+    // }
   
-    #upper-content {
-      margin: 0;
-      color: #2c698d;
-      text-align: center;
-      font-size: 1.75rem;
-      font-style: normal;
-      font-weight: 500;
-      letter-spacing: 0.1rem;
-    }
-  
-    #lower-content {
-      margin: 0;
-      color: #58c2ce;
-      text-align: center;
-      font-size: 4.5rem;
-      font-style: normal;
-      font-weight: 500;
-      letter-spacing: 0.3rem;
-      text-shadow: 0rem 0rem 0.2rem rgb(7, 5, 5);
-    }
+    // #lower-content {
+    //   margin: 0;
+    //   color: #58c2ce;
+    //   text-align: center;
+    //   font-size: 4.5rem;
+    //   font-style: normal;
+    //   font-weight: 500;
+    //   letter-spacing: 0.3rem;
+    //   text-shadow: 0rem 0rem 0.2rem rgb(7, 5, 5);
+    // }
   }
   
   .slogan-container {
