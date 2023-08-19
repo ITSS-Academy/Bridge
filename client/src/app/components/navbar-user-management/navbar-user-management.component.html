@@ -1,6 +1,7 @@
 <div class="top-container">
-    <div id="back-icon">
+    <div id="back-container">
         <span id="arrow-back" class="material-symbols-outlined">arrow_back</span>
+        <p id="back-content">Back</p>
     </div>
 
     <div id="user-icon">
@@ -11,9 +12,5 @@
 <div class="low-container">
     <div class="view-pages-container">
         <p  id="view-pages-contents"><span *ngFor="let tag of tags" (click)="backToUser()"> {{this.tag}} </span></p>
-    </div>
-
-    <div class="edit-user-container">
-        <p id="edit-user-contents">Edit User</p>
     </div>
 </div>
