@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import {FormControl, FormGroup} from '@angular/forms';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -7,24 +7,14 @@ import { Component } from '@angular/core';
 })
 export class UserComponent {
 
-  User = [
-    "User",
-    "User Management",
-  ]
-  open = false;
+  exampleForm = new FormGroup({
+        exampleControl: new FormControl(''),
+    });
  
-  onClick(): void {
-      this.open = !this.open;
-  }
-
-  onObscured(obscured: boolean): void {
-      if (obscured) {
-          this.open = false;
-      }
-  }
-
-  onActiveZone(active: boolean): void {
-      this.open = active && this.open;
-  }
+    open = false;
+ 
+    showDialog(): void {
+        this.open = true;
+    }
 
 }

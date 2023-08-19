@@ -9,7 +9,7 @@ import { CoreModule } from '../core/core.module';
 import { CdkModule } from '../cdk/cdk.module';
 import { AddOnModule } from '../add-on/add-on.module';
 import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,6 +17,7 @@ import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
   declarations: [FirstNavbarComponent, NavbarUserManagementComponent,SidebarComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     KitModule,
     CoreModule,
     CdkModule,
@@ -28,6 +29,7 @@ import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
     CoreModule,
     CdkModule,
     AddOnModule,
+    ReactiveFormsModule,
 
     //components
     FirstNavbarComponent,
