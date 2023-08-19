@@ -1,11 +1,8 @@
-@import '@taiga-ui/core/styles/taiga-ui-local.scss';
- 
-
-
+@import "@taiga-ui/core/styles/taiga-ui-local.scss";
 
 .sidebar {
   width: 200px;
-  background-color: #2C698D;
+  background-color: #2c698d;
   color: white;
   padding: 15px;
   height: 80vh;
@@ -18,7 +15,6 @@
   border-radius: 8px;
   border: none;
   color: black;
- 
 }
 
 .sidebar input:focus {
@@ -41,7 +37,6 @@
   font-size: 16px;
   display: flex;
   flex-direction: row;
-  
 }
 
 .option span {
