@@ -12,6 +12,33 @@
   flex-direction: column;
 }
 
+.save-canceled-container {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  border-top: 2px solid #58c2ce;
+
+  .save-button {
+    width: 5rem;
+    height: 2.5rem;
+    background-color: #58c2ce;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+
+    &:hover {
+      background-color: white;
+      color: #58c2ce;
+      border: 2px solid #58c2ce;
+    }
+  }
+}
+
 .first-container {
   width: 100%;
   height: fit-content;
@@ -748,7 +775,7 @@
         height: fit-content;
         display: flex;
         flex-direction: row;
-        gap: 6.3rem;
+        gap: 3rem;
         padding-left: 1rem;
 
         #title-currency-format {
@@ -765,6 +792,676 @@
           width: 21rem;
           border-bottom: 0.063rem solid #58c2ce;
         }
+      }
+    }
+  }
+}
+
+.dialog-user {
+  width: 100%;
+  height: fit-content;
+
+  #title-dialog-user {
+    margin: 0;
+    padding-bottom: 10px;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #58c2ce;
+    color: #2c698d;
+    font-weight: 600;
+  }
+
+  .contents-dialog-user {
+    height: fit-content;
+    width: 50rem;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+    .display-name-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      padding-left: 1rem;
+
+      #title-display-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-display-dialog {
+        width: 14.375rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .primary-group-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      padding-left: 1rem;
+
+      #title-primary-group-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-primary-group-dialog {
+        width: 14.375rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .email-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 4.7rem;
+      padding-left: 1rem;
+
+      #title-email-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-email-dialog {
+        width: 14.375rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .report-to-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 3.15rem;
+      padding-left: 1rem;
+
+      #title-report-to-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-report-to-dialog {
+        width: 14.375rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .role-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 5.1rem;
+      padding-left: 1rem;
+
+      #title-role-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-role-dialog {
+        width: 14.375rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .language-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 2.9rem;
+      padding-left: 1rem;
+
+      #title-language-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-language-dialog {
+        width: 14.375rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+  }
+}
+
+.dialog-employee {
+  width: 100%;
+  height: fit-content;
+
+  #title-dialog-employee {
+    margin: 0;
+    padding-bottom: 10px;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #58c2ce;
+    color: #2c698d;
+    font-weight: 600;
+  }
+
+  .contents-dialog-employee {
+    height: fit-content;
+    width: 50rem;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+    .first-name-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 3.9rem;
+      padding-left: 1rem;
+
+      #title-first-name-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-first-name-dialog {
+        width: 14.375rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .last-name-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 2.4rem;
+      padding-left: 1rem;
+
+      #title-last-name-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-last-name-dialog {
+        width: 14.375rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .second-email-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      padding-left: 1rem;
+
+      #title-second-email-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-second-email-dialog {
+        width: 14.375rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .mobile-phone-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      padding-left: 1rem;
+
+      #title-mobile-phone-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-mobile-phone-dialog {
+        width: 14.375rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .office-phone-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 2.7rem;
+      padding-left: 1rem;
+
+      #title-office-phone-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-office-phone-dialog {
+        width: 14.375rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .fax-number-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 1.9rem;
+      padding-left: 1rem;
+
+      #title-fax-number-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-fax-number-dialog {
+        width: 14.375rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .home-address-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      padding-left: 1rem;
+
+      #title-home-address-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-home-address-dialog {
+        width: 14.375rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .city-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 5.4rem;
+      padding-left: 1rem;
+
+      #title-city-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-city-dialog {
+        width: 14.375rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .state-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 6.2rem;
+      padding-left: 1rem;
+
+      #title-state-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-state-dialog {
+        width: 14.375rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .country-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 3.5rem;
+      padding-left: 1rem;
+
+      #title-country-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-country-dialog {
+        width: 14.375rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+  }
+}
+
+.dialog-currency-number{
+  width: 100%;
+  height: fit-content;
+
+  #title-dialog-currency-number {
+    margin: 0;
+    padding-bottom: 10px;
+    font-size: 1rem;
+    border-bottom: 2px solid #58c2ce;
+    color: #2c698d;
+    font-weight: 600;
+  }
+
+  .contents-dialog-currency-number {
+    height: fit-content;
+    width: 51rem;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+    .preferred-currency-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      padding-left: 0.5rem;
+
+      #title-preferred-currency-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-preferred-dialog {
+        width: 13rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .digit-grouping-pattern-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 1.5rem;
+      padding-right: 0.5rem;
+
+      #title-digit-grouping-pattern-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-digit-grouping-pattern-dialog {
+        width: 12.3rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .decimal-separator-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 1.3rem;
+      padding-left: 0.5rem ;
+
+      #title-decimal-separator-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-decimal-separator-dialog {
+        width: 13rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .digit-grouping-separator-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      padding-right: 0.5rem;
+
+      #title-digit-grouping-separator-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-digit-grouping-separator-dialog {
+        width: 12.3rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .symbol-placement-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 1.2rem;
+      padding-left: 0.5rem;
+
+      #title-symbol-placement-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-symbol-placement-dialog {
+        width: 13rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .currency-decimal-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 3.6rem;
+      padding-right: 0.5rem;
+
+      #title-currency-decimal-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-currency-decimal-dialog {
+        width: 12.3rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
+      }
+    }
+
+    .currency-format-container-dialog {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 2.2rem;
+      padding-left: 0.5rem;
+
+      #title-currency-format-dialog {
+        margin: 0;
+        padding-top: 0.313rem;
+        color: #2c698d;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      #input-currency-format-dialog {
+        width: 13rem;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #58c2ce;
       }
     }
   }
