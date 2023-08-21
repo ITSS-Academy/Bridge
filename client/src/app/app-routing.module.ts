@@ -57,6 +57,7 @@ const routes: Routes = [
       import('./pages/signup/signup.module').then((m) => m.SignupModule),
   },
   { path: 'lead', loadChildren: () => import('./pages/lead/lead.module').then(m => m.LeadModule) },
+  {path: 'display-group', loadChildren: () => import('./pages/display-group/display-group.module').then(m => m.DisplayGroupModule) }
 ];
 
 @NgModule({

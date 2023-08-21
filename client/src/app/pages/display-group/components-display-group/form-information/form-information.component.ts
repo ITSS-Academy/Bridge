@@ -3,11 +3,11 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {TuiDialogContext, TuiDialogService, TuiDialogSize} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 @Component({
-  selector: 'app-table-groups',
-  templateUrl: './table-groups.component.html',
-  styleUrls: ['./table-groups.component.scss']
+  selector: 'app-form-information',
+  templateUrl: './form-information.component.html',
+  styleUrls: ['./form-information.component.scss']
 })
-export class TableGroupsComponent {
+export class FormInformationComponent {
   constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}
   exampleForm = new FormGroup({
     groupName: new FormControl(''),
@@ -15,7 +15,6 @@ export class TableGroupsComponent {
     description: new FormControl(''),
     groupMember: new FormControl(''),
 });
-
     onClick(
         content: PolymorpheusContent<TuiDialogContext>,
         size: TuiDialogSize,
@@ -29,4 +28,3 @@ export class TableGroupsComponent {
     }
 
 }
-

@@ -31,11 +31,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     CdkModule,
     AddOnModule,
     ReactiveFormsModule,
-
     //components
     FirstNavbarComponent,
     NavbarUserManagementComponent,
     SidebarComponent,
+    
   ],
   providers: [
     tuiSvgOptionsProvider({
