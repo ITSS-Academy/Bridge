@@ -1,7 +1,9 @@
 .container {
-//   border: 2px solid red;
+  border: 2px solid red;
   width: 90vw;
   padding: 4rem 8rem;
+  min-height: 100vh;
+  max-height: max-content;
 }
 
 .field {
@@ -12,8 +14,10 @@
 }
 
 .label {
-    // border: 2px solid red;
-  width: 30%;
+  // border: 2px solid red;
+  width: 25%;
+
+  font-size: medium;
 
   height: 3rem;
   display: flex;
@@ -26,8 +30,8 @@
 }
 
 .input {
-    // border: 2px solid red;
-  width: 70%;
+  // border: 2px solid red;
+  width: 75%;
   min-height: 3rem;
 
   display: flex;
@@ -39,30 +43,24 @@
   justify-items: flex-start;
 }
 
-.canAssignReportToInput {
-  width: 70%;
-  min-height: 30vh;
-  display: block;
-}
-
 .privileges {
   display: flex;
 }
 
 .Input {
   height: 20px;
-  min-width: 70%;
+  min-width: 15rem;
   border: none;
   padding: 0.5rem;
-  border-bottom: 2px dashed #272643;
+  border-bottom: 1px solid #58c2ce;
   color: #272643;
   // font-family: Oswald;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   letter-spacing: 1.6px;
+  width: 31rem;
 }
-
 .roleNameInput {
   color: #272643;
   // font-family: Oswald;
@@ -72,6 +70,7 @@
   line-height: normal;
   letter-spacing: 1.6px;
 }
+
 .roleNameLabel {
   color: #272643;
   // font-family: Oswald;
@@ -84,7 +83,6 @@
 
 .reportToInput {
   height: 20px;
-  min-width: 70%;
 }
 
 .reportToLabel {
@@ -102,50 +100,170 @@
   background-color: #ffff;
   border: 2px solid #58c2ce;
   border-radius: 8px;
+  height: max-content;
   min-width: 15rem;
   padding: 0.5rem 2rem;
   color: #58c2ce;
   text-align: center;
   // font-family: Oswald;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: bold;
   line-height: normal;
   letter-spacing: 0.7px;
-
-  margin: 0.3rem 1rem;
+  box-sizing: border-box;
+  margin: 0.2rem 0.2rem;
 }
 
-.active {
+.button:active {
   background-color: #58c2ce;
   color: #ffff;
 }
 
 .optionHolder {
-    // border: 2px solid red;
+  // border: 2px solid red;
+  width: max-content;
   border-radius: 8px;
+  border: 2px solid #58c2ce;
   background: #e3f6f5;
-  padding: 1rem;
+  padding: 1rem 0.3rem;
   display: flex;
-//   width: max-content;
+  height: max-content;
 }
 
-.collumn{
-    // border: 2px solid yellow;
-    align-content: center;
-    align-items: center;
-
-    justify-content: center;
-    justify-items: center;
-
-    width: 33%;
-    display: block;
-    margin:0 0.3rem;
+.collumn {
+  // border: 2px solid yellow;
+  display: block;
+  width: 15.5rem;
+  height: max-content;
+  margin: 0 0.5rem;
 }
 
-.canAssignReportToInputBox{
-    min-height:3rem;
-    width:100%;
-    border-bottom: 2px dashed #272643;
-    margin-bottom: 1.5rem;
+.canAssignReportToInput {
+  min-height: 30vh;
+  display: block;
+}
+
+.canAssignReportToInputBox {
+  min-height: 2.5rem;
+  width: 31rem;
+  border-bottom: 1px solid #58c2ce;
+  margin-bottom: 1.5rem;
+  padding: 0 0.5rem;
+}
+
+.editPrivilegeBox {
+  box-sizing: border-box;
+  margin-top: 3rem;
+  width: 100%;
+  height: max-content;
+  padding: 0.5rem 1rem 2rem;
+
+  border: 2px solid #58c2ce;
+  background-color: #e3f6f5;
+  color: #58c2ce;
+
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+span{
+  font-weight: bold;
+  color: #58c2ce;
+  margin: 0 1rem;
+}
+tui-accordion-item{
+  background-color: #58c2ce;
+  color: #ffff;
+
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+.section {
+  background-color: #58c2ce;
+  color: #ffff;
+  border: 2px solid #58c2ce;
+
+  border-radius: 8px;
+  margin: 0.4rem 0;
+
+  // height: 10rem;
+  // padding: 1rem;
+  font-weight: bold;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+
+.privilegeField {
+  background-color: #ffff;
+  color: #58c2ce;
+  border-bottom: 2px solid #58c2ce;
+  // border-top: 2px solid #58c2ce;
+  // border-radius: 8px;
+  // height: 10rem;
+  margin: 0.5rem 1rem;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 18px;
+
+  display: flex;
+  justify-content: flex-start;
+}
+
+.privilegeFieldCollumn{
+  width:15%;
+  display: flex;
+  align-items: center;
+  margin-right: 3rem;
+  // border: 1px solid red;
+}
+
+.sectionButton {
+  padding: 0 3rem;
+  padding: 1rem 2rem;
+  // border: 1px solid red;
+  height: max-content;
+}
+
+.privilegeFieldHolder {
+  background-color: #ffff;
+  padding: 0.1rem 1rem;
+  margin: 0 1rem 1rem;
+  border-radius: 8px;
+}
+
+.privilegeCheckBox{
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #ffff;
+  color:#58c2ce;
+  border: none;
+  border-radius: 8px;
+  margin-right: 1rem;
+}
+
+.title{
+  width: 30%;
+}
+
+.assignProfileInput{
+  color: #272643;
+  text-align: right;
+
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 1px;
+}
+
+.assignProfileInputBox{
+  min-height: 2.5rem;
+  width: 31rem;
+  border-bottom: 1px solid #58c2ce;
+  margin-bottom: 1.5rem;
+  padding: 0 0.5rem;
 }

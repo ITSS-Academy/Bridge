@@ -22,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CoreModule,
     CdkModule,
     AddOnModule,
+    ReactiveFormsModule
   ],
   exports: [
     //modules
