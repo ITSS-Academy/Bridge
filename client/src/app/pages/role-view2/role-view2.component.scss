@@ -1,0 +1,71 @@
+$Blue : #58c2ce;
+$Blue2: #2C698D;
+$Blue3: #272643;
+$Blue0: #BAE8E8;
+
+
+
+.container {
+    border: 2px solid red;
+    width: 90vw;
+    padding: 4rem 8rem;
+    min-height: 65vh;
+    max-height: max-content;
+}
+
+.table{
+    border: 2px solid $Blue;
+    width: 100%;
+    height: max-content;
+    border-radius: 10px;
+    background-color: $Blue0;
+    box-sizing: border-box;
+    min-height: 5rem;
+}
+
+.title{
+    background-color: $Blue;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 0.1rem;
+
+    
+}
+
+.collumn{
+    align-items: center;
+    min-width: 20%;
+    max-width: max-content;
+    padding: 1rem;
+}
+
+.field{
+    background-color: white;
+    color: $Blue3;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    // border-radius: 8px;
+    margin: 0.1rem 0;
+}
+
+.footer{
+    background-color: $Blue;
+    box-sizing: border-box;
+    padding: 1rem 0;
+    border-radius: 0 0 8px 8px;
+    margin-top: 0.1rem;
+}
+
+.licenseType{
+    min-width: 15%;
+}
+
+.action{
+    min-width: 10%
+}

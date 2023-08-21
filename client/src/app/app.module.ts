@@ -22,8 +22,7 @@ import { CdkModule } from './shared/cdk/cdk.module';
 import { CoreModule } from './shared/core/core.module';
 import { KitModule } from './shared/kit/kit.module';
 import { AddOnModule } from './shared/add-on/add-on.module';
-
-
+import { RoleView2Component } from './pages/role-view2/role-view2.component';
 
 @NgModule({
   declarations: [
@@ -40,8 +39,6 @@ import { AddOnModule } from './shared/add-on/add-on.module';
     HttpClientModule,
       BrowserAnimationsModule,
       SharedModule,
-
-
 ],
   exports: [
     SharedModule,
