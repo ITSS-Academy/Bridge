@@ -1,8 +1,51 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-
+ 
+<ng-template #content let-observer>
+  <form [formGroup]="exampleForm" (ngSubmit)="observer.complete()">
+  <div class="form-group">
+    <div class="box">
+      <label for="">Group Name</label>
+      <input type="text">
+    </div>
+    <div class="box">
+      <label for="">Group Email</label>
+      <input type="text">
+     </div>
+     <div class="box">
+      <label for="">Description</label>
+      <input type="text">
+    </div>
+    <div class="box-gmember">
+      <label for="">Group Member</label>
+      <input type="text">
+      <div class="color-roles">
+        <div class="users">Users</div>
+        <div class="groups">Groups</div>
+        <div class="roles">Roles</div>
+        <div class="roles-sub">Roles and Subordinates</div>
+      </div>
+    </div>
+  </div>
+  <div class="cancel-save">
+    <button class="btn-cancel" type="submit">Cancel</button>  
+    <button class="btn-save" type="submit">Save</button>
+  </div>
+  
+</form>
+</ng-template>
+ 
+ 
   <div class="content-groups">
-    <p>1 to 3</p>
+    <div class="page-button">
+      <button class="btn-add-group" size="m" type="button" (click)="onClick(content,'auto')">
+        <span class="material-symbols-outlined">
+          add
+        </span>
+        Add Group
+      </button>
+      <p>1 to 3</p>
+    </div>
     <table class="table-groups" style="width:100%">
       <tr>
         <th>Acctions</th>
@@ -11,7 +54,7 @@
       </tr>
       <tr>
         <td>
-          <span class="material-symbols-outlined">
+          <span class="material-symbols-outlined edit" (click)="onClick(content,'auto')">
             edit
             </span>
             <span class="material-symbols-outlined">
@@ -23,7 +66,7 @@
       </tr>
       <tr>
         <td>
-          <span class="material-symbols-outlined">
+          <span class="material-symbols-outlined edit" (click)="onClick(content,'auto')">
             edit
             </span>
             <span class="material-symbols-outlined">
@@ -35,7 +78,7 @@
       </tr>
       <tr>
         <td>
-          <span class="material-symbols-outlined">
+          <span class="material-symbols-outlined edit" (click)="onClick(content,'auto')">
             edit
             </span>
             <span class="material-symbols-outlined">

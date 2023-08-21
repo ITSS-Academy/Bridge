@@ -22,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CoreModule,
     CdkModule,
     AddOnModule,
+    ReactiveFormsModule
   ],
   exports: [
     //modules
@@ -30,11 +31,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     CdkModule,
     AddOnModule,
     ReactiveFormsModule,
-
     //components
     FirstNavbarComponent,
     NavbarUserManagementComponent,
     SidebarComponent,
+    
   ],
   providers: [
     tuiSvgOptionsProvider({
