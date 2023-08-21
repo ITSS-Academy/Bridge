@@ -1,52 +1,96 @@
-.right{
-    width: 40%;
-    height:100%;
-    background-color: white;
+:host{
+    --tui-primary: #58C2CE;
+    --tui-primary-hover: #58C2CE;
+    --tui-text-01: #fff;
+    --tui-primary-active: #58C2CE;
+    --tui-base-01: #58C2CE;
+    --tui-base-02: #58C2CE;
+    --tui-base-03: #58C2CE;
+    --tui-base-04: #58C2CE;
+    --tui-base-05: #58C2CE;
+    --tui-base-06: #58C2CE;
+    --tui-base-07: #58C2CE;
+    --tui-base-08: #58C2CE;
+    --tui-base-09: #58C2CE;
+    --tui-heading-font: 'Montserrat', sans-serif;
+    --tui-text-font: 'Montserrat', sans-serif;
+
+  }
+.than {
+    width: 100%;
+    height: calc(100% - 4rem);
     display: flex;
-    flex-direction: coloumn;
-    justify-content: center;
 }
-.left{
-    margin-top: 2rem;
+
+.churemember{
+    font-size: small;
+    font-weight: lighter;
+}
+
+.left {
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#photo {
     width: 60%;
-    display: flex;
-    flex-direction: coloumn;
-    justify-content: center;
-}
-#design{
-    width: 100%;
-    height: 85%;
-    display: flex;
-    justify-content: center;
-}
-.body{
-    width: 100%;
-    height: 50rem;
-    background-color: white;
-    display: flex;
-    flex-direction: coloumn;
-
+    height: auto;
 }
 
-.frameSignup{
+
+
+//edit khung login
+.khunglogin {
     width: 24rem;
-    height: 35rem;
+    height: 31.25rem;
     background-color: white;
-    margin-top: 12rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-   
+
     border-radius: 0.5rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.textSignup{
+
+.chulogin {
+    width: 100%;
     color: #58C2CE;
     font-size: 40px;
-    font-family: 'Oswald', sans-serif;
-    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-#logoBridge{
+
+.nutlogin:hover{
+    cursor: pointer;
+    background-color: darken($color: #58C2CE, $amount: 7) ;
+}
+
+.editlogo {
+    width: 100%;
+    height: 3.125rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1.7rem;
+}
+
+#logoBridge {
     width: 4rem;
     height: 2.5rem;
     display: flex;
@@ -57,48 +101,108 @@
     padding-left: 1.8rem;
 
 }
-.fullname{
-    width:18.75rem ;
+
+.Email {
+    width: 18.75rem;
     height: 3.125rem;
     display: flex;
     flex-direction: column;
     column-gap: 1rem;
     justify-content: center;
-    
 }
-.Email{
-    width:18.75rem ;
+
+.loginwithgg:hover{
+    cursor: pointer;
+    background-color: darken($color: #ffffff, $amount: 1.95);
+    // color: #ffffff;
+}
+
+.Username {
+    width: 18.75rem;
     height: 3.125rem;
     display: flex;
     flex-direction: column;
+    column-gap: 1rem;
     justify-content: center;
     margin-top: 0.5rem;
 }
-.Password{
-    width:18.75rem ;
-    height: 3.125rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 0.5rem;
-}
-.buttonSignup{
-    width:19.5rem ;
-    height: 3.125rem;
-    background-color: #58C2CE;;
+
+.login-content {
+    color: #58C2CE;
+    width: calc(100% - 1rem);
+    height: 100%;
+    background-color: #ffffff;
     border-radius: 0.5rem;
-    margin-top: 2rem;
+    border: 1px solid #58c2ce;
+    padding-left: 1rem;
+}
+
+input::placeholder {
+    color: #58C2CE;
+    // font-family: "Roboto", sans-serif;
+    font-weight: lighter;
+}
+
+.login-content:hover {
+    outline: #58C2CE solid 1px;
+}
+
+input:focus {
+    outline: #58C2CE solid 1px;
+}
+
+#check {
+    color: #58C2CE;
+
+}
+
+
+
+
+
+.Password {
+    width: 18.75rem;
+    height: 3.125rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.remember {
+    width: 18.75rem;
+    height: 0.75rem;
+
+    display: flex;
+    flex-direction: row;
+    // font-family: 'Oswald', sans-serif;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 10px;
+    margin-top: 0.5rem;
+    color: #58C2CE;
+    column-gap: 0.4rem;
+}
+
+.nutlogin {
+    width: 18.75rem;
+    height: 3.125rem;
+    background-color: #58C2CE;
+    ;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-family: 'Oswald', sans-serif;
+    // font-family: 'Oswald', sans-serif;
     font-size: 25px;
     color: white;
 
 }
-.signupwithgg{
-    width:18.75rem ;
+
+.loginwithgg {
+    width: 18.75rem;
     height: 3.125rem;
     background-color: #ffffff;
     border-radius: 0.5rem;
@@ -106,15 +210,30 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-family: 'Oswald', sans-serif;
+    // font-family: 'Oswald', sans-serif;
     color: #58C2CE;
     border: 1px solid #58C2CE;
-    margin-top: 1rem;
 }
-.theWay{
+
+.forgotpassword {
+    width: 18.75rem;
+    height: 3.125rem;
+
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    // font-family: 'Oswald', sans-serif;
+    margin-top: 2rem;
+    color: #58C2CE;
+}
+
+.gachthang {
     width: 18.75rem;
     height: 2rem;
-    color: #58C2CE;;
+    color: #58C2CE;
+    ;
     display: flex;
     flex-direction: row;
     justify-content: center;

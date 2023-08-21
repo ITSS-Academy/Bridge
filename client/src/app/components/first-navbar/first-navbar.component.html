@@ -83,12 +83,12 @@
       </div>
       <div class="button">
         <nav>
-          <a href="/about-us/"><b>About</b></a>
+          <p (click)="navToAboutUs()">About</p>
         </nav>
       </div>
       <div class="button">
         <nav>
-          <a href="/contact-us/"><b>Contact</b></a>
+          <p (click)="navToContactUs()">Contact</p>
         </nav>
       </div>
     </div>
@@ -96,8 +96,8 @@
 
   <div id="right-navbar">
     <div class="right-navbar-content">
-      <div class="button"><b>Login</b></div>
-      <div class="button sign-up"><b>Sign Up</b></div>
+      <div class="button" (click)="navToLogin()"><p>Login</p></div>
+      <div class="button sign-up" (click)="navToSignUp()"><p>Sign Up</p></div>
     </div>
   </div>
 </div>
