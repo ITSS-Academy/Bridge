@@ -1,71 +1,100 @@
-@import '@taiga-ui/core/styles/taiga-ui-local.scss';
- 
-
-
-.content-groups {
-  width: 95%;
-}
-
-.page-button {
+.infor-group {
   display: flex;
   flex-direction: column;
-  float: right;
+  gap: 25px ;
+  width: 90%;
 }
 
-.page-button button {
-  width: 100px;
-  height: 35px;
-  background-color: #FFFFFF;
-  border: 2px solid #58C2CE;
-  color: #58C2CE;
-  cursor: pointer;
-  border-radius: 8px;
-}
-
-.page-button button:hover {
-  background-color: #58C2CE;
-  color: #FFFFFF;
-}
-
-.btn-add-group {
+.title-icon-edit {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
-.btn-add-group span {
-  font-size: 18px;
+.title-icon-edit span{
+  font-size: 20px;
+  color: #58C2CE;
+}
+
+
+.box-icon {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #58C2CE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+
+.box {
+  display: flex;
+  flex-direction: row;
+  gap: 120px;
+  align-items: center;
+}
+
+.title-group {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.infor-group label{
+  font-size: 16px;
+  color: #2C698D;
+  font-weight: 510;
+}
+
+.line{
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
+.line {
+  width: 450px;
+  height: 30px;
+  border: none;
+  border-bottom: 1px dashed #58C2CE;
+  display: flex;
+  align-items: center;
+ 
+}
+
+.flex-table {
+  display: flex;
+  flex-direction: row;
+  gap: 90px;
 }
 
 table {
-  border-collapse: separate;
-  border-spacing: 0;
-  overflow: hidden;
-  border: 1px solid #58C2CE;
-  border-radius: 8px; 
+ width: 400px;
 }
-th {
-  background-color: #58C2CE;
-  color: #FFFFFF;
+
+table, th, td {
+  border: 1px solid #DFD8D8;
+  border-collapse: collapse;
 }
 th, td {
   padding: 10px;
-  border: 1px solid #9cc9ce;
   text-align: left;
-  border-right: none;
-  border-left: none;
+}
+tr {
+  display: flex;
+  flex-direction: column;
 }
 
-th:first-child {
-  padding-left: 30px;
-}
-td:first-child {
-  padding-left: 30px; 
+th {
+  background-color: #E3F6F5;
 }
 
-.edit {
-  cursor: pointer;
+td {
+  color: #58C2CE;
 }
+
 //Dialog
 .cancel-save {
   display: flex;
@@ -202,4 +231,3 @@ td:first-child {
   justify-content: center;
   border-radius: 8px;
 }
-
