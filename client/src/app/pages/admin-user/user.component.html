@@ -1,66 +1,261 @@
-<!-- <app-navbar-user-management [tags]="User"></app-navbar-user-management>
-
-
+<app-navbar-user-management></app-navbar-user-management>
 
 <div class="main-container-user">
+  <app-sidebar></app-sidebar>
+
+  <div class="main-contents-container-user">
     <div class="first-container">
-        <div class="picture-container">
-            <img id="picture" src="https://s3-alpha-sig.figma.com/img/4d47/64ea/ed1c2e4e4a38aff8f709ef39a9b6d216?Expires=1693180800&Signature=VQXMnZDV3kNaN6u64lOQGPM0EjAb5S2jMKiMkJCfW8~gUgO~WQmPDex6cvx4l9R~y3bG4R66oa~gjbnrekSY92hfMx9GAKzqywVL3AW360APdRfZz8CIZLrawvOp24V42KdLrCF5zuSeGQibXczj42BBvJoiPO7mrN-dbchMFrjNBGCHoc0qw5lzHx10vpYmfId9XPMF5zq8W8hPshZHCwINpPH1ZAAV0OsQFGif5p43V4KqKGdZMYtzpYjDybjvTnGAmc0ST1rP7b14R8uS6~mBn1pGa-UrT-hqMxs75TG6P1ce3VdIXRPnDX7bxMP97mKx~CdjRsbufbMFC0Go4A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4">
+      <div class="picture-container">
+        <img
+          id="picture"
+          src="https://s3-alpha-sig.figma.com/img/4d47/64ea/ed1c2e4e4a38aff8f709ef39a9b6d216?Expires=1693180800&Signature=VQXMnZDV3kNaN6u64lOQGPM0EjAb5S2jMKiMkJCfW8~gUgO~WQmPDex6cvx4l9R~y3bG4R66oa~gjbnrekSY92hfMx9GAKzqywVL3AW360APdRfZz8CIZLrawvOp24V42KdLrCF5zuSeGQibXczj42BBvJoiPO7mrN-dbchMFrjNBGCHoc0qw5lzHx10vpYmfId9XPMF5zq8W8hPshZHCwINpPH1ZAAV0OsQFGif5p43V4KqKGdZMYtzpYjDybjvTnGAmc0ST1rP7b14R8uS6~mBn1pGa-UrT-hqMxs75TG6P1ce3VdIXRPnDX7bxMP97mKx~CdjRsbufbMFC0Go4A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+        />
+        <button class="upload-container">
+          <span id="upload-icon" class="material-symbols-outlined">upload</span>
+          <p id="upload-content">Upload</p>
+        </button>
+      </div>
+
+      <div class="user-information-container">
+        <div class="tile-user-info-container">
+          <p id="title-user-information">User Information</p>
+          <!-- <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="19"
+            viewBox="0 0 20 19"
+            fill="none"
+          >
+            <path
+              d="M15.7507 4.53908L12.0667 1.00053C11.9748 0.911952 11.8656 0.841668 11.7453 0.793712C11.6251 0.745755 11.4962 0.721069 11.366 0.721069C11.2358 0.721069 11.1069 0.745755 10.9866 0.793712C10.8664 0.841668 10.7572 0.911952 10.6653 1.00053L0.50199 10.765C0.316727 10.9431 0.212659 11.1846 0.212646 11.4364V14.975C0.212646 15.227 0.316866 15.4687 0.502379 15.6469C0.687892 15.825 0.939501 15.9251 1.20186 15.9251H4.88584C5.01569 15.9254 5.14432 15.901 5.2643 15.8533C5.38428 15.8056 5.49323 15.7356 5.58488 15.6472L12.8943 8.62635L13.3667 10.4475L10.202 13.488C10.1701 13.5171 10.1445 13.552 10.1269 13.5907C10.1092 13.6295 10.0998 13.6712 10.0992 13.7135C10.0986 13.7557 10.1068 13.7977 10.1234 13.8369C10.1399 13.876 10.1645 13.9116 10.1956 13.9416C10.2266 13.9715 10.2637 13.9951 10.3044 14.0111C10.3452 14.027 10.3888 14.035 10.4328 14.0345C10.4769 14.034 10.5203 14.025 10.5607 14.0081C10.601 13.9912 10.6374 13.9668 10.6678 13.9362L13.9651 10.769C14.0055 10.7303 14.0348 10.6823 14.0501 10.6296C14.0654 10.5768 14.0663 10.5212 14.0525 10.4681L13.4376 8.10851L15.7507 5.88672C15.8431 5.79842 15.9165 5.69343 15.9666 5.57779C16.0167 5.46215 16.0424 5.33814 16.0424 5.2129C16.0424 5.08766 16.0167 4.96365 15.9666 4.84801C15.9165 4.73237 15.8431 4.62738 15.7507 4.53908ZM0.87212 14.975V11.9392L4.36321 15.2917H1.20186C1.1144 15.2917 1.03053 15.2583 0.968697 15.1989C0.90686 15.1395 0.87212 15.059 0.87212 14.975ZM5.15869 15.1603L1.00896 11.1744L8.45606 4.02124L12.6066 8.00716L5.15869 15.1603ZM15.2841 5.43461L13.0724 7.559L8.92264 3.57309L11.1343 1.44869C11.165 1.41924 11.2013 1.39588 11.2414 1.37994C11.2814 1.364 11.3243 1.3558 11.3676 1.3558C11.411 1.3558 11.4539 1.364 11.4939 1.37994C11.5339 1.39588 11.5703 1.41924 11.6009 1.44869L15.2841 4.98724C15.3457 5.04661 15.3804 5.12706 15.3804 5.21092C15.3804 5.29479 15.3457 5.37523 15.2841 5.43461Z"
+              fill="#2c698d"
+            />
+          </svg> --> <!--icon bases on figma-->
+          <span id="edit-icon-user-info" class="material-symbols-outlined"> edit </span> <!--icon based on google material fit others-->
         </div>
 
-        <div class="user-information-container">
-            <p id="title-user-information">User Information</p>
-            
-            <div class="contents-user-info">
-                <div class="display-name-container">
-                    <p id="title-display">Display name</p>
-                    <div id="underline"></div>
-                </div>
+        <div class="contents-user-info">
+          <div class="display-name-container">
+            <p id="title-display">Display name</p>
+            <div id="underline"></div>
+          </div>
 
-                <div class="Primary">
+          <div class="primary-group-container">
+            <p id="title-primary-group">Primary group</p>
+            <div id="underline-primary-group"></div>
+          </div>
 
-                </div>
-            </div>
-            
+          <div class="email-container">
+            <p id="title-email">Email</p>
+            <div id="underline-email"></div>
+          </div>
+
+          <div class="report-to-container">
+            <p id="title-report-to">Report to</p>
+            <div id="underline-report-to"></div>
+          </div>
+
+          <div class="role-container">
+            <p id="title-role">Role</p>
+            <div id="underline-role"></div>
+          </div>
+
+          <div class="language-container">
+            <p id="title-language">Language</p>
+            <div id="underline-language"></div>
+          </div>
         </div>
+      </div>
     </div>
+
+    <div class="second-container">
+      <div class="employee-info-container">
+        <div class="title-employee-info-container">
+          <p id="title-employee-info">Employee Information</p>
+          <!-- <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="19"
+            viewBox="0 0 20 19"
+            fill="none"
+          >
+            <path
+              d="M15.7507 4.53908L12.0667 1.00053C11.9748 0.911952 11.8656 0.841668 11.7453 0.793712C11.6251 0.745755 11.4962 0.721069 11.366 0.721069C11.2358 0.721069 11.1069 0.745755 10.9866 0.793712C10.8664 0.841668 10.7572 0.911952 10.6653 1.00053L0.50199 10.765C0.316727 10.9431 0.212659 11.1846 0.212646 11.4364V14.975C0.212646 15.227 0.316866 15.4687 0.502379 15.6469C0.687892 15.825 0.939501 15.9251 1.20186 15.9251H4.88584C5.01569 15.9254 5.14432 15.901 5.2643 15.8533C5.38428 15.8056 5.49323 15.7356 5.58488 15.6472L12.8943 8.62635L13.3667 10.4475L10.202 13.488C10.1701 13.5171 10.1445 13.552 10.1269 13.5907C10.1092 13.6295 10.0998 13.6712 10.0992 13.7135C10.0986 13.7557 10.1068 13.7977 10.1234 13.8369C10.1399 13.876 10.1645 13.9116 10.1956 13.9416C10.2266 13.9715 10.2637 13.9951 10.3044 14.0111C10.3452 14.027 10.3888 14.035 10.4328 14.0345C10.4769 14.034 10.5203 14.025 10.5607 14.0081C10.601 13.9912 10.6374 13.9668 10.6678 13.9362L13.9651 10.769C14.0055 10.7303 14.0348 10.6823 14.0501 10.6296C14.0654 10.5768 14.0663 10.5212 14.0525 10.4681L13.4376 8.10851L15.7507 5.88672C15.8431 5.79842 15.9165 5.69343 15.9666 5.57779C16.0167 5.46215 16.0424 5.33814 16.0424 5.2129C16.0424 5.08766 16.0167 4.96365 15.9666 4.84801C15.9165 4.73237 15.8431 4.62738 15.7507 4.53908ZM0.87212 14.975V11.9392L4.36321 15.2917H1.20186C1.1144 15.2917 1.03053 15.2583 0.968697 15.1989C0.90686 15.1395 0.87212 15.059 0.87212 14.975ZM5.15869 15.1603L1.00896 11.1744L8.45606 4.02124L12.6066 8.00716L5.15869 15.1603ZM15.2841 5.43461L13.0724 7.559L8.92264 3.57309L11.1343 1.44869C11.165 1.41924 11.2013 1.39588 11.2414 1.37994C11.2814 1.364 11.3243 1.3558 11.3676 1.3558C11.411 1.3558 11.4539 1.364 11.4939 1.37994C11.5339 1.39588 11.5703 1.41924 11.6009 1.44869L15.2841 4.98724C15.3457 5.04661 15.3804 5.12706 15.3804 5.21092C15.3804 5.29479 15.3457 5.37523 15.2841 5.43461Z"
+              fill="#2c698d"
+            />
+          </svg> -->
+          <span id="edit-icon-employee-info" class="material-symbols-outlined"> edit </span> <!--icon based on google material fit others-->
+        </div>
+
+        <div class="contents-employee-info">
+          <div class="first-name-container">
+            <p id="title-first-name">First name</p>
+            <div id="underline-first-name"></div>
+          </div>
+
+          <div class="last-name-container">
+            <p id="title-last-name">Last name</p>
+            <div id="underline-last-name"></div>
+          </div>
+
+          <div class="second-email-container">
+            <p id="title-second-email">Secondary email</p>
+            <div id="underline-second-email"></div>
+          </div>
+
+          <div class="mobile-phone-container">
+            <p id="title-mobile-phone">Mobile phone</p>
+            <div id="underline-mobile-phone"></div>
+          </div>
+
+          <div class="office-phone-container">
+            <p id="title-office-phone">Office phone</p>
+            <div id="underline-office-phone"></div>
+          </div>
+
+          <div class="fax-number-container">
+            <p id="title-fax-number">Fax number</p>
+            <div id="underline-fax-number"></div>
+          </div>
+
+          <div class="home-address-container">
+            <p id="title-home-address">Home address</p>
+            <div id="underline-home-address"></div>
+          </div>
+
+          <div class="city-container">
+            <p id="title-city">City</p>
+            <div id="underline-city"></div>
+          </div>
+
+          <div class="state-container">
+            <p id="title-state">State</p>
+            <div id="underline-state"></div>
+          </div>
+
+          <div class="country-container">
+            <p id="title-country">Country</p>
+            <div id="underline-country"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="third-container">
+      <div class="currency-number-container">
+        <div class="title-currency-number-container">
+          <p id="title-currency-number">Currency and number preferences</p>
+          <!-- <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="19"
+            viewBox="0 0 20 19"
+            fill="none"
+          >
+            <path
+              d="M15.7507 4.53908L12.0667 1.00053C11.9748 0.911952 11.8656 0.841668 11.7453 0.793712C11.6251 0.745755 11.4962 0.721069 11.366 0.721069C11.2358 0.721069 11.1069 0.745755 10.9866 0.793712C10.8664 0.841668 10.7572 0.911952 10.6653 1.00053L0.50199 10.765C0.316727 10.9431 0.212659 11.1846 0.212646 11.4364V14.975C0.212646 15.227 0.316866 15.4687 0.502379 15.6469C0.687892 15.825 0.939501 15.9251 1.20186 15.9251H4.88584C5.01569 15.9254 5.14432 15.901 5.2643 15.8533C5.38428 15.8056 5.49323 15.7356 5.58488 15.6472L12.8943 8.62635L13.3667 10.4475L10.202 13.488C10.1701 13.5171 10.1445 13.552 10.1269 13.5907C10.1092 13.6295 10.0998 13.6712 10.0992 13.7135C10.0986 13.7557 10.1068 13.7977 10.1234 13.8369C10.1399 13.876 10.1645 13.9116 10.1956 13.9416C10.2266 13.9715 10.2637 13.9951 10.3044 14.0111C10.3452 14.027 10.3888 14.035 10.4328 14.0345C10.4769 14.034 10.5203 14.025 10.5607 14.0081C10.601 13.9912 10.6374 13.9668 10.6678 13.9362L13.9651 10.769C14.0055 10.7303 14.0348 10.6823 14.0501 10.6296C14.0654 10.5768 14.0663 10.5212 14.0525 10.4681L13.4376 8.10851L15.7507 5.88672C15.8431 5.79842 15.9165 5.69343 15.9666 5.57779C16.0167 5.46215 16.0424 5.33814 16.0424 5.2129C16.0424 5.08766 16.0167 4.96365 15.9666 4.84801C15.9165 4.73237 15.8431 4.62738 15.7507 4.53908ZM0.87212 14.975V11.9392L4.36321 15.2917H1.20186C1.1144 15.2917 1.03053 15.2583 0.968697 15.1989C0.90686 15.1395 0.87212 15.059 0.87212 14.975ZM5.15869 15.1603L1.00896 11.1744L8.45606 4.02124L12.6066 8.00716L5.15869 15.1603ZM15.2841 5.43461L13.0724 7.559L8.92264 3.57309L11.1343 1.44869C11.165 1.41924 11.2013 1.39588 11.2414 1.37994C11.2814 1.364 11.3243 1.3558 11.3676 1.3558C11.411 1.3558 11.4539 1.364 11.4939 1.37994C11.5339 1.39588 11.5703 1.41924 11.6009 1.44869L15.2841 4.98724C15.3457 5.04661 15.3804 5.12706 15.3804 5.21092C15.3804 5.29479 15.3457 5.37523 15.2841 5.43461Z"
+              fill="#2c698d"
+            />
+          </svg> -->
+          <span id="edit-icon-currency-number" class="material-symbols-outlined"> edit </span> <!--icon based on google material fit others-->
+        </div>
+
+        <div class="contents-currency-number">
+          <div class="preferred-currency-container">
+            <p id="title-preferred-currency">Preferred currency</p>
+            <div id="underline-preferred-currency"></div>
+          </div>
+
+          <div class="show-amount-container">
+            <p id="title-show-amount">Show amount in preferred currency</p>
+            <div [formGroup]="testForm">
+              <tui-checkbox
+                id="checkbox"
+                formControlName="testValue"
+              ></tui-checkbox>
+            </div>
+          </div>
+
+          <div class="digit-grouping-pattern-container">
+            <p id="title-digit-grouping-pattern">Digit grouping pattern</p>
+            <div id="underline-digit-grouping-pattern"></div>
+          </div>
+
+          <div class="decimal-separator-container">
+            <p id="title-decimal-separator">Decimal separator</p>
+            <div id="underline-decimal-separator"></div>
+          </div>
+
+          <div class="digit-grouping-separator-container">
+            <p id="title-digit-grouping-separator">Digit grouping separator</p>
+            <div id="underline-digit-grouping-separator"></div>
+          </div>
+
+          <div class="symbol-placement-container">
+            <p id="title-symbol-placement">Symbol placement</p>
+            <div id="underline-symbol-placement"></div>
+          </div>
+
+          <div class="currency-decimal-container">
+            <p id="title-currency-decimal">Currency decimal</p>
+            <div id="underline-currency-decimal"></div>
+          </div>
+
+          <div class="currency-format-container">
+            <p id="title-currency-format">Currency</p>
+            <div id="underline-currency-format"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<router-outlet></router-outlet> -->
+<router-outlet></router-outlet>
 
 
 
+<p>
+    Your balance:
+    <tui-money [value]="money"></tui-money>
+</p>
 <button
+style="border-radius: 8px;"
     tuiButton
     type="button"
     size="m"
-    (click)="showDialog()"
+    (click)="showDialog(template)"
 >
     Show
 </button>
+ 
 <ng-template
+    #template
     let-observer
-    [tuiDialogOptions]="{label: 'Declarative directive', size: 's'}"
-    [(tuiDialog)]="open"
 >
-    <form
-        [formGroup]="exampleForm"
-        (ngSubmit)="observer.complete()"
+    <p>You can show a dialog with template</p>
+    <p>
+        Your balance:
+        <tui-money [value]="money"></tui-money>
+    </p>
+    <button
+    style="border-radius: 8px;" 
+        tuiButton
+        type="button"
+        size="m"
+        class="tui-space_right-3"
+        (click)="withdraw()"
     >
-        <p>This abstracts away service and subscription</p>
-        <tui-input
-            tuiAutoFocus
-            formControlName="exampleControl"
-        >
-            Some value
-        </tui-input>
-        <p>
-            <button
-                tuiButton
-                type="submit"
-            >
-                Ok
-            </button>
-        </p>
-    </form>
+        Withdraw&nbsp;
+        <tui-money [value]="100"></tui-money>
+    </button>
+    <button
+        tuiButton
+        type="button"
+        size="m"
+        (click)="observer.complete()"
+    >
+        Cancel
+    </button>
 </ng-template>
+

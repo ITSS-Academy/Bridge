@@ -12,11 +12,18 @@
     font-size: 1.875rem;
   }
 
-  #back-icon {
+  #back-container {
     width: 7%;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    gap: 0.5rem;
+
+    #back-content{
+      margin: 0;
+      font-weight: 500;
+    }
   }
 
   #user-icon {
@@ -45,28 +52,6 @@
     #view-pages-contents {
       margin: 0;
       color: #272643;
-    }
-  }
-
-  .edit-user-container {
-    width: 9%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    #edit-user-contents {
-      cursor: pointer;
-      margin: 0;
-      padding: 0.438rem;
-      color: #58c2ce;
-      background-color: #ffffff;
-      border: 0.063rem solid #58c2ce;
-      border-radius: 8px;
-
-      &:hover{
-        background-color: #58c2ce;
-        color: #ffffff;
-      }
     }
   }
 }
