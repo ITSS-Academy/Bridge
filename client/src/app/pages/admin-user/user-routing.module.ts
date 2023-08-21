@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserComponent } from './user.component';
-import { UserInfoComponent } from './components/user-info/user-info.component';
-import { UserViewsComponent } from './components/user-views/user-views.component';
+import { TuiCheckboxModule } from '@taiga-ui/kit';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
-  { path: '', component: UserComponent, children: [
-    {path: 'user-views', component: UserViewsComponent, data: { breadcumb : "Users"}},
-    {path: 'user-info', component: UserInfoComponent, data: { breadcumb : "User Info"}},
-  ]},
-]
+  {
+    path: '',
+    component: UserComponent,
+  },
+];
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes), TuiCheckboxModule,ReactiveFormsModule,FormsModule],
+  exports: [RouterModule,ReactiveFormsModule,FormsModule],
 })
-export class UserRoutingModule { }
+export class UserRoutingModule {}

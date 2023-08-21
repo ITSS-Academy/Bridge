@@ -1,29 +1,587 @@
-<app-navbar-user-management [tags]="User"></app-navbar-user-management>
-
-
+<app-navbar-user-management></app-navbar-user-management>
 
 <div class="main-container-user">
+  <app-sidebar></app-sidebar>
+
+  <div class="main-contents-container-user">
     <div class="first-container">
-        <div class="picture-container">
-            <img id="picture" src="https://s3-alpha-sig.figma.com/img/4d47/64ea/ed1c2e4e4a38aff8f709ef39a9b6d216?Expires=1693180800&Signature=VQXMnZDV3kNaN6u64lOQGPM0EjAb5S2jMKiMkJCfW8~gUgO~WQmPDex6cvx4l9R~y3bG4R66oa~gjbnrekSY92hfMx9GAKzqywVL3AW360APdRfZz8CIZLrawvOp24V42KdLrCF5zuSeGQibXczj42BBvJoiPO7mrN-dbchMFrjNBGCHoc0qw5lzHx10vpYmfId9XPMF5zq8W8hPshZHCwINpPH1ZAAV0OsQFGif5p43V4KqKGdZMYtzpYjDybjvTnGAmc0ST1rP7b14R8uS6~mBn1pGa-UrT-hqMxs75TG6P1ce3VdIXRPnDX7bxMP97mKx~CdjRsbufbMFC0Go4A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4">
+      <div class="picture-container">
+        <img
+          id="picture"
+          src="https://s3-alpha-sig.figma.com/img/4d47/64ea/ed1c2e4e4a38aff8f709ef39a9b6d216?Expires=1693180800&Signature=VQXMnZDV3kNaN6u64lOQGPM0EjAb5S2jMKiMkJCfW8~gUgO~WQmPDex6cvx4l9R~y3bG4R66oa~gjbnrekSY92hfMx9GAKzqywVL3AW360APdRfZz8CIZLrawvOp24V42KdLrCF5zuSeGQibXczj42BBvJoiPO7mrN-dbchMFrjNBGCHoc0qw5lzHx10vpYmfId9XPMF5zq8W8hPshZHCwINpPH1ZAAV0OsQFGif5p43V4KqKGdZMYtzpYjDybjvTnGAmc0ST1rP7b14R8uS6~mBn1pGa-UrT-hqMxs75TG6P1ce3VdIXRPnDX7bxMP97mKx~CdjRsbufbMFC0Go4A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+        />
+        <button class="upload-container">
+          <span id="upload-icon" class="material-symbols-outlined">upload</span>
+          <p id="upload-content">Upload</p>
+        </button>
+      </div>
+
+      <div class="user-information-container">
+        <div class="tile-user-info-container">
+          <p id="title-user-information">User Information</p>
+          <span
+            id="edit-icon-user-info"
+            class="material-symbols-outlined"
+            (click)="showDialog(dialogUserInfo)"
+          >
+            edit
+          </span>
+          <!--icon based on google material fit others-->
         </div>
 
-        <div class="user-information-container">
-            <p id="title-user-information">User Information</p>
-            
-            <div class="contents-user-info">
-                <div class="display-name-container">
-                    <p id="title-display">Display name</p>
-                    <div id="underline"></div>
-                </div>
+        <div class="contents-user-info">
+          <div class="display-name-container">
+            <p id="title-display">Display name</p>
+            <div id="underline"></div>
+          </div>
 
-                <div class="Primary">
+          <div class="primary-group-container">
+            <p id="title-primary-group">Primary group</p>
+            <div id="underline-primary-group"></div>
+          </div>
 
-                </div>
-            </div>
-            
+          <div class="email-container">
+            <p id="title-email">Email</p>
+            <div id="underline-email"></div>
+          </div>
+
+          <div class="report-to-container">
+            <p id="title-report-to">Report to</p>
+            <div id="underline-report-to"></div>
+          </div>
+
+          <div class="role-container">
+            <p id="title-role">Role</p>
+            <div id="underline-role"></div>
+          </div>
+
+          <div class="language-container">
+            <p id="title-language">Language</p>
+            <div id="underline-language"></div>
+          </div>
         </div>
+      </div>
     </div>
+
+    <div class="second-container">
+      <div class="employee-info-container">
+        <div class="title-employee-info-container">
+          <p id="title-employee-info">Employee Information</p>
+          <span
+            id="edit-icon-employee-info"
+            class="material-symbols-outlined"
+            (click)="showDialog(dialogEmployeeInfo)"
+          >
+            edit
+          </span>
+          <!--icon based on google material fit others-->
+        </div>
+
+        <div class="contents-employee-info">
+          <div class="first-name-container">
+            <p id="title-first-name">First name</p>
+            <div id="underline-first-name"></div>
+          </div>
+
+          <div class="last-name-container">
+            <p id="title-last-name">Last name</p>
+            <div id="underline-last-name"></div>
+          </div>
+
+          <div class="second-email-container">
+            <p id="title-second-email">Secondary email</p>
+            <div id="underline-second-email"></div>
+          </div>
+
+          <div class="mobile-phone-container">
+            <p id="title-mobile-phone">Mobile phone</p>
+            <div id="underline-mobile-phone"></div>
+          </div>
+
+          <div class="office-phone-container">
+            <p id="title-office-phone">Office phone</p>
+            <div id="underline-office-phone"></div>
+          </div>
+
+          <div class="fax-number-container">
+            <p id="title-fax-number">Fax number</p>
+            <div id="underline-fax-number"></div>
+          </div>
+
+          <div class="home-address-container">
+            <p id="title-home-address">Home address</p>
+            <div id="underline-home-address"></div>
+          </div>
+
+          <div class="city-container">
+            <p id="title-city">City</p>
+            <div id="underline-city"></div>
+          </div>
+
+          <div class="state-container">
+            <p id="title-state">State</p>
+            <div id="underline-state"></div>
+          </div>
+
+          <div class="country-container">
+            <p id="title-country">Country</p>
+            <div id="underline-country"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="third-container">
+      <div class="currency-number-container">
+        <div class="title-currency-number-container">
+          <p id="title-currency-number">Currency and number preferences</p>
+          <span
+            id="edit-icon-currency-number"
+            class="material-symbols-outlined"
+            (click)="showDialog(dialogCurrencyNumber)"
+          >
+            edit
+          </span>
+          <!--icon based on google material fit others-->
+        </div>
+
+        <div class="contents-currency-number">
+          <div class="preferred-currency-container">
+            <p id="title-preferred-currency">Preferred currency</p>
+            <div id="underline-preferred-currency"></div>
+          </div>
+
+          <div class="show-amount-container">
+            <p id="title-show-amount">Show amount in preferred currency</p>
+            <div [formGroup]="testForm">
+              <tui-checkbox
+                id="checkbox"
+                formControlName="testValue"
+              ></tui-checkbox>
+            </div>
+          </div>
+
+          <div class="digit-grouping-pattern-container">
+            <p id="title-digit-grouping-pattern">Digit grouping pattern</p>
+            <div id="underline-digit-grouping-pattern"></div>
+          </div>
+
+          <div class="decimal-separator-container">
+            <p id="title-decimal-separator">Decimal separator</p>
+            <div id="underline-decimal-separator"></div>
+          </div>
+
+          <div class="digit-grouping-separator-container">
+            <p id="title-digit-grouping-separator">Digit grouping separator</p>
+            <div id="underline-digit-grouping-separator"></div>
+          </div>
+
+          <div class="symbol-placement-container">
+            <p id="title-symbol-placement">Symbol placement</p>
+            <div id="underline-symbol-placement"></div>
+          </div>
+
+          <div class="currency-decimal-container">
+            <p id="title-currency-decimal">Currency decimal</p>
+            <div id="underline-currency-decimal"></div>
+          </div>
+
+          <div class="currency-format-container">
+            <p id="title-currency-format">Currency format</p>
+            <div id="underline-currency-format"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template id="dialogUserInfo" #dialogUserInfo let-context>
+    <div class="dialog-user">
+      <p id="title-dialog-user">Edit: User Information</p>
+
+      <div class="contents-dialog-user">
+        <div class="display-name-container-dialog">
+          <p id="title-display-dialog">Display name</p>
+          <tui-input
+            id="input-display-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="name"
+            (ngModelChange)="onModelChangeName($event)"
+          >
+            Type name
+          </tui-input>
+        </div>
+
+        <div class="primary-group-container-dialog">
+          <p id="title-primary-group-dialog">Primary group</p>
+          <tui-input
+            id="input-primary-group-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="primaryGroup"
+            (ngModelChange)="onModelChangeGroup($event)"
+          >
+            Type group
+          </tui-input>
+        </div>
+
+        <div class="email-container-dialog">
+          <p id="title-email-dialog">Email</p>
+          <tui-input
+            id="input-email-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="email"
+            (ngModelChange)="onModelChangeEmail($event)"
+          >
+            Type email
+          </tui-input>
+        </div>
+
+        <div class="report-to-container-dialog">
+          <p id="title-report-to-dialog">Report to</p>
+          <tui-input
+            id="input-report-to-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="reportTo"
+            (ngModelChange)="onModelChangeReport($event)"
+          >
+            To ...
+          </tui-input>
+        </div>
+
+        <div class="role-container-dialog">
+          <p id="title-role-dialog">Role</p>
+          <tui-input
+            id="input-role-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="role"
+          >
+            Type role
+          </tui-input>
+        </div>
+
+        <div class="language-container-dialog">
+          <p id="title-language-dialog">Language</p>
+
+          <tui-combo-box
+            id="input-language-dialog"
+            [formControl]="controlLanguages"
+            [stringify]="stringifyLanguage"
+            tuiTextfieldSize="s"
+          >
+            Choose your language
+
+            <tui-data-list-wrapper
+              *tuiDataList
+              [items]="languages | tuiFilterByInputWith : stringifyLanguage"
+              [itemContent]="stringifyLanguage | tuiStringifyContent"
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+        </div>
+      </div>
+
+      <div class="save-canceled-container">
+        <button class="save-button" (click)="context.complete()">Save</button>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template id="dialogEmployeeInfo" #dialogEmployeeInfo let-context>
+    <div class="dialog-employee">
+      <p id="title-dialog-employee">Edit: Employee Information</p>
+
+      <div class="contents-dialog-employee">
+        <div class="first-name-container-dialog">
+          <p id="title-first-name-dialog">First name</p>
+          <tui-input
+            id="input-first-name-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="name"
+            (ngModelChange)="onModelChangeName($event)"
+          >
+            Type your first name
+          </tui-input>
+        </div>
+
+        <div class="last-name-container-dialog">
+          <p id="title-last-name-dialog">Last name</p>
+          <tui-input
+            id="input-last-name-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="name"
+            (ngModelChange)="onModelChangeName($event)"
+          >
+            Type your last name
+          </tui-input>
+        </div>
+
+        <div class="second-email-container-dialog">
+          <p id="title-second-email-dialog">Secondary email</p>
+          <tui-input
+            id="input-second-email-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="secondEmail"
+          >
+            Type second email (optional)
+          </tui-input>
+        </div>
+
+        <div class="mobile-phone-container-dialog">
+          <p id="title-mobile-phone-dialog">Mobile phone</p>
+          <tui-input
+            id="input-mobile-phone-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="phoneNumber"
+            (ngModelChange)="onModelChangePhone($event)"
+          >
+            Phone number
+          </tui-input>
+        </div>
+
+        <div class="office-phone-container-dialog">
+          <p id="title-office-phone-dialog">Office phone</p>
+          <tui-input
+            id="input-office-phone-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="officeNumber"
+          >
+            Office number (optional)
+          </tui-input>
+        </div>
+
+        <div class="fax-number-container-dialog">
+          <p id="title-fax-number-dialog">Fax number</p>
+          <tui-input
+            id="input-fax-number-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="fax"
+          >
+            Type your fax number (optional)
+          </tui-input>
+        </div>
+
+        <div class="home-address-container-dialog">
+          <p id="title-home-address-dialog">Home address</p>
+          <tui-input
+            id="input-home-address-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="address"
+          >
+            Type your address (optional)
+          </tui-input>
+        </div>
+
+        <div class="city-container-dialog">
+          <p id="title-city-dialog">City</p>
+          <tui-input
+            id="input-city-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="city"
+          >
+            Type your city (optional)
+          </tui-input>
+        </div>
+
+        <div class="state-container-dialog">
+          <p id="title-state-dialog">State</p>
+          <tui-input
+            id="input-state-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="state"
+          >
+            Type your state (optional)
+          </tui-input>
+        </div>
+
+        <div class="country-container-dialog">
+          <p id="title-country-dialog">Country</p>
+          <tui-combo-box
+            id="input-country-dialog"
+            [formControl]="controlCountries"
+            [stringify]="stringifyCountry"
+            tuiTextfieldSize="s"
+          >
+            Choose your country
+
+            <tui-data-list-wrapper
+              *tuiDataList
+              [items]="countries | tuiFilterByInputWith : stringifyCountry"
+              [itemContent]="stringifyCountry | tuiStringifyContent"
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+        </div>
+      </div>
+
+      <div class="save-canceled-container">
+        <button class="save-button" (click)="context.complete()">Save</button>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template id="dialogCurrencyNumber" #dialogCurrencyNumber let-context>
+    <div class="dialog-currency-number">
+      <p id="title-dialog-currency-number">
+        Edit: Currency and number preferences
+      </p>
+
+      <div class="contents-dialog-currency-number">
+        <div class="preferred-currency-container-dialog">
+          <p id="title-preferred-currency-dialog">Preferred currency</p>
+          <tui-combo-box
+            id="input-preferred-dialog"
+            [formControl]="controlPreferredCurrencies"
+            [stringify]="stringifyPreferredCurrency"
+            tuiTextfieldSize="s"
+          >
+            Input your preferred currency
+
+            <tui-data-list-wrapper
+              *tuiDataList
+              [items]="
+                preferredCurrencies
+                  | tuiFilterByInputWith : stringifyPreferredCurrency
+              "
+              [itemContent]="stringifyPreferredCurrency | tuiStringifyContent"
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+        </div>
+
+        <div class="digit-grouping-pattern-container-dialog">
+          <p id="title-digit-grouping-pattern-dialog">Digit grouping pattern</p>
+          <tui-combo-box
+            id="input-digit-grouping-pattern-dialog"
+            [formControl]="controlDigitGroupingPatterns"
+            [stringify]="stringifyDigitGroupingPattern"
+            tuiTextfieldSize="s"
+          >
+            Choose your grouping pattern
+
+            <tui-data-list-wrapper
+              *tuiDataList
+              [items]="
+                digitGroupingPatterns
+                  | tuiFilterByInputWith : stringifyDigitGroupingPattern
+              "
+              [itemContent]="
+                stringifyDigitGroupingPattern | tuiStringifyContent
+              "
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+        </div>
+
+        <div class="decimal-separator-container-dialog">
+          <p id="title-decimal-separator-dialog">Decimal separator</p>
+          <tui-combo-box
+            id="input-decimal-separator-dialog"
+            [formControl]="controlDecimalSeparators"
+            [stringify]="stringifyDecimalSeparator"
+            tuiTextfieldSize="s"
+          >
+            Choose your decimal separator
+
+            <tui-data-list-wrapper
+              *tuiDataList
+              [items]="
+                decimalSeparators
+                  | tuiFilterByInputWith : stringifyDecimalSeparator
+              "
+              [itemContent]="stringifyDecimalSeparator | tuiStringifyContent"
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+        </div>
+
+        <div class="digit-grouping-separator-container-dialog">
+          <p id="title-digit-grouping-separator-dialog">
+            Digit grouping separator
+          </p>
+          <tui-combo-box
+            id="input-digit-grouping-separator-dialog"
+            [formControl]="controlDigitGroupingSeparators"
+            [stringify]="stringifyDigitGroupingSeparator"
+            tuiTextfieldSize="s"
+          >
+            Choose your grouping separator
+
+            <tui-data-list-wrapper
+              *tuiDataList
+              [items]="
+                digitGroupingSeparators
+                  | tuiFilterByInputWith : stringifyDigitGroupingSeparator
+              "
+              [itemContent]="
+                stringifyDigitGroupingSeparator | tuiStringifyContent
+              "
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+        </div>
+
+        <div class="symbol-placement-container-dialog">
+          <p id="title-symbol-placement-dialog">Symbol placement</p>
+          <tui-combo-box
+            id="input-symbol-placement-dialog"
+            [formControl]="controlSymbolPlacements"
+            [stringify]="stringifySymbolPlacement"
+            tuiTextfieldSize="s"
+          >
+            Choose your symbol
+
+            <tui-data-list-wrapper
+              *tuiDataList
+              [items]="
+                symbolPlacements
+                  | tuiFilterByInputWith : stringifySymbolPlacement
+              "
+              [itemContent]="stringifySymbolPlacement | tuiStringifyContent"
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+        </div>
+
+        <div class="currency-decimal-container-dialog">
+          <p id="title-currency-decimal-dialog">Currency decimal</p>
+          <tui-combo-box
+            id="input-currency-decimal-dialog"
+            [formControl]="controlCurrencyDecimals"
+            [stringify]="stringifyCurrencyDecimal"
+            tuiTextfieldSize="s"
+          >
+            Choose your number of currency decimal
+
+            <tui-data-list-wrapper
+              *tuiDataList
+              [items]="
+                currencyDecimals
+                  | tuiFilterByInputWith : stringifyCurrencyDecimal
+              "
+              [itemContent]="stringifyCurrencyDecimal | tuiStringifyContent"
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+        </div>
+
+        <div class="currency-format-container-dialog">
+          <p id="title-currency-format-dialog">Currency format</p>
+          <tui-combo-box
+            id="input-currency-format-dialog"
+            [formControl]="controlCurrencyFormats"
+            [stringify]="stringifyCurrencyFormat"
+            tuiTextfieldSize="s"
+          >
+            Choose your currency format
+
+            <tui-data-list-wrapper
+              *tuiDataList
+              [items]="
+                currencyFormats | tuiFilterByInputWith : stringifyCurrencyFormat
+              "
+              [itemContent]="stringifyCurrencyFormat | tuiStringifyContent"
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+        </div>
+      </div>
+
+      <div class="save-canceled-container">
+        <button class="save-button" (click)="context.complete()">Save</button>
+      </div>
+    </div>
+  </ng-template>
 </div>
 
 <router-outlet></router-outlet>

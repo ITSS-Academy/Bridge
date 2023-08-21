@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserViewsComponent } from './user-views.component';
+import { RoleView2Component } from './role-view2.component';
 
-describe('UserViewsComponent', () => {
-  let component: UserViewsComponent;
-  let fixture: ComponentFixture<UserViewsComponent>;
+describe('RoleView2Component', () => {
+  let component: RoleView2Component;
+  let fixture: ComponentFixture<RoleView2Component>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [UserViewsComponent]
+      declarations: [RoleView2Component]
     });
-    fixture = TestBed.createComponent(UserViewsComponent);
+    fixture = TestBed.createComponent(RoleView2Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
