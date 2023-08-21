@@ -43,6 +43,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/signup/signup.module').then((m) => m.SignupModule),
   },
+  { path: 'lead', loadChildren: () => import('./pages/lead/lead.module').then(m => m.LeadModule) },
 ];
 
 @NgModule({
