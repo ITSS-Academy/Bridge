@@ -13,11 +13,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 
-
 @NgModule({
   declarations: [FirstNavbarComponent, NavbarUserManagementComponent,SidebarComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     KitModule,
     CoreModule,
     CdkModule,
@@ -30,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CoreModule,
     CdkModule,
     AddOnModule,
+    ReactiveFormsModule,
 
     //components
     FirstNavbarComponent,

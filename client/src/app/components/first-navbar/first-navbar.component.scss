@@ -73,10 +73,12 @@ $White: #ffff;
     border-radius: 8px;
     padding: 0 2rem;
     margin: 0 0.2rem;
+    cursor: pointer;
 }
 
 .logo{
     margin: 0 1.5rem;
+    cursor: pointer;
 }
 
 .button:hover{
@@ -90,6 +92,7 @@ $White: #ffff;
 
 .sign-up{
     background-color: #2C698D;
+    cursor: pointer;
 }
 
 .sign-up:hover{

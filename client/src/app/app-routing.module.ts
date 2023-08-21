@@ -51,7 +51,12 @@ const routes: Routes = [
       import('./pages/role-view2/role-view2.module').then(
         (m) => m.RoleView2Module
       ),
+  },{
+    path: 'signup',
+    loadChildren: () =>
+      import('./pages/signup/signup.module').then((m) => m.SignupModule),
   },
+  { path: 'lead', loadChildren: () => import('./pages/lead/lead.module').then(m => m.LeadModule) },
 ];
 
 @NgModule({
