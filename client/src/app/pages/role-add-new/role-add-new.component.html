@@ -1,55 +1,50 @@
-<div
-  class="NavBar1"
-  style="height: 70px; width: 100%; background-color: blue"
-></div>
-<div
-  class="NavBar2"
-  style="height: 70px; width: 100%; background-color: lightblue"
-></div>
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
+<app-navbar-user-management></app-navbar-user-management>
 <div class="Body" style="display: flex">
-  <div class="SideBar" style="width: 189px; background-color: blue"></div>
+  <app-sidebar></app-sidebar>
 
   <div class="container">
 
     <div class="field roleName">
       <div class="label roleNameLabel">Role Name</div>
-      <div class="input" style="margin: 0 1rem"><input class="Input roleNameInput" type="text"/></div>
+      <div class="input" style="margin: 0 1rem"><input class="Input roleNameInput" type="text" style="padding: 1rem 0.8rem;"/></div>
     </div>
 
     <div class="field reportTo">
       <div class="label">Report To</div>
-      <div class="input" style="margin: 0 1rem"><input class="Input reportToInput" type="text"/></div>
+      <div class="input" style="margin: 0 1rem"><input class="Input reportToInput" type="text" style="padding: 0.5rem 0.8rem;"/></div>
     </div>
 
     <div class="field canAssignReportTo">
       <div class="label">Can Assign Report To</div>
       <div class="input canAssignReportToInput">
-        <div class="canAssignReportToInputBox" style="margin: 0 0.5rem 1rem">
-          <!-- <button class="button active">All Users</button>
-          <button class="button active">Marketing Group</button>
-              <button class="button active">Support Group</button> -->
+        <div class="canAssignReportToInputBox">
+          <div class="button active" style="width: 10rem;" >{{userOption}}</div>
+          <div class="button active" style="width: 10rem;" *ngIf="!selectedGroup">{{groupOption}}</div>
+          <div *ngIf="selectedGroup"><div class="button active" *ngFor="let option of optionBox">{{option}}</div></div>
+          
         </div>
 
         <div style="display: flex">
           <div class="optionHolder">
             <div class="collumn">
-              <button class="button active">All Users</button>
-              <button class="button">Same Role Members</button>
-              <button class="button">Role Subordinate</button>
+              <button class="button user" (click)="chosenUser('All Users')">All Users</button>
+              <button class="button user" (click)="chosenUser('Same Role Members')">Same Role Members</button>
+              <button class="button user" (click)="chosenUser('Role Subordinate')">Role Subordinate</button>
             </div>
-            <div class="collumn">
-              <button class="button active">All Groups</button>
-              <button class="button">Same Groups</button>
+            <div class="collumn" style="margin-left: 0.1rem;">
+              <button class="button" (click)="chosenGroup('All Groups')">All Groups</button>
+              <button class="button" (click)="chosenGroup('Same Groups')">Same Groups</button>
               <button class="button" (click)="chooseSelectedGroup()">Selected Groups</button>
-              <button class="button">Cannot Assign</button>
+              <button class="button" (click)="chosenGroup('Cannot Assign')">Cannot Assign</button>
             </div>
           </div>
           <div class="optionHolder" style="margin: 0 0 0 0.5rem" *ngIf="selectedGroup">
             <div class="collumn">
-              <button class="button">Marketing Group</button>
-              <button class="button">Support Group</button>
-              <button class="button">Team Selling</button>
+              <button class="button" (click)="chooseSelected('Marketing Group')">Marketing Group</button>
+              <button class="button" (click)="chooseSelected('Support Group')">Support Group</button>
+              <button class="button" (click)="chooseSelected('Team Selling')">Team Selling</button>
             </div>
           </div>
         </div>
@@ -58,37 +53,51 @@
 
     <div class="field license" style="margin-top: 3rem">
       <div class="label">License Type</div>
-      <div class="input">
-        <button class="button" style="margin: 0 9rem">Standard</button>
+      
+      <div class="input" style="display: block">
+        <div class="canAssignReportToInputBox" style=" width: 15.4rem">
+          <div class="button active" *ngIf="chooseLicense">{{this.licenseType}}</div>
+        </div>
+
+        <div>
+          <div class="optionHolder" style="width: 16.5rem">
+            <div class="collumn">
+              <button class="button" (click)="chosenLicenseType('Standard')">Standard</button>
+              <button class="button" (click)="chosenLicenseType('Single App User')">Single App User</button>
+              <button class="button" (click)="chosenLicenseType('Light Agent')">Light Agent</button>
+            </div>
+          </div>
+        </div>
+        
       </div>
     </div>
 
     <div class="field privileges" style="margin-top: 3rem">
       <div class="label">Privileges</div>
       <div class="input">
-        <button class="button" style="margin: 0 1rem">Assign Directly</button
-        ><button class="button" style="margin: 0 0.5rem">
+        <button class="button privilege" style="margin: 0 1rem" (click)="chooseAssignDirectly()">Assign Directly</button
+        ><button class="button privilege" style="margin: 0 0.5rem" (click)="chooseUseProfile()">
           Use Privilege Profile
         </button>
-      </div>
-    </div> -->
+    </div>
+  </div>
 
-    <div class="field assignProfile" style="margin-top: 3rem">
+    <div class="field assignProfile" style="margin-top: 3rem" *ngIf="useProfile">
       <div class="label">Assign Profile</div>
       <div class="input assignProfileInput">
-        <div class="assignProfileInputBox" style="margin: 0 0.5rem 1rem">
+        <div class="assignProfileInputBox" style="margin: 0 0.5rem 1rem; width: 32rem;">
         </div>
       </div>
     </div>
 
-    <div class="field license" style="margin-top: 3rem">
+    <!-- <div class="field license" style="margin-top: 3rem" *ngIf="assignDirectly">
       <div class="label">Copy Privilege From</div>
       <div class="input">
         <button class="button" style="margin: 0 9rem">Administrator</button>
       </div>
-    </div>
+    </div> -->
 
-    <div class="editPrivilegeBox">
+    <div class="editPrivilegeBox" *ngIf="assignDirectly">
       <h3>EDIT PRIVILEGE OF THIS PROFILE</h3>
       <tui-accordion-item>
         <span>INVENTORY</span>

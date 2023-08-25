@@ -1,9 +1,27 @@
+// :host{
+//   --tui-primary: #58C2CE;
+//   --tui-primary-hover: #58C2CE;
+//   --tui-text-01: #fff;
+//   --tui-primary-active: #58C2CE;
+//   --tui-base-01: #58C2CE;
+//   --tui-base-02: #58C2CE;
+//   --tui-base-03: #58C2CE;
+//   --tui-base-04: #58C2CE;
+//   --tui-base-05: #58C2CE;
+//   --tui-base-06: #58C2CE;
+//   --tui-base-07: #58C2CE;
+//   --tui-base-08: #58C2CE;
+//   --tui-base-09: #58C2CE;]
+//   --tui-heading-font: 'Montserrat', sans-serif;
+//   --tui-text-font: 'Montserrat', sans-serif;
+
+// }
 
 .container {
-  border: 2px solid red;
+  // border: 2px solid red;
   width: 90vw;
   padding: 4rem 8rem;
-  min-height: 100vh;
+  min-height: 120vh;
   max-height: max-content;
 }
 
@@ -53,7 +71,7 @@
   min-width: 15rem;
   border: none;
   padding: 0.5rem;
-  border-bottom: 1px solid #58c2ce;
+  border-bottom: 2px solid #58c2ce;
   color: #272643;
   // font-family: Oswald;
   font-style: normal;
@@ -114,22 +132,26 @@
   letter-spacing: 0.7px;
   box-sizing: border-box;
   margin: 0.2rem 0.2rem;
+
+  
+  
 }
 
-.button:active {
-  background-color: #58c2ce;
+
+.active{
   color: #ffff;
+  background-color: #58c2ce;
 }
 
 .optionHolder {
-  // border: 2px solid red;
-  width: max-content;
+  // border: 2px solid red;ax-content;
   border-radius: 8px;
   border: 2px solid #58c2ce;
   background: #e3f6f5;
   padding: 1rem 0.3rem;
   display: flex;
   height: max-content;
+  transition: 1s;
 }
 
 .collumn {
@@ -148,9 +170,14 @@
 .canAssignReportToInputBox {
   min-height: 2.5rem;
   width: 31rem;
-  border-bottom: 1px solid #58c2ce;
-  margin-bottom: 1.5rem;
-  padding: 0 0.5rem;
+  border-bottom: 2px solid #58c2ce;
+  padding: 0 0.5rem 0.5rem;
+  margin: 0 0.5rem 0.5rem;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+
+  transition: 0.5s;
 }
 
 .editPrivilegeBox {
@@ -264,7 +291,7 @@ tui-accordion-item{
 .assignProfileInputBox{
   min-height: 2.5rem;
   width: 31rem;
-  border-bottom: 1px solid #58c2ce;
+  border-bottom: 2px solid #58c2ce;
   margin-bottom: 1.5rem;
   padding: 0 0.5rem;
 }
