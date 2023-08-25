@@ -6,6 +6,8 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { importProvidersFrom } from '@angular/core';
 import { provideAnimations, BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
 
 // bootstrapApplication(AppComponent, {
 //   providers:[importProvidersFrom(TuiRootModule, TuiDialogModule, TuiAlertModule, BrowserAnimationsModule), provideAnimations()],
@@ -14,5 +16,5 @@ import { provideAnimations, BrowserAnimationsModule } from '@angular/platform-br
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 	bootstrapApplication(AppComponent, {
-    providers: [importProvidersFrom(TuiRootModule, TuiDialogModule, TuiAlertModule), provideAnimations()],
+    providers: [importProvidersFrom(TuiRootModule, TuiDialogModule, TuiAlertModule), provideAnimations(), provideStore(), provideEffects()],
   }).catch(err => console.error(err));

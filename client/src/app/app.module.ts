@@ -20,6 +20,10 @@ import { CdkModule } from './shared/cdk/cdk.module';
 import { CoreModule } from './shared/core/core.module';
 import { KitModule } from './shared/kit/kit.module';
 import { AddOnModule } from './shared/add-on/add-on.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { SignUpReducer } from './pages/signup/ngrx/reducer/signup.reducer';
+import { SignUpEffect } from './pages/signup/ngrx/effect/signup.effect';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,13 @@ import { AddOnModule } from './shared/add-on/add-on.module';
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
+
+    StoreModule.forRoot({
+      signup: SignUpReducer
+    }, {}),
+    EffectsModule.forRoot([
+      SignUpEffect
+    ])
   ],
   exports: [SharedModule],
   providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
