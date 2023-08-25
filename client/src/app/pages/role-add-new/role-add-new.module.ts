@@ -9,8 +9,21 @@ import {TuiDataListWrapperModule, TuiComboBoxModule} from '@taiga-ui/kit';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { TuiDataListModule } from '@taiga-ui/core';
 
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TuiCheckboxModule} from '@taiga-ui/kit';
+
+import {TUI_CHECKBOX_OPTIONS, TUI_CHECKBOX_DEFAULT_OPTIONS} from '@taiga-ui/core';
 
 @NgModule({
+  providers: [
+    {
+      provide: TUI_CHECKBOX_OPTIONS,
+      useValue: {
+        ...TUI_CHECKBOX_DEFAULT_OPTIONS,
+        size: 'l',
+      },
+    },
+],
   declarations: [
     RoleAddNewComponent
   ],
@@ -22,7 +35,10 @@ import { TuiDataListModule } from '@taiga-ui/core';
     TuiAccordionModule,
     TuiDataListWrapperModule,
     TuiComboBoxModule,
-    SharedModule
+    SharedModule,
+    TuiCheckboxModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class RoleAddNewModule { }

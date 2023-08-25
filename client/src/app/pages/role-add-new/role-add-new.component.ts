@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { field } from './model/field';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 
 import {NgModule} from '@angular/core';
 import {tuiSvgOptionsProvider, TUI_SANITIZER} from '@taiga-ui/core';
@@ -188,4 +188,10 @@ export class RoleAddNewComponent {
     }
     
   }
+
+  // testForm = new FormGroup({
+  //   testValue1: new FormControl(),
+  //   testValue2: new FormControl(),
+  //   testValue3: new FormControl(),
+  // });
 }
