@@ -1,11 +1,13 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ChangeDetectionStrategy } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {TuiDialogContext, TuiDialogService, TuiDialogSize} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 @Component({
   selector: 'app-form-information',
   templateUrl: './form-information.component.html',
-  styleUrls: ['./form-information.component.scss']
+  styleUrls: ['./form-information.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+
 })
 export class FormInformationComponent {
   constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}

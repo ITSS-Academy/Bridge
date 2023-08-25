@@ -1,5 +1,13 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.scss';
- 
+
+@import 'mixins/textfield.scss';
+
+
+[tuiWrapper][data-appearance='textfield'] {
+  background: var(--tui-base-01);
+  color: var(--tui-text-01);
+  box-shadow: none;
+}
 
 
 .content-groups {
@@ -47,6 +55,9 @@ table {
 th {
   background-color: #58C2CE;
   color: #FFFFFF;
+}
+td {
+  color: #2C698D;
 }
 th, td {
   padding: 10px;
@@ -201,5 +212,24 @@ td:first-child {
   align-items: center;
   justify-content: center;
   border-radius: 8px;
+}
+
+//tui-multiple-select
+
+.tui-multi-select {
+  width: 400px;
+  height: 30px;
+  border: none;
+  border-bottom: 1px dashed #58C2CE;
+  outline: none;
+}
+
+.template {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  margin: 0 0.5rem 0 -0.25rem;
 }
 
