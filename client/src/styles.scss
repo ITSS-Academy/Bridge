@@ -26,20 +26,37 @@ tui-dialog[data-size="m"][_nghost-ng-c4160801985] {
 
 //title checking are you sure ?
 tui-dialog[_nghost-ng-c4160801985] .t-heading[_ngcontent-ng-c4160801985] {
-  color: #2c698d;
+  // color: #2c698d;
 }
 
 //content checking are you sure ?
 tui-dialog[_nghost-ng-c4160801985] {
-  color: #272643;
+  // color: #272643;
 }
 
 tui-dialog.t-content[_ngcontent-ng-c267254229] {
   font-weight: 100;
 }
 
-
+:host{
+  --tui-primary: #58C2CE !important;
+  --tui-primary-hover: #58C2CE !important;
+  --tui-primary-active: #58C2CE !important;
+  --tui-text-01: #fff;
+  --tui-base-01: #58C2CE;
+  --tui-base-02: #58C2CE;
+  --tui-base-03: #58C2CE;
+  --tui-base-04: #58C2CE;
+  --tui-base-05: #58C2CE;
+  --tui-base-06: #58C2CE;
+  --tui-base-07: #58C2CE;
+  --tui-base-08: #58C2CE;
+  --tui-base-09: #58C2CE;
+  --tui-heading-font: 'Montserrat', sans-serif;
+  --tui-text-font: 'Montserrat', sans-serif;
+}
 //button in checking are you sure ?
 // tui-dialog[_ngcontent-ng-c267254229] .t-button[_nghost-ng-c2387760965]{
 //   background-color: red;
 // }
+
