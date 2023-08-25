@@ -22,7 +22,7 @@ import { LoginEffect } from './pages/login/ngrx/effect/login.effect';
 @NgModule({
   declarations: [
     AppComponent,
-    SecondNavbarComponent,
+    // SecondNavbarComponent,
     SubNavbarMainComponent,
   ],
   imports: [
