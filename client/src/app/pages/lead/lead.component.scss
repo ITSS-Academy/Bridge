@@ -34,7 +34,7 @@
   background-color: white;
   align-items: center;
 }
-.over-my-orgs-filter {
+.over-my-lead-filter {
   width: 50%;
   height: 3.5rem;
   background-color: #fff;
@@ -43,11 +43,10 @@
   justify-content: space-around;
   column-gap: 20rem;
   :hover {
-    background-color: #58c2ce;
-    color: white;
+    background-color: darken($color: #58c2ce, $amount: 10);
   }
 }
-.my-orgs-filter {
+.my-lead-filter {
   width: 15%;
   height: 2.5rem;
   background-color: #58c2ce;
@@ -65,7 +64,7 @@
 .none {
   width: 70%;
   height: 2.5rem;
-  background-color: #dddddd;
+  // background-color: #dddddd;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: row;
@@ -87,14 +86,14 @@
 .none2 {
   width: 20%;
   height: 2.5rem;
-  background-color: #fff;
+
   border-radius: 0.5rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-.add-organization-button {
+.add-lead-button {
   width: 30%;
   height: 2.5rem;
   background-color: #58c2ce;
@@ -212,7 +211,7 @@
     background-color: darken($color: #58c2ce, $amount: 10);
   }
 }
-.add-organization-button-center {
+.add-lead-button-center {
   width: 15%;
   height: 2.5rem;
   background-color: #58c2ce;
