@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LeadRoutingModule } from './lead-routing.module';
 import { LeadComponent } from './lead.component';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { LeadComponent } from './lead.component';
   ],
   imports: [
     CommonModule,
-    LeadRoutingModule
+    LeadRoutingModule,
+    SharedModule,
   ]
 })
 export class LeadModule { }

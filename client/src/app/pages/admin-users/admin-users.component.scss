@@ -1,3 +1,25 @@
+:host {
+  input:focus {
+    outline: red 1px solid;
+  }
+  --tui-primary: #58c2ce !important;
+  --tui-primary-hover: #58c2ce !important;
+  --tui-primary-active: #58c2ce !important;
+  --tui-secondary-hover: #58c2ce;
+  --tui-text-01: #fff;
+  --tui-base-01: #58c2ce;
+  --tui-base-02: #58c2ce;
+  --tui-base-03: #58c2ce;
+  --tui-base-04: #58c2ce;
+  --tui-base-05: #58c2ce;
+  --tui-base-06: #58c2ce;
+  --tui-base-07: #58c2ce;
+  --tui-base-08: #58c2ce;
+  --tui-base-09: #58c2ce;
+  --tui-heading-font: "Montserrat", sans-serif;
+  --tui-text-font: "Montserrat", sans-serif;
+}
+
 .main-container-user {
   width: 100%;
   height: 100%;
@@ -34,14 +56,18 @@
     justify-content: center;
     border-radius: 8px;
     border: 2px solid #58c2ce;
-    background-color: #ffffff;
-    color: #58c2ce;
+    background-color: #58c2ce;
+    color: white;
     cursor: pointer;
 
     &:hover {
-      background-color: #58c2ce;
-      color: #ffffff;
+      background-color: darken($color: #58c2ce, $amount: 10);
+      color: darken($color: white, $amount: 3);
     }
+  }
+
+  .add-user-button-container span {
+    font-size: 18px;
   }
 }
 
@@ -72,6 +98,7 @@
 
     &:hover {
       background-color: darken($color: #58c2ce, $amount: 10);
+      color: darken($color: white, $amount: 3);
     }
   }
 
@@ -169,7 +196,7 @@ td {
 .cancel-save {
   display: flex;
   flex-direction: row;
-  gap: 3rem;
+  gap: 1rem;
   justify-content: center;
 
   .button-cancel {
@@ -183,8 +210,7 @@ td {
     cursor: pointer;
 
     &:hover {
-      color: #ffffff;
-      background-color: #58c2ce;
+      background-color: darken($color: white, $amount: 3);
     }
   }
 
@@ -199,9 +225,8 @@ td {
     cursor: pointer;
 
     &:hover {
-      color: #58c2ce;
-      background-color: #ffffff;
-      border: 2px solid #58c2ce;
+      background-color: darken($color: #58c2ce, $amount: 10);
+      color: darken($color: white, $amount: 3);
     }
   }
 }
@@ -216,20 +241,45 @@ td {
 
 .form-group {
   height: fit-content;
-  width: 70rem;
+  width: 80rem;
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   padding-left: 1.2rem;
   padding-top: 1rem;
 }
 
-.box{
+.box {
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 10px;
+
+  label {
+    width: 7rem;
+    font-size: 1rem;
+    color: #2c698d;
+    font-weight: 400;
+  }
+}
+
+.box-3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  .title-currency-number {
+    width: 11rem;
+    font-size: 1rem;
+    color: #2c698d;
+    font-weight: 400;
+  }
 }
 
 .input-choose-dialog {
-  width: 10rem;
+  width: 12rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
 }

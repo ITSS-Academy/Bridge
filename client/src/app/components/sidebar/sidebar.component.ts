@@ -1,4 +1,5 @@
 import { Component,ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
 import { TUI_ARROW } from '@taiga-ui/kit';
 @Component({
   selector: 'app-sidebar',
@@ -21,5 +22,21 @@ export class SidebarComponent {
     if (toggledDropdown) {
       toggledDropdown.classList.toggle('open'); // Toggle the open class
     }
+  }
+
+  constructor(public route:Router){
+    
+  }
+
+  navigateToUser(){
+    this.route.navigate(['/admin-users'])
+  }
+
+  navigateToRole(){
+    this.route.navigate(['/role-view2'])
+  }
+
+  navigateToGroups(){
+    this.route.navigate(['/admin-groups'])
   }
 }
