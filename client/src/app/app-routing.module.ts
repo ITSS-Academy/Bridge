@@ -83,6 +83,13 @@ const routes: Routes = [
         (m) => m.AdminUsersModule
       ),
   },
+  {
+    path: 'organization',
+    loadChildren: () =>
+      import('./pages/organization/organization.module').then(
+        (m) => m.OrganizationModule
+      ),
+  },
 ];
 
 @NgModule({

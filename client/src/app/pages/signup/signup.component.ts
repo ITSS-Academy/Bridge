@@ -33,7 +33,7 @@ export class SignupComponent {
 
   signup(){
     let newAuthAccount: AuthAccount = {
-      id: Date.now().toString(),
+      id: '',
       firstName: this.myForm.controls['firstName'].value,
       lastName: this.myForm.controls['lastName'].value,
       email: this.myForm.controls['email'].value,
@@ -42,7 +42,7 @@ export class SignupComponent {
     }
     this.store.dispatch(SignUpAction.signUp({authAccount: newAuthAccount}))
     this.signUp$.subscribe((data) => {
-      console.log(data)
+      // console.log(data)
     })
     // let result = this.signupService.signup(newAuthAccount)
   }

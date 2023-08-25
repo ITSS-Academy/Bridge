@@ -1,5 +1,8 @@
+
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
+
+
 
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
@@ -8,11 +11,20 @@
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
+.mat-body *{
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+*{
+  font-family: 'Roboto', sans-serif;
+  
+}
+
 
 body {
   margin: 0;
   // font-family: 'Rubik', sans-serif;
-  font-family: 'Montserrat', sans-serif;
 }
 
 tui-dialog[_nghost-ng-c4160801985] {
@@ -52,11 +64,22 @@ tui-dialog.t-content[_ngcontent-ng-c267254229] {
   --tui-base-07: #58C2CE;
   --tui-base-08: #58C2CE;
   --tui-base-09: #58C2CE;
-  --tui-heading-font: 'Montserrat', sans-serif;
-  --tui-text-font: 'Montserrat', sans-serif;
+  // --tui-heading-font: 'Montserrat', sans-serif;
+  // --tui-text-font: 'Montserrat', sans-serif;
 }
 //button in checking are you sure ?
 // tui-dialog[_ngcontent-ng-c267254229] .t-button[_nghost-ng-c2387760965]{
 //   background-color: red;
 // }
 
+
+
+
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

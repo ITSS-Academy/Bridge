@@ -12,9 +12,12 @@ import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {TuiDataListModule} from '@taiga-ui/core';
 import {TuiComboBoxModule, TuiDataListWrapperModule} from '@taiga-ui/kit';
+import { LoadingComponent } from 'src/app/components/loading/loading.component';
 
+//Angular Material
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
-  declarations: [FirstNavbarComponent, NavbarUserManagementComponent,SidebarComponent],
+  declarations: [FirstNavbarComponent, NavbarUserManagementComponent,SidebarComponent, LoadingComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -26,6 +29,9 @@ import {TuiComboBoxModule, TuiDataListWrapperModule} from '@taiga-ui/kit';
     TuiComboBoxModule,
     TuiDataListModule,
     TuiDataListWrapperModule,
+
+    //Angular Material
+    MatProgressSpinnerModule,
   ],
   exports: [
     //modules
@@ -43,7 +49,11 @@ import {TuiComboBoxModule, TuiDataListWrapperModule} from '@taiga-ui/kit';
     FirstNavbarComponent,
     NavbarUserManagementComponent,
     SidebarComponent,
-    
+    LoadingComponent,
+
+    //Angular Material
+    MatProgressSpinnerModule,
+
   ],
   providers: [
     tuiSvgOptionsProvider({
