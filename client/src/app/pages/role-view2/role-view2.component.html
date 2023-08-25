@@ -4,19 +4,19 @@
 />
 
 <app-navbar-user-management></app-navbar-user-management>
-<div class="Body" style="display: flex">
+<div class="Body" style="display: flex; height: 100%;">
   <app-sidebar></app-sidebar>
   <div class="container">
-      <!-- <div class="page-button">
-        <button class="btn-add-group" size="m" type="button" >
+      <div class="page-button">
+        <button class="btn-add-group" size="m" type="button" (click)="navigateToRoleAdd()">
           <span class="material-symbols-outlined">
             add
           </span>
-          Add Group
+          Add Role
         </button>
-        <p>1 to 3</p>
-      </div> -->
-      <table class="table-groups" style="width: 100%">
+      </div>
+
+      <table class="table-groups" style="width: 85%">
         <tr style="font-weight: bold; font-size: 20;">
           <th>Actions</th>
           <th>Role</th>

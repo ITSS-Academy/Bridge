@@ -51,15 +51,38 @@ const routes: Routes = [
       import('./pages/role-view2/role-view2.module').then(
         (m) => m.RoleView2Module
       ),
-  },{
+  },
+  {
     path: 'signup',
     loadChildren: () =>
       import('./pages/signup/signup.module').then((m) => m.SignupModule),
   },
-  { path: 'lead', loadChildren: () => import('./pages/lead/lead.module').then(m => m.LeadModule) },
-  {path: 'display-group', loadChildren: () => import('./pages/display-group/display-group.module').then(m => m.DisplayGroupModule) },
-  { path: 'role-view1', loadChildren: () => import('./pages/role-view1/role-view1.module').then(m => m.RoleView1Module) }, 
-  { path: 'admin-users', loadChildren: () => import('./pages/admin-users/admin-users.module').then(m => m.AdminUsersModule) }
+  {
+    path: 'lead',
+    loadChildren: () =>
+      import('./pages/lead/lead.module').then((m) => m.LeadModule),
+  },
+  {
+    path: 'display-group',
+    loadChildren: () =>
+      import('./pages/display-group/display-group.module').then(
+        (m) => m.DisplayGroupModule
+      ),
+  },
+  {
+    path: 'role-view1',
+    loadChildren: () =>
+      import('./pages/role-view1/role-view1.module').then(
+        (m) => m.RoleView1Module
+      ),
+  },
+  {
+    path: 'admin-users',
+    loadChildren: () =>
+      import('./pages/admin-users/admin-users.module').then(
+        (m) => m.AdminUsersModule
+      ),
+  },
 ];
 
 @NgModule({
