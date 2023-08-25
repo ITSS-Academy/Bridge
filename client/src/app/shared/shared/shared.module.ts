@@ -12,9 +12,10 @@ import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {TuiDataListModule} from '@taiga-ui/core';
 import {TuiComboBoxModule, TuiDataListWrapperModule} from '@taiga-ui/kit';
+import { SecondNavbarComponent } from 'src/app/components/second-navbar/second-navbar.component';
 
 @NgModule({
-  declarations: [FirstNavbarComponent, NavbarUserManagementComponent,SidebarComponent],
+  declarations: [FirstNavbarComponent, NavbarUserManagementComponent,SidebarComponent,SecondNavbarComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -43,6 +44,7 @@ import {TuiComboBoxModule, TuiDataListWrapperModule} from '@taiga-ui/kit';
     FirstNavbarComponent,
     NavbarUserManagementComponent,
     SidebarComponent,
+    SecondNavbarComponent,
     
   ],
   providers: [

@@ -31,7 +31,6 @@ import { SignUpEffect } from './pages/signup/ngrx/effect/signup.effect';
     LoadingComponent,
     WarningComponent,
     ErrorComponent,
-    SecondNavbarComponent,
     SubNavbarMainComponent,
   ],
   imports: [
