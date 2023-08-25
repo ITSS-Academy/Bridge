@@ -1,3 +1,25 @@
+:host{
+  input:focus{
+    outline: red 1px solid;
+  }
+  --tui-primary: #58C2CE !important;
+  --tui-primary-hover: #58C2CE !important;
+  --tui-primary-active: #58C2CE !important;
+  --tui-secondary-hover: #58C2CE;
+  --tui-text-01: #fff;
+  --tui-base-01: #58C2CE;
+  --tui-base-02: #58C2CE;
+  --tui-base-03: #58C2CE;
+  --tui-base-04: #58C2CE;
+  --tui-base-05: #58C2CE;
+  --tui-base-06: #58C2CE;
+  --tui-base-07: #58C2CE;
+  --tui-base-08: #58C2CE;
+  --tui-base-09: #58C2CE;
+  --tui-heading-font: 'Montserrat', sans-serif;
+  --tui-text-font: 'Montserrat', sans-serif;
+}
+
 .main-container-user {
   width: 100%;
   height: 100%;
@@ -13,12 +35,31 @@
 }
 
 .save-canceled-container {
-  padding-top: 10px;
+  // padding-top:4%;
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
-  border-top: 2px solid #58c2ce;
+  gap: 1rem;
+  // border-top: 2px solid #58c2ce;
+
+  .canceled-button {
+    width: 5rem;
+    height: 2.5rem;
+    background-color: white;
+    border: 2px solid #58C2CE;
+    border-radius: 8px;
+    color: #58C2CE;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($color: white, $amount: 3);
+      color: darken($color: #58C2CE, $amount: 10);
+    }
+  }
 
   .save-button {
     width: 5rem;
@@ -30,11 +71,11 @@
     font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.1rem;
+    cursor: pointer;
 
     &:hover {
-      background-color: white;
-      color: #58c2ce;
-      border: 2px solid #58c2ce;
+      background-color: darken($color: #58C2CE, $amount: 10);
+      color: darken($color: white, $amount: 3);
     }
   }
 }
@@ -108,6 +149,7 @@
       #edit-icon-user-info {
         color: #2c698d;
         font-size: 1.2rem;
+        cursor: pointer;
 
         &:hover {
           color: lighten($color: #2c698d, $amount: 20);
@@ -300,6 +342,7 @@
       #edit-icon-employee-info {
         color: #2c698d;
         font-size: 1.2rem;
+        cursor:  pointer;
 
         &:hover {
           color: lighten($color: #2c698d, $amount: 20);
@@ -589,6 +632,7 @@
       #edit-icon-currency-number {
         color: #2c698d;
         font-size: 1.2rem;
+        cursor: pointer;
 
         &:hover {
           color: lighten($color: #2c698d, $amount: 20);
@@ -648,8 +692,9 @@
         }
 
         #checkbox {
-          background-color: #58c2ce;
+          background-color: white;
           border-radius: 5px;
+          border: 1px solid #58c2ce;
         }
       }
 
@@ -841,7 +886,11 @@
         width: 14.375rem;
         border-radius: 8px;
         box-shadow: none;
-        border: 1px solid #58c2ce;
+        border: 1px solid #58c2ce;       
+
+      }
+      #input-display-dialog::selection{
+        border: 0.2rem solid #58c2ce;        
       }
     }
 
@@ -1268,7 +1317,7 @@
   #title-dialog-currency-number {
     margin: 0;
     padding-bottom: 10px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     border-bottom: 2px solid #58c2ce;
     color: #2c698d;
     font-weight: 600;
@@ -1465,4 +1514,8 @@
       }
     }
   }
+}
+
+tui-input{
+  outline: 0.1rem !important;
 }
