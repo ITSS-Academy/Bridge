@@ -15,40 +15,29 @@
             ><img
               id="logoBridge"
               src="https://i.ibb.co/51mZfNZ/nh-m-n-h-nh-2023-08-19-l-c-13-42-10.png"
-              alt="nh-m-n-h-nh-2023-08-19-l-c-13-42-10"
-              border="0"
           /></a>
         </div>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap"
-          rel="stylesheet"
-        />
       </div>
 
-      <div class="Email">
-        <input class="login-content" type="email" placeholder="Email..." />
-      </div>
-      <div class="Username">
-        <input class="login-content" type="text" placeholder="Username..." />
-      </div>
-      <div class="Password">
-        <input
-          class="login-content"
-          type="password"
-          placeholder="Password..."
-        />
-      </div>
-      <!-- <div class="remember">
-        <form [formGroup]="testForm">
-          <tui-checkbox formControlName="testValue1" id="check" ></tui-checkbox>
-        </form>
-        <div>
-          <p class="churemember">Remember Account</p>
+
+      <form [formGroup]="myForm">
+        <div class="first-name">
+          <input [formControl]="firstName" class="login-content" type="email" placeholder="First name..." />
         </div>
-      </div> -->
-      <div class="nutlogin">
+        <div class="last-name">
+          <input [formControl]="lastName" class="login-content" type="email" placeholder="Last name..." />
+        </div>
+        <div class="Email">
+          <input [formControl]="email" class="login-content" type="email" placeholder="Email..." />
+        </div>
+        <div class="Username">
+          <input [formControl]="userName" class="login-content" type="text" placeholder="Username..." />
+        </div>
+        <div class="Password">
+          <input [formControl]="password" class="login-content" type="password" placeholder="Password..."/>
+        </div>
+      </form>
+      <div class="nutlogin" (click)="signup()">
         <p>SIGN UP</p>
       </div>
       <div class="gachthang">
@@ -62,7 +51,6 @@
         />
         <p>Login with Google</p>
       </div>
-      <!-- <div class="forgotpassword">Forgot Your Password?</div> -->
     </div>
   </div>
 </div>
