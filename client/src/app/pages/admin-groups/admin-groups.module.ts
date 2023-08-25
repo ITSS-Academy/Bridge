@@ -6,7 +6,6 @@ import { AdminGroupsComponent } from './admin-groups.component';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { TableGroupsComponent } from './components-admin-groups/table-groups/table-groups.component';
 
-
 @NgModule({
   declarations: [
     AdminGroupsComponent,
@@ -15,7 +14,8 @@ import { TableGroupsComponent } from './components-admin-groups/table-groups/tab
   imports: [
     CommonModule,
     AdminGroupsRoutingModule,
-    SharedModule
+    SharedModule,
+
   ]
 })
 export class AdminGroupsModule { }

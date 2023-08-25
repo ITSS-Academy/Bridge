@@ -1,0 +1,201 @@
+<app-navbar-user-management></app-navbar-user-management>
+
+<div class="main-container-user">
+  <app-sidebar></app-sidebar>
+
+  <div class="main-content-container">
+    <div class="content-groups">
+      <div class="button-container">
+        <div class="add-button-container">
+          <button
+            class="add-user-button-container"
+            size="m"
+            type="button"
+            (click)="onClick(addUserDialog, 'auto')"
+          >
+            <span class="material-symbols-outlined"> add </span>
+            Add User
+          </button>
+        </div>
+      </div>
+
+      <div class="check-status-container">
+        <div class="button-container">
+          <button class="check-active-button" size="m" type="button">
+            Active
+          </button>
+          <button class="check-inactive-button" size="m" type="button">
+            Inactive
+          </button>
+        </div>
+      </div>
+
+      <div class="user-list-view-container">
+        <div class="content-container">
+          <p id="view-content">1 to 3</p>
+        </div>
+      </div>
+
+      <div class="table-groups-container">
+        <table class="table-groups">
+          <tr>
+            <th>Actions</th>
+            <th>Display name</th>
+            <th>Email</th>
+            <th>Phone number</th>
+            <th>Role</th>
+            <th>User type</th>
+          </tr>
+          <tr>
+            <td>
+              <span
+                class="material-symbols-outlined edit-button"
+                (click)="onClick(addUserDialog, 'auto')"
+              >
+                edit
+              </span>
+              <span class="material-symbols-outlined"> delete </span>
+            </td>
+            <td>Khoa Bùi</td>
+            <td>khoa.bdd14833@example.com</td>
+            <td>09xxxxx231</td>
+            <td>CEO</td>
+            <td>Admin</td>
+          </tr>
+          <tr>
+            <td>
+              <span
+                class="material-symbols-outlined edit-button"
+                (click)="onClick(addUserDialog, 'auto')"
+              >
+                edit
+              </span>
+              <span class="material-symbols-outlined"> delete </span>
+            </td>
+            <td>Dương Thùy</td>
+            <td>duong.ltt@example.com</td>
+            <td>09xxxxx231</td>
+            <td>Sale manager</td>
+            <td>User</td>
+          </tr>
+          <tr>
+            <td>
+              <span
+                class="material-symbols-outlined edit-button"
+                (click)="onClick(addUserDialog, 'auto')"
+              >
+                edit
+              </span>
+              <span class="material-symbols-outlined"> delete </span>
+            </td>
+            <td>Trí Nguyễn</td>
+            <td>tri.nguyen@example.com</td>
+            <td>09xxxxx231</td>
+            <td>Marketing manager</td>
+            <td>User</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template id="add-user-dialog" #addUserDialog let-observer>
+  <form
+    id="form-container"
+    [formGroup]="exampleForm"
+    (ngSubmit)="observer.complete()"
+  >
+    <div class="add-user-container">
+      <div class="user-info-container">
+        <div class="title-info">User information</div>
+        <div class="form-group">
+          <div class="box">
+            <label for="">Username</label>
+            <input type="text" />
+          </div>
+
+          <div class="box">
+            <label for="">User type</label>
+            <tui-combo-box
+              class="input-choose-dialog"
+              [formControl]="controlUserTypes"
+              [stringify]="stringifyUserType"
+              tuiTextfieldSize="s"
+            >
+              Input your user type
+
+              <tui-data-list-wrapper
+                *tuiDataList
+                [items]="UserTypes | tuiFilterByInputWith : stringifyUserType"
+                [itemContent]="stringifyUserType | tuiStringifyContent"
+              ></tui-data-list-wrapper>
+            </tui-combo-box>
+          </div>
+
+          <div class="box">
+            <label for="">Description</label>
+            <input type="text" />
+          </div>
+
+          <div class="box-gmember">
+            <label for="">Group Member</label>
+            <input type="text" />
+          </div>
+        </div>
+      </div>
+
+      <div class="employee-info-container">
+        <div class="title-info">Employee information</div>
+        <div class="form-group">
+          <div class="box">
+            <label for="">Group Name</label>
+            <input type="text" />
+          </div>
+
+          <div class="box">
+            <label for="">Group Email</label>
+            <input type="text" />
+          </div>
+
+          <div class="box">
+            <label for="">Description</label>
+            <input type="text" />
+          </div>
+          
+          <div class="box">
+            <label for="">Group Member</label>
+            <input type="text" />
+          </div>
+        </div>
+      </div>
+
+      <div class="currency-info-container">
+        <div class="title-info">Currency and Number preferences</div>
+        <div class="form-group">
+          <div class="box">
+            <label for="">Group Name</label>
+            <input type="text" />
+          </div>
+          <div class="box">
+            <label for="">Group Email</label>
+            <input type="text" />
+          </div>
+          <div class="box">
+            <label for="">Description</label>
+            <input type="text" />
+          </div>
+          <div class="box">
+            <label for="">Group Member</label>
+            <input type="text" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cancel-save">
+      <button class="button-cancel" type="submit">Cancel</button>
+      <button class="button-add" type="submit">Add</button>
+    </div>
+  </form>
+</ng-template>

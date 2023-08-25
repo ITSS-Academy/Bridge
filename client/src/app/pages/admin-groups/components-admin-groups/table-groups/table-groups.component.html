@@ -18,7 +18,28 @@
     </div>
     <div class="box-gmember">
       <label for="">Group Member</label>
-      <input type="text">
+      <tui-multi-select 
+      *tuiLet="items$ | async as items"
+      placeholder="Find by ..."
+      class="b-form tui-multi-select"
+      [formControl]="testValue"
+      [tuiTextfieldLabelOutside]="true"
+      
+      (searchChange)="onSearchChange($event)"
+  >
+      <tui-data-list-wrapper
+          *tuiDataList
+          [items]="items"
+          [itemContent]="itemContent"
+      ></tui-data-list-wrapper>
+  </tui-multi-select>
+   
+  <ng-template #itemContent let-data>
+      <div class="template">
+          {{ data }}
+      </div>
+  </ng-template>
+
       <div class="color-roles">
         <div class="users">Users</div>
         <div class="groups">Groups</div>
@@ -91,3 +112,4 @@
       
     </table>
   </div>
+
