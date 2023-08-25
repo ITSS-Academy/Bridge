@@ -1,43 +1,28 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { field } from './model/field';
-import {FormControl, FormGroup} from '@angular/forms';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
+import {Observable, of, Subject} from 'rxjs';
+import {delay, filter, startWith, switchMap} from 'rxjs/operators';
 
-import {NgModule} from '@angular/core';
-import {tuiSvgOptionsProvider, TUI_SANITIZER} from '@taiga-ui/core';
-import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
+class User {
+  constructor(
+      readonly firstName: string,
+      readonly avatarUrl: string | null = null,
+  ) {}
+  toString(): string {
+    return `${this.firstName}`;
+}
 
-import {
-  TuiContextWithImplicit,
-  TuiIdentityMatcher,
-  TuiStringHandler,
-} from '@taiga-ui/cdk';
-
-import { NgModel } from '@angular/forms';
-
-const INCOME = {
-  name: 'Income',
-  items: [
-      'Donations',
-      'Product placement',
-      'Sponsorship',
-      'Found on the street',
-      'Unexpected inheritance',
-      'Investments',
-      'Color copier',
-  ],
-};
-
-const EXPENSES = {
-  name: 'Expenses',
-  items: [
-      'Energy drinks',
-      'Coffee',
-      'Ramen',
-      'Bills',
-      'Back medicine',
-      'Warhammer 40000 figurines',
-  ],
-};
+}
+  const databaseMockData: readonly User[] = [
+    new User('CEO',''),
+    new User('VP of Sales'),
+    new User('VP of Customer Service'),
+    new User('Marketing Manager'),
+    new User('Sales Manager'),
+    new User('Support Manager'),
+    new User('IT Consultant'),
+];
 
 @Component({
   selector: 'app-role-add-new',
@@ -45,46 +30,7 @@ const EXPENSES = {
   styleUrls: ['./role-add-new.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RoleAddNewComponent {
-
-  value = [];
- 
-  readonly items = [INCOME, EXPENSES];
-
-  readonly identityMatcher: TuiIdentityMatcher<readonly string[]> = (items1, items2) =>
-      items1.length === items2.length && items1.every(item => items2.includes(item));
-
-  readonly valueContent: TuiStringHandler<TuiContextWithImplicit<readonly string[]>> =
-      ({$implicit}) => {
-          if (!$implicit.length) {
-              return 'All';
-          }
-
-          const selected = this.items.find(({items}) =>
-              this.identityMatcher($implicit, items),
-          );
-
-          return selected ? `${selected.name} only` : `Selected: ${$implicit.length}`;
-      };
-
-  
-
-  chooseAssignDirectly(){
-    if(this.assignDirectly == false){
-      this.useProfile = !this.useProfile
-      this.assignDirectly = !this.assignDirectly
-      
-    }
-    
-  }
-
-  chooseUseProfile(){
-    if(this.useProfile == false){
-      this.useProfile = !this.useProfile
-      this.assignDirectly = !this.assignDirectly
-    }
-  }
-      
+export class RoleAddNewComponent {  
   privilegeField = [
     'Inventory',
     'Marketing',
@@ -133,12 +79,7 @@ export class RoleAddNewComponent {
     'Service Contracts',
     'Work Orders'
   ]
-  // expanded = false;
 
-  // inventoryToggle(): void {
-  //   this.expanded = !this.expanded;
-  // }
-  // toggle() {}
   selectedGroup = false;
   useProfile = false;
   assignDirectly = true
@@ -186,12 +127,47 @@ export class RoleAddNewComponent {
     if (flag==0){
       this.optionBox.push(type);
     }
-    
   }
 
-  // testForm = new FormGroup({
-  //   testValue1: new FormControl(),
-  //   testValue2: new FormControl(),
-  //   testValue3: new FormControl(),
-  // });
+  chooseAssignDirectly(){
+    if(this.assignDirectly == false){
+      this.useProfile = !this.useProfile
+      this.assignDirectly = !this.assignDirectly
+    }
+  }
+
+  chooseUseProfile(){
+    if(this.useProfile == false){
+      this.useProfile = !this.useProfile
+      this.assignDirectly = !this.assignDirectly
+    }
+  }
+
+  readonly search$ = new Subject<string | null>();
+ 
+  readonly items$: Observable<readonly User[] | null> = this.search$.pipe(
+      filter(value => value !== null),
+      switchMap(search =>
+          this.serverRequest(search).pipe(startWith<readonly User[] | null>(null)),
+      ),
+      startWith(databaseMockData),
+  );
+
+  readonly testValue = new FormControl([]);
+
+  onSearchChange(searchQuery: string | null): void {
+      this.search$.next(searchQuery);
+  }
+
+  /**
+   * Server request emulation
+   */
+  private serverRequest(searchQuery: string | null): Observable<readonly User[]> {
+      const result = databaseMockData.filter(user =>
+          TUI_DEFAULT_MATCHER(user, searchQuery || ''),
+      );
+
+      return of(result).pipe(delay(Math.random() * 1000 + 500));
+  }
 }
+
