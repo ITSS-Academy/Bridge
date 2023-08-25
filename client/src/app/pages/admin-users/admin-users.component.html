@@ -46,11 +46,12 @@
             <th>Role</th>
             <th>User type</th>
           </tr>
+
           <tr>
             <td>
               <span
                 class="material-symbols-outlined edit-button"
-                (click)="onClick(addUserDialog, 'auto')"
+                (click)="navigateToViewUser()"
               >
                 edit
               </span>
@@ -62,11 +63,12 @@
             <td>CEO</td>
             <td>Admin</td>
           </tr>
+
           <tr>
             <td>
               <span
                 class="material-symbols-outlined edit-button"
-                (click)="onClick(addUserDialog, 'auto')"
+                (click)="navigateToViewUser()"
               >
                 edit
               </span>
@@ -74,15 +76,16 @@
             </td>
             <td>Dương Thùy</td>
             <td>duong.ltt@example.com</td>
-            <td>09xxxxx231</td>
+            <td>09xxxxx232</td>
             <td>Sale manager</td>
             <td>User</td>
           </tr>
+
           <tr>
             <td>
               <span
                 class="material-symbols-outlined edit-button"
-                (click)="onClick(addUserDialog, 'auto')"
+                (click)="navigateToViewUser()"
               >
                 edit
               </span>
@@ -90,8 +93,25 @@
             </td>
             <td>Trí Nguyễn</td>
             <td>tri.nguyen@example.com</td>
-            <td>09xxxxx231</td>
+            <td>09xxxxx233</td>
             <td>Marketing manager</td>
+            <td>User</td>
+          </tr>
+    
+          <tr>
+            <td>
+              <span
+                class="material-symbols-outlined edit-button"
+                (click)="navigateToViewUser()"
+              >
+                edit
+              </span>
+              <span class="material-symbols-outlined"> delete </span>
+            </td>
+            <td>Việt VD</td>
+            <td>viet.VD123@example.com</td>
+            <td>09xxxxx234</td>
+            <td>Support manager</td>
             <td>User</td>
           </tr>
         </table>
@@ -112,7 +132,14 @@
         <div class="form-group">
           <div class="box">
             <label for="">Username</label>
-            <input type="text" />
+            <tui-input
+              style="outline: none !important"
+              class="input-choose-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="name"
+            >
+              Type name
+            </tui-input>
           </div>
 
           <div class="box">
@@ -134,13 +161,89 @@
           </div>
 
           <div class="box">
-            <label for="">Description</label>
-            <input type="text" />
+            <label for="">Role</label>
+            <tui-combo-box
+              class="input-choose-dialog"
+              [formControl]="controlRoles"
+              [stringify]="stringifyRole"
+              tuiTextfieldSize="s"
+            >
+              Select/Type your role
+
+              <tui-data-list-wrapper
+                *tuiDataList
+                [items]="Roles | tuiFilterByInputWith : stringifyRole"
+                [itemContent]="stringifyRole | tuiStringifyContent"
+              ></tui-data-list-wrapper>
+            </tui-combo-box>
           </div>
 
-          <div class="box-gmember">
-            <label for="">Group Member</label>
-            <input type="text" />
+          <div class="box">
+            <label for="">Report to</label>
+            <tui-combo-box
+              class="input-choose-dialog"
+              [formControl]="controlReports"
+              [stringify]="stringifyReport"
+              tuiTextfieldSize="s"
+            >
+              Select/type option
+
+              <tui-data-list-wrapper
+                *tuiDataList
+                [items]="Reports | tuiFilterByInputWith : stringifyReport"
+                [itemContent]="stringifyReport | tuiStringifyContent"
+              ></tui-data-list-wrapper>
+            </tui-combo-box>
+          </div>
+
+          <div class="box">
+            <label for="">Primary group</label>
+            <tui-combo-box
+              class="input-choose-dialog"
+              [formControl]="controlPrimaryGroups"
+              [stringify]="stringifyPrimaryGroup"
+              tuiTextfieldSize="s"
+            >
+              Select/input your group
+
+              <tui-data-list-wrapper
+                *tuiDataList
+                [items]="
+                  PrimaryGroups | tuiFilterByInputWith : stringifyPrimaryGroup
+                "
+                [itemContent]="stringifyPrimaryGroup | tuiStringifyContent"
+              ></tui-data-list-wrapper>
+            </tui-combo-box>
+          </div>
+
+          <div class="box">
+            <label for="">Password</label>
+            <tui-input
+              style="outline: none !important"
+              class="input-choose-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="password"
+            >
+              Type password
+            </tui-input>
+          </div>
+
+          <div class="box">
+            <label for="">Language</label>
+            <tui-combo-box
+              class="input-choose-dialog"
+              [formControl]="controlLanguages"
+              [stringify]="stringifyLanguage"
+              tuiTextfieldSize="s"
+            >
+              Select/input your language
+
+              <tui-data-list-wrapper
+                *tuiDataList
+                [items]="Languages | tuiFilterByInputWith : stringifyLanguage"
+                [itemContent]="stringifyLanguage | tuiStringifyContent"
+              ></tui-data-list-wrapper>
+            </tui-combo-box>
           </div>
         </div>
       </div>
@@ -149,23 +252,117 @@
         <div class="title-info">Employee information</div>
         <div class="form-group">
           <div class="box">
-            <label for="">Group Name</label>
-            <input type="text" />
+            <label for="">First name</label>
+            <tui-input
+              style="outline: none !important"
+              class="input-choose-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="firstName"
+            >
+              Type your first name
+            </tui-input>
           </div>
 
           <div class="box">
-            <label for="">Group Email</label>
-            <input type="text" />
+            <label for="">Last name</label>
+            <tui-input
+              style="outline: none !important"
+              class="input-choose-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="lastName"
+            >
+              Type your last name
+            </tui-input>
           </div>
 
           <div class="box">
-            <label for="">Description</label>
-            <input type="text" />
+            <label for="">Second email</label>
+            <tui-input
+              style="outline: none !important"
+              class="input-choose-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="secondEmail"
+            >
+              (optional)
+            </tui-input>
           </div>
-          
+
           <div class="box">
-            <label for="">Group Member</label>
-            <input type="text" />
+            <label for="">Mobile phone</label>
+            <tui-input
+              style="outline: none !important"
+              class="input-choose-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="phone"
+            >
+              Type phone number
+            </tui-input>
+          </div>
+
+          <div class="box">
+            <label for="">Office phone</label>
+            <tui-input
+              style="outline: none !important"
+              class="input-choose-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="phone"
+            >
+              (optional)
+            </tui-input>
+          </div>
+
+          <div class="box">
+            <label for="">Home address</label>
+            <tui-input
+              style="outline: none !important"
+              class="input-choose-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="homeAddress"
+            >
+              (optional)
+            </tui-input>
+          </div>
+
+          <div class="box">
+            <label for="">City</label>
+            <tui-input
+              style="outline: none !important"
+              class="input-choose-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="city"
+            >
+              (optional)
+            </tui-input>
+          </div>
+
+          <div class="box">
+            <label for="">State</label>
+            <tui-input
+              style="outline: none !important"
+              class="input-choose-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="state"
+            >
+              (optional)
+            </tui-input>
+          </div>
+
+          <div class="box">
+            <label for="">Country</label>
+            <tui-combo-box
+              class="input-choose-dialog"
+              [formControl]="controlCountries"
+              [stringify]="stringifyCountry"
+              tuiTextfieldSize="s"
+            >
+              Select/input your country
+
+              <tui-data-list-wrapper
+                *tuiDataList
+                [items]="Countries | tuiFilterByInputWith : stringifyCountry"
+                [itemContent]="stringifyCountry | tuiStringifyContent"
+              ></tui-data-list-wrapper>
+            </tui-combo-box>
           </div>
         </div>
       </div>
@@ -173,21 +370,142 @@
       <div class="currency-info-container">
         <div class="title-info">Currency and Number preferences</div>
         <div class="form-group">
-          <div class="box">
-            <label for="">Group Name</label>
-            <input type="text" />
+          <div class="box-3">
+            <label class="title-currency-number" for=""
+              >Preferred currency</label
+            >
+            <tui-combo-box
+              class="input-choose-dialog"
+              [formControl]="controlPreferredCurrencies"
+              [stringify]="stringifyPreferredCurrency"
+              tuiTextfieldSize="s"
+            >
+              Input your preferred currency
+
+              <tui-data-list-wrapper
+                *tuiDataList
+                [items]="
+                  preferredCurrencies
+                    | tuiFilterByInputWith : stringifyPreferredCurrency
+                "
+                [itemContent]="stringifyPreferredCurrency | tuiStringifyContent"
+              ></tui-data-list-wrapper>
+            </tui-combo-box>
           </div>
-          <div class="box">
-            <label for="">Group Email</label>
-            <input type="text" />
+
+          <div class="box-3">
+            <label class="title-currency-number" for=""
+              >Digit grouping pattern</label
+            >
+            <tui-combo-box
+              class="input-choose-dialog"
+              [formControl]="controlDigitGroupingPatterns"
+              [stringify]="stringifyDigitGroupingPattern"
+              tuiTextfieldSize="s"
+            >
+              Input your preferred currency
+
+              <tui-data-list-wrapper
+                *tuiDataList
+                [items]="
+                  digitGroupingPatterns
+                    | tuiFilterByInputWith : stringifyDigitGroupingPattern
+                "
+                [itemContent]="
+                  stringifyDigitGroupingPattern | tuiStringifyContent
+                "
+              ></tui-data-list-wrapper>
+            </tui-combo-box>
           </div>
-          <div class="box">
-            <label for="">Description</label>
-            <input type="text" />
+
+          <div class="box-3">
+            <label class="title-currency-number" for=""
+              >Decimal separator</label
+            >
+            <tui-combo-box
+              class="input-choose-dialog"
+              [formControl]="controlDecimalSeparators"
+              [stringify]="stringifyDecimalSeparator"
+              tuiTextfieldSize="s"
+            >
+              Choose your decimal separator
+
+              <tui-data-list-wrapper
+                *tuiDataList
+                [items]="
+                  decimalSeparators
+                    | tuiFilterByInputWith : stringifyDecimalSeparator
+                "
+                [itemContent]="stringifyDecimalSeparator | tuiStringifyContent"
+              ></tui-data-list-wrapper>
+            </tui-combo-box>
           </div>
+
+          <div class="box-3">
+            <label class="title-currency-number" for=""
+              >Digit group separator</label
+            >
+            <tui-combo-box
+              class="input-choose-dialog"
+              [formControl]="controlDigitGroupingSeparators"
+              [stringify]="stringifyDigitGroupingSeparator"
+              tuiTextfieldSize="s"
+            >
+              Choose your grouping separator
+
+              <tui-data-list-wrapper
+                *tuiDataList
+                [items]="
+                  digitGroupingSeparators
+                    | tuiFilterByInputWith : stringifyDigitGroupingSeparator
+                "
+                [itemContent]="
+                  stringifyDigitGroupingSeparator | tuiStringifyContent
+                "
+              ></tui-data-list-wrapper>
+            </tui-combo-box>
+          </div>
+
+          <div class="box-3">
+            <label class="title-currency-number" for="">Symbol placement</label>
+            <tui-combo-box
+              class="input-choose-dialog"
+              [formControl]="controlDigitGroupingSeparators"
+              [stringify]="stringifyDigitGroupingSeparator"
+              tuiTextfieldSize="s"
+            >
+              Choose your symbol
+
+              <tui-data-list-wrapper
+                *tuiDataList
+                [items]="
+                  symbolPlacements
+                    | tuiFilterByInputWith : stringifySymbolPlacement
+                "
+                [itemContent]="stringifySymbolPlacement | tuiStringifyContent"
+              ></tui-data-list-wrapper>
+            </tui-combo-box>
+          </div>
+
           <div class="box">
-            <label for="">Group Member</label>
-            <input type="text" />
+            <label class="title-currency-number" for="">Currency decimal</label>
+            <tui-combo-box
+              class="input-choose-dialog"
+              [formControl]="controlCurrencyDecimals"
+              [stringify]="stringifyCurrencyDecimal"
+              tuiTextfieldSize="s"
+            >
+              Choose your number of currency decimal
+
+              <tui-data-list-wrapper
+                *tuiDataList
+                [items]="
+                  currencyDecimals
+                    | tuiFilterByInputWith : stringifyCurrencyDecimal
+                "
+                [itemContent]="stringifyCurrencyDecimal | tuiStringifyContent"
+              ></tui-data-list-wrapper>
+            </tui-combo-box>
           </div>
         </div>
       </div>
