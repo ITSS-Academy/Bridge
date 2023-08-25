@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject,ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TuiDialogService, TuiDialogContext } from '@taiga-ui/core';
 import { TuiDialogFormService } from '@taiga-ui/kit';
@@ -7,9 +7,10 @@ import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss'],
+  styleUrls: ['./user.component.scss', './user.component.less'],
   providers: [TuiDialogFormService],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class UserComponent {
   //user dialog
@@ -34,7 +35,7 @@ export class UserComponent {
 
   //test checkbox input true or false
   testForm = new FormGroup({
-    testValue: new FormControl(), //input value true or false into the form control
+    testValue: new FormControl(false), //input value true or false into the form control
   });
 
   constructor(
