@@ -9,9 +9,9 @@ import { CoreModule } from '../core/core.module';
 import { CdkModule } from '../cdk/cdk.module';
 import { AddOnModule } from '../add-on/add-on.module';
 import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
-import { ReactiveFormsModule } from '@angular/forms';
-
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {TuiDataListModule} from '@taiga-ui/core';
+import {TuiComboBoxModule, TuiDataListWrapperModule} from '@taiga-ui/kit';
 
 @NgModule({
   declarations: [FirstNavbarComponent, NavbarUserManagementComponent,SidebarComponent],
@@ -22,6 +22,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     CoreModule,
     CdkModule,
     AddOnModule,
+    FormsModule,
+    TuiComboBoxModule,
+    TuiDataListModule,
+    TuiDataListWrapperModule,
   ],
   exports: [
     //modules
@@ -30,11 +34,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     CdkModule,
     AddOnModule,
     ReactiveFormsModule,
-
+    FormsModule,
+    ReactiveFormsModule,
+    TuiComboBoxModule,
+    TuiDataListModule,
+    TuiDataListWrapperModule,
     //components
     FirstNavbarComponent,
     NavbarUserManagementComponent,
     SidebarComponent,
+    
   ],
   providers: [
     tuiSvgOptionsProvider({

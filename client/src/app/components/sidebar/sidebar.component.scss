@@ -5,7 +5,8 @@
   background-color: #2c698d;
   color: white;
   padding: 15px;
-  height: 80vh;
+
+  height: 100%;
 }
 
 .sidebar input {
@@ -45,10 +46,10 @@
 .dropdown {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease-in-out; /* Adjust duration and easing as needed */
+  transition: max-height 0.3s ease-in-out;
 }
 .dropdown.open {
-  max-height: 200px; /* Adjust max-height to match the content height */
+  max-height: 200px; 
 }
 
 .dropdown a {

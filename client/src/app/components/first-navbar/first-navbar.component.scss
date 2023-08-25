@@ -11,6 +11,8 @@ $White: #ffff;
     color: white;
     font-size: 1.2rem;
     // border: 1px red solid;
+    box-shadow: 0px 8px 24px #b7d3d6;
+    
 }
 
 #left-navbar{
@@ -36,6 +38,7 @@ $White: #ffff;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    
 }
 
 .right-navbar-content div{
@@ -108,4 +111,8 @@ a{
     color: #ffff;
     text-decoration: none;
     width: 100px;
+}
+
+p{
+    font-weight: bold;
 }
