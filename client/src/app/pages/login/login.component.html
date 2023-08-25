@@ -23,12 +23,14 @@
           rel="stylesheet"
         />
       </div>
-      <div class="Email">
-        <input class="login-content" type="Email" placeholder="Username" />
-      </div>
-      <div class="Password">
-        <input class="login-content" type="Password" placeholder="Password" />
-      </div>
+      <form [formGroup]="myForm">
+        <div class="Email">
+          <input [formControl]="userName" class="login-content" type="Email" placeholder="Username" />
+        </div>
+        <div class="Password">
+          <input [formControl]="password" class="login-content" type="Password" placeholder="Password" />
+        </div>
+      </form>
       <div class="remember">
         <form [formGroup]="testForm">
           <tui-checkbox formControlName="testValue1" id="check"></tui-checkbox>
@@ -37,7 +39,7 @@
           <p class="churemember">Remember Account</p>
         </div>
       </div>
-      <div class="nutlogin">
+      <div (click)="login()" class="nutlogin">
         <p>LOGIN</p>
       </div>
       <div class="gachthang">
@@ -54,4 +56,8 @@
       <div class="forgotpassword">Forgot Your Password?</div>
     </div>
   </div>
+</div>
+
+<div *ngIf="(this.login$ | async)?.loading == true">
+  <app-loading></app-loading>
 </div>

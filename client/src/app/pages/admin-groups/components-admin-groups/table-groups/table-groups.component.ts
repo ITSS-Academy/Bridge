@@ -1,4 +1,4 @@
-import { Component, Inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import { TUI_DEFAULT_MATCHER } from '@taiga-ui/cdk';
 import {TuiDialogContext, TuiDialogService, TuiDialogSize} from '@taiga-ui/core';
@@ -50,9 +50,6 @@ const databaseGroup: readonly Group[] = [
     new Group('Marketing Group'),
     new Group('Support Group'),
 ]
-
-
-
 
 @Component({
   selector: 'app-table-groups',

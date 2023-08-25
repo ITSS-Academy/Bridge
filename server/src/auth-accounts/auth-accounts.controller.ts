@@ -17,10 +17,21 @@ export class AuthAccountsController {
     }
   }
 
+  @Post('/login')
+  async login(@Body() createAuthAccountDto: CreateAuthAccountDto) {
+    try{
+      let result = await this.authAccountService.login(createAuthAccountDto);
+      return result;
+    }catch(err){
+      return new HttpException(err, 401);
+    }
+  }
+
   @Get('/getAll')
   async findAll() {
     try{
       let result = this.authAccountService.findAll();
+      return result;
     }catch(err){
       return new HttpException(err, 302);
     }

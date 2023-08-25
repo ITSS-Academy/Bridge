@@ -50,24 +50,23 @@ export class AuthAccountService {
           },
         },
       };
-      this.userService.createUser(data, this.token);
+      await this.userService.createUser(data, this.token);
       console.log(result);
       return result;
     }
   }
 
-  async login(username: string, password: string) {
-    let isExisted = await this.findOne(username);
+  async login(account:any) {
+    let isExisted = await this.findOne(account.username);
     if (isExisted) {
-      let result = await bcrypt.compare(password, isExisted.hash_password);
+      let result = await bcrypt.compare(account.password, isExisted.hash_password);
       if (result) {
-        return {
-          message: 'Login success',
-          data: isExisted,
-        };
+        return isExisted
       } else {
-        return 'Wrong password';
+        throw new Error('Password is incorrect');
       }
+    }else{
+      throw new Error('Username is not existed');
     }
   }
 

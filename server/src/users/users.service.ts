@@ -9,12 +9,13 @@ import { User } from './schema/user.schema';
 
 @Injectable()
 export class UsersService {
+  subUserInfo: any;
   constructor(@InjectModel(User.name) public userModel: Model<User>, 
   public tokenService: TokenService, 
   public http: HttpService) {
   }
   
-  createUser(body: any, token: string) {
+  async createUser(body: any, token: string) {
     let result = this.http.post('http://localhost:80/Api/V8/module', body, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -22,11 +23,11 @@ export class UsersService {
     }).pipe(map((response) => response.data));
     const subscription = result.subscribe({
       next: (res) => {
-      console.log(res);
-      return this.userModel.create(res);
+      // console.log(res);
+      this.subUserInfo = this.userModel.create(res);
+      return this.subUserInfo;
     },
     complete: () => subscription.unsubscribe(),
-
   })
     return result;
   }
@@ -34,6 +35,11 @@ export class UsersService {
 
   async findAllUsers() {
     let result = await this.userModel.find().exec();
+    return result as User[];
+  }
+
+  async fineUserByEmail(email: string) {
+    let result = await this.userModel.findOne({'data.attributes.email1': email}).exec();
     return result;
   }
 

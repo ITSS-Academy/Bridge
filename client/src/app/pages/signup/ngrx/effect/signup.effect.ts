@@ -8,9 +8,6 @@ import { switchMap, map, catchError, of } from "rxjs";
 @Injectable()
 export class SignUpEffect{
     constructor(private action$: Actions, private signUpService: SignupService){}
-
-
-
     signUp$ = createEffect(() => 
         this.action$.pipe(
             ofType(SignUpAction.signUp),

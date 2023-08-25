@@ -4,6 +4,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { AppService } from 'src/app.service';
 import { TokenService } from 'src/token/token.service';
+import e from 'express';
 
 @Controller('users')
 export class UsersController {
@@ -20,9 +21,14 @@ export class UsersController {
     return this.usersService.findAllUsers();
   }
 
-  @Get('/:id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOneUser(id);
+  // @Get('/:id')
+  // findOne(@Param('id') id: string) {
+  //   return this.usersService.findOneUser(id);
+  // }
+
+  @Get('/:email')
+  findOneByEmail(@Param('email') email: string) {
+    return this.usersService.fineUserByEmail(email);
   }
 
   // @Patch(':id')
