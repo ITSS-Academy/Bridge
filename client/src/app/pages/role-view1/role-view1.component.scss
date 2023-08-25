@@ -1,0 +1,159 @@
+$Blue : #58c2ce;
+$Blue2: #2C698D;
+$Blue3: #272643;
+$Blue0: #BAE8E8;
+
+.body{
+    display: flex;
+    min-height: 84vh;
+    
+}
+
+.container{
+    padding: 4rem 8rem 8rem;
+    width:65vw
+}
+
+.node:hover{
+    color: #ffff;
+    background-color: $Blue;
+    // box-shadow: 0px 4px 12px $Blue;
+    // transition: ease-in 0.1s;
+}
+.node{
+    // margin: 1rem;
+    // margin-bottom: 0;
+    border-radius: 8px;
+    border: 3px solid $Blue;
+    padding: 1rem;
+    // min-width: 5rem;
+    // max-width: max-content;
+    // max-height: 2rem;
+    color: $Blue;
+    background-color: #ffff;
+    font-weight: bold;
+    font-size: 18;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-between;
+}
+.userRoot{
+    color: #ffff;
+    background-color: $Blue;
+    box-shadow: 0px 4px 12px $Blue;
+    margin-bottom: 1rem;
+}
+
+.userRootButton{
+    background-color: #fff;
+    border: none;
+    border-radius: 8px;
+    color: $Blue;
+    height: 2rem;
+    width: 2rem;
+    font-weight: bold;
+    font-size: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.branch{
+    // border-radius: 8px;
+    box-sizing: border-box;
+    max-width: 15rem;
+    // min-height: 5rem;
+    max-height:max-content; 
+    margin:0.5rem 0 0 3rem;
+    padding-left: 1rem;
+    border-left: 3px solid #E3F6F5;
+}
+
+.branch:hover{
+    border-left: 3px solid $Blue;
+}
+
+.folderOpen{
+    margin-bottom: 1.5rem;
+}
+
+.branchContainer{
+    width:100%; 
+    padding: 2rem; 
+    background-color: #E3F6F5; 
+    border-radius: 8px;
+}
+// .branchHolder{
+//     padding-left: 2rem;
+//     // border-left: 4px solid $Blue2;
+//     // margin-left: 3rem;
+//     // border: 1px solid red;
+// }
+
+// .branch{
+//     display: flex;align-items: flex-start;
+//     // border: 1px solid blue;
+// }
+// .line2{
+//     width: 3rem;
+//     height: 3px;
+//     background-color: $Blue;
+//     // border: 1px solid yellow;
+// }
+// .line1{
+//     width: 3px;
+//     height: 1.5rem;
+//     background-color: $Blue;
+//     // border: 1px solid green;
+// }
+// .branchVector{
+//     // border: 1px solid green; 
+//     padding-bottom: 1.5rem;
+// }
+
+// @import '@taiga-ui/core/styles/taiga-ui-local.scss';
+ 
+// :host {
+//     .transition(background);
+//     position: relative;
+//     height: var(--tui-height-s);
+//     display: flex;
+//     align-items: center;
+//     padding: 0 0.5rem;
+//     border-radius: var(--tui-radius-xs);
+//     background: var(--tui-base-01);
+ 
+//     &:before,
+//     &:after {
+//         content: '';
+//         position: absolute;
+//         left: -0.75rem;
+//         z-index: -1;
+//     }
+ 
+//     &:before {
+//         width: 1rem;
+//         border-bottom: 1px solid var(--tui-base-04);
+//     }
+ 
+//     &:after {
+//         top: -1rem;
+//         bottom: 1rem;
+//         border-left: 1px solid var(--tui-base-04);
+//     }
+ 
+//     &._expandable {
+//         &:hover {
+//             cursor: pointer;
+//             background: var(--tui-base-02);
+//         }
+//     }
+// }
+ 
+// tui-svg {
+//     position: relative;
+//     background: inherit;
+//     z-index: 1;
+// }
