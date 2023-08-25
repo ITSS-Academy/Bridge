@@ -12,12 +12,13 @@ import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {TuiDataListModule} from '@taiga-ui/core';
 import {TuiComboBoxModule, TuiDataListWrapperModule} from '@taiga-ui/kit';
+import { SecondNavbarComponent } from 'src/app/components/second-navbar/second-navbar.component';
 import { LoadingComponent } from 'src/app/components/loading/loading.component';
 
 //Angular Material
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
-  declarations: [FirstNavbarComponent, NavbarUserManagementComponent,SidebarComponent, LoadingComponent],
+  declarations: [FirstNavbarComponent, NavbarUserManagementComponent,SidebarComponent,SecondNavbarComponent,LoadingComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -49,6 +50,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     FirstNavbarComponent,
     NavbarUserManagementComponent,
     SidebarComponent,
+    SecondNavbarComponent,
+    
     LoadingComponent,
 
     //Angular Material

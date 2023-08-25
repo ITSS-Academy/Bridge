@@ -1,6 +1,6 @@
-@import '@taiga-ui/core/styles/taiga-ui-local.scss';
+// @import '@taiga-ui/core/styles/taiga-ui-local.scss';
 
-@import 'mixins/textfield.scss';
+// @import 'mixins/textfield.scss';
 
 
 [tuiWrapper][data-appearance='textfield'] {
@@ -12,6 +12,8 @@
 
 .content-groups {
   width: 95%;
+  margin-top: 30px;
+
 }
 
 .page-button {
@@ -173,9 +175,10 @@ td:first-child {
   
 }
 .users {
-  width: 220px;
+  width: 250px;
   height: 30px;
-  background-color: #F46363;
+  background-color: #58C2CE;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -183,9 +186,10 @@ td:first-child {
 }
 
 .groups {
-  width: 220px;
+  width: 250px;
   height: 30px;
-  background-color: #D9D9D9;
+  background-color: #58C2CE;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -193,9 +197,10 @@ td:first-child {
 }
 
 .roles {
-  width: 220px;
+  width: 250px;
   height: 30px;
-  background-color: #FFF278;
+  background-color: #58C2CE;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -203,23 +208,24 @@ td:first-child {
 }
 
 .roles-sub {
-  width: 220px;
+  width: 250px;
   height: 30px;
   background-color: #58C2CE;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
 }
 
+.color-roles span {
+  font-weight: 600;
+}
 //tui-multiple-select
 
 .tui-multi-select {
   width: 400px;
   height: 30px;
-  border: none;
-  border-bottom: 1px dashed #58C2CE;
-  outline: none;
 }
 
 .template {
