@@ -90,6 +90,7 @@ const routes: Routes = [
         (m) => m.OrganizationModule
       ),
   },
+  { path: 'task', loadChildren: () => import('./pages/task/task.module').then(m => m.TaskModule) },
 ];
 
 @NgModule({

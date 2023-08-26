@@ -14,8 +14,6 @@ import { tuiSum } from '@taiga-ui/cdk';
     })
 export class AppComponent {
   title = 'client';
-
-
   constructor(private http: HttpClient){
   }
 
