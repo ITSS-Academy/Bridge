@@ -1,0 +1,123 @@
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+/>
+<div>
+  <div>
+    <app-second-navbar [title]="title"></app-second-navbar>
+
+    <!-- THANH NAV THỨ 3 -->
+    <div class="thirdNavbar">
+      <div class="leftNavContent">
+        <button class="button">
+          <span class="material-symbols-outlined"> filter_list </span>
+
+          <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
+          <span style="margin: 0 1rem">My Task</span>
+
+          <span class="material-symbols-outlined"> expand_more </span>
+        </button>
+
+        <button class="button buttonMainAction">
+          <span class="material-symbols-outlined"> add </span>
+
+          <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
+          <span style="margin: 0 1rem" (click)="addTask()">Add Task</span>
+        </button>
+      </div>
+      <div class="rightNavContent">
+        <button
+          class="button buttonRightNavContent"
+          style="padding: 0.25rem 1rem; min-width: max-content"
+        >
+          <span class="material-symbols-outlined"> rule_settings </span>
+        </button>
+
+        <button class="button buttonRightNavContent">
+          <span class="material-symbols-outlined"> chevron_left </span>
+
+          <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
+          <span style="margin: 0 1rem">1 to 2</span>
+
+          <span class="material-symbols-outlined"> chevron_right </span>
+        </button>
+      </div>
+    </div>
+   
+    <div class="body" >
+        <!-- NỘI DUNG TRANG RỖNG-->
+      <div class="emptyPage" *ngIf="pageEmpty">
+
+        <!--TRANH CỦA TRANG EMPTY - MN THAY ĐỔI ĐỂ PHÙ HỢP VỚI TRANG-->
+        <img src="./assets/team checklist-rafiki.png" class="emptyPageImage" />
+
+        <div class="emptyPageContentContainer">
+
+          <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
+          <div class="emptyPageContent"><b>THERE ARE NO TASK</b></div>
+
+          <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
+          <div class="emptyPageContent">
+            Add Task by clicking the button below
+          </div>
+
+          <div class="emptyPageContent" style="margin-top: 1rem">
+            <button class="button buttonMainAction" style="margin-right: 0">
+              <span class="material-symbols-outlined"> add </span>
+
+              <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
+              <span style="margin: 0 1rem">Add Task</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRANG CÓ NỘI DUNG -->
+      <div class="contentPage" *ngIf="!pageEmpty">
+        <table>
+            <tr>
+                <!-- CHECKBOX -->
+                <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                  </label></th>
+
+                <th style="width: max-content; padding: 0.5rem;"><span class="material-symbols-outlined">edit_document</span></th>
+                <th><b>NAME</b></th>
+                <th><b>ASSIGN TO</b></th>
+                <th><b>START DATE & TIME</b></th>
+                <th><b>DUE DATE & TIME</b></th>
+                <th><b>STAGE</b></th>
+              </tr>
+              <tr>
+                <!-- CHECKBOX -->
+                <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                  </label></th>
+                <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
+                <td>Design Web Page</td>
+                <td>Team CRM</td>
+                <td>16-08-2023 01:47 PM</td>
+                <td>26-08-2023 12:00 AM</td>
+                <td>In Progress</td>
+              </tr>
+              <tr>
+                <!-- CHECKBOX -->
+                <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                  </label></th>
+                <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
+                <td>Presentation</td>
+                <td>Team CRM</td>
+                <td>pending</td>
+                <td>pending</td>
+                <td>Pending</td>
+              </tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
