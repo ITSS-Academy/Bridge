@@ -1,0 +1,8 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<app-second-navbar [title]="title"></app-second-navbar>
+<div class="bg-page">
+  <app-navbar-contacts></app-navbar-contacts>
+  <app-display-no-data-contacts *ngIf="data==false"></app-display-no-data-contacts>
+  <app-display-have-data-contacts *ngIf="data==true"></app-display-have-data-contacts>
+  <button (click)="clickAddData()">aaaaa</button>
+</div>

@@ -90,6 +90,12 @@ const routes: Routes = [
         (m) => m.OrganizationModule
       ),
   },
+  { 
+    path: 'contacts', 
+    loadChildren: () => 
+    import('./pages/contacts/contacts.module').then
+    (m => m.ContactsModule), 
+  },
 ];
 
 @NgModule({

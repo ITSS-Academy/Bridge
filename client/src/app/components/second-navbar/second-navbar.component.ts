@@ -9,17 +9,13 @@ import { Router } from '@angular/router';
 export class SecondNavbarComponent {
   @Input()
   title!: string;
-  pageTitle: string = 'Leads';
 
   navPages = [
     {name: 'Leads', route: '/lead'},
+    {name: 'Contacts', route: '/contacts'},
     {name: 'Organizations', route: '/organization'},
 
   ]
-
-  changeTitle(title: string): void {
-    this.pageTitle = title;
-  }
 
   constructor(public router: Router){}
 
@@ -27,7 +23,4 @@ export class SecondNavbarComponent {
     this.router.navigate([route]);
   }
 
-  navigateToOrganiztions(){
-    this.router.navigate(['/organizations']);
-  }
 }
