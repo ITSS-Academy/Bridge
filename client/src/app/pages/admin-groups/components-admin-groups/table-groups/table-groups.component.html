@@ -20,7 +20,7 @@
       <label for="">Group Member</label>
       <tui-multi-select 
       *tuiLet="items$ | async as items"
-      placeholder="Find by ..."
+      placeholder="Find group member"
       class="b-form tui-multi-select"
       [formControl]="testValue"
       [tuiTextfieldLabelOutside]="true"
@@ -41,10 +41,10 @@
   </ng-template>
 
       <div class="color-roles">
-        <div class="users">Users</div>
-        <div class="groups">Groups</div>
-        <div class="roles">Roles</div>
-        <div class="roles-sub">Roles and Subordinates</div>
+        <div class="users"><p><span>(U)</span> Users</p></div>
+        <div class="groups"><p><span>(G)</span> Groups</p></div>
+        <div class="roles"><p><span>(R)</span> Roles</p></div>
+        <div class="roles-sub"><p><span>(R & S)</span> Roles and Subordinates</p></div>
       </div>
     </div>
   </div>

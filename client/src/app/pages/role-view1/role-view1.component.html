@@ -1,39 +1,71 @@
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+/>
+
 <app-navbar-user-management></app-navbar-user-management>
 <div class="body">
   <app-sidebar></app-sidebar>
   <div class="container">
+    
     <div class="tree">
       
-
+      <div class="header"><h2>ROLE HIERARCHY TREE</h2></div>
       <div class="branchContainer" >
-        <div class="node userRoot" style=" width: 6rem">
+        
+        <div class="branch">
+        <div class="node" style=" width: max-content">
           Viet
+          <div class="buttonHolder">
           <button class="userRootButton">+</button>
+        </div>
         </div>
 
         <div class="branch">
-          <div class="node">CEO <button class="userRootButton">+</button></div>
+          <div style="display: flex; align-items: center;">
+            <button class="userRootButton" style="margin-right: 0.5rem; margin-left: 0.5rem;">-</button>
+            <div class="node">CEO <div class="buttonHolder"><button class="userRootButton">+</button><button class="userRootButton"><span class="material-symbols-outlined"> delete </span></button></div></div>
+          </div>
 
-          <div class="branch folderOpen">
-            <div class="node">VP of Sales <button class="userRootButton">+</button></div>
+          <div class="branch ">
+            <div style="display: flex; align-items: center;">
+              <button class="userRootButton" style="margin-right: 0.5rem;margin-left: 0.5rem;">-</button>
+            <div class="node">VP of Sales<div class="buttonHolder"><button class="userRootButton">+</button><button class="userRootButton"><span class="material-symbols-outlined"> delete </span></button></div></div>
+              </div>
+
             <div class="branch">
-              <div class="node">Sales Manager <button class="userRootButton">+</button></div>
+              <div style="display: flex; align-items: center;">
+                <button class="userRootButton" style="margin-right: 0.5rem;margin-left: 0.5rem;">+</button>
+              <div class="node">Sales Manager<div class="buttonHolder"><button class="userRootButton">+</button><button class="userRootButton"><span class="material-symbols-outlined"> delete </span></button></div></div>
+            </div>
             </div>
             <div class="branch">
-              <div class="node">Marketing Manage <button class="userRootButton">+</button></div>
+              <div style="display: flex; align-items: center;">
+                <button class="userRootButton" style="margin-right: 0.5rem;margin-left: 0.5rem;">+</button>
+              <div class="node">Marketing Manage<div class="buttonHolder"><button class="userRootButton">+</button><button class="userRootButton"><span class="material-symbols-outlined"> delete </span></button></div></div>
+            </div>
             </div>
           </div>
-          <div class="branch folderOpen">
-            <div class="node">VP of Customer Service <button class="userRootButton">+</button></div>
+          <div class="branch ">
+            <div style="display: flex; align-items: center;">
+              <button class="userRootButton" style="margin-right: 0.5rem;margin-left: 0.5rem;">-</button>
+            <div class="node">VP of Customer Service<div class="buttonHolder"><button class="userRootButton">+</button><button class="userRootButton"><span class="material-symbols-outlined"> delete </span></button></div></div>
+            </div>
             <div class="branch">
-              <div class="node">Support Manager <button class="userRootButton">+</button></div>
+              <div style="display: flex; align-items: center;">
+                <button class="userRootButton" style="margin-right: 0.5rem;margin-left: 0.5rem;">+</button>
+              <div class="node">Support Manager<div class="buttonHolder"><button class="userRootButton">+</button><button class="userRootButton"><span class="material-symbols-outlined"> delete </span></button></div></div>
+            </div>
             </div>
           </div>
           <div class="branch">
-            <div class="node">IT Consultant <button class="userRootButton">+</button></div>
+            <div style="display: flex; align-items: center;">
+              <button class="userRootButton" style="margin-right: 0.5rem;margin-left: 0.5rem;">+</button>
+            <div class="node">IT Consultant<div class="buttonHolder"><button class="userRootButton">+</button><button class="userRootButton"><span class="material-symbols-outlined"> delete </span></button></div></div>
+          </div>
           </div>
         </div>
-        
+      </div>
       </div>
     </div>
   </div>

@@ -8,30 +8,21 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 //Taiga UI
-import { TuiDropdownModule } from '@taiga-ui/core';
 
 import { SharedModule } from './shared/shared/shared.module';
-import { LoadingComponent } from './components/loading/loading.component';
-import { WarningComponent } from './components/warning/warning.component';
-import { ErrorComponent } from './components/error/error.component';
 import { SecondNavbarComponent } from './components/second-navbar/second-navbar.component';
 import { SubNavbarMainComponent } from './components/sub-navbar-main/sub-navbar-main.component';
-import { CdkModule } from './shared/cdk/cdk.module';
-import { CoreModule } from './shared/core/core.module';
-import { KitModule } from './shared/kit/kit.module';
-import { AddOnModule } from './shared/add-on/add-on.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { SignUpReducer } from './pages/signup/ngrx/reducer/signup.reducer';
 import { SignUpEffect } from './pages/signup/ngrx/effect/signup.effect';
+import { loginReducer } from './pages/login/ngrx/reducer/login.reducer';
+import { LoginEffect } from './pages/login/ngrx/effect/login.effect';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoadingComponent,
-    WarningComponent,
-    ErrorComponent,
-    SecondNavbarComponent,
+    // SecondNavbarComponent,
     SubNavbarMainComponent,
   ],
   imports: [
@@ -42,10 +33,12 @@ import { SignUpEffect } from './pages/signup/ngrx/effect/signup.effect';
     SharedModule,
 
     StoreModule.forRoot({
-      signup: SignUpReducer
+      signup: SignUpReducer,
+      login: loginReducer
     }, {}),
     EffectsModule.forRoot([
-      SignUpEffect
+      SignUpEffect,
+      LoginEffect
     ])
   ],
   exports: [SharedModule],

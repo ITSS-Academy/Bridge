@@ -8,11 +8,11 @@
     User Management
   </button>
   <div class="dropdown" id="dropdown-1">
-    <a >Users</a>
+    <a (click)="navigateToUser()">Users</a>
     <a >Authentication</a>
-    <a >Roles</a>
+    <a (click)="navigateToRole()">Roles</a>
     <a >Sharing Rules</a>
-    <a >Groups</a>
+    <a (click)="navigateToGroups()">Groups</a>
   </div>
   <button class="option" (click)="toggleDropdown('dropdown-2') ">
     <span class="material-symbols-outlined">

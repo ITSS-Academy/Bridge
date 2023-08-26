@@ -1,4 +1,4 @@
-import { Component, Inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import { TUI_DEFAULT_MATCHER } from '@taiga-ui/cdk';
 import {TuiDialogContext, TuiDialogService, TuiDialogSize} from '@taiga-ui/core';
@@ -9,49 +9,85 @@ class User {
     constructor(
         readonly firstName: string,
         readonly lastName: string,
-        readonly avatarUrl: string | null = null,
+        readonly type: string,
     ) {}
         
     toString(): string {
-        return `${this.firstName} ${this.lastName}`;
+        return `${this.firstName} ${this.lastName} ${this.type}(U)`;
     }
 }
 
 class Group {
     constructor(
         readonly groupName: string,
+        readonly type: string,
     ) {}
  
     toString(): string {
-        return `${this.groupName}`;
+        return `${this.groupName} ${this.type}(G)`;
     }
 }
 
 class Role {
     constructor(
         readonly roleName: string,
+        readonly type: string,
     ) {}
 
     toString(): string {
-        return `${this.roleName}`
+        return `${this.roleName} ${this.type}(R)`
+    }
+}
+
+class roleSub {
+    constructor(
+        readonly roleSubName: string,
+        readonly type: string,
+    ) {}
+
+    toString(): string {
+        return `${this.roleSubName} ${this.type}(R & S)`
     }
 }
 
 const databaseUser: readonly User[] = [
-    new User('Dmitriy', 'Demenskiy'),
-    new User('Evgeniy', 'Mamaev'),
-    new User('Ivan', 'Ishmametiev'),
-    new User('Igor', 'Katsuba'),
-    new User('Yulia', 'Tsareva'),
+    new User('Tri', 'Nguyen',''),
+    new User('Khoa', 'Bui',''),
+    new User('Quan', 'Tran',''),
+    new User('Viet', 'Khoa',''),
+    new User('Duong', 'Le',''),
 ];
 
 const databaseGroup: readonly Group[] = [
-    new Group('Team Selling'),
-    new Group('Marketing Group'),
-    new Group('Support Group'),
+    new Group('Team Selling',''),
+    new Group('Marketing Group',''),
+    new Group('Support Group',''),
+]
+
+const databaseRole: readonly Role[] = [
+    new Role('CEO',''),
+    new Role('VP of Sales',''),
+    new Role('Marketing Manager',''),
+    new Role('Sales Manager',''),
+    new Role('Sales Representative',''),
+    new Role('VP of Customer Services',''),
+    new Role('Support Manager',''),
+    new Role('Support Representative',''),
+    new Role('IT Consultant',''),
 ]
 
 
+const databaseRoleSub: readonly roleSub[] = [
+    new roleSub('CEO',''),
+    new roleSub('VP of Sales',''),
+    new roleSub('Marketing Manager',''),
+    new roleSub('Sales Manager',''),
+    new roleSub('Sales Representative',''),
+    new roleSub('VP of Customer Services',''),
+    new roleSub('Support Manager',''),
+    new roleSub('Support Representative',''),
+    new roleSub('IT Consultant',''),
+]
 
 
 @Component({
@@ -81,15 +117,15 @@ export class TableGroupsComponent {
 
     readonly search$ = new Subject<string | null>();
  
-    readonly items$: Observable<readonly (User | Group)[] | null> = this.search$.pipe(
+    readonly items$: Observable<readonly (User | Group | Role | roleSub)[] | null> = this.search$.pipe(
         filter(value => value !== null),
         switchMap(search =>
             this.serverRequest(search).pipe(
-                startWith<readonly (User | Group)[] | null>(null),
-                map(users => [...(users || []), ...databaseGroup])
+                startWith<readonly (User | Group | Role | roleSub)[] | null>(null),
+                map(users => [...(users || []), ...databaseGroup, ...databaseRole, ...databaseRoleSub])
             )
         ),
-        startWith([...databaseUser, ...databaseGroup]),
+        startWith([...databaseUser, ...databaseGroup, ...databaseRole, ...databaseRoleSub]),
     );
  
     readonly testValue = new FormControl([databaseUser[0]]);
@@ -101,7 +137,7 @@ export class TableGroupsComponent {
     /**
      * Server request emulation
      */
-    private serverRequest(searchQuery: string | null): Observable<readonly (User | Group)[]> {
+    private serverRequest(searchQuery: string | null): Observable<readonly (User | Group | Role | roleSub)[]> {
         const result = databaseUser.filter(user =>
             TUI_DEFAULT_MATCHER(user, searchQuery || ''),
         );
