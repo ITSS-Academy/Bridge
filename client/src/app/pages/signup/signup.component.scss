@@ -1,269 +1,255 @@
-:host{
-    --tui-primary: #58C2CE;
-    --tui-primary-hover: #58C2CE;
-    --tui-text-01: #fff;
-    --tui-primary-active: #58C2CE;
-    --tui-base-01: #58C2CE;
-    --tui-base-02: #58C2CE;
-    --tui-base-03: #58C2CE;
-    --tui-base-04: #58C2CE;
-    --tui-base-05: #58C2CE;
-    --tui-base-06: #58C2CE;
-    --tui-base-07: #58C2CE;
-    --tui-base-08: #58C2CE;
-    --tui-base-09: #58C2CE;
-    --tui-heading-font: 'Montserrat', sans-serif;
-    --tui-text-font: 'Montserrat', sans-serif;
-
-  }
+:host {
+  --tui-primary: #58c2ce;
+  --tui-primary-hover: #58c2ce;
+  --tui-text-01: #fff;
+  --tui-primary-active: #58c2ce;
+  --tui-base-01: #58c2ce;
+  --tui-base-02: #58c2ce;
+  --tui-base-03: #58c2ce;
+  --tui-base-04: #58c2ce;
+  --tui-base-05: #58c2ce;
+  --tui-base-06: #58c2ce;
+  --tui-base-07: #58c2ce;
+  --tui-base-08: #58c2ce;
+  --tui-base-09: #58c2ce;
+  --tui-heading-font: "Montserrat", sans-serif;
+  --tui-text-font: "Montserrat", sans-serif;
+}
 .than {
-    width: 100%;
-    height: calc(100% - 4rem);
-    display: flex;
+  width: 100%;
+  height: calc(100% - 4rem);
+  display: flex;
 }
 
-.churemember{
-    font-size: small;
-    font-weight: lighter;
+.churemember {
+  font-size: small;
+  font-weight: lighter;
 }
 
 .left {
-    width: 50%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 50%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .right {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #photo {
-    width: 60%;
-    height: auto;
+  width: 62%;
+  height: auto;
 }
-
-
 
 //edit khung login
 .khunglogin {
-    width: 24rem;
-    padding: 1.5rem 0;
-    height: fit-content;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 0.5rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 24rem;
+  padding: 1.5rem 0;
+  height: fit-content;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .chulogin {
-    width: 100%;
-    height: 30%;
-    color: #58C2CE;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+  width: 100%;
+  height: 30%;
+  color: #58c2ce;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.chulogin p{
-    font-size: 40px;
-    padding: 0;
-    margin: 1rem;
+.chulogin p {
+  font-size: 40px;
+  padding: 0;
+  margin: 1rem;
 }
 
-.nutlogin:hover{
-    cursor: pointer;
-    background-color: darken($color: #58C2CE, $amount: 7) ;
+.nutlogin:hover {
+  cursor: pointer;
+  background-color: darken($color: #58c2ce, $amount: 7);
 }
 
 .editlogo {
-    width: 100%;
-    height: 3.125rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-right: 1.7rem;
+  width: 100%;
+  height: 3.125rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1.7rem;
 }
 
 #logoBridge {
-    width: 4rem;
-    height: 2.5rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1rem;
-    padding-left: 1.8rem;
-
+  width: 4rem;
+  height: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-left: 1.8rem;
 }
 
 .Email {
-    width: 18.75rem;
-    height: 3.125rem;
-    display: flex;
-    flex-direction: column;
-    column-gap: 1rem;
-    justify-content: center;
+  width: 18.75rem;
+  height: 3.125rem;
+  display: flex;
+  flex-direction: column;
+  column-gap: 1rem;
+  justify-content: center;
 }
 
 .first-name {
-    width: 18.75rem;
-    height: 3.125rem;
-    display: flex;
-    flex-direction: column;
-    column-gap: 1rem;
-    justify-content: center;
-    margin-bottom: 0.5rem;
+  width: 18.75rem;
+  height: 3.125rem;
+  display: flex;
+  flex-direction: column;
+  column-gap: 1rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
 }
 
-.last-name{
-    width: 18.75rem;
-    height: 3.125rem;
-    display: flex;
-    flex-direction: column;
-    column-gap: 1rem;
-    justify-content: center;  
-    margin-bottom: 0.5rem; 
+.last-name {
+  width: 18.75rem;
+  height: 3.125rem;
+  display: flex;
+  flex-direction: column;
+  column-gap: 1rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
 }
 
-
-.loginwithgg:hover{
-    cursor: pointer;
-    background-color: darken($color: #ffffff, $amount: 1.95);
-    // color: #ffffff;
+.loginwithgg:hover {
+  cursor: pointer;
+  background-color: darken($color: #ffffff, $amount: 1.95);
+  // color: #ffffff;
 }
 
 .Username {
-    width: 18.75rem;
-    height: 3.125rem;
-    display: flex;
-    flex-direction: column;
-    column-gap: 1rem;
-    justify-content: center;
-    margin-top: 0.5rem;
+  width: 18.75rem;
+  height: 3.125rem;
+  display: flex;
+  flex-direction: column;
+  column-gap: 1rem;
+  justify-content: center;
+  margin-top: 0.5rem;
 }
 
 .login-content {
-    color: #58C2CE;
-    width: calc(100% - 1rem);
-    height: 100%;
-    background-color: #ffffff;
-    border-radius: 0.5rem;
-    border: 1px solid #58c2ce;
-    padding-left: 1rem;
+  color: #58c2ce;
+  width: calc(100% - 1rem);
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid #58c2ce;
+  padding-left: 1rem;
 }
 
 input::placeholder {
-    color: #58C2CE;
-    // font-family: "Roboto", sans-serif;
-    font-weight: lighter;
+  color: #58c2ce;
+  // font-family: "Roboto", sans-serif;
+  font-weight: lighter;
 }
 
 .login-content:hover {
-    outline: #58C2CE solid 1px;
+  outline: #58c2ce solid 1px;
 }
 
 input:focus {
-    outline: #58C2CE solid 1px;
+  outline: #58c2ce solid 1px;
 }
 
 #check {
-    color: #58C2CE;
-
+  color: #58c2ce;
 }
 
-
-
-
-
 .Password {
-    width: 18.75rem;
-    height: 3.125rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 0.5rem;
+  width: 18.75rem;
+  height: 3.125rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 0.5rem;
 }
 
 .remember {
-    width: 18.75rem;
-    height: 0.75rem;
+  width: 18.75rem;
+  height: 0.75rem;
 
-    display: flex;
-    flex-direction: row;
-    // font-family: 'Oswald', sans-serif;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 10px;
-    margin-top: 0.5rem;
-    color: #58C2CE;
-    column-gap: 0.4rem;
+  display: flex;
+  flex-direction: row;
+  // font-family: 'Oswald', sans-serif;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 10px;
+  margin-top: 0.5rem;
+  color: #58c2ce;
+  column-gap: 0.4rem;
 }
 
 .nutlogin {
-    width: 18.75rem;
-    height: 3.125rem;
-    background-color: #58C2CE;
-    ;
-    border-radius: 0.5rem;
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    // font-family: 'Oswald', sans-serif;
-    font-size: 25px;
-    color: white;
-
+  width: 18.75rem;
+  height: 3.125rem;
+  background-color: #58c2ce;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  // font-family: 'Oswald', sans-serif;
+  font-size: 25px;
+  color: white;
 }
 
 .loginwithgg {
-    width: 18.75rem;
-    height: 3.125rem;
-    background-color: #ffffff;
-    border-radius: 0.5rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    // font-family: 'Oswald', sans-serif;
-    color: #58C2CE;
-    border: 1px solid #58C2CE;
+  width: 18.75rem;
+  height: 3.125rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  // font-family: 'Oswald', sans-serif;
+  color: #58c2ce;
+  border: 1px solid #58c2ce;
 }
 
 .forgotpassword {
-    width: 18.75rem;
-    height: 3.125rem;
+  width: 18.75rem;
+  height: 3.125rem;
 
-    border-radius: 0.5rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    // font-family: 'Oswald', sans-serif;
-    margin-top: 2rem;
-    color: #58C2CE;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  // font-family: 'Oswald', sans-serif;
+  margin-top: 2rem;
+  color: #58c2ce;
 }
 
 .gachthang {
-    width: 18.75rem;
-    height: 2rem;
-    color: #58C2CE;
-    ;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
+  width: 18.75rem;
+  height: 2rem;
+  color: #58c2ce;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
