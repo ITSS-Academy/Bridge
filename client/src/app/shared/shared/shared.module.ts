@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import {tuiSvgOptionsProvider, TUI_SANITIZER} from '@taiga-ui/core';
-import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
+import { tuiSvgOptionsProvider, TUI_SANITIZER } from '@taiga-ui/core';
+import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
 import { CommonModule } from '@angular/common';
 import { FirstNavbarComponent } from 'src/app/components/first-navbar/first-navbar.component';
 import { NavbarUserManagementComponent } from 'src/app/components/navbar-user-management/navbar-user-management.component';
@@ -10,15 +10,21 @@ import { CdkModule } from '../cdk/cdk.module';
 import { AddOnModule } from '../add-on/add-on.module';
 import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import {TuiDataListModule} from '@taiga-ui/core';
-import {TuiComboBoxModule, TuiDataListWrapperModule} from '@taiga-ui/kit';
+import { TuiDataListModule } from '@taiga-ui/core';
+import { TuiComboBoxModule, TuiDataListWrapperModule } from '@taiga-ui/kit';
 import { SecondNavbarComponent } from 'src/app/components/second-navbar/second-navbar.component';
 import { LoadingComponent } from 'src/app/components/loading/loading.component';
 
 //Angular Material
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+// import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
-  declarations: [FirstNavbarComponent, NavbarUserManagementComponent,SidebarComponent,SecondNavbarComponent,LoadingComponent],
+  declarations: [
+    FirstNavbarComponent,
+    NavbarUserManagementComponent,
+    SidebarComponent,
+    SecondNavbarComponent,
+    LoadingComponent,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -30,9 +36,6 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     TuiComboBoxModule,
     TuiDataListModule,
     TuiDataListWrapperModule,
-
-    //Angular Material
-    MatProgressSpinnerModule,
   ],
   exports: [
     //modules
@@ -51,12 +54,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     NavbarUserManagementComponent,
     SidebarComponent,
     SecondNavbarComponent,
-    
+
     LoadingComponent,
 
     //Angular Material
-    MatProgressSpinnerModule,
-
   ],
   providers: [
     tuiSvgOptionsProvider({
@@ -64,8 +65,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     }),
     {
       provide: TUI_SANITIZER,
-      useClass: NgDompurifySanitizer, 
+      useClass: NgDompurifySanitizer,
     },
-  ]
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}
