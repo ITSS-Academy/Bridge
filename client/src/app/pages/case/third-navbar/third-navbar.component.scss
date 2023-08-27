@@ -6,6 +6,7 @@ $LightGray:#F2F2F2;
 
 //CSS CỦA THANH NAV THỨ 3 --->
 .thirdNavbar{
+    box-sizing: border-box;
     background-color: #F2F2F2;
     width: 100vw;
     height: 66px;
@@ -18,14 +19,17 @@ $LightGray:#F2F2F2;
 }
 
 .leftNavContent{
+    box-sizing: border-box;
     display: flex;
 }
 
 .rightNavContent{
+    box-sizing: border-box;
     display: flex;
 }
 
 .button{
+    box-sizing: border-box;
     background-color: #fff;
     color: $Blue;
     min-width: 10rem;
@@ -39,11 +43,13 @@ $LightGray:#F2F2F2;
 }
 
 .buttonMainAction{
+    
     background-color:$Blue ;
     color: #fff;
 }
 
 .buttonRightNavContent{
+    box-sizing: border-box;
     border: 2px solid #fff;
     color: black;
     display: flex;
