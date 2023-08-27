@@ -8,7 +8,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class DealComponent {
   title = 'Deals';
-  pageEmpty = false;
+  pageEmpty = true;
 
   addDeal(){
     this.pageEmpty = !this.pageEmpty
