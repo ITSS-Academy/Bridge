@@ -16,6 +16,7 @@ import { LoadingComponent } from 'src/app/components/loading/loading.component';
 
 //Angular Material
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 @NgModule({
   declarations: [FirstNavbarComponent, NavbarUserManagementComponent,SidebarComponent, LoadingComponent],
   imports: [
@@ -32,6 +33,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
     //Angular Material
     MatProgressSpinnerModule,
+    MatProgressBarModule,
   ],
   exports: [
     //modules
@@ -53,6 +55,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
     //Angular Material
     MatProgressSpinnerModule,
+    MatProgressBarModule,
 
   ],
   providers: [

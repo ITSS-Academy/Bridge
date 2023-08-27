@@ -10,7 +10,7 @@ import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
   styleUrls: ['./user.component.scss', './user.component.less'],
   providers: [TuiDialogFormService],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  // encapsulation: ViewEncapsulation.None,
 })
 export class UserComponent {
   //user dialog

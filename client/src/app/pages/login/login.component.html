@@ -1,4 +1,7 @@
 <app-first-navbar></app-first-navbar>
+<div class="loading">
+  <app-loading [loading]="(this.login$|async)?.loading == true"></app-loading>
+</div>
 <div class="than">
   <div class="left">
     <img id="photo" src="https://i.ibb.co/sCyQZhh/image.png" />
@@ -8,20 +11,12 @@
       <div class="chulogin">
         <p>LOGIN</p>
         <div class="editlogo">
-          <a
-            ><img
-              id="logoBridge"
-              src="https://i.ibb.co/51mZfNZ/nh-m-n-h-nh-2023-08-19-l-c-13-42-10.png"
-              alt="nh-m-n-h-nh-2023-08-19-l-c-13-42-10"
-              border="0"
-          /></a>
+          <a><img id="logoBridge" src="https://i.ibb.co/51mZfNZ/nh-m-n-h-nh-2023-08-19-l-c-13-42-10.png"
+              alt="nh-m-n-h-nh-2023-08-19-l-c-13-42-10" border="0" /></a>
         </div>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap"
-          rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet" />
       </div>
       <form [formGroup]="myForm">
         <div class="Email">
@@ -46,11 +41,8 @@
         <p>______________________</p>
       </div>
       <div class="loginwithgg">
-        <img
-          style="width: 1.5625rem; height: 1.5625rem"
-          src="https://i.pinimg.com/originals/74/65/f3/7465f30319191e2729668875e7a557f2.png"
-          alt=""
-        />
+        <img style="width: 1.5625rem; height: 1.5625rem"
+          src="https://i.pinimg.com/originals/74/65/f3/7465f30319191e2729668875e7a557f2.png" alt="" />
         <p>Login with Google</p>
       </div>
       <div class="forgotpassword">Forgot Your Password?</div>
@@ -58,6 +50,6 @@
   </div>
 </div>
 
-<div *ngIf="(this.login$ | async)?.loading == true">
+<!-- <div *ngIf="(this.login$ | async)?.loading == true">
   <app-loading></app-loading>
-</div>
+</div> -->
