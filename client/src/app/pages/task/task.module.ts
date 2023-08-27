@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LeadRoutingModule } from './lead-routing.module';
-import { LeadComponent } from './lead.component';
+import { TaskRoutingModule } from './task-routing.module';
+import { TaskComponent } from './task.component';
+
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    LeadComponent
+    TaskComponent
   ],
   imports: [
     CommonModule,
-    LeadRoutingModule,
-    SharedModule,
+    TaskRoutingModule,
+    SharedModule
   ]
 })
-export class LeadModule { }
+export class TaskModule { }

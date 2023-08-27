@@ -85,7 +85,39 @@
     <div class="field assignProfile" style="margin-top: 3rem" *ngIf="useProfile">
       <div class="label">Assign Profile</div>
       <div class="input assignProfileInput">
-        <div class="assignProfileInputBox" style="margin: 0 0.5rem 1rem; width: 32rem;">
+        <div class="assignProfileInputBox" style="margin: 0 0.5rem 1rem; width: 32rem;padding-bottom: 0.5rem;">
+          <tui-multi-select
+          *tuiLet="items$ | async as items"
+          placeholder=""
+          class="b-form"
+          [formControl]="testValue"
+          [tuiTextfieldLabelOutside]="true"
+          [expandable]="false"
+          (searchChange)="onSearchChange($event)"
+
+      >
+          Assign Profile
+          <tui-data-list-wrapper
+              *tuiDataList
+              [items]="items | tuiHideSelected"
+              [itemContent]="itemContent"
+          ></tui-data-list-wrapper>
+      </tui-multi-select>
+       
+      <ng-template
+          #itemContent
+          let-data
+      >
+          <div class="template">
+              <!-- <tui-avatar
+                  size="xs"
+                  class="avatar"
+
+                  [text]="data.toString()"
+              ></tui-avatar> -->
+              {{ data }}
+          </div>
+      </ng-template>
         </div>
       </div>
     </div>
