@@ -10,6 +10,7 @@ $Yellow: #ffca0b;
 $Green: #a4e617;
 
 .button{
+  box-sizing: border-box;
     background-color: #fff;
     color: $Blue;
     min-width: 10rem;
@@ -29,27 +30,32 @@ $Green: #a4e617;
 
 //CSS CỦA TRANG CÓ NỘI DUNG
 table{
+  box-sizing: border-box;
     background-color: #fff;
     width: 100vw
 }
 tr{
+  box-sizing: border-box;
     padding: 0.5rem 1.5rem;
     align-content: center;
     border-bottom: 1px solid $LightGray;
 }
 th{
+  box-sizing: border-box;
   padding: 0.5rem 1.5rem;
     text-align: left;
     color: $Blue2;
     width: 10rem;
 }
 td{
+  box-sizing: border-box;
   padding: 0.5rem 1.5rem;
     color: $Blue2;
     width: 10rem;
 }
 
 .status{
+  box-sizing: border-box;
   padding:0.25rem 1rem;
   width: max-content;
   border-radius: 8px;
@@ -76,6 +82,7 @@ td{
 }
 
 .priority{
+  box-sizing: border-box;
   display: flex;
   align-content: flex-end;
 }

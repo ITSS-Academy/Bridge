@@ -193,6 +193,7 @@ export class AdminUsersComponent {
         size,
       })
       .subscribe();
+      console.log("open");
   }
 
   navigateToViewUser(){

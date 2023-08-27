@@ -6,8 +6,14 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./lead.component.scss'],
 })
 export class LeadComponent {
-  title = 'Leads';
+  // title = 'Leads';
   testForm = new FormGroup({
     testValue1: new FormControl(false),
   });
+  title = 'Leads';
+  pageEmpty = true;
+
+  addTask(){
+    this.pageEmpty = !this.pageEmpty
+  }
 }
