@@ -1,0 +1,47 @@
+$Blue : #58c2ce;
+$Blue2: #2C698D;
+$Blue3: #272643;
+$Blue0: #BAE8E8;
+$LightGray:#F2F2F2;
+
+//CSS CỦA TRANG RỖNG
+.emptyPage{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-rows: auto 1fr auto
+}
+
+//SIZE CỦA ẢNH, MN TỰ CHỈNH SỬA BẰNG VH VÀ VW CHO THÍCH HỢP
+.emptyPageImage{
+    height: 40vh;
+    width: 60vh;
+}
+.emptyPageContentContainer{
+    margin-top: 2rem;
+    display: block;
+}
+.emptyPageContent{
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem 0;
+    color: $Blue2;
+    font-size: medium;
+}
+
+.button{
+    background-color: #fff;
+    color: $Blue;
+    min-width: 10rem;
+    border-radius: 8px;
+    border: 2px solid $Blue;
+    padding: 0.25rem 1rem;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.buttonMainAction{
+    background-color:$Blue ;
+    color: #fff;
+}

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TaskRoutingModule } from './task-routing.module';
-import { TaskComponent } from './task.component';
+import { CaseRoutingModule } from './case-routing.module';
+import { CaseComponent } from './case.component';
 
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { PageEmptyComponent } from './page-empty/page-empty.component';
@@ -12,15 +12,15 @@ import { ThirdNavbarComponent } from './third-navbar/third-navbar.component';
 
 @NgModule({
   declarations: [
-    TaskComponent,
+    CaseComponent,
     PageEmptyComponent,
     PageWContentComponent,
     ThirdNavbarComponent
   ],
   imports: [
     CommonModule,
-    TaskRoutingModule,
+    CaseRoutingModule,
     SharedModule
   ]
 })
-export class TaskModule { }
+export class CaseModule { }
