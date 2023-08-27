@@ -6,11 +6,11 @@
   <div>
     <app-second-navbar [title]="title"></app-second-navbar>
     <!-- THANH NAV THỨ 3 -->
-    <app-third-navbar (addTask)="addTask()"></app-third-navbar>
+    <app-third-navbar (addCase)="addCase()"></app-third-navbar>
    
     <div class="body" >
       <!-- NỘI DUNG TRANG RỖNG-->
-      <app-page-empty *ngIf="pageEmpty" (addTask)="addTask()"></app-page-empty>
+      <app-page-empty *ngIf="pageEmpty" (addCase)="addCase()"></app-page-empty>
       <!-- TRANG CÓ NỘI DUNG -->
       <app-page-w-content *ngIf="!pageEmpty"></app-page-w-content>
     </div>
