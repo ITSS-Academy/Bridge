@@ -4,27 +4,6 @@ $Blue3: #272643;
 $Blue0: #BAE8E8;
 $LightGray:#F2F2F2;
 
-//CSS CỦA THANH NAV THỨ 3 --->
-.thirdNavbar{
-    background-color: #F2F2F2;
-    width: 100vw;
-    height: 66px;
-    border-bottom: 5px solid #fff;
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    padding: 0 3rem;
-    box-sizing: border-box;
-}
-
-.leftNavContent{
-    display: flex;
-}
-
-.rightNavContent{
-    display: flex;
-}
-
 .button{
     background-color: #fff;
     color: $Blue;
@@ -41,50 +20,6 @@ $LightGray:#F2F2F2;
 .buttonMainAction{
     background-color:$Blue ;
     color: #fff;
-}
-
-.buttonRightNavContent{
-    border: 2px solid #fff;
-    color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-//CSS CỦA THANH NAV THỨ 3 <----
-
-.body{
-    background-color: $LightGray;
-    width: 100vw;
-    min-height: 76vh;
-    max-height: 100%;
-    box-sizing: border-box;
-
-    display: flex;
-    justify-content: center;
-}
-
-//CSS CỦA TRANG RỖNG
-.emptyPage{
-    margin-top: 2rem;
-    display: grid;
-    grid-template-rows: auto 1fr auto
-}
-
-//SIZE CỦA ẢNH, MN TỰ CHỈNH SỬA BẰNG VH VÀ VW CHO THÍCH HỢP
-.emptyPageImage{
-    height: 40vh;
-    width: 60vh;
-}
-.emptyPageContentContainer{
-    margin-top: 2rem;
-    display: block;
-}
-.emptyPageContent{
-    display: flex;
-    justify-content: center;
-    margin: 0.5rem 0;
-    color: $Blue2;
-    font-size: medium;
 }
 
 //CSS CỦA TRANG CÓ NỘI DUNG
@@ -109,6 +44,59 @@ td{
     color: $Blue2;
     width: 10rem;
     align-items: center;
+}
+
+.highlight{
+  // border: 1px solid black;
+  border-radius: 8px;
+  overflow: hidden;
+  width: max-content;
+  padding: 0.25rem 1rem;
+  color: $Blue2;
+  background-color: $Blue0;
+}
+.closedWon{
+  background-color: #13ff6a;
+  font-weight: 500;
+  color:#fff;
+}
+
+.closedLost{
+  background-color: #fb1e3c;
+  color:#fff;
+  font-weight: 500;
+}
+
+// .readyToClose{
+//   border: 1px solid $Blue2;
+// }
+
+.dormant{
+  background-color: $Blue;
+  color:#fff;
+  font-weight: 500;
+}
+
+// .negotiation{
+//   border: 1px solid $Blue2;
+// }
+
+// .reqGathering{
+//   border: 1px solid $Blue2;
+// }
+
+// .valueProposition{
+//   border: 1px solid $Blue2;
+// }
+
+// .qualifying{
+//   border: 1px solid $Blue2;
+// }
+
+.new{
+  background-color: #ffca0b;
+  color:#fff;
+  font-weight: 500;
 }
 
 //CSS CỦA CHECKBOX - COPY TRÊN MẠNG TỐT NHẤT ĐỪNG ĐỤNG VÀO

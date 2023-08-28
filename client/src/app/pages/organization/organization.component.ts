@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./organization.component.scss']
 })
 export class OrganizationComponent {
+  // title = 'Organizations';
   title = 'Organizations';
+  pageEmpty = true;
+
+  addTask(){
+    this.pageEmpty = !this.pageEmpty
+  }
 }

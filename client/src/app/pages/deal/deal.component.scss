@@ -11,14 +11,10 @@ $LightGray:#F2F2F2;
     background-color: $LightGray;
 }
 
-
 .body{
-    // background-color: $LightGray;
     width: 100vw;
-    min-height: 100%;
     max-height: max-content;
     box-sizing: border-box;
-
     display: flex;
     justify-content: center;
 }
