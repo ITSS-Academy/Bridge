@@ -113,6 +113,7 @@ export class TableGroupsComponent {
                 size,
             })
             .subscribe();
+        console.log('open')
     }
 
     readonly search$ = new Subject<string | null>();

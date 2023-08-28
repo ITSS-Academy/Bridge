@@ -1,8 +1,14 @@
-import { ChangeDetectionStrategy, Component, Inject,ViewEncapsulation } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  ViewEncapsulation,
+} from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TuiDialogService, TuiDialogContext } from '@taiga-ui/core';
 import { TuiDialogFormService } from '@taiga-ui/kit';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
+import { TuiCountryIsoCode } from '@taiga-ui/i18n';
 
 @Component({
   selector: 'app-user',
@@ -10,7 +16,7 @@ import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
   styleUrls: ['./user.component.scss', './user.component.less'],
   providers: [TuiDialogFormService],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  // encapsulation: ViewEncapsulation.None,
 })
 export class UserComponent {
   //user dialog
@@ -29,6 +35,7 @@ export class UserComponent {
   city = '';
   state = '';
   country = '';
+  lastName = '';
 
   User = ['User', 'User Management'];
   open = false;
@@ -61,6 +68,11 @@ export class UserComponent {
 
   onModelChangeReport(report: string): void {
     this.reportTo = report;
+    this.dialogForm.markAsDirty();
+  }
+
+  onModelChangeLastName(lastName: string): void {
+    this.lastName = lastName;
     this.dialogForm.markAsDirty();
   }
 
@@ -171,10 +183,25 @@ export class UserComponent {
   //control currency format selection
   readonly controlCurrencyFormats = new FormControl();
 
-  readonly currencyFormats = [{ format: 'Currency Symbol' }, { format: 'Currency Code' }];
+  readonly currencyFormats = [
+    { format: 'Currency Symbol' },
+    { format: 'Currency Code' },
+  ];
 
   readonly stringifyCurrencyFormat = (item: { format: string }): string =>
     `${item.format}`;
+  //
+
+  //control phone selection
+  readonly phones = Object.values(TuiCountryIsoCode);
+
+  countryIsoCode = TuiCountryIsoCode.US;
+  //
+
+  //control office phone selection
+  readonly officePhones = Object.values(TuiCountryIsoCode);
+
+  countryIsoCodeOffice = TuiCountryIsoCode.US;
   //
 
   showDialog(content: PolymorpheusContent): void {

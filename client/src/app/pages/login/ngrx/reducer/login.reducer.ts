@@ -1,6 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
 import { LoginState } from "../state/login.state";
 import { LoginAction } from "../action/login.action";
+import { state } from "@angular/animations";
 
 
 const initialState: LoginState = {
@@ -16,17 +17,17 @@ export const loginReducer = createReducer(
         return {
             ...state,
             loading: true,
-            status: "is logging in",
+            status: "Logging in...",
             error: ''
         }   
     }),
     on(LoginAction.loginSuccess, (state, action) => {
-        state = initialState
+        // state = initialState
         return {
             ...state,
             authAccount: action.authAccount,
             loading: false,
-            status: "login success",
+            status: "Login success",
             error: ''
         }
     }),
@@ -34,7 +35,7 @@ export const loginReducer = createReducer(
         return {
             ...state,
             loading: false,
-            status: "login failed",
+            status: 'Login failure',
             error: error
         }
     })
