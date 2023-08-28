@@ -23,7 +23,26 @@ export class AuthAccountsController {
       let result = await this.authAccountService.login(createAuthAccountDto);
       return result;
     }catch(err){
-      return new HttpException(err, 401);
+      return err;
+    }
+  }
+  @Post('/checkAuth')
+  async checkAuth(@Body() createAuthAccountDto: CreateAuthAccountDto) {
+    try{
+      let result = await this.authAccountService.checkAuth(createAuthAccountDto);
+      return result;
+    }catch(err){
+      return err;
+    }
+  }
+
+  @Post('/checkUsername')
+  async checkUsername(@Body() createAuthAccountDto: CreateAuthAccountDto) {
+    try{
+      let result = await this.authAccountService.checkExisted(createAuthAccountDto.username, createAuthAccountDto.email);
+      return result;
+    }catch(err){
+      return err;
     }
   }
 

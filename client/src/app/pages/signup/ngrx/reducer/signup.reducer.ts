@@ -5,6 +5,7 @@ import { SignUpAction } from "../action/signup.action";
 const initialState: SignUpState = {
     authAccount: null,
     loading: false,
+    status: null,
     error: ''
 };
 
@@ -18,6 +19,7 @@ export const SignUpReducer = createReducer(
             ...state,
             authAccount: action.authAccount,
             loading: true,
+            status: "Signing up...",
             error: ''
         }
     }),
@@ -28,6 +30,7 @@ export const SignUpReducer = createReducer(
             ...state,
             authAccount: state.authAccount,
             loading: false,
+            status: "Sign up success",
             error: ''
         }
     }),
@@ -35,6 +38,7 @@ export const SignUpReducer = createReducer(
         return {
             ...state,
             loading: false,
+            status: 'Sign up failure',
             error: error
         }
     })

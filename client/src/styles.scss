@@ -46,9 +46,16 @@ tui-dialog.t-content[_ngcontent-ng-c267254229] {
 }
 
 :host{
+  tui-notification{
+    --tui-success-fill: #58C2CE !important;
+    --tui-success-bg: #58c2ce !important;
+  }
   --tui-primary: #58C2CE !important;
   --tui-primary-hover: #58C2CE !important;
   --tui-primary-active: #58C2CE !important;
+  --tui-success-fill: #58C2CE !important;
+  --tui-success-bg: #58c2ce !important;
+
   --tui-text-01: #fff;
   --tui-base-01: #58C2CE;
   --tui-base-02: #58C2CE;

@@ -44,7 +44,7 @@ export class UsersService {
   }
 
   async findOneUser(id: string) {
-    let result = await this.userModel.findOne({'data.id': id}).exec();
+    let result = await this.userModel.findOne({'_id': id}).exec();
     return result;
   }
 

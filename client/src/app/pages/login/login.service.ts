@@ -12,17 +12,13 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
 
+
+  checkAuth(loginAccount: LoginAccount){
+    return this.http.post('http://localhost:3000/auth/checkAuth', loginAccount, {observe: "body"}) as Observable<boolean>;
+  }
+
   login(loginAccount: LoginAccount) {
-    let result = this.http.post('http://localhost:3000/auth/login', loginAccount, {observe: "body"}) as Observable<AuthAccount>;
-    return result.pipe(
-        map((account: any) => {
-            if(account.status == 401){
-                console.log(account)
-                throw new Error(account.message)
-            }
-            return account
-          }),
-        );
+    return this.http.post('http://localhost:3000/auth/login', loginAccount, {observe: "body"}) as Observable<AuthAccount>;
 }
 
 }
