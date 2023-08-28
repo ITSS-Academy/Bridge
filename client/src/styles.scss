@@ -11,11 +11,6 @@
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
-// .mat-body *{
-//   margin: 0 !important;
-//   padding: 0 !important;
-// }
-
 *{
   font-family: 'Roboto', sans-serif;
   
@@ -51,19 +46,26 @@ tui-dialog.t-content[_ngcontent-ng-c267254229] {
 }
 
 :host{
+  tui-notification{
+    --tui-success-fill: #58C2CE !important;
+    --tui-success-bg: #58c2ce !important;
+  }
   --tui-primary: #58C2CE !important;
   --tui-primary-hover: #58C2CE !important;
   --tui-primary-active: #58C2CE !important;
+  --tui-success-fill: #58C2CE !important;
+  --tui-success-bg: #58c2ce !important;
+
   --tui-text-01: #fff;
-  --tui-base-01: #58C2CE;
-  --tui-base-02: #58C2CE;
-  --tui-base-03: #58C2CE;
-  --tui-base-04: #58C2CE;
-  --tui-base-05: #58C2CE;
-  --tui-base-06: #58C2CE;
-  --tui-base-07: #58C2CE;
-  --tui-base-08: #58C2CE;
-  --tui-base-09: #58C2CE;
+  // --tui-base-01: #58C2CE;
+  // --tui-base-02: #58C2CE;
+  // --tui-base-03: #58C2CE;
+  // --tui-base-04: #58C2CE;
+  // --tui-base-05: #58C2CE;
+  // --tui-base-06: #58C2CE;
+  // --tui-base-07: #58C2CE;
+  // --tui-base-08: #58C2CE;
+  // --tui-base-09: #58C2CE;
   // --tui-heading-font: 'Montserrat', sans-serif;
   // --tui-text-font: 'Montserrat', sans-serif;
   --tui-radius-m: 8px;

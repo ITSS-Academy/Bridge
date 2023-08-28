@@ -18,7 +18,7 @@ export class LoginEffect{
                 return LoginAction.loginSuccess({ authAccount: account });
             }),
             catchError((error) => {
-                return of(LoginAction.loginFailure({ error: error.message }));
+                return of(LoginAction.loginFailure({ error: error }));
             })
         ))
 }

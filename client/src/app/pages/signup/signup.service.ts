@@ -14,16 +14,13 @@ export class SignupService {
   }
 
 
+  checkExisted(authAccount: AuthAccount) {
+    return this.http.post('http://localhost:3000/auth/checkUsername',authAccount, {observe: "body"}) as Observable<boolean>;
+  }
+
     signup(authAccount: AuthAccount) {
-        let result = this.http.post('http://localhost:3000/auth/signup', authAccount, {observe: "body"}) as Observable<AuthAccount>;
-        return result.pipe(
-            map((account: any) => {
-                if(account.status == 302){
-                    // console.log(account)
-                    throw new Error(account.message)
-                }
-                return account}),
-            );
+        return this.http.post('http://localhost:3000/auth/signup', authAccount, {observe: "body"}) as Observable<AuthAccount>;
+
     }
 
 }

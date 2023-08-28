@@ -1,6 +1,19 @@
 
 
 <app-first-navbar></app-first-navbar>
+<div class="loading">
+  <app-loading *ngIf="(this.signUp$ |async)?.loading == true"></app-loading>
+</div>
+
+<ng-template
+    *ngIf="(this.signUp$ | async)?.loading == false"
+    [tuiAlertOptions]="{status: status, autoClose: true}"
+    [(tuiAlert)]="show"
+>
+    {{this.notification}}
+</ng-template>
+
+
 <div class="than">
   <div class="left">
     <img

@@ -76,6 +76,7 @@ $White: #ffff;
     padding: 0 2rem;
     margin: 0 0.2rem;
     cursor: pointer;
+    // box-sizing: border-box;
 }
 
 .button p {
@@ -88,12 +89,16 @@ $White: #ffff;
 }
 
 .button:hover{
-    background-color: #2C698D;
-    border-radius: 8px;
+    // background-color: #2C698D;
+    text-decoration: underline;
+    border-radius: 0;
+    // border-left: 2px solid $Blue2;
+    // border-right: 2px solid $Blue2;
+    // border-radius: 8px;
     padding: 0 2rem;
     height: 100%;
     width: 4rem;
-    transition: all 0.2s ease;
+    // transition: all 0.2s ease;
 }
 
 .sign-up{
@@ -102,7 +107,7 @@ $White: #ffff;
 }
 
 .sign-up:hover{
-    filter: brightness(1.5);
+    background-color: lighten($Blue2, 3);
     // box-shadow: 0px 8px 24px $Blue2;
     border-radius: 8px;
     padding: 0 2rem;
