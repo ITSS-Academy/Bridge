@@ -9,7 +9,7 @@
     <!-- THANH NAV THỨ 3 -->
     <div class="thirdNavbar">
       <div class="leftNavContent">
-        <button  class="button">
+        <button class="button">
           <span class="material-symbols-outlined"> filter_list </span>
 
           <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
@@ -18,22 +18,22 @@
           <span class="material-symbols-outlined"> expand_more </span>
         </button>
 
-        <button  class="button buttonMainAction" (click)="addTask()">
-          <span  class="material-symbols-outlined"> add </span>
+        <button class="button buttonMainAction" (click)="addTask()">
+          <span class="material-symbols-outlined"> add </span>
 
           <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
-          <span style="margin: 0 1rem" >Add Lead</span>
+          <span style="margin: 0 1rem">Add Lead</span>
         </button>
       </div>
       <div class="rightNavContent">
         <button
           class="button buttonRightNavContent"
-          style="padding: 0.25rem 1rem; min-width: max-content; color: #58C2CE;"
+          style="padding: 0.25rem 1rem; min-width: max-content; color: #58c2ce"
         >
           <span class="material-symbols-outlined"> rule_settings </span>
         </button>
 
-        <button style="color: #58C2CE;" class="button buttonRightNavContent">
+        <button style="color: #58c2ce" class="button buttonRightNavContent">
           <span class="material-symbols-outlined"> chevron_left </span>
 
           <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
@@ -43,16 +43,17 @@
         </button>
       </div>
     </div>
-   
-    <div class="body" >
-        <!-- NỘI DUNG TRANG RỖNG-->
-      <div class="emptyPage" *ngIf="pageEmpty">
 
+    <div class="body">
+      <!-- NỘI DUNG TRANG RỖNG-->
+      <div class="emptyPage" *ngIf="pageEmpty">
         <!--TRANH CỦA TRANG EMPTY - MN THAY ĐỔI ĐỂ PHÙ HỢP VỚI TRANG-->
-        <img src="../../../assets/leadership-amico.png" class="emptyPageImage" />
+        <img
+          src="../../../assets/leadership-amico.png"
+          class="emptyPageImage"
+        />
 
         <div class="emptyPageContentContainer">
-
           <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
           <div class="emptyPageContent"><b>THERE ARE NO LEAD</b></div>
 
@@ -62,7 +63,11 @@
           </div>
 
           <div class="emptyPageContent" style="margin-top: 1rem">
-            <button class="button buttonMainAction" style="margin-right: 0" (click)="showDialog(dialogAddLeads)">
+            <button
+              class="button buttonMainAction"
+              style="margin-right: 0"
+              (click)="showDialog(dialogAddLeads)"
+            >
               <span class="material-symbols-outlined"> add </span>
 
               <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
@@ -75,46 +80,58 @@
       <!-- TRANG CÓ NỘI DUNG -->
       <div class="contentPage" *ngIf="!pageEmpty">
         <table>
-            <tr>
-                <!-- CHECKBOX -->
-                <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </label></th>
+          <tr>
+            <!-- CHECKBOX -->
+            <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
+              <label class="container">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+              </label>
+            </th>
 
-                <th style="width: max-content; padding: 0.5rem;"><span class="material-symbols-outlined">edit_document</span></th>
-                <th><b>NAME</b></th>
-                <th><b>ASSIGN TO</b></th>
-                <th><b>START DATE & TIME</b></th>
-                <th><b>DUE DATE & TIME</b></th>
-                <th><b>STAGE</b></th>
-              </tr>
-              <tr>
-                <!-- CHECKBOX -->
-                <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </label></th>
-                <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
-                <td>Design Web Page</td>
-                <td>Team CRM</td>
-                <td>16-08-2023 01:47 PM</td>
-                <td>26-08-2023 12:00 AM</td>
-                <td>In Progress</td>
-              </tr>
-              <tr>
-                <!-- CHECKBOX -->
-                <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </label></th>
-                <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
-                <td>Presentation</td>
-                <td>Team CRM</td>
-                <td>pending</td>
-                <td>pending</td>
-                <td>Pending</td>
-              </tr>
+            <th style="width: max-content; padding: 0.5rem">
+              <span class="material-symbols-outlined">edit_document</span>
+            </th>
+            <th><b>NAME</b></th>
+            <th><b>ASSIGN TO</b></th>
+            <th><b>START DATE & TIME</b></th>
+            <th><b>DUE DATE & TIME</b></th>
+            <th><b>STAGE</b></th>
+          </tr>
+          <tr>
+            <!-- CHECKBOX -->
+            <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
+              <label class="container">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+              </label>
+            </th>
+            <td style="width: 1rem; padding: 0.5rem">
+              <span class="material-symbols-outlined">star</span>
+            </td>
+            <td>Design Web Page</td>
+            <td>Team CRM</td>
+            <td>16-08-2023 01:47 PM</td>
+            <td>26-08-2023 12:00 AM</td>
+            <td>In Progress</td>
+          </tr>
+          <tr>
+            <!-- CHECKBOX -->
+            <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
+              <label class="container">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+              </label>
+            </th>
+            <td style="width: 1rem; padding: 0.5rem">
+              <span class="material-symbols-outlined">star</span>
+            </td>
+            <td>Presentation</td>
+            <td>Team CRM</td>
+            <td>pending</td>
+            <td>pending</td>
+            <td>Pending</td>
+          </tr>
         </table>
       </div>
     </div>
@@ -123,10 +140,10 @@
     <ng-template id="dialogAddLead" #dialogAddLeads let-context>
       <div class="dialog-lead">
         <p id="header-dialog">Add Lead</p>
-  
+
         <div class="contents-dialog-lead">
           <div class="container-dialog">
-            <p id="title-dialog">First name</p>
+            <p class="title-dialog">First name</p>
             <tui-input
               style="outline: none !important"
               class="input-dialog"
@@ -137,9 +154,9 @@
               Type first name
             </tui-input>
           </div>
-  
+
           <div class="container-dialog">
-            <p class="title-primary-group-dialog">Last name</p>
+            <p class="title-dialog">Last name</p>
             <tui-input
               class="input-dialog"
               tuiTextfieldSize="s"
@@ -149,7 +166,7 @@
               Type last name
             </tui-input>
           </div>
-  
+
           <div class="container-dialog">
             <p class="title-dialog">Company</p>
             <tui-input
@@ -161,7 +178,7 @@
               Type company
             </tui-input>
           </div>
-  
+
           <div class="container-dialog">
             <p class="title-dialog">Email</p>
             <tui-input
@@ -173,7 +190,7 @@
               Type here
             </tui-input>
           </div>
-  
+
           <div class="container-dialog">
             <p class="title-dialog">Phone</p>
             <tui-input
@@ -184,10 +201,10 @@
               (optional)
             </tui-input>
           </div>
-  
+
           <div class="container-dialog">
             <p class="title-dialog">Assigned to</p>
-  
+       
             <tui-combo-box
               class="input-dialog"
               [formControl]="controlAssignments"
@@ -195,16 +212,18 @@
               tuiTextfieldSize="s"
             >
               Choose/Type here
-  
+
               <tui-data-list-wrapper
                 *tuiDataList
-                [items]="assignments | tuiFilterByInputWith : stringifyAssignment"
+                [items]="
+                  assignments | tuiFilterByInputWith : stringifyAssignment
+                "
                 [itemContent]="stringifyAssignment | tuiStringifyContent"
               ></tui-data-list-wrapper>
             </tui-combo-box>
           </div>
         </div>
-  
+
         <div class="save-canceled-container">
           <button class="canceled-button">Cancel</button>
           <button class="save-button" (click)="context.complete()">Save</button>
