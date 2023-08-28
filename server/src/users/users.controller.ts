@@ -21,10 +21,10 @@ export class UsersController {
     return this.usersService.findAllUsers();
   }
 
-  // @Get('/:id')
-  // findOne(@Param('id') id: string) {
-  //   return this.usersService.findOneUser(id);
-  // }
+  @Get('findById/:id')
+  findOne(@Param('id') id: string) {
+    return this.usersService.findOneUser(id);
+  }
 
   @Get('/:email')
   findOneByEmail(@Param('email') email: string) {
