@@ -137,31 +137,34 @@
           <div class="privilegeFieldHolder">
             <div class="privilegeField" style="margin-top: 1rem">
               <div class="privilegeFieldCollumn title">
-                <input
-                  type="checkbox"
-                  class="privilegeCheckBox"
-                  checked
-                />Modules
+                <label class="container">
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+                </label>Modules
               </div>
               <div class="privilegeFieldCollumn">
-                <input
-                  type="checkbox"
-                  class="privilegeCheckBox"
-                  checked
-                />Create
+                <label class="container">
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+                </label>Create
               </div>
               <div class="privilegeFieldCollumn">
-                <input type="checkbox" class="privilegeCheckBox" checked />View
+                <label class="container">
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+                </label>View
               </div>
               <div class="privilegeFieldCollumn">
-                <input type="checkbox" class="privilegeCheckBox" checked />Edit
+                <label class="container">
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+                </label>Edit
               </div>
               <div class="privilegeFieldCollumn">
-                <input
-                  type="checkbox"
-                  class="privilegeCheckBox"
-                  checked
-                />Delete
+                <label class="container">
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+                </label>Delete
               </div>
             </div>
             <div *ngFor="let subField of inventoryField" class="privilegeField">
