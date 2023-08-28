@@ -10,7 +10,7 @@
   justify-content: space-between;
   width: 94%;
   align-items: center;
-  margin-top: 20px;
+  padding: 20px 0;
 }
 
 .left-navbar {
@@ -55,8 +55,8 @@
 }
 
 .btn-add {
-  width: 140px;
-  height: 33px;
+  width: 150px;
+  height: 30px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -142,4 +142,119 @@
 .list-view span {
   border: none;
   font-size: 18px;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  height: 12.5rem;
+  align-items: center;
+  justify-content: center;
+  background: #ffdd2d;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+
+  :host-context(tui-root._mobile) & {
+      flex-direction: column;
+  }
+}
+
+// dialog from contacts
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-contacts {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.all-label {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.all-label label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #58C2CE;
+}
+.all-input {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.all-input input {
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid #58C2CE;
+  outline: none;
+}
+
+#fname {
+  width: 500px;
+}
+
+#lname {
+  width: 500px;
+}
+
+#email {
+  width: 200px;
+}
+
+#phone {
+  width: 250px;
+}
+
+#orgName {
+  width: 200px;
+}
+
+#assignTo {
+  width: 300px;
+}
+
+#lifeCycleStage {
+  width: 300px;
+}
+
+#status {
+  width: 300px;
+}
+.btn-save {
+  border-radius: 8px;
+  margin-top: 50px;
+  width: 40px;
+  height: 40px;
+  background-color: #58C2CE;
+  width: 100px;
+  height: 30px;
+  border: none;
+  color: white;
+}
+
+.title-dialog {
+  margin-top: 0;
+}
+
+.box-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-top: 2px solid #58C2CE;
+  height: 530px;
 }

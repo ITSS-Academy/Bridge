@@ -4,5 +4,5 @@
   <app-navbar-contacts></app-navbar-contacts>
   <app-display-no-data-contacts *ngIf="data==false"></app-display-no-data-contacts>
   <app-display-have-data-contacts *ngIf="data==true"></app-display-have-data-contacts>
-  <button (click)="clickAddData()">aaaaa</button>
+  <button *ngIf="data==false" (click)="clickAddData()">aaaaa</button>
 </div>

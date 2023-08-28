@@ -13,16 +13,17 @@ export class SidebarComponent {
     const allDropdowns = document.querySelectorAll('.dropdown');
 
     allDropdowns.forEach((dropdown) => {
-      if (dropdown.id !== dropdownId) {
-        dropdown.classList.remove('open'); // Close other dropdowns
-      }
+        if (dropdown.id !== dropdownId) {
+            dropdown.classList.remove('open');
+        }
     });
 
     const toggledDropdown = document.getElementById(dropdownId);
     if (toggledDropdown) {
-      toggledDropdown.classList.toggle('open'); // Toggle the open class
+        toggledDropdown.classList.toggle('open');
     }
-  }
+}
+
 
   constructor(public route:Router){
     
@@ -30,6 +31,7 @@ export class SidebarComponent {
 
   navigateToUser(){
     this.route.navigate(['/admin-users'])
+    
   }
 
   navigateToRole(){

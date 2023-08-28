@@ -1,11 +1,11 @@
-
+<app-second-navbar [title]="title"></app-second-navbar>
 <link
   rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
 />
 <div>
 <div>
-  <app-second-navbar [title]="title"></app-second-navbar>
+  <!-- <app-second-navbar [title]="title"></app-second-navbar> -->
   <div class="main-contents-container">
     <div class="buttons-container">
       <div class="over-my-lead-filter">
@@ -18,12 +18,18 @@
         <div class="none2"></div>
         <div class="add-lead-button">Add Lead</div>
         <div class="switch-button">
-          <button class="check-active-button" size="m" type="button">
-            <span class="material-symbols-outlined"> list_alt </span>
-          </button>
-          <button class="check-inactive-button" size="m" type="button">
-            <span class="material-symbols-outlined"> account_tree </span>
-          </button>
+          <div class="editbutton1">
+            <button class="check-active-button" size="m" type="button">
+              <span style="color: #58c2ce;" class="material-symbols-outlined"> list_alt </span>
+            </button>
+          </div>
+          <div class="editbutton2">
+            <button class="check-inactive-button" size="m" type="button">
+              <span style="color: #58c2ce" class="material-symbols-outlined">
+                account_tree
+              </span>
+            </button>
+          </div>
         </div>
         <div class="sync-button">
           <button class="check-sync-button" size="m" type="button">
@@ -59,7 +65,7 @@
   <div class="main">
     <div class="main-top">
       <img
-        style="width: 60%; height: 40rem"
+        style="width: 50%; height: 30rem"
         src="https://s3-alpha-sig.figma.com/img/94df/39a4/511afcf47503f665bf1134d5287644c1?Expires=1693785600&Signature=nONLKRcOYQJxuR41CAG3uMtZCzHY362q2JlbYfKXYIDKrsBl2gatz8xNAeh6MvzkdciszdF~EH7XC3le3tkmuIVHJIOYMsFDnBwKIbKo2fXBNvqB9R863BuXCCpcKC11jdGdaGm5aAQKjZGjunKpfDcebNJSoan7tTVfiyFOy8OHFsmUs0xIPq9qIWPzlLMDL39rO4N8i9s~QxHClOdzo53W5blzldp04~dKVBAnqB6MFQIVX2NeZZ-XBOLKXlG5sBGic1LTK8GHNzJ4oVt6JEeoNCbOmtDKoD5NUUQwEr0y0pODUlv9DV~9e4n0eoxNa3SLOf0yO1spVlwCAE5sWw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
         alt=""
       />

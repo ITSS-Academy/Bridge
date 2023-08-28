@@ -96,6 +96,7 @@ const routes: Routes = [
     import('./pages/contacts/contacts.module').then
     (m => m.ContactsModule), 
   },
+  { path: 'task', loadChildren: () => import('./pages/task/task.module').then(m => m.TaskModule) },
 ];
 
 @NgModule({

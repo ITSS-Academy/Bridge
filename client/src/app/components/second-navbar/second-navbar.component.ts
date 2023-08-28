@@ -14,6 +14,7 @@ export class SecondNavbarComponent {
     {name: 'Leads', route: '/lead'},
     {name: 'Contacts', route: '/contacts'},
     {name: 'Organizations', route: '/organization'},
+    {name: 'Tasks', route: '/task'},
 
   ]
 

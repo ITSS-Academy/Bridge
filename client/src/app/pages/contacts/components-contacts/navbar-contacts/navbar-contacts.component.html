@@ -10,7 +10,7 @@
           expand_more
           </span>
       </button>
-      <button class="btn-add">
+      <button  size="m" type="button" class="tui-space_right-2 tui-space_bottom-2 btn-add" (click)="onClick(content, 'auto')">
         <span class="material-symbols-outlined">
           add
           </span>
@@ -47,3 +47,78 @@
     </div>
   </div>
 </div>  
+
+<!-- dialog from contacts -->
+<!-- <button class="btn-close" (click)="observer.complete()"></button> -->
+<ng-template #content let-observer>
+  <h2 class="title-dialog">Add Contact</h2>
+    <div class="box-form">
+    <form [formGroup]="contactsForm" (ngSubmit)="observer.complete()">
+      <div class="form-contacts">   
+        <div class="all-label">
+          <label for="fname">First Name</label>
+          <label for="lname">Last Name</label>
+          <label for="email">Email</label>
+          <label for="phone">Phone</label>
+          <label for="orgName">Organization Name</label>
+          <label for="assignTo">Assign To</label>
+          <label for="lifeCycleStage">LifeycleStage</label>
+          <label for="lifeCycleStage">Status</label>
+        </div>    
+        <div class="all-input">
+          <tui-input formControlName="firstname"  type="text" id="fname" name="firstname" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true"></tui-input>
+          <tui-input formControlName="lastName" type="text" id="lname" name="lastname" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true"></tui-input>
+          <tui-input formControlName="email" type="text" id="email" name="email" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true"></tui-input>
+          <tui-input-phone-international 
+            formControlName="phone"  type="text" id="phone" name="phone" 
+            tuiTextfieldSize="m" 
+            [tuiTextfieldLabelOutside]="true"
+            [countries]="(countries | tuiSortCountries | async) || []"
+             [(countryIsoCode)]="countryIsoCode">
+          </tui-input-phone-international>
+          <tui-input formControlName="organizationName"  type="text" id="orgName" name="orgName" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true"></tui-input>
+          <tui-input formControlName="assignTo" id="assignTo" name="assignTo" tuiTextfieldSize="s"  [tuiTextfieldLabelOutside]="true">
+            user or group
+            <tui-data-list-wrapper
+                *tuiDataList
+                [items]="allAss"
+                [labels]="labels"
+            ></tui-data-list-wrapper>
+        </tui-input>
+          <tui-combo-box tuiTextfieldSize="s" formControlName="lifeycleStage" [stringify]="stringifyLife" id="lifeCycleStage" class="input"  [tuiTextfieldLabelOutside]="true">
+             LifeycleStage
+            <tui-data-list-wrapper
+                *tuiDataList
+                [items]="allLife | tuiFilterByInputWith : stringifyLife"
+                [itemContent]="stringifyLife | tuiStringifyContent"
+                
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+          <tui-combo-box tuiTextfieldSize="s" formControlName="status" [stringify]="stringifyStatus" id="status" class="input"  [tuiTextfieldLabelOutside]="true">
+            status
+            <tui-data-list-wrapper
+                *tuiDataList
+                [items]="allStatus | tuiFilterByInputWith : stringifyStatus"
+                [itemContent]="stringifyStatus | tuiStringifyContent"
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+        </div>
+        </div>
+    <button class="btn-save" type="submit">
+      Save
+  </button>
+    </form>
+    </div>
+</ng-template>
+
+
+
+
+
+
+          
+          
+          
+          
+          
+          
