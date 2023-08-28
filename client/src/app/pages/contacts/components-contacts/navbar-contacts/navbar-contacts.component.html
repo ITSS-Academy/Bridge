@@ -1,0 +1,110 @@
+<div class="thirdNavbar">
+  <div class="leftNavContent">
+    <button class="button">
+      <span class="material-symbols-outlined"> filter_list </span>
+
+      <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
+      <span style="margin: 0 1rem">My Contacts</span>
+
+      <span class="material-symbols-outlined"> expand_more </span>
+    </button>
+
+    <button class="button buttonMainAction" size="m" type="button" (click)="onClick(content, 'auto')">
+      <span class="material-symbols-outlined"> add </span>
+
+      <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
+      <span style="margin: 0 1rem" >Add Contacts</span>
+    </button>
+  </div>
+  <div class="rightNavContent">
+    <button
+      class="button buttonRightNavContent"
+      style="padding: 0.25rem 1rem; min-width: max-content"
+    >
+      <span class="material-symbols-outlined"> rule_settings </span>
+    </button>
+
+    <button class="button buttonRightNavContent">
+      <span class="material-symbols-outlined"> chevron_left </span>
+
+      <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
+      <span style="margin: 0 1rem">1 to 2</span>
+
+      <span class="material-symbols-outlined"> chevron_right </span>
+    </button>
+  </div>
+</div>
+<!-- dialog from contacts -->
+<!-- <button class="btn-close" (click)="observer.complete()"></button> -->
+<ng-template #content let-observer>
+  <h2 class="title-dialog">Add Contact</h2>
+    <div class="box-form">
+    <form [formGroup]="contactsForm" (ngSubmit)="observer.complete()">
+      <div class="form-contacts">   
+        <div class="all-label">
+          <label for="fname">First Name</label>
+          <label for="lname">Last Name</label>
+          <label for="email">Email</label>
+          <label for="phone">Phone</label>
+          <label for="orgName">Organization Name</label>
+          <label for="assignTo">Assign To</label>
+          <label for="lifeCycleStage">LifeycleStage</label>
+          <label for="lifeCycleStage">Status</label>
+        </div>    
+        <div class="all-input">
+          <tui-input formControlName="firstname"  type="text" id="fname" name="firstname" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true"></tui-input>
+          <tui-input formControlName="lastName" type="text" id="lname" name="lastname" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true"></tui-input>
+          <tui-input formControlName="email" type="text" id="email" name="email" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true"></tui-input>
+          <tui-input-phone-international 
+            formControlName="phone"  type="text" id="phone" name="phone" 
+            tuiTextfieldSize="s" 
+            [tuiTextfieldLabelOutside]="true"
+            [countries]="(countries | tuiSortCountries | async) || []"
+             [(countryIsoCode)]="countryIsoCode">
+          </tui-input-phone-international>
+          <tui-input formControlName="organizationName"  type="text" id="orgName" name="orgName" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true"></tui-input>
+          <tui-input formControlName="assignTo" id="assignTo" name="assignTo" tuiTextfieldSize="s"  [tuiTextfieldLabelOutside]="true">
+            user or group
+            <tui-data-list-wrapper
+                *tuiDataList
+                [items]="allAss"
+                [labels]="labels"
+            ></tui-data-list-wrapper>
+        </tui-input>
+          <tui-combo-box tuiTextfieldSize="s" formControlName="lifeycleStage" [stringify]="stringifyLife" id="lifeCycleStage" class="input"  [tuiTextfieldLabelOutside]="true">
+             LifeycleStage
+            <tui-data-list-wrapper
+                *tuiDataList
+                [items]="allLife | tuiFilterByInputWith : stringifyLife"
+                [itemContent]="stringifyLife | tuiStringifyContent"
+                
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+          <tui-combo-box tuiTextfieldSize="s" formControlName="status" [stringify]="stringifyStatus" id="status" class="input"  [tuiTextfieldLabelOutside]="true">
+            status
+            <tui-data-list-wrapper
+                *tuiDataList
+                [items]="allStatus | tuiFilterByInputWith : stringifyStatus"
+                [itemContent]="stringifyStatus | tuiStringifyContent"
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+        </div>
+        </div>
+    <button class="btn-save" type="submit">
+      Save
+  </button>
+    </form>
+    </div>
+</ng-template>
+
+
+
+
+
+
+          
+          
+          
+          
+          
+          

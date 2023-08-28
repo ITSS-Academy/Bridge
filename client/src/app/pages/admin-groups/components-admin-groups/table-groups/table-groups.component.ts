@@ -46,7 +46,7 @@ class roleSub {
     ) {}
 
     toString(): string {
-        return `${this.roleSubName} ${this.type}(R & S)`
+        return `${this.roleSubName} ${this.type}(R&S)`
     }
 }
 

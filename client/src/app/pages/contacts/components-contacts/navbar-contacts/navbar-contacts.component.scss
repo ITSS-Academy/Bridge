@@ -1,0 +1,150 @@
+$Blue : #58c2ce;
+$Blue2: #2C698D;
+$Blue3: #272643;
+$Blue0: #BAE8E8;
+$LightGray:#F2F2F2;
+
+//CSS CỦA THANH NAV THỨ 3 --->
+.thirdNavbar{
+    background-color: #F2F2F2;
+    width: 100vw;
+    height: 66px;
+    border-bottom: 5px solid #fff;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 0 3rem;
+    box-sizing: border-box;
+}
+
+.leftNavContent{
+    display: flex;
+}
+
+.rightNavContent{
+    display: flex;
+}
+
+.button{
+    background-color: #fff;
+    color: $Blue;
+    min-width: 10rem;
+    border-radius: 8px;
+    border: 2px solid $Blue;
+    padding: 0.25rem 1rem;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.buttonMainAction{
+    background-color:$Blue ;
+    color: #fff;
+}
+
+.buttonRightNavContent{
+    border: 2px solid #fff;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+//CSS CỦA THANH NAV THỨ 3 <----
+
+// dialog from contacts
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-contacts {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.all-label {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.all-label label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #58C2CE;
+}
+.all-input {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.all-input input {
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid #58C2CE;
+  outline: none;
+}
+
+#fname {
+  width: 350px;
+}
+
+#lname {
+  width: 350px;
+}
+
+#email {
+  width: 350px;
+}
+
+#phone {
+  width: 300px;
+}
+
+#orgName {
+  width: 300px;
+}
+
+#assignTo {
+  width: 300px;
+}
+
+#lifeCycleStage {
+  width: 300px;
+}
+
+#status {
+  width: 300px;
+}
+.btn-save {
+  border-radius: 8px;
+  margin-top: 50px;
+  width: 40px;
+  height: 40px;
+  background-color: #58C2CE;
+  width: 100px;
+  height: 30px;
+  border: none;
+  color: white;
+}
+
+.title-dialog {
+  margin-top: 0;
+}
+
+.box-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-top: 2px solid #58C2CE;
+  height: 530px;
+}
+
