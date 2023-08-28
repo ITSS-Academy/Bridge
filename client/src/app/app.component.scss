@@ -1,23 +1,23 @@
-@import '@taiga-ui/core/styles/taiga-ui-local.scss';
- 
+@import "@taiga-ui/core/styles/taiga-ui-local.scss";
+
 // other styles
 
-
-
-tui-root{
-    --tui-primary: #58C2CE !important;
-    --tui-primary-hover: #58C2CE !important;
-    --tui-primary-active: #58C2CE !important;
-    --tui-text-01: #2c698d !important;
-    // --tui-base-01: #58C2CE;
-    // --tui-base-02: #58C2CE;
-    // --tui-base-03: #58C2CE;
-    // --tui-base-04: #58C2CE;
-    // --tui-base-05: #58C2CE;
-    // --tui-base-06: #58C2CE;
-    // --tui-base-07: #58C2CE;
-    // --tui-base-08: #58C2CE;
-    // --tui-base-09: #58C2CE;
-    --tui-heading-font: 'Montserrat', sans-serif;
-    --tui-text-font: 'Montserrat', sans-serif;
+tui-root {
+  --tui-primary: #58c2ce !important;
+  --tui-primary-hover: #58c2ce !important;
+  --tui-primary-active: #58c2ce !important;
+  --tui-text-01: #2c698d !important;
+  // --tui-base-01: #58C2CE;
+  // --tui-base-02: #58C2CE;
+  // --tui-base-03: #58C2CE;
+  // --tui-base-04: #58C2CE;
+  // --tui-base-05: #58C2CE;
+  // --tui-base-06: #58C2CE;
+  // --tui-base-07: #58C2CE;
+  // --tui-base-08: #58C2CE;
+  // --tui-base-09: #58C2CE;
+  --tui-heading-font: "Montserrat", sans-serif;
+  --tui-text-font: "Montserrat", sans-serif;
+  --tui-radius-m: 8px;
+  --tui-height-m: 2rem;
 }

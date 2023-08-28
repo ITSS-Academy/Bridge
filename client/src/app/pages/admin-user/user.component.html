@@ -1,6 +1,6 @@
 <app-navbar-user-management></app-navbar-user-management>
 
-<div class="main-container-user" style="height: 100%;">
+<div class="main-container-user" style="height: 100%">
   <app-sidebar></app-sidebar>
 
   <div class="main-contents-container-user">
@@ -309,8 +309,8 @@
           <tui-input
             id="input-last-name-dialog"
             tuiTextfieldSize="s"
-            [(ngModel)]="name"
-            (ngModelChange)="onModelChangeName($event)"
+            [(ngModel)]="lastName"
+            (ngModelChange)="onModelChangeLastName($event)"
           >
             Type your last name
           </tui-input>
@@ -329,25 +329,28 @@
 
         <div class="mobile-phone-container-dialog">
           <p id="title-mobile-phone-dialog">Mobile phone</p>
-          <tui-input
+          <tui-input-phone-international
             id="input-mobile-phone-dialog"
-            tuiTextfieldSize="s"
-            [(ngModel)]="phoneNumber"
-            (ngModelChange)="onModelChangePhone($event)"
+            [countries]="(phones | tuiSortCountries | async) || []"
+            [(countryIsoCode)]="countryIsoCode"
+            [tuiTextfieldLabelOutside] = "true"
+            tuiTextfieldSize= "m"
           >
-            Phone number
-          </tui-input>
+          Type your number
+          </tui-input-phone-international>
         </div>
 
         <div class="office-phone-container-dialog">
           <p id="title-office-phone-dialog">Office phone</p>
-          <tui-input
+          <tui-input-phone-international
             id="input-office-phone-dialog"
-            tuiTextfieldSize="s"
-            [(ngModel)]="officeNumber"
+            [countries]="(officePhones | tuiSortCountries | async) || []"
+            [(countryIsoCode)]="countryIsoCodeOffice"
+            [tuiTextfieldLabelOutside] = "true"
+            tuiTextfieldSize= "m"
           >
-            Office number (optional)
-          </tui-input>
+          (optional)
+          </tui-input-phone-international>
         </div>
 
         <div class="fax-number-container-dialog">

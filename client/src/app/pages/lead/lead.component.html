@@ -18,14 +18,14 @@
           <span class="material-symbols-outlined"> expand_more </span>
         </button>
 
-        <button  class="button buttonMainAction">
+        <button  class="button buttonMainAction" (click)="addTask()">
           <span  class="material-symbols-outlined"> add </span>
 
           <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
-          <span style="margin: 0 1rem" (click)="addTask()">Add Lead</span>
+          <span style="margin: 0 1rem" >Add Lead</span>
         </button>
       </div>
-      <div  class="rightNavContent">
+      <div class="rightNavContent">
         <button
           class="button buttonRightNavContent"
           style="padding: 0.25rem 1rem; min-width: max-content; color: #58C2CE;"
@@ -49,7 +49,7 @@
       <div class="emptyPage" *ngIf="pageEmpty">
 
         <!--TRANH CỦA TRANG EMPTY - MN THAY ĐỔI ĐỂ PHÙ HỢP VỚI TRANG-->
-        <img src="./assets/team checklist-rafiki.png" class="emptyPageImage" />
+        <img src="../../../assets/leadership-amico.png" class="emptyPageImage" />
 
         <div class="emptyPageContentContainer">
 
@@ -62,7 +62,7 @@
           </div>
 
           <div class="emptyPageContent" style="margin-top: 1rem">
-            <button class="button buttonMainAction" style="margin-right: 0">
+            <button class="button buttonMainAction" style="margin-right: 0" (click)="showDialog(dialogAddLeads)">
               <span class="material-symbols-outlined"> add </span>
 
               <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
@@ -117,7 +117,99 @@
               </tr>
         </table>
       </div>
-
     </div>
+
+    <!-- DIALOG -->
+    <ng-template id="dialogAddLead" #dialogAddLeads let-context>
+      <div class="dialog-lead">
+        <p id="header-dialog">Add Lead</p>
+  
+        <div class="contents-dialog-lead">
+          <div class="container-dialog">
+            <p id="title-dialog">First name</p>
+            <tui-input
+              style="outline: none !important"
+              class="input-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="name"
+              (ngModelChange)="onModelChangeName($event)"
+            >
+              Type first name
+            </tui-input>
+          </div>
+  
+          <div class="container-dialog">
+            <p class="title-primary-group-dialog">Last name</p>
+            <tui-input
+              class="input-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="lastName"
+              (ngModelChange)="onModelChangeLastName($event)"
+            >
+              Type last name
+            </tui-input>
+          </div>
+  
+          <div class="container-dialog">
+            <p class="title-dialog">Company</p>
+            <tui-input
+              class="input-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="company"
+              (ngModelChange)="onModelChangeCompany($event)"
+            >
+              Type company
+            </tui-input>
+          </div>
+  
+          <div class="container-dialog">
+            <p class="title-dialog">Email</p>
+            <tui-input
+              class="input-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="email"
+              (ngModelChange)="onModelChangeEmail($event)"
+            >
+              Type here
+            </tui-input>
+          </div>
+  
+          <div class="container-dialog">
+            <p class="title-dialog">Phone</p>
+            <tui-input
+              class="input-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="phone"
+            >
+              (optional)
+            </tui-input>
+          </div>
+  
+          <div class="container-dialog">
+            <p class="title-dialog">Assigned to</p>
+  
+            <tui-combo-box
+              class="input-dialog"
+              [formControl]="controlAssignments"
+              [stringify]="stringifyAssignment"
+              tuiTextfieldSize="s"
+            >
+              Choose/Type here
+  
+              <tui-data-list-wrapper
+                *tuiDataList
+                [items]="assignments | tuiFilterByInputWith : stringifyAssignment"
+                [itemContent]="stringifyAssignment | tuiStringifyContent"
+              ></tui-data-list-wrapper>
+            </tui-combo-box>
+          </div>
+        </div>
+  
+        <div class="save-canceled-container">
+          <button class="canceled-button">Cancel</button>
+          <button class="save-button" (click)="context.complete()">Save</button>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </div>

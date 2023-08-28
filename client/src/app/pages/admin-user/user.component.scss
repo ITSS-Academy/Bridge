@@ -18,6 +18,7 @@
   --tui-base-09: #58C2CE;
   --tui-heading-font: 'Montserrat', sans-serif;
   --tui-text-font: 'Montserrat', sans-serif;
+  --tui-radius-m: 8px !important;
 }
 
 .main-container-user {
@@ -1130,7 +1131,7 @@
       width: fit-content;
       height: fit-content;
       display: flex;
-      flex-direction: row;
+      align-items: center;
       gap: 1rem;
       padding-left: 1rem;
 
@@ -1149,6 +1150,7 @@
         border-radius: 8px;
         box-shadow: none;
         border: 1px solid #58c2ce;
+        
       }
     }
 
@@ -1519,3 +1521,8 @@
 tui-input{
   outline: 0.1rem !important;
 }
+
+::ng-deep t-custom-content ng-star-inserted{
+  width: fit-content !important;
+}
+
