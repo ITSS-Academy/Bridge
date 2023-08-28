@@ -23,7 +23,7 @@ svg {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 ul {
@@ -67,7 +67,8 @@ li {
 .icons {
   display: flex;
   flex-direction: row;
-  gap: 15px
+  gap: 15px;
+  color: #58C2CE;
 }
 .icons span {
   font-size: 18px;
@@ -79,5 +80,5 @@ li {
   'FILL' 0,
   'wght' 700,
   'GRAD' 0,
-  'opsz' 48
+  'opsz' 48,
 }

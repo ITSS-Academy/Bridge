@@ -1,167 +1,56 @@
-.navbar-contacts {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+$Blue : #58c2ce;
+$Blue2: #2C698D;
+$Blue3: #272643;
+$Blue0: #BAE8E8;
+$LightGray:#F2F2F2;
+
+//CSS CỦA THANH NAV THỨ 3 --->
+.thirdNavbar{
+    background-color: #F2F2F2;
+    width: 100vw;
+    height: 66px;
+    border-bottom: 5px solid #fff;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 0 3rem;
+    box-sizing: border-box;
 }
 
-.container-navbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 94%;
-  align-items: center;
-  padding: 20px 0;
+.leftNavContent{
+    display: flex;
 }
 
-.left-navbar {
-  display: flex;
-  flex-direction: row;
-  gap: 30px;
+.rightNavContent{
+    display: flex;
 }
 
-.right-navbar {
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
+.button{
+    background-color: #fff;
+    color: $Blue;
+    min-width: 10rem;
+    border-radius: 8px;
+    border: 2px solid $Blue;
+    padding: 0.25rem 1rem;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
-.btn-list {
-  width: 160px;
-  height: 32px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  background-color: white;
-  border: 2px solid #58C2CE;
-  color: #58C2CE;
-  font-weight: 500;
-  font-size: 14px;
-  cursor: pointer;
+.buttonMainAction{
+    background-color:$Blue ;
+    color: #fff;
 }
 
-.btn-list span{
-  font-size: 18px;
+.buttonRightNavContent{
+    border: 2px solid #fff;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 600,
-  'GRAD' 0,
-  'opsz' 48
-}
-
-.btn-add {
-  width: 150px;
-  height: 30px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  color: white;
-  background-color: #58C2CE;
-  border-radius: 8px;
-  font-weight: 400;
-  font-size: 14px;
-  cursor: pointer;
-  gap: 4px;
-}
-
-.btn-add span {
-  font-size: 16px;
-}
-
-.btn-setting {
-  border: none;
-  border-radius: 8px;
-  width: 33px;
-  height: 33px;
-  background-color: white;
-}
-
-.btn-setting span {
-  font-size: 18px;
-}
-
-.number-page {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  gap: 10px;
-  width: 120px;
-  height: 33px;
-  border: none;
-  color: #999999;
-  background-color: white;
-  border-radius: 8px;
-}
-
-.number-page span {
-  font-size: 14px;
-}
-
-.list-view {
-  display: flex;
-  flex-direction: row;
-  gap: 4px;
-  width: 80px;
-  height: 33px;
-  background-color: white;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-}
-.btn-view-table {
-  border: none;
-  background-color: white;
-  cursor: pointer;
-  border-radius: 4px 0px 0px 4px; 
-}
-
-.btn-view-table:hover {
-  background-color: #a4e2e9;
-}
-
-.btn-view-list {
-  border: none;
-  background-color: white;
-  cursor: pointer;
-  border-radius: 0px 4px 4px 0px; 
-}
-
-.btn-view-list:hover {
-  background-color: #a4e2e9;
-}
-
-.list-view span {
-  border: none;
-  font-size: 18px;
-}
-
-.header {
-  display: flex;
-  width: 100%;
-  height: 12.5rem;
-  align-items: center;
-  justify-content: center;
-  background: #ffdd2d;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  margin-top: 1.5rem;
-
-  :host-context(tui-root._mobile) & {
-      flex-direction: column;
-  }
-}
+//CSS CỦA THANH NAV THỨ 3 <----
 
 // dialog from contacts
 form {
@@ -182,7 +71,7 @@ form {
 .all-label {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 28px;
 }
 
 .all-label label {
@@ -204,23 +93,23 @@ form {
 }
 
 #fname {
-  width: 500px;
+  width: 350px;
 }
 
 #lname {
-  width: 500px;
+  width: 350px;
 }
 
 #email {
-  width: 200px;
+  width: 350px;
 }
 
 #phone {
-  width: 250px;
+  width: 300px;
 }
 
 #orgName {
-  width: 200px;
+  width: 300px;
 }
 
 #assignTo {
@@ -258,3 +147,4 @@ form {
   border-top: 2px solid #58C2CE;
   height: 530px;
 }
+

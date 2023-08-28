@@ -15,6 +15,6 @@ import { provideEffects } from '@ngrx/effects';
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
-	bootstrapApplication(AppComponent, {
-    providers: [importProvidersFrom(TuiRootModule, TuiDialogModule, TuiAlertModule), provideAnimations(), provideStore(), provideEffects(), provideAnimations(), provideAnimations(), provideAnimations(), provideAnimations()],
-  }).catch(err => console.error(err));
+	// bootstrapApplication(AppComponent, {
+  //   providers: [importProvidersFrom(TuiRootModule, TuiDialogModule, TuiAlertModule), provideAnimations(), provideStore(), provideEffects(), provideAnimations(), provideAnimations(), provideAnimations(), provideAnimations()],
+  // }).catch(err => console.error(err));

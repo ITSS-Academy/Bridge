@@ -1,0 +1,18 @@
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+/>
+<div class="background">
+  <div>
+    <app-second-navbar [title]="title"></app-second-navbar>
+    <!-- THANH NAV THỨ 3 -->
+    <app-third-navbar (addDeal)="addDeal()"></app-third-navbar>
+   
+    <div class="body" >
+      <!-- NỘI DUNG TRANG RỖNG-->
+      <app-page-empty *ngIf="pageEmpty" (addDeal)="addDeal()"></app-page-empty>
+      <!-- TRANG CÓ NỘI DUNG -->
+      <app-page-w-content *ngIf="!pageEmpty"></app-page-w-content>
+    </div>
+  </div>
+</div>

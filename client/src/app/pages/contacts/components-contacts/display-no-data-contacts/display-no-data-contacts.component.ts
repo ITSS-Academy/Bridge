@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-display-no-data-contacts',
@@ -6,4 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./display-no-data-contacts.component.scss']
 })
 export class DisplayNoDataContactsComponent {
+  @Output() public addTask = new EventEmitter();
+
+  constructor(){}
+
+  emitAddTask(){
+    this.addTask.emit()
+  }
 }

@@ -10,7 +10,7 @@ import { tuiSum } from '@taiga-ui/cdk';
   
   styleUrls: ['./app.component.scss'],
         // imports: [TuiRootModule, TuiDialogModule, TuiAlertModule],
-        providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}]
+        // providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}]
     })
 export class AppComponent {
   title = 'client';

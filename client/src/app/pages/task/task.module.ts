@@ -5,11 +5,17 @@ import { TaskRoutingModule } from './task-routing.module';
 import { TaskComponent } from './task.component';
 
 import { SharedModule } from 'src/app/shared/shared/shared.module';
+import { PageEmptyComponent } from './page-empty/page-empty.component';
+import { PageWContentComponent } from './page-w-content/page-w-content.component';
+import { ThirdNavbarComponent } from './third-navbar/third-navbar.component';
 
 
 @NgModule({
   declarations: [
-    TaskComponent
+    TaskComponent,
+    PageEmptyComponent,
+    PageWContentComponent,
+    ThirdNavbarComponent
   ],
   imports: [
     CommonModule,

@@ -8,8 +8,9 @@ import { ContactsService } from '../../services/contacts.service';
 export class ContactsComponent {
   constructor(public contactsService: ContactsService) { }
   title = 'Contacts';
-  data = false;
-  clickAddData() {
-    this.data = true;
+  pageEmpty = true;
+
+  addTask(){
+    this.pageEmpty = !this.pageEmpty
   }
 }

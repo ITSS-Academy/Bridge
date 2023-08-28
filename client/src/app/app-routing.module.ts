@@ -96,7 +96,9 @@ const routes: Routes = [
     import('./pages/contacts/contacts.module').then
     (m => m.ContactsModule), 
   },
-  { path: 'task', loadChildren: () => import('./pages/task/task.module').then(m => m.TaskModule) },
+  { path: 'tasks', loadChildren: () => import('./pages/task/task.module').then(m => m.TaskModule) },
+  { path: 'cases', loadChildren: () => import('./pages/case/case.module').then(m => m.CaseModule) },
+  { path: 'deals', loadChildren: () => import('./pages/deal/deal.module').then(m => m.DealModule) },
 ];
 
 @NgModule({
