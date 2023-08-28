@@ -41,6 +41,7 @@ $LightGray:#F2F2F2;
 .buttonMainAction{
     background-color:$Blue ;
     color: #fff;
+    cursor: pointer;
 }
 
 .buttonRightNavContent{
@@ -72,7 +73,7 @@ $LightGray:#F2F2F2;
 
 //SIZE CỦA ẢNH, MN TỰ CHỈNH SỬA BẰNG VH VÀ VW CHO THÍCH HỢP
 .emptyPageImage{
-    height: 40vh;
+    height: 45vh;
     width: 60vh;
 }
 .emptyPageContentContainer{

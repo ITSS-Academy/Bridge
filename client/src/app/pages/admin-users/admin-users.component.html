@@ -97,7 +97,7 @@
             <td>Marketing manager</td>
             <td>User</td>
           </tr>
-    
+
           <tr>
             <td>
               <span
@@ -218,14 +218,16 @@
 
           <div class="box">
             <label for="">Password</label>
-            <tui-input
+            <tui-input-password
               style="outline: none !important"
               class="input-choose-dialog"
+              formControlName="testValue"
               tuiTextfieldSize="s"
-              [(ngModel)]="password"
+              [tuiTextfieldLabelOutside]="true"
             >
-              Type password
-            </tui-input>
+              Type a password
+              <input tuiTextfield/>
+            </tui-input-password>
           </div>
 
           <div class="box">
@@ -289,26 +291,28 @@
 
           <div class="box">
             <label for="">Mobile phone</label>
-            <tui-input
-              style="outline: none !important"
+            <tui-input-phone-international
               class="input-choose-dialog"
-              tuiTextfieldSize="s"
-              [(ngModel)]="phone"
+              [countries]="(phones | tuiSortCountries | async) || []"
+              [(countryIsoCode)]="countryIsoCode"
+              [tuiTextfieldLabelOutside]="true"
+              tuiTextfieldSize="m"
             >
-              Type phone number
-            </tui-input>
+              (optional)
+            </tui-input-phone-international>
           </div>
 
           <div class="box">
             <label for="">Office phone</label>
-            <tui-input
-              style="outline: none !important"
+            <tui-input-phone-international
               class="input-choose-dialog"
-              tuiTextfieldSize="s"
-              [(ngModel)]="phone"
+              [countries]="(officePhones | tuiSortCountries | async) || []"
+              [(countryIsoCode)]="countryIsoCodeOffice"
+              [tuiTextfieldLabelOutside]="true"
+              tuiTextfieldSize="m"
             >
               (optional)
-            </tui-input>
+            </tui-input-phone-international>
           </div>
 
           <div class="box">
@@ -487,7 +491,7 @@
             </tui-combo-box>
           </div>
 
-          <div class="box">
+          <div class="box-3">
             <label class="title-currency-number" for="">Currency decimal</label>
             <tui-combo-box
               class="input-choose-dialog"
