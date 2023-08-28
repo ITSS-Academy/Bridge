@@ -1,0 +1,237 @@
+<!-- <div class="editPrivilegeBox" *ngIf="assignDirectly">
+  <h3>EDIT PRIVILEGE OF THIS PROFILE</h3>
+  <tui-accordion-item>
+    <span>INVENTORY</span>
+    <ng-template tuiAccordionItemContent>
+      <div class="privilegeFieldHolder">
+        <div class="privilegeField" style="margin-top: 1rem">
+          <div class="privilegeFieldCollumn title">
+            <label class="container">
+              <input type="checkbox" />
+              <span class="checkmark"></span> </label
+            >Modules
+          </div>
+          <div class="privilegeFieldCollumn">
+            <label class="container">
+              <input type="checkbox" />
+              <span class="checkmark"></span> </label
+            >Create
+          </div>
+          <div class="privilegeFieldCollumn">
+            <label class="container">
+              <input type="checkbox" />
+              <span class="checkmark"></span> </label
+            >View
+          </div>
+          <div class="privilegeFieldCollumn">
+            <label class="container">
+              <input type="checkbox" />
+              <span class="checkmark"></span> </label
+            >Edit
+          </div>
+          <div class="privilegeFieldCollumn">
+            <label class="container">
+              <input type="checkbox" />
+              <span class="checkmark"></span> </label
+            >Delete
+          </div>
+        </div>
+        <div *ngFor="let subField of inventoryField" class="privilegeField">
+          <div class="privilegeFieldCollumn title">
+            <input type="checkbox" class="privilegeCheckBox" checked />{{
+              subField
+            }}
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </tui-accordion-item>
+
+  <tui-accordion-item>
+    <span>MARKETING</span>
+    <ng-template tuiAccordionItemContent>
+      <div class="privilegeFieldHolder">
+        <div class="privilegeField" style="margin-top: 1rem">
+          <div class="privilegeFieldCollumn title">
+            <input type="checkbox" class="privilegeCheckBox" checked />Modules
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />Create
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />View
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />Edit
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />Delete
+          </div>
+        </div>
+        <div *ngFor="let subField of marketingField" class="privilegeField">
+          <div class="privilegeFieldCollumn title">
+            <input type="checkbox" class="privilegeCheckBox" checked />{{
+              subField
+            }}
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </tui-accordion-item>
+
+  <tui-accordion-item>
+    <span>PROJECTS</span>
+    <ng-template tuiAccordionItemContent>
+      <div class="privilegeFieldHolder">
+        <div class="privilegeField" style="margin-top: 1rem">
+          <div class="privilegeFieldCollumn title">
+            <input type="checkbox" class="privilegeCheckBox" checked />Modules
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />Create
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />View
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />Edit
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />Delete
+          </div>
+        </div>
+        <div *ngFor="let subField of projectsField" class="privilegeField">
+          <div class="privilegeFieldCollumn title">
+            <input type="checkbox" class="privilegeCheckBox" checked />{{
+              subField
+            }}
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </tui-accordion-item>
+
+  <tui-accordion-item>
+    <span>SALES</span>
+    <ng-template tuiAccordionItemContent>
+      <div class="privilegeFieldHolder">
+        <div class="privilegeField" style="margin-top: 1rem">
+          <div class="privilegeFieldCollumn title">
+            <input type="checkbox" class="privilegeCheckBox" checked />Modules
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />Create
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />View
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />Edit
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />Delete
+          </div>
+        </div>
+        <div *ngFor="let subField of salesField" class="privilegeField">
+          <div class="privilegeFieldCollumn title">
+            <input type="checkbox" class="privilegeCheckBox" checked />{{
+              subField
+            }}
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </tui-accordion-item>
+
+  <tui-accordion-item>
+    <span>HELP DESK</span>
+    <ng-template tuiAccordionItemContent>
+      <div class="privilegeFieldHolder">
+        <div class="privilegeField" style="margin-top: 1rem">
+          <div class="privilegeFieldCollumn title">
+            <input type="checkbox" class="privilegeCheckBox" checked />Modules
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />Create
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />View
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />Edit
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />Delete
+          </div>
+        </div>
+        <div *ngFor="let subField of helpDeskField" class="privilegeField">
+          <div class="privilegeFieldCollumn title">
+            <input type="checkbox" class="privilegeCheckBox" checked />{{
+              subField
+            }}
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+          <div class="privilegeFieldCollumn">
+            <input type="checkbox" class="privilegeCheckBox" checked />
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </tui-accordion-item>
+</div> -->
