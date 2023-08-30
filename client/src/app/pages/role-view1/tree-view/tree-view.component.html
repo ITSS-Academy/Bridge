@@ -1,3 +1,124 @@
 <div class="body">
-    coming soon
+  <div class="header">Role Tree</div>
+  <div class="tree">
+    <div class="childrenBox">
+      <div style="display: flex; align-items: center; width: 100%">
+        <button class="nodeExpandButton">
+          <span class="material-symbols-outlined"> expand_more </span>
+        </button>
+        <div class="node parent">
+          CEO
+          <div class="nodeButtonHolder">
+            <span class="material-symbols-outlined"> add </span>
+          </div>
+        </div>
+      </div>
+      <div class="children">
+        <div class="childrenBox">
+          <div style="display: flex; align-items: center; width: 100%">
+            <button class="nodeExpandButton">
+              <span class="material-symbols-outlined"> expand_more </span>
+            </button>
+            <div class="node parent">
+              VP of Sales
+              <div class="nodeButtonHolder">
+                <span class="material-symbols-outlined"> add </span>
+              </div>
+            </div>
+          </div>
+          <div class="children">
+            <div style="display: flex; align-items: center; width: 100%">
+              <button class="nodeExpandButton">
+                <span class="material-symbols-outlined"> chevron_right </span>
+              </button>
+              <div class="node">
+                Sales Manager
+                <div class="nodeButtonHolder">
+                  <span class="material-symbols-outlined"> add </span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; width: 100%">
+              <button class="nodeExpandButton">
+                <span class="material-symbols-outlined"> chevron_right </span>
+              </button>
+              <div class="node">
+                Marketing Manager
+                <div class="nodeButtonHolder">
+                  <span class="material-symbols-outlined"> add </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="childrenBox">
+          <div style="display: flex; align-items: center; width: 100%">
+            <button class="nodeExpandButton">
+              <span class="material-symbols-outlined"> expand_more </span>
+            </button>
+            <div class="node parent">
+              VP of Customer Service
+              <div class="nodeButtonHolder">
+                <span class="material-symbols-outlined"> add </span>
+              </div>
+            </div>
+          </div>
+          <div class="children">
+            <div style="display: flex; align-items: center; width: 100%">
+              <button class="nodeExpandButton">
+                <span class="material-symbols-outlined"> chevron_right </span>
+              </button>
+              <div class="node">
+                Support Representative
+                <div class="nodeButtonHolder">
+                  <span class="material-symbols-outlined"> add </span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; width: 100%">
+              <button class="nodeExpandButton">
+                <span class="material-symbols-outlined"> chevron_right </span>
+              </button>
+              <div class="node">
+                Bitch Ass Nigga
+                <div class="nodeButtonHolder">
+                  <span class="material-symbols-outlined"> add </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="childrenBox">
+          <div style="display: flex; align-items: center; width: 100%">
+            <button class="nodeExpandButton">
+              <span class="material-symbols-outlined"> chevron_right </span>
+            </button>
+            <div class="node parent">
+              IT Consultant
+              <div class="nodeButtonHolder">
+                <span class="material-symbols-outlined"> add </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--TAIGA TREE 
+    <tui-tree
+    *ngFor="let item of data.children"
+    [childrenHandler]="handler"
+    [content]="content"
+    [tuiTreeController]="true"
+    [value]="item"
+></tui-tree>
+
+<ng-template
+    #content
+    let-item
+>
+    {{ item.text }}
+</ng-template> -->
+  </div>
 </div>
