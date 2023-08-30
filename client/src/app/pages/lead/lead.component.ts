@@ -8,6 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { TuiDialogService, TuiDialogContext } from '@taiga-ui/core';
 import { TuiDialogFormService } from '@taiga-ui/kit';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-lead',
@@ -21,8 +22,11 @@ export class LeadComponent {
   constructor(
     @Inject(TuiDialogFormService)
     private readonly dialogForm: TuiDialogFormService,
-    @Inject(TuiDialogService) private readonly dialogs: TuiDialogService
-  ) {}
+    @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
+    public authService: AuthService
+  ) {
+    // console.log(this.authService.currentUser);
+  }
 
   // title = 'Leads';
   testForm = new FormGroup({
