@@ -34,8 +34,9 @@ export class SidebarComponent {
     
   }
 
+  //ĐỔI TỪ ROLE-VIEW2 THÀNH ROLE-VIEW1 -VIỆT
   navigateToRole(){
-    this.route.navigate(['/role-view2'])
+    this.route.navigate(['/role-view1'])
   }
 
   navigateToGroups(){

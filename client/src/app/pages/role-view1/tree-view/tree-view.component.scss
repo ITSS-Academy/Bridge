@@ -1,0 +1,102 @@
+$Blue: #58c2ce;
+$Blue2: #2c698d;
+$Blue3: #272643;
+$Blue0: #bae8e8;
+$LightGray: #F2F2F2;
+.body{
+    margin-top: 3.3rem;
+    max-width: 100%;
+    min-height: 90%;
+    // border: 1px solid $Blue;
+    box-sizing: border-box;
+}
+
+.tree{
+    display: block;
+    // width: 100%;
+    max-height: max-content;
+    border-left: 1px solid #cfcfcf;
+    border-right: 1px solid #cfcfcf;
+    padding: 1.5rem 1rem 2rem;
+    background-color: $LightGray;
+    overflow: hidden;
+
+    box-shadow: inset 0 4px 8px #cfcfcf;
+    border-radius: 0 0 8px 8px;
+}
+
+.node{
+    height: max-content;
+    width: 100%;
+    padding: 0.75rem 2rem 0.75rem 1rem;
+    // border-left: 1px solid $LightGray;
+    box-sizing: border-box;
+    background-color: white;
+    margin-bottom: 0.2rem;
+    // border: 1px solid #ffff;
+    box-shadow: 0px 4px 8px #cfcfcf;
+    box-sizing: border-box;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;font-weight: 500;
+}
+
+.nodeExpandButton{
+    width:  2rem;
+    height: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    padding: 0;
+    margin: 0 0.5rem;
+    border: none;
+    border-radius: 8px;
+    background-color: $LightGray;
+    color: black;
+    margin-bottom: 0.2rem;
+    // box-shadow: 0px 4px 8px #cfcfcf;
+}
+.nodeExpandButton:hover{
+    background-color: lightgray;
+}
+.parent{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+.children{
+    padding-left: 3rem;
+    border:none;
+    box-sizing: border-box;
+}
+.childrenBox{
+    box-sizing: border-box;
+    margin-bottom: 0.75rem;
+    box-sizing: border-box;
+}
+.nodeButtonHolder{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+.node:hover{
+    background-color: $Blue;
+    color: white;
+    cursor:pointer;
+    box-shadow: 0px 4px 8px $Blue;
+}
+
+.header{
+    background-color: $Blue;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 1rem 1.75rem;
+    border-radius: 8px 8px 0 0;
+    border: 1px solid $Blue;
+    
+}

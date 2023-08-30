@@ -8,8 +8,27 @@ $Blue0: #BAE8E8;
     min-height: 84vh;
 }
 
+.pageButton{
+    display: flex;
+    justify-content: flex-end;
+    margin: 1rem 0;
+    height: 20px;
+    width: 100%;
+}
+
+.addRoleButton{
+    padding:1rem 1rem;
+    color:#ffffff;
+    background-color: $Blue;
+    display: flex;
+    align-items: center;
+    // align-content: space-between;
+    border: 1px solid $Blue;
+    border-radius: 8px;
+}
+
 .container {
-    padding: 4.7rem 8rem 8rem;
+    padding: 1.4rem 5.9rem 8rem;
     width: 100%;
     display: block;
 }
@@ -24,6 +43,7 @@ $Blue0: #BAE8E8;
 }
 
 .treeButton {
+    box-sizing: border-box;
     width: 6.25rem;
     height: 2.7rem;
     align-items: center;
@@ -31,20 +51,21 @@ $Blue0: #BAE8E8;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
     border: 2px solid #58c2ce;
-    border-right: none;
-    background-color: #58c2ce;
-    color: white;
+    background-color: #ffffff;
+    color: #58c2ce;
     font-size: 1rem;
-    font-weight: 600;
+
     cursor: pointer;
 
     &:hover {
+        border: darken($color: #58c2ce, $amount: 10);
       background-color: darken($color: #58c2ce, $amount: 10);
       color: darken($color: white, $amount: 3);
     }
 }
 
 .listButton {
+    box-sizing: border-box;
     width: 6.25rem;
     height: 2.7rem;
     align-items: center;
@@ -55,14 +76,30 @@ $Blue0: #BAE8E8;
     background-color: #ffffff;
     color: #58c2ce;
     font-size: 1rem;
-    font-weight: 600;
+
     cursor: pointer;
 
     &:hover {
-        background-color: darken($color: white, $amount: 3);
+        border: darken($color: #58c2ce, $amount: 10);
+        background-color: darken($color: #58c2ce, $amount: 10);
+      color: darken($color: white, $amount: 3);;
     }
 }
 
+.listButton:focus{
+    // border: 2px solid #58c2ce;
+    // border-right: none;
+    background-color: #58c2ce;
+    color: white;
+    font-weight: 500;
+}
+.treeButton:focus{
+    // border: 2px solid #58c2ce;
+    // border-right: none;
+    background-color: #58c2ce;
+    color: white;
+    font-weight: 500;
+}
 
 // .header{
 //     padding: 0.75rem 2rem;

@@ -195,9 +195,13 @@ td {
     font-weight: 600;
   }
 
-  .contents-dialog-lead{
-    .container-dialog{
-        
+  .contents-dialog-lead {
+    .container-dialog {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      
     }
   }
 }
