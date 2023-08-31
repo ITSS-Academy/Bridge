@@ -3,9 +3,9 @@
   <div >
     <app-second-navbar [title]="title"></app-second-navbar>
     <!-- THANH NAV THỨ 3 -->
-    <app-navbar-contacts (addTask)="addTask()"></app-navbar-contacts>
+    <app-navbar-contacts (addTask)="addTask()" style="position: relative;z-index: 2;"></app-navbar-contacts>
    
-    <div class="body" >
+    <div class="body" style="position: relative;z-index: 2;">
       <!-- NỘI DUNG TRANG RỖNG-->
       <app-display-no-data-contacts *ngIf="pageEmpty" (addTask)="addTask()"></app-display-no-data-contacts>
       <!-- TRANG CÓ NỘI DUNG -->

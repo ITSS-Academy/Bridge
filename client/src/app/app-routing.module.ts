@@ -58,11 +58,6 @@ const routes: Routes = [
       import('./pages/signup/signup.module').then((m) => m.SignupModule),
   },
   {
-    path: 'lead',
-    loadChildren: () =>
-      import('./pages/lead/lead.module').then((m) => m.LeadModule),
-  },
-  {
     path: 'display-group',
     loadChildren: () =>
       import('./pages/display-group/display-group.module').then(
@@ -84,7 +79,8 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'organization',
+    //ORGANIZATION THÊM S
+    path: 'organizations',
     loadChildren: () =>
       import('./pages/organization/organization.module').then(
         (m) => m.OrganizationModule
@@ -99,6 +95,7 @@ const routes: Routes = [
   { path: 'tasks', loadChildren: () => import('./pages/task/task.module').then(m => m.TaskModule) },
   { path: 'cases', loadChildren: () => import('./pages/case/case.module').then(m => m.CaseModule) },
   { path: 'deals', loadChildren: () => import('./pages/deal/deal.module').then(m => m.DealModule) },
+  { path: 'leads', loadChildren: () => import('./pages/leads/leads.module').then(m => m.LeadsModule) },
 ];
 
 @NgModule({

@@ -4,27 +4,6 @@ $Blue3: #272643;
 $Blue0: #BAE8E8;
 $LightGray:#F2F2F2;
 
-//CSS CỦA THANH NAV THỨ 3 --->
-.thirdNavbar{
-    background-color: #F2F2F2;
-    width: 100vw;
-    height: 66px;
-    border-bottom: 5px solid #fff;
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    padding: 0 3rem;
-    box-sizing: border-box;
-}
-
-.leftNavContent{
-    display: flex;
-}
-
-.rightNavContent{
-    display: flex;
-}
-
 .button{
     background-color: #fff;
     color: $Blue;
@@ -41,75 +20,35 @@ $LightGray:#F2F2F2;
 .buttonMainAction{
     background-color:$Blue ;
     color: #fff;
-    cursor: pointer;
-}
-
-.buttonRightNavContent{
-    border: 2px solid #fff;
-    color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-//CSS CỦA THANH NAV THỨ 3 <----
-
-.body{
-    background-color: $LightGray;
-    width: 100vw;
-    min-height: 76vh;
-    max-height: 100%;
-    box-sizing: border-box;
-
-    display: flex;
-    justify-content: center;
-}
-
-//CSS CỦA TRANG RỖNG
-.emptyPage{
-    margin-top: 2rem;
-    display: grid;
-    grid-template-rows: auto 1fr auto
-}
-
-//SIZE CỦA ẢNH, MN TỰ CHỈNH SỬA BẰNG VH VÀ VW CHO THÍCH HỢP
-.emptyPageImage{
-    height: 40vh;
-    width: 40vh;
-}
-.emptyPageContentContainer{
-    margin-top: 2rem;
-    display: block;
-}
-.emptyPageContent{
-    display: flex;
-    justify-content: center;
-    margin: 0.5rem 0;
-    color: $Blue2;
-    font-size: medium;
 }
 
 //CSS CỦA TRANG CÓ NỘI DUNG
 table{
     background-color: #fff;
-    width: 100vw
+    width: 100vw;
 }
 tr{
-    padding: 0.5rem 3rem;
+    max-height: 24px;
+    padding: 0.5rem 1rem;
     align-items: center;
     border-bottom: 1px solid $LightGray;
 }
 th{
-    padding: 0.5rem 3rem;
+    padding: 0.5rem 1rem;
     text-align: left;
     color: $Blue2;
     width: 10rem;
     align-items: center;
+    overflow: hidden;
+    width: 9rem;
 }
 td{
-    padding: 0.5rem 3rem;
+    padding: 0.5rem 1rem;
     color: $Blue2;
     width: 10rem;
     align-items: center;
+    overflow: hidden;
+    width: 9rem;
 }
 
 //CSS CỦA CHECKBOX - COPY TRÊN MẠNG TỐT NHẤT ĐỪNG ĐỤNG VÀO
