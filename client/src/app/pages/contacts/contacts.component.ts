@@ -10,7 +10,7 @@ export class ContactsComponent {
   title = 'Contacts';
   pageEmpty = true;
 
-  addTask(){
+  addContact(){
     this.pageEmpty = !this.pageEmpty
   }
 }

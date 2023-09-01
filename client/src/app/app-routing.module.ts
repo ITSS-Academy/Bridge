@@ -99,6 +99,7 @@ const routes: Routes = [
   { path: 'tasks', loadChildren: () => import('./pages/task/task.module').then(m => m.TaskModule) },
   { path: 'cases', loadChildren: () => import('./pages/case/case.module').then(m => m.CaseModule) },
   { path: 'deals', loadChildren: () => import('./pages/deal/deal.module').then(m => m.DealModule) },
+  { path: 'events', loadChildren: () => import('./pages/events/events.module').then(m => m.EventsModule) },
 ];
 
 @NgModule({
