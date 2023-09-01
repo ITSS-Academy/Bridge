@@ -171,7 +171,8 @@
         width: fit-content;
         height: fit-content;
         display: flex;
-        flex-direction: row;
+        align-items: center;
+        // flex-direction: row;
         gap: 1.5rem;
 
         #title-display {

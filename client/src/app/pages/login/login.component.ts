@@ -69,16 +69,16 @@ export class LoginComponent {
         this.store.dispatch(LoginAction.login({ loginAccount: account }));
         this.login$.subscribe((data) => {
           if (data.status == 'Login success') {
-            this.authService.getCurrentUser(data.authAccount!.id)
+            console.log(data.authAccount!.email)
+            this.authService.getCurrentUser(data.authAccount!.email)
             this.userName.setValue('');
             this.password.setValue('');
             this.notification = 'Login success';
             this.status = 'success';
             this.show = true;
+            // localStorage.removeItem('currentUser');
+            // localStorage.setItem('currentUser', JSON.stringify(this.authService.currentUser));
             setTimeout(() => {
-              localStorage.removeItem('currentUser');
-              localStorage.setItem('currentUser', JSON.stringify(this.authService.currentUser));
-              console.log(this.authService.currentUser)
               this.router.navigate(['/lead']);
             },1400)
             return;

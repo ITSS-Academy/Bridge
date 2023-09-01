@@ -12,12 +12,16 @@ export class AuthService {
 
   currentUser: any
 
-  getCurrentUser(id: string){
-    let result = this.http.get(`http://localhost:3000/users/findById/${id}`) as Observable<any>;
-    result.subscribe(data => {
-      console.log(data)
-      this.currentUser = data;
-      console.log(this.currentUser)
+  getCurrentUser(email: string){
+    let result = this.http.get(`http://localhost:3000/users/findByEmail/${email}`) as Observable<any>;
+    const subscription:any = result.subscribe({
+      next: (data) => {
+        console.log(data)
+        this.currentUser = data
+        localStorage.removeItem('currentUser');
+        localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      },
+      complete: () => subscription.unsubscribe(),
     })
     return result;
   }

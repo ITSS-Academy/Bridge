@@ -25,13 +25,21 @@ export class SecondNavbarComponent implements OnInit {
   constructor(public router: Router,public authService: AuthService){}
 
   ngOnInit(): void {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
+    this.currentUser= JSON.parse(localStorage.getItem('currentUser')!);
     console.log(this.currentUser.data)
     // console.log(this.currentUser.data.attributes.photo)
   }
 
   navigateToLeads(route: string){
     this.router.navigate([route]);
+  }
+
+  navigateToProfile(){
+    this.router.navigate(['/user']);
+  }
+
+  navigateToAdmin(){
+    this.router.navigate(['/admin-users']);
   }
 
 }

@@ -1,119 +1,121 @@
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <div class="second-navbar">
   <div class="top-navbar">
     <div class="container-logo-user">
-    <div class="logo-list-page">
-      <svg
-          width="89"
-          height="51"
-          viewBox="0 0 89 51"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+      <div class="logo-list-page">
+        <svg width="89" height="51" viewBox="0 0 89 51" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="10" y="37" width="69.334" height="4.81486" fill="white" />
-          <rect
-            x="26.8838"
-            y="40.2866"
-            width="2.75135"
-            height="10.7133"
-            fill="white"
-          />
-          <rect
-            width="2.75135"
-            height="10.7133"
-            transform="matrix(-1 0 0 1 28.168 40.2866)"
-            fill="white"
-          />
-          <path
-            d="M44.8594 40.3073C39.7847 40.0643 29.6353 41.8626 29.6353 51"
-            stroke="white"
-            stroke-width="2"
-          />
-          <path
-            d="M10.1929 40.3073C15.2676 40.0643 25.417 41.8626 25.417 51"
-            stroke="white"
-            stroke-width="2"
-          />
-          <rect
-            x="61.166"
-            y="40.2866"
-            width="2.75135"
-            height="10.7133"
-            fill="white"
-          />
-          <rect
-            width="2.75135"
-            height="10.7133"
-            transform="matrix(-1 0 0 1 62.4497 40.2866)"
-            fill="white"
-          />
-          <path
-            d="M79.1416 40.3073C74.0669 40.0643 63.9175 41.8626 63.9175 51"
-            stroke="white"
-            stroke-width="2"
-          />
-          <path
-            d="M44.4741 40.3073C49.5488 40.0643 59.6982 41.8626 59.6982 51"
-            stroke="white"
-            stroke-width="2"
-          />
+          <rect x="26.8838" y="40.2866" width="2.75135" height="10.7133" fill="white" />
+          <rect width="2.75135" height="10.7133" transform="matrix(-1 0 0 1 28.168 40.2866)" fill="white" />
+          <path d="M44.8594 40.3073C39.7847 40.0643 29.6353 41.8626 29.6353 51" stroke="white" stroke-width="2" />
+          <path d="M10.1929 40.3073C15.2676 40.0643 25.417 41.8626 25.417 51" stroke="white" stroke-width="2" />
+          <rect x="61.166" y="40.2866" width="2.75135" height="10.7133" fill="white" />
+          <rect width="2.75135" height="10.7133" transform="matrix(-1 0 0 1 62.4497 40.2866)" fill="white" />
+          <path d="M79.1416 40.3073C74.0669 40.0643 63.9175 41.8626 63.9175 51" stroke="white" stroke-width="2" />
+          <path d="M44.4741 40.3073C49.5488 40.0643 59.6982 41.8626 59.6982 51" stroke="white" stroke-width="2" />
           <rect x="58" width="7" height="34" fill="white" />
-          <path
-            d="M60 6.49649e-07C60 36.2309 29 35.7684 29 -2.06046e-06"
-            stroke="white"
-            stroke-width="4"
-          />
+          <path d="M60 6.49649e-07C60 36.2309 29 35.7684 29 -2.06046e-06" stroke="white" stroke-width="4" />
           <rect x="24" width="7" height="34" fill="white" />
-          <path
-            d="M63 0C63 10.6667 68.2 32 89 32"
-            stroke="white"
-            stroke-width="4"
-          />
-          <path
-            d="M26 0C26 10.6667 20.8 32 7.7486e-07 32"
-            stroke="white"
-            stroke-width="4"
-          />
-          
+          <path d="M63 0C63 10.6667 68.2 32 89 32" stroke="white" stroke-width="4" />
+          <path d="M26 0C26 10.6667 20.8 32 7.7486e-07 32" stroke="white" stroke-width="4" />
+
         </svg>
-      <ul class="list-page" *ngFor="let page of this.navPages">
-        <li (click)="navigateToLeads(page.route)">{{page.name}}</li>
-      </ul>
+        <ul class="list-page" *ngFor="let page of this.navPages">
+          <li (click)="navigateToLeads(page.route)">{{page.name}}</li>
+        </ul>
+      </div>
+
     </div>
-    <div class="user" style="display: flex; align-items: center; column-gap: 1rem;">
-      {{this.currentUser.data.attributes.full_name}}
-      <img src="{{this.currentUser.data.attributes.photo}}"  style="width: 30px; height: 30px; border-radius: 50%;" alt="">
-      <!-- <span class="material-symbols-outlined">
-        account_circle
-        </span> -->
-    </div>
-  </div>
   </div>
   <div class="bottom-navbar">
     <div class="container-title-icons">
       <div class="title-page">
         <p>{{title}}</p>
       </div>
+      <div class="right-bottom-navbar">
         <div class="icons">
           <span class="material-symbols-outlined">
             search
-            </span>
+          </span>
           <span class="material-symbols-outlined">
-              update
-            </span>
+            update
+          </span>
           <span class="material-symbols-outlined">
-              add_circle
-            </span>
+            add_circle
+          </span>
           <span class="material-symbols-outlined">
-              calendar_today
-            </span>
+            calendar_today
+          </span>
           <span class="material-symbols-outlined">
-              notifications
-            </span>
-            <span class="material-symbols-outlined">
-              mail
-              </span>
+            notifications
+          </span>
+          <span class="material-symbols-outlined">
+            mail
+          </span>
         </div>
-  </div>
+        <div class="user" [tuiDropdown]="content" tuiDropdownHover>
+          <img *ngIf="this.currentUser.data.attributes.photo != '' " src="{{this.currentUser.data.attributes.photo}}"
+            style="width: 80%; height: auto; border-radius: 100%;" alt="">
+          <img *ngIf="this.currentUser.data.attributes.photo == '' " src="https://wallpaperaccess.com/full/2362086.png"
+            style="width: 80%; height: auto; border-radius: 100%;" alt="">
+          <!-- <span class="material-symbols-outlined">
+              account_circle
+              </span> -->
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+
+<ng-template #content id="content">
+  <div class="user-profile">
+    <div class="avt">
+      <img *ngIf="this.currentUser.data.attributes.photo != '' " [src]="this.currentUser.data.attributes.photo"
+        style="width: 65%; height: auto; border-radius: 100%;" alt="">
+      <img *ngIf="this.currentUser.data.attributes.photo == '' " src="https://wallpaperaccess.com/full/2362086.png"
+        style="width: 65%; height: auto; border-radius: 100%;" alt="">
+    </div>
+    <div class="info">
+      <h3 style="text-align: center; padding: 0; margin: 0;">
+        {{this.currentUser.data.attributes.full_name}}
+      </h3>
+      <p style="text-align: center;">
+        {{this.currentUser.data.attributes.email1}}
+      </p>
+    </div>
+    <div class="function">
+      <div (click)="navigateToProfile()">
+        <i class="fi fi-br-user"></i>
+        <p>Profile</p>
+      </div>
+      <div *ngIf="this.currentUser.data.attributes.title == 'Admin'" (click)="navigateToAdmin()">
+        <i class="fi fi-br-user-robot"></i>
+        <p>Admin</p>
+      </div>
+      <div>
+        <i class="fi fi-br-users-alt"></i>
+        <p>Employees</p>        
+      </div>
+      <div>
+        <i class="fi fi-br-sign-out-alt"></i>
+        <p>Logout</p>
+      </div>
+    </div>
+    <div class="auth-version">
+      <div class="brand">
+        <img style="height: auto; width: 15%;" src="../../../assets/logo_v2.png" alt="">
+        <h3>Bridge</h3>
+      </div>
+      <div class="user-profile-bottom">
+        <p>Privacy Policy</p>
+        <p>|</p>
+        <p>Security Statement</p>
+      </div>
+      <div style="margin: 0 auto;" class="version">
+        <p style="text-align: center; padding: 0; margin: 0;">0.0.0.1</p>
+      </div>
+    </div>
+  </div>
+</ng-template>
