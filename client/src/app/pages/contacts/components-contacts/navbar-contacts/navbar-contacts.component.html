@@ -9,11 +9,16 @@
       <span class="material-symbols-outlined"> expand_more </span>
     </button>
 
-    <button class="button buttonMainAction" size="m" type="button" (click)="onClick(content, 'auto')">
+    <button
+      class="button buttonMainAction"
+      size="m"
+      type="button"
+      (click)="onClick(content, 'auto')"
+    >
       <span class="material-symbols-outlined"> add </span>
 
       <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
-      <span style="margin: 0 1rem" >Add Contacts</span>
+      <span style="margin: 0 1rem">Add Contacts</span>
     </button>
   </div>
   <div class="rightNavContent">
@@ -34,13 +39,23 @@
     </button>
   </div>
 </div>
-<!-- dialog from contacts -->
-<!-- <button class="btn-close" (click)="observer.complete()"></button> -->
+
+<!--DIALOG CONTACT-->
 <ng-template #content let-observer>
-  <h2 class="title-dialog">Add Contact</h2>
-    <div class="box-form">
+
+  <!--DIV BỰ BAO QUANH CHỨA NỘI DUNG HIỂN THỊ DIALOG-->
+  <div class="box-form">
+
+    <!--FORM CHỨA NỘI DUNG HIỂN THỊ NỘI DUNG VÀ CHỈNH SỬA CHIỀU RỘNG CỦA DIALOG-->
     <form [formGroup]="contactsForm" (ngSubmit)="observer.complete()">
-      <div class="form-contacts">   
+
+      <!--TỰA ĐỂ CHÍNH BỰ CỦA DIALOG CONTACT-->
+      <h2 class="title-dialog">Add Contact</h2>
+
+      <!--DIV CHỨA NỘI DUNG CHÍNH CỦA DIALOG-->
+      <div class="form-contacts">
+
+        <!--DIV BÊN TRÁI HIỂN THỊ TOÀN BỘ TIÊU ĐỀ THEO DẠNG COLUMN-->
         <div class="all-label">
           <label for="fname">First Name</label>
           <label for="lname">Last Name</label>
@@ -50,61 +65,122 @@
           <label for="assignTo">Assign To</label>
           <label for="lifeCycleStage">LifeycleStage</label>
           <label for="lifeCycleStage">Status</label>
-        </div>    
+        </div>
+
+        <!--DIV BÊN PHẢI HIỂN THỊ TOÀN BỘ BOX NHẬP THEO DẠNG COLUMN-->
         <div class="all-input">
-          <tui-input formControlName="firstname"  type="text" id="fname" name="firstname" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true"></tui-input>
-          <tui-input formControlName="lastName" type="text" id="lname" name="lastname" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true"></tui-input>
-          <tui-input formControlName="email" type="text" id="email" name="email" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true"></tui-input>
-          <tui-input-phone-international 
-            formControlName="phone"  type="text" id="phone" name="phone" 
-            tuiTextfieldSize="s" 
+
+          <!--FIRSTNAME-->
+          <tui-input
+            formControlName="firstname"
+            type="text"
+            id="fname"
+            name="firstname"
+            tuiTextfieldSize="s"
+            [tuiTextfieldLabelOutside]="true"
+          >Type here</tui-input>
+
+          <!--LASTNAME-->
+          <tui-input
+            formControlName="lastName"
+            type="text"
+            id="lname"
+            name="lastname"
+            tuiTextfieldSize="s"
+            [tuiTextfieldLabelOutside]="true"
+          >Type here</tui-input>
+
+          <!--EMAIL-->
+          <tui-input
+            formControlName="email"
+            type="text"
+            id="email"
+            name="email"
+            tuiTextfieldSize="s"
+            [tuiTextfieldLabelOutside]="true"
+          >Type here</tui-input>
+
+          <!--PHONE-->
+          <tui-input-phone-international
+            formControlName="phone"
+            type="text"
+            id="phone"
+            name="phone"
+            tuiTextfieldSize="m"
             [tuiTextfieldLabelOutside]="true"
             [countries]="(countries | tuiSortCountries | async) || []"
-             [(countryIsoCode)]="countryIsoCode">
+            [(countryIsoCode)]="countryIsoCode"
+          >
+          Input here
           </tui-input-phone-international>
-          <tui-input formControlName="organizationName"  type="text" id="orgName" name="orgName" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true"></tui-input>
-          <tui-input formControlName="assignTo" id="assignTo" name="assignTo" tuiTextfieldSize="s"  [tuiTextfieldLabelOutside]="true">
-            user or group
+
+          <!--ORGANIZATION-->
+          <tui-input
+            formControlName="organizationName"
+            type="text"
+            id="orgName"
+            name="orgName"
+            tuiTextfieldSize="s"
+            [tuiTextfieldLabelOutside]="true"
+          >Type here</tui-input>
+
+          <!--ASSIGNED TO-->
+          <tui-combo-box
+            id="assignTo"
+            [formControl]="controlAssignments"
+            [stringify]="stringifyAssignment"
+            tuiTextfieldSize="s"
+          >
+            Choose/Type here
+
             <tui-data-list-wrapper
-                *tuiDataList
-                [items]="allAss"
-                [labels]="labels"
-            ></tui-data-list-wrapper>
-        </tui-input>
-          <tui-combo-box tuiTextfieldSize="s" formControlName="lifeycleStage" [stringify]="stringifyLife" id="lifeCycleStage" class="input"  [tuiTextfieldLabelOutside]="true">
-             LifeycleStage
-            <tui-data-list-wrapper
-                *tuiDataList
-                [items]="allLife | tuiFilterByInputWith : stringifyLife"
-                [itemContent]="stringifyLife | tuiStringifyContent"
-                
+              *tuiDataList
+              [items]="assignments | tuiFilterByInputWith : stringifyAssignment"
+              [itemContent]="stringifyAssignment | tuiStringifyContent"
             ></tui-data-list-wrapper>
           </tui-combo-box>
-          <tui-combo-box tuiTextfieldSize="s" formControlName="status" [stringify]="stringifyStatus" id="status" class="input"  [tuiTextfieldLabelOutside]="true">
-            status
+
+          <!--STAGES-->
+          <tui-combo-box
+            tuiTextfieldSize="s"
+            formControlName="lifeycleStage"
+            [stringify]="stringifyLife"
+            id="lifeCycleStage"
+            class="input"
+            [tuiTextfieldLabelOutside]="true"
+          >
+            Choose/Type here
             <tui-data-list-wrapper
-                *tuiDataList
-                [items]="allStatus | tuiFilterByInputWith : stringifyStatus"
-                [itemContent]="stringifyStatus | tuiStringifyContent"
+              *tuiDataList
+              [items]="allLife | tuiFilterByInputWith : stringifyLife"
+              [itemContent]="stringifyLife | tuiStringifyContent"
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+
+          <!--STATUS-->
+          <tui-combo-box
+            tuiTextfieldSize="s"
+            formControlName="status"
+            [stringify]="stringifyStatus"
+            id="status"
+            class="input"
+            [tuiTextfieldLabelOutside]="true"
+          >
+            Choose here
+            <tui-data-list-wrapper
+              *tuiDataList
+              [items]="allStatus | tuiFilterByInputWith : stringifyStatus"
+              [itemContent]="stringifyStatus | tuiStringifyContent"
             ></tui-data-list-wrapper>
           </tui-combo-box>
         </div>
-        </div>
-    <button class="btn-save" type="submit">
-      Save
-  </button>
+      </div>
     </form>
+
+    <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
+    <div class="cancel-save">
+      <button class="button-cancel" type="submit">Cancel</button>
+      <button class="button-add" type="submit">Add</button>
     </div>
+  </div>
 </ng-template>
-
-
-
-
-
-
-          
-          
-          
-          
-          
-          

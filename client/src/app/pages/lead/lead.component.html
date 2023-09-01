@@ -18,7 +18,10 @@
           <span class="material-symbols-outlined"> expand_more </span>
         </button>
 
-        <button class="button buttonMainAction" (click)="addTask()">
+        <button
+          class="button buttonMainAction"
+          (click)="showDialog(dialogAddLeads, 'auto')"
+        >
           <span class="material-symbols-outlined"> add </span>
 
           <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
@@ -66,7 +69,7 @@
             <button
               class="button buttonMainAction"
               style="margin-right: 0"
-              (click)="showDialog(dialogAddLeads)"
+              (click)="addTask()"
             >
               <span class="material-symbols-outlined"> add </span>
 
@@ -137,11 +140,20 @@
     </div>
 
     <!-- DIALOG -->
-    <ng-template id="dialogAddLead" #dialogAddLeads let-context>
-      <div class="dialog-lead">
+    <ng-template id="dialogAddLead" #dialogAddLeads let-observer>
+      <!--FORM CHỨA NỘI DUNG DIALOG-->
+      <form
+        id="form-container"
+        [formGroup]="exampleForm"
+        (ngSubmit)="observer.complete()"
+      >
+        <!--CHỮ TỰA ĐỀ CỦA DIALOG-->
         <p id="header-dialog">Add Lead</p>
 
+        <!--DIV CHỨA NỘI DUNG DIALOG-->
         <div class="contents-dialog-lead">
+
+          <!--DIV FIRST NAME-->
           <div class="container-dialog">
             <p class="title-dialog">First name</p>
             <tui-input
@@ -155,6 +167,7 @@
             </tui-input>
           </div>
 
+          <!--DIV LAST NAME-->
           <div class="container-dialog">
             <p class="title-dialog">Last name</p>
             <tui-input
@@ -167,6 +180,7 @@
             </tui-input>
           </div>
 
+          <!--DIV COMPANY-->
           <div class="container-dialog">
             <p class="title-dialog">Company</p>
             <tui-input
@@ -179,6 +193,7 @@
             </tui-input>
           </div>
 
+          <!--DIV EMAIL-->
           <div class="container-dialog">
             <p class="title-dialog">Email</p>
             <tui-input
@@ -191,20 +206,25 @@
             </tui-input>
           </div>
 
+          <!--DIV PHONE-->
           <div class="container-dialog">
             <p class="title-dialog">Phone</p>
-            <tui-input
+            <tui-input-phone-international
               class="input-dialog"
-              tuiTextfieldSize="s"
-              [(ngModel)]="phone"
+              [countries]="(phones | tuiSortCountries | async) || []"
+              [(countryIsoCode)]="countryIsoCode"
+              [tuiTextfieldLabelOutside]="true"
+              tuiTextfieldSize="m"
+              style="border-radius: 8px;"
             >
               (optional)
-            </tui-input>
+            </tui-input-phone-international>
           </div>
 
+          <!--DIV ASSIGNED TO-->
           <div class="container-dialog">
             <p class="title-dialog">Assigned to</p>
-       
+
             <tui-combo-box
               class="input-dialog"
               [formControl]="controlAssignments"
@@ -224,11 +244,12 @@
           </div>
         </div>
 
-        <div class="save-canceled-container">
-          <button class="canceled-button">Cancel</button>
-          <button class="save-button" (click)="context.complete()">Save</button>
+        <!--DIV NÚT CANCEL VÀ SAVE-->
+        <div class="cancel-save">
+          <button class="button-cancel" type="submit">Cancel</button>
+          <button class="button-add" type="submit">Add</button>
         </div>
-      </div>
+      </form>
     </ng-template>
   </div>
 </div>
