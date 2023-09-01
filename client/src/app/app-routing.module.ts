@@ -90,15 +90,26 @@ const routes: Routes = [
         (m) => m.OrganizationModule
       ),
   },
-  { 
-    path: 'contacts', 
-    loadChildren: () => 
-    import('./pages/contacts/contacts.module').then
-    (m => m.ContactsModule), 
+  {
+    path: 'contacts',
+    loadChildren: () =>
+      import('./pages/contacts/contacts.module').then((m) => m.ContactsModule),
   },
-  { path: 'tasks', loadChildren: () => import('./pages/task/task.module').then(m => m.TaskModule) },
-  { path: 'cases', loadChildren: () => import('./pages/case/case.module').then(m => m.CaseModule) },
-  { path: 'deals', loadChildren: () => import('./pages/deal/deal.module').then(m => m.DealModule) },
+  {
+    path: 'tasks',
+    loadChildren: () =>
+      import('./pages/task/task.module').then((m) => m.TaskModule),
+  },
+  {
+    path: 'cases',
+    loadChildren: () =>
+      import('./pages/case/case.module').then((m) => m.CaseModule),
+  },
+  {
+    path: 'deals',
+    loadChildren: () =>
+      import('./pages/deal/deal.module').then((m) => m.DealModule),
+  },
 ];
 
 @NgModule({

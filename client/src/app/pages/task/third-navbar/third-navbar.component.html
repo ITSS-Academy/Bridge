@@ -1,36 +1,214 @@
 <div class="thirdNavbar">
-    <div class="leftNavContent">
-      <button class="button">
-        <span class="material-symbols-outlined"> filter_list </span>
+  <div class="leftNavContent">
+    <button class="button">
+      <span class="material-symbols-outlined"> filter_list </span>
 
-        <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
-        <span style="margin: 0 1rem">My Task</span>
+      <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
+      <span style="margin: 0 1rem">My Task</span>
 
-        <span class="material-symbols-outlined"> expand_more </span>
-      </button>
+      <span class="material-symbols-outlined"> expand_more </span>
+    </button>
 
-      <button class="button buttonMainAction">
-        <span class="material-symbols-outlined"> add </span>
+    <button
+      class="button buttonMainAction"
+      (click)="showDialog(dialogAddTask, 'auto')"
+    >
+      <span class="material-symbols-outlined"> add </span>
 
-        <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
-        <span style="margin: 0 1rem" (click)="emitAddTask()">Add Task</span>
-      </button>
-    </div>
-    <div class="rightNavContent">
-      <button
-        class="button buttonRightNavContent"
-        style="padding: 0.25rem 1rem; min-width: max-content"
-      >
-        <span class="material-symbols-outlined"> rule_settings </span>
-      </button>
-
-      <button class="button buttonRightNavContent">
-        <span class="material-symbols-outlined"> chevron_left </span>
-
-        <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
-        <span style="margin: 0 1rem">1 to 2</span>
-
-        <span class="material-symbols-outlined"> chevron_right </span>
-      </button>
-    </div>
+      <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
+      <span style="margin: 0 1rem">Add Task</span>
+    </button>
   </div>
+  <div class="rightNavContent">
+    <button
+      class="button buttonRightNavContent"
+      style="padding: 0.25rem 1rem; min-width: max-content"
+    >
+      <span class="material-symbols-outlined"> rule_settings </span>
+    </button>
+
+    <button class="button buttonRightNavContent">
+      <span class="material-symbols-outlined"> chevron_left </span>
+
+      <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
+      <span style="margin: 0 1rem">1 to 2</span>
+
+      <span class="material-symbols-outlined"> chevron_right </span>
+    </button>
+  </div>
+
+  <!-- DIALOG MAIN -->
+  <ng-template id="dialogAddTask" #dialogAddTask let-observer>
+
+    <!--FORM CHỨA NỘI DUNG HIÊN THỊ CỦA DIALOG-->
+    <form
+      id="form-container"
+      [formGroup]="exampleForm"
+      (ngSubmit)="observer.complete()"
+    >
+
+      <!--TỰA ĐỀ BỰ CỦA DIALOG-->
+      <p id="header-dialog">Add Task</p>
+
+      <!--DIV CHỨA NỘI DUNG CHÍNH VÀ NHẬP-->
+      <div class="content-dialog">
+
+        <!--NAME-->
+        <div class="container-dialog">
+          <p class="title-dialog">Name</p>
+          <tui-input
+            style="outline: none !important"
+            class="input-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="name"
+            (ngModelChange)="onModelChangeName($event)"
+          >
+            Type here
+          </tui-input>
+        </div>
+
+        <!--ASSIGNED TO-->
+        <div class="container-dialog">
+          <p class="title-dialog">Assigned to</p>
+
+          <tui-combo-box
+            class="input-dialog"
+            [formControl]="controlAssignments"
+            [stringify]="stringifyAssignment"
+            tuiTextfieldSize="s"
+          >
+            Choose/Type here
+
+            <tui-data-list-wrapper
+              *tuiDataList
+              [items]="assignments | tuiFilterByInputWith : stringifyAssignment"
+              [itemContent]="stringifyAssignment | tuiStringifyContent"
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+        </div>
+
+        <!--TIME-->
+        <div class="container-dialog">
+          <p class="title-dialog">Estimate time</p>
+          <tui-input
+            style="outline: none !important"
+            class="input-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="time"
+            (ngModelChange)="onModelChangeTime($event)"
+          >
+            Type here
+          </tui-input>
+        </div>
+
+        <!--DUE DATE-->
+        <div class="container-dialog">
+          <p class="title-dialog">Due date & Time</p>
+
+          <tui-input-date
+            class="input-dialog"
+            formControlName="testValue"
+            tuiTextfieldSize="s"
+          >
+            Choose a date
+          </tui-input-date>
+        </div>
+
+        <!--STAGE-->
+        <div class="container-dialog">
+          <p class="title-dialog">Stage</p>
+
+          <tui-combo-box
+            class="input-dialog"
+            [formControl]="controlStages"
+            [stringify]="stringifyStage"
+            tuiTextfieldSize="s"
+          >
+            Choose here
+
+            <tui-data-list-wrapper
+              *tuiDataList
+              [items]="stages | tuiFilterByInputWith : stringifyStage"
+              [itemContent]="stringifyStage | tuiStringifyContent"
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+        </div>
+
+        <!--PRIORITY-->
+        <div class="container-dialog">
+          <p class="title-dialog">Priority</p>
+
+          <tui-combo-box
+            class="input-dialog"
+            [formControl]="controlPriorities"
+            [stringify]="stringifyPriority"
+            tuiTextfieldSize="s"
+          >
+            Choose/Type here
+
+            <tui-data-list-wrapper
+              *tuiDataList
+              [items]="priorities | tuiFilterByInputWith : stringifyPriority"
+              [itemContent]="stringifyPriority | tuiStringifyContent"
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+        </div>
+
+        <!--LOCATION-->
+        <div class="container-dialog">
+          <p class="title-dialog">Location</p>
+
+          <tui-input
+            style="outline: none !important"
+            class="input-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="location"
+            (ngModelChange)="onModelChangeLocation($event)"
+          >
+            Type here
+          </tui-input>
+        </div>
+
+        <!--TASK-->
+        <div class="container-dialog">
+          <p class="title-dialog">Task type</p>
+
+          <tui-combo-box
+            class="input-dialog"
+            [formControl]="controlTasks"
+            [stringify]="stringifyTask"
+            tuiTextfieldSize="s"
+          >
+            Choose/Type here
+
+            <tui-data-list-wrapper
+              *tuiDataList
+              [items]="tasks | tuiFilterByInputWith : stringifyTask"
+              [itemContent]="stringifyTask | tuiStringifyContent"
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+        </div>
+
+        <!--DESCRIPTION-->
+        <div class="container-dialog">
+          <p class="title-dialog">Description</p>
+
+          <tui-textarea
+            style="outline: none !important"
+            class="input-dialog"
+            formControlName="testValue1"
+            [expandable]="false"
+            [tuiTextfieldLabelOutside]="true"
+            >Type a text
+          </tui-textarea>
+        </div>
+      </div>
+
+      <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
+      <div class="cancel-save">
+        <button class="button-cancel" type="submit">Cancel</button>
+        <button class="button-add" type="submit">Add</button>
+      </div>
+    </form>
+  </ng-template>
+</div>
