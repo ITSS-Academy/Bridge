@@ -79,7 +79,7 @@ export class LoginComponent {
             // localStorage.removeItem('currentUser');
             // localStorage.setItem('currentUser', JSON.stringify(this.authService.currentUser));
             setTimeout(() => {
-              this.router.navigate(['/lead']);
+              this.router.navigate(['/leads']);
             },1400)
             return;
           }
