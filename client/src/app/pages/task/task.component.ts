@@ -4,13 +4,14 @@ import { FormGroup, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
-  styleUrls: ['./task.component.scss']
+  styleUrls: ['./task.component.scss'],
 })
 export class TaskComponent {
+  //ĐỔI TITLE THÀNH TÊN TRANG
   title = 'Tasks';
   pageEmpty = true;
 
-  addTask(){
-    this.pageEmpty = !this.pageEmpty
+  addInfo() {
+    this.pageEmpty = !this.pageEmpty;
   }
 }

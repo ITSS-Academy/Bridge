@@ -8,13 +8,15 @@ $LightGray:#F2F2F2;
 .emptyPage{
     margin-top: 2rem;
     display: grid;
-    grid-template-rows: auto 1fr auto
+    grid-template-rows: auto 1fr auto;
+    justify-items: center;
+    
 }
 
 //SIZE CỦA ẢNH, MN TỰ CHỈNH SỬA BẰNG VH VÀ VW CHO THÍCH HỢP
 .emptyPageImage{
     height: 40vh;
-    width: 50vh;
+    width: 40vh;
 }
 .emptyPageContentContainer{
     margin-top: 2rem;
@@ -44,4 +46,5 @@ $LightGray:#F2F2F2;
 .buttonMainAction{
     background-color:$Blue ;
     color: #fff;
+    cursor: pointer;
 }

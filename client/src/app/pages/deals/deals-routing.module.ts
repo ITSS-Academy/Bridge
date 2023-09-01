@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RoleView2Component } from './role-view2.component';
+import { DealsComponent } from './deals.component';
 
-const routes: Routes = [{ path: '', component: RoleView2Component }];
+const routes: Routes = [{ path: '', component: DealsComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class RoleView2RoutingModule { }
+export class DealsRoutingModule { }

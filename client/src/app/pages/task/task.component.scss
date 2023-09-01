@@ -1,27 +1,22 @@
-$Blue : #58c2ce;
-$Blue2: #2C698D;
+$Blue: #58c2ce;
+$Blue2: #2c698d;
 $Blue3: #272643;
-$Blue0: #BAE8E8;
-$LightGray:#F2F2F2;
+$Blue0: #bae8e8;
+$LightGray: #f2f2f2;
 
-.background{
-    width: 100vw;
-    min-height: 100vh;
-    max-height: max-content;
-    background-color: $LightGray;
+.background {
+  width: 100vw;
+  min-height: 100vh;
+  max-height: max-content;
+  background-color: $LightGray;
 }
 
+.body {
+  width: 100vw;
+  min-height: 100%;
+  max-height: max-content;
+  box-sizing: border-box;
 
-.body{
-    // background-color: $LightGray;
-    width: 100vw;
-    min-height: 100%;
-    max-height: max-content;
-    box-sizing: border-box;
-
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
-
-
-

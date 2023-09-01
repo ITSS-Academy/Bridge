@@ -5,10 +5,14 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { TuiDialogService, TuiDialogContext } from '@taiga-ui/core';
+import {
+  TuiDialogService,
+  TuiDialogSize,
+} from '@taiga-ui/core';
 import { TuiDialogFormService } from '@taiga-ui/kit';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import { AuthService } from 'src/app/services/auth.service';
+import { TuiCountryIsoCode } from '@taiga-ui/i18n';
 
 @Component({
   selector: 'app-lead',
@@ -34,6 +38,8 @@ export class LeadComponent {
   });
   title = 'Leads';
   pageEmpty = true;
+
+  exampleForm = new FormGroup({});
 
   name = '';
   lastName = '';
@@ -70,17 +76,27 @@ export class LeadComponent {
   //control assignment selection
   readonly controlAssignments = new FormControl();
 
-  readonly assignments = [{ assign: 'Khoa Bùi' }, { assign: 'Dương Thùy' }, { assign: 'Trí Nguyễn'}];
+  readonly assignments = [
+    { assign: 'Khoa Bùi' },
+    { assign: 'Dương Thùy' },
+    { assign: 'Trí Nguyễn' },
+  ];
 
   readonly stringifyAssignment = (item: { assign: string }): string =>
     `${item.assign}`;
+  //
+
+  //control phone selection
+  readonly phones = Object.values(TuiCountryIsoCode);
+
+  countryIsoCode = TuiCountryIsoCode.US;
   //
 
   addTask() {
     this.pageEmpty = !this.pageEmpty;
   }
 
-  showDialog(content: PolymorpheusContent): void {
+  showDialog(content: PolymorpheusContent, size: TuiDialogSize): void {
     const closeable = this.dialogForm.withPrompt({
       label: 'Are you sure?',
       data: {
@@ -89,7 +105,7 @@ export class LeadComponent {
     });
 
     this.dialogs
-      .open(content, { closeable, dismissible: closeable })
+      .open(content, { closeable, dismissible: closeable, size })
       .subscribe({
         complete: () => {
           this.name = '';
