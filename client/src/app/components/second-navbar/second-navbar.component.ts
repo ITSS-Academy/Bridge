@@ -46,6 +46,7 @@ export class SecondNavbarComponent {
     {name: 'Tasks', route: '/tasks'},
     {name: 'Cases', route: '/cases'},
     {name: 'Deals', route: '/deals'},
+    {name: 'Events', route: '/events'},
   ]
   content?: table[];
   
