@@ -63,7 +63,10 @@ form {
   }
   
   .title-dialog {
-    margin-top: 0;
+    margin: 0;
+    color:#2c698d;
+    border-bottom: 2px solid #58C2CE;
+    padding-bottom: 1rem;
   }
 
 .all-label {
@@ -74,8 +77,8 @@ form {
 
   .all-label label {
     font-size: 16px;
-    font-weight: 500;
-    color: #58C2CE;
+    font-weight: 400;
+    color: #2c698d;
   }
   
   .all-input {
@@ -105,8 +108,9 @@ form {
     align-items: center;
     justify-content: center;
     border: none;
-    border-top: 2px solid #58C2CE;
+
     height: 440px;
+    width: 30rem;
   }
 
   .cancel-save {
