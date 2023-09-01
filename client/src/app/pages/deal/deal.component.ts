@@ -19,18 +19,11 @@ import { TuiCountryIsoCode } from '@taiga-ui/i18n';
   encapsulation: ViewEncapsulation.None,
 })
 export class DealComponent {
+  //ĐỔI TITLE THÀNH TÊN TRANG
   title = 'Deals';
   pageEmpty = true;
 
-  constructor(
-    @Inject(TuiDialogFormService)
-    private readonly dialogForm: TuiDialogFormService,
-    @Inject(TuiDialogService) private readonly dialogs: TuiDialogService
-  ) {}
-
-  exampleForm = new FormGroup({});
-
-  addDeal() {
+  addInfo() {
     this.pageEmpty = !this.pageEmpty;
   }
 }

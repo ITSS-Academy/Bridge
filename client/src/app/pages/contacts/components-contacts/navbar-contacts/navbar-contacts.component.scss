@@ -5,8 +5,9 @@ $Blue0: #bae8e8;
 $LightGray: #f2f2f2;
 
 :host{
-  --tui-radius-m: 8px;
+  --tui-radius-m: 8px !important;
 }
+
 
 //CSS CỦA THANH NAV THỨ 3 --->
 .thirdNavbar {

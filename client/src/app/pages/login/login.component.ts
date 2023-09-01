@@ -67,41 +67,26 @@ export class LoginComponent {
         return;
       } else {
         this.store.dispatch(LoginAction.login({ loginAccount: account }));
-
-        this.userName.setValue('');
-        this.password.setValue('');
-        this.notification = 'Login success';
-        this.status = 'success';
-        this.show = true;
-      }
-    });
-
-    console.log('logged in');
-    this.login$.subscribe((data) => {
-      if (data.status == 'Login success') {
-        let result = this.authService.getCurrentUser(data.authAccount!.id);
-        console.log(data.authAccount!);
-        result.subscribe((data) => {
-          console.log(data);
+        this.login$.subscribe((data) => {
+          if (data.status == 'Login success') {
+            console.log(data.authAccount!.email)
+            this.authService.getCurrentUser(data.authAccount!.email)
+            this.userName.setValue('');
+            this.password.setValue('');
+            this.notification = 'Login success';
+            this.status = 'success';
+            this.show = true;
+            // localStorage.removeItem('currentUser');
+            // localStorage.setItem('currentUser', JSON.stringify(this.authService.currentUser));
+            setTimeout(() => {
+              this.router.navigate(['/leads']);
+            },1400)
+            return;
+          }
         });
       }
     });
-    // this.login$.subscribe((data) => {
-    //   console.log(data);
-    //   this.currentAccount = data.authAccount!;
-    //   if (data.status == 'Login success') {
-    //     let result = this.http
-    //       .get(`http://localhost:3000/users/findById/${data.authAccount!.id}`);
-    //       result.subscribe((data) => {
-    //         console.log(data);
-    //         this.currentUser = data;
-    //         console.log(this.currentUser);
-    //         setTimeout(() => {
-    //           this.router.navigate(['/lead']);
-    //         }, 1500);
-    //       });
-    //   }
-    // });
+    // console.log(this.currentAccount);
     return;
   }
 }

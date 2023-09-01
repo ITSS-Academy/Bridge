@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Input } from '@angular/core';
 import {
   TuiDialogContext,
   TuiDialogService,
@@ -11,9 +11,11 @@ import { TuiCountryIsoCode } from '@taiga-ui/i18n';
 @Component({
   selector: 'app-navbar-contacts',
   templateUrl: './navbar-contacts.component.html',
-  styleUrls: ['./navbar-contacts.component.scss'],
+  styleUrls: ['./navbar-contacts.component.scss','./navbar-contacts.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarContactsComponent {
+  @Input() title!: string;
   constructor(
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService
   ) {}

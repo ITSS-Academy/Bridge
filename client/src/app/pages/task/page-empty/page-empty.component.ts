@@ -1,17 +1,18 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-page-empty',
   templateUrl: './page-empty.component.html',
-  styleUrls: ['./page-empty.component.scss']
+  styleUrls: ['./page-empty.component.scss'],
 })
-export class PageEmptyComponent implements OnInit{
-  @Output() public addTask = new EventEmitter();
+export class PageEmptyComponent implements OnInit {
+  @Input() title!: string;
+  @Output() public addInfo = new EventEmitter();
 
-  constructor(){}
-  ngOnInit(){}
+  constructor() {}
+  ngOnInit() {}
 
-  emitAddTask(){
-    this.addTask.emit()
+  emitAddInfo() {
+    this.addInfo.emit();
   }
 }

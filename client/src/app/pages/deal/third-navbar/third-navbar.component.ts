@@ -23,7 +23,7 @@ import { TuiDay } from '@taiga-ui/cdk';
   encapsulation: ViewEncapsulation.None,
 })
 export class ThirdNavbarComponent implements OnInit {
-  // @Input() pageEmpty:any = null;
+
   @Output() public addDeal = new EventEmitter();
 
   constructor(

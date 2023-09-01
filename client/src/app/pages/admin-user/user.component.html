@@ -7,9 +7,11 @@
     <div class="first-container">
       <div class="picture-container">
         <img
+          *ngIf="this.currentUser.data.attributes.photo == '' "
           id="picture"
-          src="https://s3-alpha-sig.figma.com/img/4d47/64ea/ed1c2e4e4a38aff8f709ef39a9b6d216?Expires=1693180800&Signature=VQXMnZDV3kNaN6u64lOQGPM0EjAb5S2jMKiMkJCfW8~gUgO~WQmPDex6cvx4l9R~y3bG4R66oa~gjbnrekSY92hfMx9GAKzqywVL3AW360APdRfZz8CIZLrawvOp24V42KdLrCF5zuSeGQibXczj42BBvJoiPO7mrN-dbchMFrjNBGCHoc0qw5lzHx10vpYmfId9XPMF5zq8W8hPshZHCwINpPH1ZAAV0OsQFGif5p43V4KqKGdZMYtzpYjDybjvTnGAmc0ST1rP7b14R8uS6~mBn1pGa-UrT-hqMxs75TG6P1ce3VdIXRPnDX7bxMP97mKx~CdjRsbufbMFC0Go4A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+          src="https://wallpaperaccess.com/full/2362086.png"
         />
+        <img *ngIf="this.currentUser.data.attributes.photo != '' " id="picture" src="{{this.currentUser.data.attributes.photo}}" alt="">
         <button class="upload-container">
           <span id="upload-icon" class="material-symbols-outlined">upload</span>
           <p id="upload-content">Upload</p>
@@ -32,7 +34,8 @@
         <div class="contents-user-info">
           <div class="display-name-container">
             <p id="title-display">Display name</p>
-            <div id="underline"></div>
+            <div *ngIf="this.currentUser.data.attributes.full_name == '' " id="underline"></div>
+            <p id="title-display" style="color: #272643;" *ngIf="this.currentUser.data.attributes.full_name != '' ">{{this.currentUser.data.attributes.full_name}}</p>
           </div>
 
           <div class="primary-group-container">
@@ -42,7 +45,8 @@
 
           <div class="email-container">
             <p id="title-email">Email</p>
-            <div id="underline-email"></div>
+            <div  *ngIf="this.currentUser.data.attributes.email1 == '' " id="underline-email"></div>
+            <p id="title-email" style="color: #272643;" *ngIf="this.currentUser.data.attributes.full_name != '' ">{{this.currentUser.data.attributes.email1}}</p>
           </div>
 
           <div class="report-to-container">

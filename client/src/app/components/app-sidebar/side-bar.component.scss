@@ -1,0 +1,465 @@
+$Blue : #58c2ce;
+$Blue2: #2C698D;
+$Blue3: #272643;
+$Blue0: #BAE8E8;
+$LightGray: #f2f2f2;
+.body{
+    height: 90vh;
+}
+
+.button{
+    border: none;
+    border-radius: 0px;
+}
+.showSideBarButton{
+    color: white;
+    background-color: $Blue;
+    border-radius: 8px;
+    border: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0.5rem;
+
+    margin: 1rem;
+
+    cursor: pointer;
+}
+
+.showSideBarButton:hover{
+    background-color: lighten($Blue, 5);
+    transition: all 0.3s ease;
+
+    cursor: pointer;
+}
+
+.sideBarContainer{
+    height: 100%;
+    width: 41.647rem;
+    background-color: $LightGray;
+    border-radius: 0 8px 8px 0;
+    // box-shadow: 4px 0 8px #d8d8d8;
+    display: block;
+}
+
+.sideBarHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    // padding: 0.5rem;
+    border-radius: 0 8px 0 0;
+    background-color: $LightGray;
+}
+.sideBarHeaderLeftContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;padding: 1rem 1rem 1rem 3rem;
+}
+
+.sideBarHeaderRightContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    font-weight: 500;
+    font-size: 16px;
+    color: $Blue;
+
+    cursor: pointer;
+}
+
+.sideBarHeaderSearchBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: max-content;
+    width: max-content;
+    background-color: white;
+    border: 3px solid white;border-radius: 8px;
+}
+.sideBarHeaderSearchBarIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 2.4rem;
+    width: 2.4rem;
+    // border-radius: 8px 0 0 8px;
+    border: 1px solid white;
+}
+.sideBarHeaderSearchBarInput{
+    height: 2.4rem;
+    width: 22rem;
+    background-color: white;
+    color: $Blue2;
+    outline: none;
+    border: none;
+    // border-radius: 0 8px 8px 0;
+}
+// .sideBarHeaderSearchBar::after{
+//     border: 3px solid $Blue;
+// }
+.sideBarBody{
+    display: flex;
+    // align-items: flex-end;
+    justify-content: flex-end;
+    width: 100%;
+    height: 90%;
+    overflow-y: scroll;
+    
+    // border: 1px solid red;
+}
+.sideBarBody::-webkit-scrollbar{
+    display: none;
+}
+.emptyBar{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 66%;
+    border-radius: 8px 0 8px 0;
+    // height: 100%;
+    // border: 1px solid red;
+    background-color: white;
+}
+.sideBarDisplayGrid{
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(2, 13rem);
+    // grid-template-rows: repeat(auto-fit, 4rem);
+    width: 66%;
+    border-radius: 8px 0 8px 0;
+    // height: 100%;
+    // border: 1px solid red;
+    background-color: white;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.sideBarDisplayGrid::-webkit-scrollbar {
+    display: none;
+  }
+
+.gray{
+    background-color: $LightGray;
+    overflow: hidden;
+    display: block;
+    padding-left: 2rem;
+    width: 33%;
+}
+
+.listField{
+    background-color: $LightGray;
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    color: $Blue3;
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    padding-left: 1rem;
+    border-left: 8px solid $LightGray;
+}
+
+.listField.button:hover{
+    background-color: white;
+    box-shadow: 0 0 24px #d8d8d8;
+    position: relative;
+    z-index: 199;
+    text-align: left;
+    border-left: 8px solid $Blue;
+    font-weight: bold;
+    color: $Blue;
+
+    cursor: pointer;
+}
+
+.listField.button.chosen{
+    background-color: white;
+    box-shadow: 0 0 24px #d8d8d8;
+    position: relative;
+    z-index: 100;
+    text-align: left;
+    border-left: 8px solid $Blue;
+    font-weight: bold;
+    color: $Blue;
+}
+
+.sideBarDisplaySect{
+    padding: 1rem 0 1rem 2rem;
+    width: 80%;
+    height: max-content;
+}
+
+.sideBarDisplaySectData{
+    // border: 1px solid red;
+    padding: 0.5rem 0.5rem;
+    width: 80%;
+    border-radius: 8px;
+    background-color: white;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    color: $Blue3;
+}
+.sideBarDisplaySectData.Button{
+    padding: 0.5rem 0rem;
+}
+.sideBarDisplaySectData.Button:hover{
+    background-color: $LightGray;
+    cursor: pointer;
+}
+// .body{
+//     width: 100vw;
+//     height: 100vh;
+// }
+
+.emptyPage{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-rows: auto 1fr auto
+}
+
+//SIZE CỦA ẢNH, MN TỰ CHỈNH SỬA BẰNG VH VÀ VW CHO THÍCH HỢP
+.emptyPageImage{
+    height: 30vh;
+    width: 30vh;
+}
+.emptyPageContentContainer{
+    // margin-top: 2rem;
+    display: block;
+}
+.emptyPageContent{
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem 0;
+    color: $Blue2;
+    font-size: medium;
+}
+
+.dialogBody{
+    width: 100%; ;
+    background-color: $LightGray;
+    
+    border-bottom: 1px solid $Blue;
+
+    display: flex;
+    justify-content: flex-end;
+    height: max-content;
+}
+
+.dialogFavorite{
+    border-top: 1px solid $Blue;
+    padding: 0.5rem 0;
+    // width:100%;
+    background-color: #ffff;
+    border-bottom: 2px solid $LightGray;
+}
+
+.dialogSelector{
+    width: 33%;
+    // height: max-content;
+    background-color: $LightGray;
+}
+
+
+.dialogFooter{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dialogButton{
+    background-color: $Blue;
+    color: white;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem ;
+    border: none;
+}
+
+.dialogFavoriteGrid{
+    margin-top: 0.5rem;
+    display: grid;
+    grid-gap: 0.3rem;
+    grid-template-columns: repeat(5, minmax(150px, 1fr));
+    border-top: 2px solid $LightGray;
+    // padding-top: 0.5rem;
+    min-height: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+.dialogFavoriteButton{
+    display: flex;
+    justify-content: flex-start;align-items: center;
+    padding: 0 1rem;
+    border-radius: 8px;
+
+    box-sizing: border-box;
+    height: 2.5rem;
+    width: 156px;
+    background-color: $Blue;
+    color: white;
+
+    font-size: 14px;
+    
+    white-space: nowrap; 
+
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.dialogStarFavorite{
+    border:none;
+    background-color: $Blue;
+    padding: 0;
+    margin-right: 0.7rem;
+    color: white;
+    cursor: pointer;
+}
+
+.dialogStarButton{
+    border:none;
+    background-color: none;
+    padding: 0;
+    margin-right: 0.7rem;
+    color: $Blue;
+    cursor: pointer;
+}
+
+.dialogListField{
+    background-color: $LightGray;
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    color: $Blue3;
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    padding-left: 1rem;
+    border-left: 8px solid $LightGray;
+}
+
+.dialogListField.button:hover{
+    background-color: white;
+    box-shadow: 0 0 24px #d8d8d8;
+    position: relative;
+    z-index: 199;
+    text-align: left;
+    border-left: 8px solid $Blue;
+    font-weight: bold;
+    color: $Blue;
+
+    cursor: pointer;
+}
+
+.dialogListField.button.chosen{
+    background-color: white;
+    box-shadow: 0 0 24px #d8d8d8;
+    position: relative;
+    z-index: 100;
+    text-align: left;
+    border-left: 8px solid $Blue;
+    font-weight: bold;
+    color: $Blue;
+}
+
+.dialogSelection{
+    background-color: $LightGray;
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    color: $Blue3;
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    padding-left: 1rem;
+    border-left: 8px solid $LightGray;
+}
+
+.dialogSelection.button.chosen{
+    background-color: white;
+    box-shadow: 0 0 24px #d8d8d8;
+    position: relative;
+    z-index: 100;
+    text-align: left;
+    border-left: 8px solid $Blue;
+    font-weight: 500;
+    color: $Blue;
+}
+
+.dialogSelection.button:hover{
+    background-color: white;
+    box-shadow: 0 0 24px #d8d8d8;
+    position: relative;
+    z-index: 99;
+    text-align: left;
+    border-left: 8px solid $Blue;
+    font-weight: 500;
+    color: $Blue;
+
+    cursor: pointer;
+}
+
+.dialogContentDisplayTile{
+    padding: 1rem 0 1rem 1.5rem;
+    width:9rem;
+    height: max-content;
+    align-items: center;
+    color: $Blue3;
+    border-radius: 8px;
+}
+
+// .dialogContentDisplayTile.Button:hover{
+//     background-color: $LightGray;
+// }
+// .dialogContentDisplayTileOption{
+//     padding: 0.5rem 0.5rem;
+//     width: 2rem;
+//     border-radius: 8px;
+//     background-color: white;
+//     color: $Blue3;
+// }
+
+// .dialogContentDisplayTileOption.Button{
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     padding: 0.5rem 0rem;
+//     color: $Blue2;
+// }
+
+.dialogContentDisplay{
+    width: 66%;
+    background-color: #ffff;
+    position: relative;
+    z-index: 102;
+    display: grid;
+    grid-gap: 0;
+    grid-template-columns: repeat(2, minmax(33%, 1fr));
+}
+
+.Button{
+    display: flex;
+    align-items: center;
+    color: $Blue2;
+}
+
+.dialogContentDisplayAddMore{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    width:8rem;
+    background-color: #f2f2f2;
+    color: #2C698D;border-radius: 8px;
+    margin-top: 2rem;
+    margin-left: 1rem;
+}
