@@ -7,10 +7,11 @@ import { ContactsService } from '../../services/contacts.service';
 })
 export class ContactsComponent {
   constructor(public contactsService: ContactsService) { }
+  //ĐỔI TITLE THÀNH TÊN TRANG
   title = 'Contacts';
   pageEmpty = true;
 
-  addContact(){
-    this.pageEmpty = !this.pageEmpty
+  addInfo() {
+    this.pageEmpty = !this.pageEmpty;
   }
 }

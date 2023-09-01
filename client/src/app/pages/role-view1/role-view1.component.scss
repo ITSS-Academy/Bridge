@@ -2,6 +2,7 @@ $Blue : #58c2ce;
 $Blue2: #2C698D;
 $Blue3: #272643;
 $Blue0: #BAE8E8;
+$LightGray: #f2f2f2;
 
 .body {
     display: flex;
@@ -54,7 +55,7 @@ $Blue0: #BAE8E8;
     background-color: #ffffff;
     color: #58c2ce;
     font-size: 1rem;
-    font-weight: 600;
+
     cursor: pointer;
 
     &:hover {
@@ -76,7 +77,7 @@ $Blue0: #BAE8E8;
     background-color: #ffffff;
     color: #58c2ce;
     font-size: 1rem;
-    font-weight: 600;
+
     cursor: pointer;
 
     &:hover {
@@ -91,12 +92,14 @@ $Blue0: #BAE8E8;
     // border-right: none;
     background-color: #58c2ce;
     color: white;
+    font-weight: 500;
 }
 .treeButton:focus{
     // border: 2px solid #58c2ce;
     // border-right: none;
     background-color: #58c2ce;
     color: white;
+    font-weight: 500;
 }
 
 // .header{

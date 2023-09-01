@@ -1,0 +1,27 @@
+$Blue : #58c2ce;
+$Blue2: #2C698D;
+$Blue3: #272643;
+$Blue0: #BAE8E8;
+$LightGray:#F2F2F2;
+
+.background{
+    width: 100vw;
+    min-height: 100vh;
+    max-height: max-content;
+    background-color: $LightGray;
+}
+
+
+.body{
+    // background-color: $LightGray;
+    width: 100vw;
+    min-height: 100%;
+    max-height: max-content;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+}
+
+
+

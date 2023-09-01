@@ -30,12 +30,7 @@ export class AdminUsersComponent {
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
     public route: Router
   ) {}
-  exampleForm = new FormGroup({
-    groupName: new FormControl(''),
-    groupEmail: new FormControl(''),
-    description: new FormControl(''),
-    groupMember: new FormControl(''),
-  });
+  exampleForm = new FormGroup({});
 
   //control user type selection
   readonly controlUserTypes = new FormControl();

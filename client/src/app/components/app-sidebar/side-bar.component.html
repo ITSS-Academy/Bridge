@@ -1,0 +1,161 @@
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0...1,0"
+/>
+
+<div class="body" id="sidebar" style="position: relative; z-index: 999;">
+  <button
+    class="showSideBarButton"
+    (click)="showSideBar()"
+    *ngIf="!showSideBarFlag"
+  >
+    <span class="material-symbols-outlined">menu</span>
+  </button>
+
+  <div class="sideBarContainer" *ngIf="showSideBarFlag">
+    <!--Sidebar Header-->
+    <div class="sideBarHeader">
+      <!--CONTENT BÊN TRÁI GỒM NÚT THOÁT VÀ THANH SEARCH-->
+      <div class="sideBarHeaderLeftContent">
+        <!--NÚT THOÁT-->
+        <!-- <button class="showSideBarButton" (click)="showSideBar()">
+          <span class="material-symbols-outlined">close</span>
+        </button> -->
+        <!--THANH SEARCH-->
+        <div class="sideBarHeaderSearchBar">
+          <!--ICON SEARCH-->
+          <div class="sideBarHeaderSearchBarIcon">
+            <span class="material-symbols-outlined">search</span>
+          </div>
+          <!--SEARCH INPUT-->
+          <input
+            type="text"
+            class="sideBarHeaderSearchBarInput"
+            placeholder="Search menu items"
+          />
+        </div>
+      </div>
+
+      <!--CONTENT BÊN PHẢI GỒM NÚT PERSOCALIZE-->
+      <div class="sideBarHeaderRightContent" (click)="showDialog()">
+        Personalize<span class="material-symbols-outlined">double_arrow</span>
+      </div>
+    </div>
+    <!--Sidebar Body-->
+    <div class="sideBarBody">
+      <div class="sideBarDisplayGrid gray">
+        <div class="listField"><b style="font-size: 18px">Apps</b></div>
+        <div
+          class="listField button"
+          *ngFor="let field of sideBarField"
+          id="{{ field.name }}"
+          (click)="choose(field.name, field.id)"
+        >
+          <span class="material-symbols-outlined" style="margin-right: 1rem"
+            >deployed_code</span
+          >{{ field.name }}
+        </div>
+      </div>
+
+      <div class="emptyBar" *ngIf="empty">
+        <div class="emptyPage">
+          <div class="emptyPageContentContainer">
+            <div class="emptyPageContent">
+              <img
+                src="./assets/kanban method-rafiki.png"
+                class="emptyPageImage"
+              />
+            </div>
+            <div class="emptyPageContent"><b>PICK AN APP</b></div>
+            <div class="emptyPageContent">
+              Pick an app by clicking on the side bar
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sideBarDisplayGrid" *ngIf="!empty">
+        <div class="sideBarDisplaySect" *ngFor="let field of this.content">
+          <div class="sideBarDisplaySectData">
+            <b>{{ field.name }}</b>
+          </div>
+          <div
+            class="sideBarDisplaySectData Button"
+            style="color: #2C698D"
+            *ngFor="let fieldData of field.field"
+            (click)="navTo(fieldData.path)"
+          >
+            <span class="material-symbols-outlined">arrow_right</span
+            >{{ fieldData.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template let-observer [tuiDialogOptions]="{size:'larger'}" [(tuiDialog)]="open">
+  <h1 style="padding-left: 1rem; font-size: large; margin: 0 0 1rem 0">
+    PERSONALIZE
+  </h1>
+  <div class="dialogFavorite">
+    <span><b style="padding-left: 2rem">Favorites</b></span>
+    <div class="dialogFavoriteGrid">
+      <div class="dialogFavoriteButton" *ngFor="let favorites of favorites">
+        <button class="dialogStarFavorite" (click)="toggleFromList(favorites)">
+          <span class="material-symbols-outlined"> grade </span>
+        </button>
+        <span>{{ favorites.name }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="dialogBody">
+    <div class="dialogSelector">
+      <div class="dialogSelection"><b>Apps</b></div>
+      <div
+        class="dialogSelection button"
+        *ngFor="let selection of sideBarField"
+        id="dialog_{{ selection.name }}"
+        (click)="chooseDialog(selection.name, selection.id)"
+      >
+        <span class="material-symbols-outlined" style="margin-right: 1rem"
+          >deployed_code</span
+        >{{ selection.name }}
+      </div>
+    </div>
+    <div class="dialogContentDisplay">
+      <div
+        class="dialogContentDisplayTile"
+        *ngFor="let field of this.dialogContent"
+      >
+        <div class="dialogContentDisplayTile">
+          <b>{{ field.name }}</b>
+        </div>
+        <div
+          class="dialogContentDisplayTile Button"
+          *ngFor="let fieldData of field.field"
+        >
+          <button
+            class="dialogStarButton"
+            (click)="toggleFromList(fieldData)"
+            style="background-color: white"
+          >
+            <span class="material-symbols-outlined" style="padding: none">
+              star
+            </span></button
+          >{{ fieldData.name }}
+        </div>
+
+        <div class="dialogContentDisplayAddMore">
+          <span class="material-symbols-outlined" style="padding: none">
+            add
+          </span>
+          Add Module
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dialogFooter">
+    <button class="dialogButton">Update</button>
+  </div>
+</ng-template>

@@ -7,11 +7,18 @@ import { UsersModule } from './users/users.module';
 import { AuthAccountModule } from './auth-accounts/auth-accounts.module';
 import { TokenService } from './token/token.service';
 import { HttpModule } from '@nestjs/axios';
-
+import { ConfigModule } from '@nestjs/config';
+import databaseConfig from './configs/database.config';
 
 @Module({
-  imports: [HttpModule,MongooseModule.forRoot('mongodb+srv://admin:admin@cluster0.tkewdqs.mongodb.net/SuiteCRM?retryWrites=true&w=majority'),
-UsersModule,AuthAccountModule, AccountsModule],
+  imports: [
+    HttpModule,
+    ConfigModule.forRoot({ isGlobal: true, load: [databaseConfig] }),
+    MongooseModule.forRoot(databaseConfig().database.host),
+    UsersModule,
+    AuthAccountModule,
+    AccountsModule,
+  ],
   controllers: [AppController],
   providers: [AppService, TokenService],
 })

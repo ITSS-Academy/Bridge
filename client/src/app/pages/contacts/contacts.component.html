@@ -1,15 +1,24 @@
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+/>
+
+<!-- QUAN TRỌNG: NẾU NHƯ LÀM DIALOG TUYỆT ĐỐI KHÔNG BỎ TRONG DIV NÀY -->
 <div class="background">
-  <div >
-    <app-second-navbar [title]="title"></app-second-navbar>
-    <!-- THANH NAV THỨ 3 -->
-    <app-navbar-contacts (addTask)="addContact()"></app-navbar-contacts>
-   
-    <div class="body" >
-      <!-- NỘI DUNG TRANG RỖNG-->
-      <app-display-no-data-contacts *ngIf="pageEmpty" (addTask)="addContact()"></app-display-no-data-contacts>
-      <!-- TRANG CÓ NỘI DUNG -->
-      <app-display-have-data-contacts *ngIf="!pageEmpty"></app-display-have-data-contacts>
-    </div>
+  <app-second-navbar [title]="title"></app-second-navbar>
+  <!-- THANH NAV THỨ 3 -->
+  <app-navbar-contacts
+    style="position: relative; z-index: 1"
+    [title]="title"
+  ></app-navbar-contacts>
+  <div class="body" style="position: relative; z-index: 1">
+    <!-- NỘI DUNG TRANG RỖNG-->
+    <app-display-no-data-contacts
+      *ngIf="pageEmpty"
+      (addInfo)="addInfo()"
+      [title]="title"
+    ></app-display-no-data-contacts>
+    <!-- TRANG CÓ NỘI DUNG -->
+    <app-display-have-data-contacts *ngIf="!pageEmpty"></app-display-have-data-contacts>
   </div>
 </div>
