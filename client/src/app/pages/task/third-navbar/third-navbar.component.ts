@@ -6,6 +6,7 @@ import {
   ChangeDetectionStrategy,
   Inject,
   ViewEncapsulation,
+  Input,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TuiDialogService, TuiDialogSize } from '@taiga-ui/core';
@@ -23,9 +24,11 @@ import { TuiDay } from '@taiga-ui/cdk';
   encapsulation: ViewEncapsulation.None,
 })
 export class ThirdNavbarComponent implements OnInit {
-  // @Input() pageEmpty:any = null;
-  @Output() public addTask = new EventEmitter();
-
+  @Input() title!: string;
+  @Output() public addInfo = new EventEmitter();
+  emitAddInfo() {
+    this.addInfo.emit();
+  }
   name = '';
   time = '';
   location = '';
@@ -121,10 +124,6 @@ export class ThirdNavbarComponent implements OnInit {
 
   readonly stringifyTask = (item: { task: string }): string => `${item.task}`;
   //
-
-  emitAddTask() {
-    this.addTask.emit();
-  }
 
   showDialog(content: PolymorpheusContent, size: TuiDialogSize): void {
     const closeable = this.dialogForm.withPrompt({

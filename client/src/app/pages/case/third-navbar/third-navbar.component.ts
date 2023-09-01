@@ -6,6 +6,7 @@ import {
   ChangeDetectionStrategy,
   Inject,
   ViewEncapsulation,
+  Input,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TuiDialogService, TuiDialogSize } from '@taiga-ui/core';
@@ -23,7 +24,7 @@ import { TuiDay } from '@taiga-ui/cdk';
   encapsulation: ViewEncapsulation.None,
 })
 export class ThirdNavbarComponent implements OnInit {
-  // @Input() pageEmpty:any = null;
+  @Input() title!: string;
   @Output() public addCase = new EventEmitter();
 
   constructor(

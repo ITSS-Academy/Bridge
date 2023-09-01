@@ -46,21 +46,9 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'role-view2',
-    loadChildren: () =>
-      import('./pages/role-view2/role-view2.module').then(
-        (m) => m.RoleView2Module
-      ),
-  },
-  {
     path: 'signup',
     loadChildren: () =>
       import('./pages/signup/signup.module').then((m) => m.SignupModule),
-  },
-  {
-    path: 'lead',
-    loadChildren: () =>
-      import('./pages/lead/lead.module').then((m) => m.LeadModule),
   },
   {
     path: 'display-group',
@@ -84,16 +72,14 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'organization',
-    loadChildren: () =>
-      import('./pages/organization/organization.module').then(
-        (m) => m.OrganizationModule
-      ),
-  },
-  {
     path: 'contacts',
     loadChildren: () =>
       import('./pages/contacts/contacts.module').then((m) => m.ContactsModule),
+  },
+  {
+    path: 'cases',
+    loadChildren: () =>
+      import('./pages/case/case.module').then((m) => m.CaseModule),
   },
   {
     path: 'tasks',
@@ -106,9 +92,21 @@ const routes: Routes = [
       import('./pages/case/case.module').then((m) => m.CaseModule),
   },
   {
+    path: 'leads',
+    loadChildren: () =>
+      import('./pages/leads/leads.module').then((m) => m.LeadsModule),
+  },
+  {
     path: 'deals',
     loadChildren: () =>
-      import('./pages/deal/deal.module').then((m) => m.DealModule),
+      import('./pages/deals/deals.module').then((m) => m.DealsModule),
+  },
+  {
+    path: 'organizations',
+    loadChildren: () =>
+      import('./pages/organizations/organizations.module').then(
+        (m) => m.OrganizationsModule
+      ),
   },
 ];
 

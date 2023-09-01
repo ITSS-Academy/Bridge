@@ -7,10 +7,11 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./case.component.scss']
 })
 export class CaseComponent {
+  //ĐỔI TITLE THÀNH TÊN TRANG
   title = 'Cases';
   pageEmpty = true;
 
-  addCase(){
-    this.pageEmpty = !this.pageEmpty
+  addInfo() {
+    this.pageEmpty = !this.pageEmpty;
   }
 }
