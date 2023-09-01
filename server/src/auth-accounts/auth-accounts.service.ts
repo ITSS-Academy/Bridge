@@ -8,16 +8,19 @@ import * as bcrypt from 'bcrypt';
 import { Md5 } from 'ts-md5';
 import { UsersService } from 'src/users/users.service';
 import { TokenService } from 'src/token/token.service';
+import { ConfigService } from '@nestjs/config';
 
 const md5 = new Md5();
 
 @Injectable()
 export class AuthAccountService {
   token = '';
+  api_url = this.configService.get<string>('CORE_APIs');
   constructor(
     @InjectModel(AuthAccount.name) public authModel: Model<AuthAccount>,
     public userService: UsersService,
     public tokenService: TokenService,
+    private configService: ConfigService
   ) {
     let result = this.tokenService.getToken();
     result.subscribe((res) => {

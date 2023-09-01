@@ -45,11 +45,15 @@ export class UserComponent {
     testValue: new FormControl(false), //input value true or false into the form control
   });
 
+  currentUser:any
+
   constructor(
     @Inject(TuiDialogFormService)
     private readonly dialogForm: TuiDialogFormService,
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService
-  ) {}
+  ) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
+  }
 
   onModelChangeName(name: string): void {
     this.name = name;

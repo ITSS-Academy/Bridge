@@ -10,12 +10,6 @@ import e from 'express';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {
   }
-
-  // @Post('/createUser')
-  // create(@Body() createUserDto: any) {
-  //   return this.usersService.createUser(createUserDto);
-  // }
-
   @Get('/getAll')
   findAll() {
     return this.usersService.findAllUsers();
@@ -26,7 +20,7 @@ export class UsersController {
     return this.usersService.findOneUser(id);
   }
 
-  @Get('/:email')
+  @Get('findByEmail/:email')
   findOneByEmail(@Param('email') email: string) {
     return this.usersService.fineUserByEmail(email);
   }
