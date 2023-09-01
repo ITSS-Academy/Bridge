@@ -152,17 +152,28 @@ $LightGray: #f2f2f2;
 
 //NÚT THÊM ( + ) BÊN TRONG NỘI DUNG DIALOG
 .dialog-button {
-  border-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
   border: none;
   background-color: #58c2ce;
   color: white;
   display: flex;
+  align-items: center;
   cursor: pointer;
 
   &:hover {
     background-color: darken($color: #58c2ce, $amount: 10);
     color: darken($color: white, $amount: 3);
   }
+}
+
+//CUSTOM INPUT CONTACT
+#input-dialog-contact {
+  width: 13.8rem;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
 }
 
 //DIALOG CONTACT SUB CSS

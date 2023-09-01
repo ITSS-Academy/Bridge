@@ -105,8 +105,9 @@
       <div class="container-dialog">
         <p class="title-dialog">Contact name</p>
 
-        <tui-combo-box
-          class="input-dialog"
+        <div style="display: flex;">
+          <tui-combo-box
+          id="input-dialog-contact"
           [formControl]="controlContacts"
           [stringify]="stringifyContact"
           tuiTextfieldSize="s"
@@ -126,6 +127,8 @@
         >
           <span class="material-symbols-outlined"> add </span>
         </button>
+        </div>
+        
       </div>
 
       <!--GROUP-->
