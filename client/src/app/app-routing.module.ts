@@ -72,23 +72,42 @@ const routes: Routes = [
       ),
   },
   {
-    //ORGANIZATION THÊM S
+    path: 'contacts',
+    loadChildren: () =>
+      import('./pages/contacts/contacts.module').then((m) => m.ContactsModule),
+  },
+  {
+    path: 'cases',
+    loadChildren: () =>
+      import('./pages/case/case.module').then((m) => m.CaseModule),
+  },
+  {
+    path: 'tasks',
+    loadChildren: () =>
+      import('./pages/task/task.module').then((m) => m.TaskModule),
+  },
+  {
+    path: 'cases',
+    loadChildren: () =>
+      import('./pages/case/case.module').then((m) => m.CaseModule),
+  },
+  {
+    path: 'leads',
+    loadChildren: () =>
+      import('./pages/leads/leads.module').then((m) => m.LeadsModule),
+  },
+  {
+    path: 'deals',
+    loadChildren: () =>
+      import('./pages/deals/deals.module').then((m) => m.DealsModule),
+  },
+  {
     path: 'organizations',
     loadChildren: () =>
-      import('./pages/organization/organization.module').then(
-        (m) => m.OrganizationModule
+      import('./pages/organizations/organizations.module').then(
+        (m) => m.OrganizationsModule
       ),
   },
-  { 
-    path: 'contacts', 
-    loadChildren: () => 
-    import('./pages/contacts/contacts.module').then
-    (m => m.ContactsModule), 
-  },
-  { path: 'tasks', loadChildren: () => import('./pages/task/task.module').then(m => m.TaskModule) },
-  { path: 'cases', loadChildren: () => import('./pages/case/case.module').then(m => m.CaseModule) },
-  { path: 'deals', loadChildren: () => import('./pages/deal/deal.module').then(m => m.DealModule) },
-  { path: 'leads', loadChildren: () => import('./pages/leads/leads.module').then(m => m.LeadsModule) },
 ];
 
 @NgModule({

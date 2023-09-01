@@ -8,7 +8,7 @@ describe('PageWContentComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PageWContentComponent]
+      declarations: [PageWContentComponent],
     });
     fixture = TestBed.createComponent(PageWContentComponent);
     component = fixture.componentInstance;

@@ -1,25 +1,23 @@
 <div class="emptyPage">
+  <!--TRANH CỦA TRANG EMPTY - THAY ĐỔI ĐỂ PHÙ HỢP VỚI TRANG-->
+  <img src="./assets/leadership-amico.png" class="emptyPageImage" />
+  <div class="emptyPageContentContainer">
+    <div class="emptyPageContent">
+      <b style="text-transform: uppercase">THERE ARE NO {{ title }}</b>
+    </div>
+    <div class="emptyPageContent">
+      Add {{ title }} by clicking the button below
+    </div>
 
-    <!--TRANH CỦA TRANG EMPTY - MN THAY ĐỔI ĐỂ PHÙ HỢP VỚI TRANG-->
-    <img src="./assets/leadership-amico.png" class="emptyPageImage" />
-
-    <div class="emptyPageContentContainer">
-
-      <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
-      <div class="emptyPageContent"><b>THERE ARE NO LEAD</b></div>
-
-      <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
-      <div class="emptyPageContent">
-        Add Lead by clicking the button below
-      </div>
-
-      <div class="emptyPageContent" style="margin-top: 1rem">
-        <button class="button buttonMainAction" style="margin-right: 0" (click)="emitAddTask()">
-          <span class="material-symbols-outlined"> add </span>
-
-          <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
-          <span style="margin: 0 1rem">Add Lead</span>
-        </button>
-      </div>
+    <div class="emptyPageContent" style="margin-top: 1rem">
+      <button
+        class="button buttonMainAction"
+        style="margin-right: 0"
+        (click)="emitAddInfo()"
+      >
+        <span class="material-symbols-outlined"> add </span>
+        <span style="margin: 0 1rem">Add {{ title }}</span>
+      </button>
     </div>
   </div>
+</div>

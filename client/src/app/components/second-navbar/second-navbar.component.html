@@ -4,7 +4,7 @@
 />
 
 <div class="second-navbar" style="position: relative; z-index: 100">
-  <div class="top-navbar">
+  <div class="top-navbar" style="position: relative; z-index: 200">
     <div class="container-logo-user">
       <div class="logo-list-page">
         <svg
@@ -80,7 +80,9 @@
           />
         </svg>
         <ul class="list-page" *ngFor="let page of this.navPages">
-          <li class="pageToChoose" (click)="navigateTo(page.route)">{{ page.name }}</li>
+          <li class="pageToChoose" (click)="navigateTo(page.route)">
+            {{ page.name }}
+          </li>
         </ul>
       </div>
       <div class="user">
@@ -88,30 +90,29 @@
       </div>
     </div>
   </div>
-  <div class="bottom-navbar" style="display: flex; position: relative; z-index: 1;">
-    
-    <div class="overlay" id="sidebar">
+  <div
+    class="bottom-navbar"
+    style="display: flex; position: relative; z-index: 1"
+  >
+    <div
+      class="overlay"
+      id="sidebar"
+      style="display: flex; justify-content: flex-end"
+    >
       <app-side-bar [favorites]="navPages"></app-side-bar>
     </div>
-    
-    <div class="container-title-icons" id="title" style="position: relative; z-index: 1;">
+
+    <div
+      class="container-title-icons"
+      id="title"
+      style="position: relative; z-index: 1"
+    >
       <div class="title-page">
         <button class="showSideBarButton" (click)="showSideBar()">
           <span class="material-symbols-outlined">menu</span>
         </button>
         <p>{{ title }}</p>
       </div>
-
-      <!-- <div class="icons" style="margin-right: 2rem;">
-        <span class="material-symbols-outlined"> search </span>
-        <span class="material-symbols-outlined"> update </span>
-        <span class="material-symbols-outlined"> add_circle </span>
-        <span class="material-symbols-outlined"> calendar_today </span>
-        <span class="material-symbols-outlined"> notifications </span>
-        <span class="material-symbols-outlined"> mail </span>
-      </div> -->
     </div>
   </div>
-
-<!--   
-</div> -->
+</div>

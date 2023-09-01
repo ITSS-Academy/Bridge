@@ -3,13 +3,14 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-leads',
   templateUrl: './leads.component.html',
-  styleUrls: ['./leads.component.scss']
+  styleUrls: ['./leads.component.scss'],
 })
 export class LeadsComponent {
+  //ĐỔI TITLE THÀNH TÊN TRANG
   title = 'Leads';
   pageEmpty = true;
 
-  addTask(){
-    this.pageEmpty = !this.pageEmpty
+  addInfo() {
+    this.pageEmpty = !this.pageEmpty;
   }
 }

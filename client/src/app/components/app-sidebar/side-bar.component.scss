@@ -6,6 +6,11 @@ $LightGray: #f2f2f2;
 .body{
     height: 90vh;
 }
+
+.button{
+    border: none;
+    border-radius: 0px;
+}
 .showSideBarButton{
     color: white;
     background-color: $Blue;
@@ -119,7 +124,7 @@ $LightGray: #f2f2f2;
     // border: 1px solid red;
     background-color: white;
 }
-.sideBarCollumn{
+.sideBarDisplayGrid{
     display: grid;
     grid-gap: 5px;
     grid-template-columns: repeat(2, 13rem);
@@ -132,7 +137,7 @@ $LightGray: #f2f2f2;
     overflow-x: hidden;
     overflow-y: scroll;
 }
-.sideBarCollumn::-webkit-scrollbar {
+.sideBarDisplayGrid::-webkit-scrollbar {
     display: none;
   }
 
@@ -167,7 +172,7 @@ $LightGray: #f2f2f2;
     text-align: left;
     border-left: 8px solid $Blue;
     font-weight: bold;
-    color: $Blue2;
+    color: $Blue;
 
     cursor: pointer;
 }
@@ -180,16 +185,16 @@ $LightGray: #f2f2f2;
     text-align: left;
     border-left: 8px solid $Blue;
     font-weight: bold;
-    color: $Blue2;
+    color: $Blue;
 }
 
-.sideBarRow{
+.sideBarDisplaySect{
     padding: 1rem 0 1rem 2rem;
     width: 80%;
     height: max-content;
 }
 
-.sideBarRowData{
+.sideBarDisplaySectData{
     // border: 1px solid red;
     padding: 0.5rem 0.5rem;
     width: 80%;
@@ -198,11 +203,12 @@ $LightGray: #f2f2f2;
     display: flex;
     // justify-content: center;
     align-items: center;
+    color: $Blue3;
 }
-.sideBarRowData.Button{
+.sideBarDisplaySectData.Button{
     padding: 0.5rem 0rem;
 }
-.sideBarRowData.Button:hover{
+.sideBarDisplaySectData.Button:hover{
     background-color: $LightGray;
     cursor: pointer;
 }
@@ -278,11 +284,12 @@ $LightGray: #f2f2f2;
 .dialogFavoriteGrid{
     margin-top: 0.5rem;
     display: grid;
-    grid-gap: 0.5rem;
+    grid-gap: 0.3rem;
     grid-template-columns: repeat(5, minmax(150px, 1fr));
     border-top: 2px solid $LightGray;
-    padding-top: 0.5rem;
+    // padding-top: 0.5rem;
     min-height: 0.5rem;
+    padding: 0.5rem 1rem;
 }
 
 .dialogFavoriteButton{
@@ -346,7 +353,7 @@ $LightGray: #f2f2f2;
     text-align: left;
     border-left: 8px solid $Blue;
     font-weight: bold;
-    color: $Blue2;
+    color: $Blue;
 
     cursor: pointer;
 }
@@ -359,7 +366,7 @@ $LightGray: #f2f2f2;
     text-align: left;
     border-left: 8px solid $Blue;
     font-weight: bold;
-    color: $Blue2;
+    color: $Blue;
 }
 
 .dialogSelection{
@@ -384,8 +391,8 @@ $LightGray: #f2f2f2;
     z-index: 100;
     text-align: left;
     border-left: 8px solid $Blue;
-    font-weight: bold;
-    color: $Blue2;
+    font-weight: 500;
+    color: $Blue;
 }
 
 .dialogSelection.button:hover{
@@ -395,8 +402,8 @@ $LightGray: #f2f2f2;
     z-index: 99;
     text-align: left;
     border-left: 8px solid $Blue;
-    font-weight: bold;
-    color: $Blue2;
+    font-weight: 500;
+    color: $Blue;
 
     cursor: pointer;
 }
@@ -406,21 +413,28 @@ $LightGray: #f2f2f2;
     width:9rem;
     height: max-content;
     align-items: center;
-}
-
-.dialogContentDisplayTileOption{
-    padding: 0.5rem 0.5rem;
-    width: 2rem;
+    color: $Blue3;
     border-radius: 8px;
-    background-color: white;
 }
 
-.dialogContentDisplayTileOption.Button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem 0rem;
-}
+// .dialogContentDisplayTile.Button:hover{
+//     background-color: $LightGray;
+// }
+// .dialogContentDisplayTileOption{
+//     padding: 0.5rem 0.5rem;
+//     width: 2rem;
+//     border-radius: 8px;
+//     background-color: white;
+//     color: $Blue3;
+// }
+
+// .dialogContentDisplayTileOption.Button{
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     padding: 0.5rem 0rem;
+//     color: $Blue2;
+// }
 
 .dialogContentDisplay{
     width: 66%;
@@ -435,6 +449,7 @@ $LightGray: #f2f2f2;
 .Button{
     display: flex;
     align-items: center;
+    color: $Blue2;
 }
 
 .dialogContentDisplayAddMore{
