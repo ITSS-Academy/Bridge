@@ -4,6 +4,10 @@ $Blue3: #272643;
 $Blue0: #bae8e8;
 $LightGray: #f2f2f2;
 
+:host{
+  --tui-radius-m: 0;
+}
+
 //CSS CỦA THANH NAV THỨ 3 --->
 .thirdNavbar {
   background-color: #f2f2f2;
@@ -174,6 +178,8 @@ $LightGray: #f2f2f2;
   width: 11rem;
   border-top-left-radius: 8px ;
   border-bottom-left-radius: 8px;
+  border-top-right-radius: 0 ;
+  border-bottom-right-radius: 0;
   box-shadow: none;
   border: 1px solid #58c2ce;
 }
@@ -183,6 +189,8 @@ $LightGray: #f2f2f2;
   width: 14.8rem;
   border-top-left-radius: 8px ;
   border-bottom-left-radius: 8px;
+  border-top-right-radius: 0 ;
+  border-bottom-right-radius: 0;
   box-shadow: none;
   border: 1px solid #58c2ce;
 }
@@ -193,6 +201,8 @@ $LightGray: #f2f2f2;
   box-shadow: none;
   border-top-left-radius: 8px ;
   border-bottom-left-radius: 8px;
+  border-top-right-radius: 0 ;
+  border-bottom-right-radius: 0;
   border: 1px solid #58c2ce;
 }
 

@@ -68,7 +68,7 @@
       <!--AMOUNT-->
       <div class="container-dialog">
         <p class="title-dialog">Amount</p>
-        
+
         <div style="display: flex">
           <tui-input
             id="input-dialog-amount"
@@ -85,6 +85,8 @@
             style="
               border-top-right-radius: 8px;
               border-bottom-right-radius: 8px;
+              border-top-left-radius: 0;
+              border-bottom-left-radius: 0;
             "
           >
             VND-đ
@@ -108,7 +110,6 @@
             [formControl]="controlOrgs"
             [stringify]="stringifyOrg"
             tuiTextfieldSize="s"
-
           >
             Choose/Type here
 
@@ -246,6 +247,117 @@
           </tui-input>
           <div class="percentage">%</div>
         </div>
+      </div>
+    </div>
+
+    <!--COLSED DATE-->
+    <div class="container-dialog">
+      <p class="title-dialog">Expected close date</p>
+
+      <tui-input-date
+        class="input-dialog"
+        formControlName="testValue"
+        tuiTextfieldSize="s"
+      >
+        Choose a date
+      </tui-input-date>
+    </div>
+
+    <!--PIPELINE-->
+    <div class="container-dialog">
+      <p class="title-dialog">Pipeline</p>
+
+      <tui-combo-box
+        class="input-dialog"
+        [formControl]="controlPipeLines"
+        [stringify]="stringifyPipeLine"
+        tuiTextfieldSize="s"
+      >
+        Standard
+
+        <tui-data-list-wrapper
+          *tuiDataList
+          [items]="pipeLines | tuiFilterByInputWith : stringifyPipeLine"
+          [itemContent]="stringifyPipeLine | tuiStringifyContent"
+        ></tui-data-list-wrapper>
+      </tui-combo-box>
+    </div>
+
+    <!--STAGES-->
+    <div class="container-dialog">
+      <p class="title-dialog">Sales stage</p>
+
+      <tui-combo-box
+        class="input-dialog"
+        [formControl]="controlStages"
+        [stringify]="stringifyStage"
+        tuiTextfieldSize="s"
+      >
+        Choose/Type here
+
+        <tui-data-list-wrapper
+          *tuiDataList
+          [items]="stages | tuiFilterByInputWith : stringifyStage"
+          [itemContent]="stringifyStage | tuiStringifyContent"
+        ></tui-data-list-wrapper>
+      </tui-combo-box>
+    </div>
+
+    <!--ASSIGNED TO-->
+    <div class="container-dialog">
+      <p class="title-dialog">Assigned to</p>
+
+      <tui-combo-box
+        class="input-dialog"
+        [formControl]="controlAssignments"
+        [stringify]="stringifyAssignment"
+        tuiTextfieldSize="s"
+      >
+        Choose/Type here
+
+        <tui-data-list-wrapper
+          *tuiDataList
+          [items]="assignments | tuiFilterByInputWith : stringifyAssignment"
+          [itemContent]="stringifyAssignment | tuiStringifyContent"
+        ></tui-data-list-wrapper>
+      </tui-combo-box>
+    </div>
+
+    <!--LEAD SOURCE-->
+    <div class="container-dialog">
+      <p class="title-dialog">Lead source</p>
+
+      <tui-combo-box
+        class="input-dialog"
+        [formControl]="controlSources"
+        [stringify]="stringifySource"
+        tuiTextfieldSize="s"
+      >
+        Choose/Type here
+
+        <tui-data-list-wrapper
+          *tuiDataList
+          [items]="sources | tuiFilterByInputWith : stringifySource"
+          [itemContent]="stringifySource | tuiStringifyContent"
+        ></tui-data-list-wrapper>
+      </tui-combo-box>
+    </div>
+
+    <!--PROBABILITY-->
+    <div class="container-dialog">
+      <p class="title-dialog">Probability</p>
+
+      <div style="display: flex">
+        <tui-input
+          style="outline: none !important"
+          id="input-dialog-probability"
+          tuiTextfieldSize="s"
+          [(ngModel)]="probability"
+          (ngModelChange)="onModelChangeProbability($event)"
+        >
+          Type here
+        </tui-input>
+        <div class="percentage">%</div>
       </div>
     </div>
 
