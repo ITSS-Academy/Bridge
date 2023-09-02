@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LeadsService } from './leads.service';
 
 @Component({
   selector: 'app-leads',
@@ -6,6 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./leads.component.scss'],
 })
 export class LeadsComponent {
+
+  constructor(private leadService: LeadsService) {}
+
   //ĐỔI TITLE THÀNH TÊN TRANG
   title = 'Leads';
   pageEmpty = true;

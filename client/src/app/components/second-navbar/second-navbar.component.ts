@@ -1,4 +1,4 @@
-import { Component,Input, NgModule } from '@angular/core';
+import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -29,7 +29,7 @@ interface bookmark {
   styleUrls: ['./second-navbar.component.scss']
 
 })
-export class SecondNavbarComponent {
+export class SecondNavbarComponent implements OnInit{
   @Input()
     
   title!: string;
@@ -37,6 +37,9 @@ export class SecondNavbarComponent {
     if (this.navPages.length>10){
       this.navPages.length = 10
     }
+  }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
 
   navPages:bookmark[] = [

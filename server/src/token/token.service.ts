@@ -24,8 +24,6 @@ export class TokenService {
       })
       .pipe(map((response) => response.data));
     result.subscribe(async (data) => {
-      // this.token = await data.access_token;
-      // console.log(this.token);
     });
     return result;
   }

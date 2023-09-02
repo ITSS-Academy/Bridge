@@ -84,7 +84,8 @@
         <div class="contents-employee-info">
           <div class="first-name-container">
             <p id="title-first-name">First name</p>
-            <div id="underline-first-name"></div>
+            <div  *ngIf="this.currentUser.data.attributes.first_name == '' " id="underline-first-name"></div>
+            <p id="title-first-name" style="color: #272643;" *ngIf="this.currentUser.data.attributes.first_name != '' ">{{this.currentUser.data.attributes.first_name}}</p>
           </div>
 
           <div class="last-name-container">

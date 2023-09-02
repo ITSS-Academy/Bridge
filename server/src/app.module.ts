@@ -8,7 +8,9 @@ import { AuthAccountModule } from './auth-accounts/auth-accounts.module';
 import { TokenService } from './token/token.service';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
+import { LeadsModule } from './leads/leads.module';
 import databaseConfig from './configs/database.config';
+import { TokenController } from './token/token.controller';
 
 @Module({
   imports: [
@@ -18,8 +20,9 @@ import databaseConfig from './configs/database.config';
     UsersModule,
     AuthAccountModule,
     AccountsModule,
+    LeadsModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, TokenController],
   providers: [AppService, TokenService],
 })
 export class AppModule {}
