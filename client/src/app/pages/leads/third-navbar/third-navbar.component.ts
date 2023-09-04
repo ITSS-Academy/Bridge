@@ -8,21 +8,21 @@ import {
   OnInit,
   Input,
 } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { TuiDialogService, TuiDialogSize } from '@taiga-ui/core';
 import { TuiDialogFormService } from '@taiga-ui/kit';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import { TuiCountryIsoCode } from '@taiga-ui/i18n';
 import { Lead } from 'src/app/models/lead.model';
 import { LeadsService } from '../leads.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-third-navbar',
   templateUrl: './third-navbar.component.html',
   styleUrls: ['./third-navbar.component.scss'],
   providers: [TuiDialogFormService],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
+  // encapsulation: ViewEncapsulation.None,
 })
 export class ThirdNavbarComponent implements OnInit {
   @Input() title!: string;

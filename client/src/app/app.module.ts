@@ -10,7 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 //Taiga UI
 
 import { SharedModule } from './shared/shared/shared.module';
-import { SecondNavbarComponent } from './components/second-navbar/second-navbar.component';
 import { SubNavbarMainComponent } from './components/sub-navbar-main/sub-navbar-main.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';

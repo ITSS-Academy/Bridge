@@ -54,7 +54,6 @@ import {HttpClientModule} from '@angular/common/http';
     CoreModule,
     CdkModule,
     AddOnModule,
-    ReactiveFormsModule,
     FormsModule,
     ReactiveFormsModule,
     TuiComboBoxModule,

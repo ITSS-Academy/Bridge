@@ -18,17 +18,17 @@ export class LeadsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.leadsService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return await this.leadsService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateLeadDto: UpdateLeadDto) {
-    return this.leadsService.update(+id, updateLeadDto);
+  update(@Param('id') id: string, @Body() body: any) {
+    return this.leadsService.update(id, body);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.leadsService.remove(+id);
+  @Delete('/delete/:id')
+  remove(@Param('id') id: any) {
+    return this.leadsService.remove(id);
   }
 }

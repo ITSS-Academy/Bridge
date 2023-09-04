@@ -2,120 +2,199 @@ $Blue : #58c2ce;
 $Blue2: #2C698D;
 $Blue3: #272643;
 $Blue0: #BAE8E8;
-$LightGray:#F2F2F2;
+$LightGray: #F2F2F2;
 
-.button{
-    background-color: #fff;
-    color: $Blue;
-    min-width: 10rem;
-    border-radius: 8px;
-    border: 2px solid $Blue;
-    padding: 0.25rem 1rem;
-    margin-right: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+.button {
+  background-color: #fff;
+  color: $Blue;
+  min-width: 10rem;
+  border-radius: 8px;
+  border: 2px solid $Blue;
+  padding: 0.25rem 1rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.buttonMainAction{
-    background-color:$Blue ;
-    color: #fff;
+.buttonMainAction {
+  background-color: $Blue ;
+  color: #fff;
 }
 
 //CSS CỦA TRANG CÓ NỘI DUNG
-table{
-    background-color: #fff;
-    width: 100vw;
+table {
+  background-color: #fff;
+  width: 100vw;
+
 }
-tr{
-    max-height: 24px;
-    padding: 0.5rem 1rem;
-    align-items: center;
-    border-bottom: 1px solid $LightGray;
+
+tr {
+  max-height: 24px;
+
+  padding: 0.5rem 1rem;
+  align-items: center;
+  border-bottom: 1px solid $LightGray;
 }
-th{
-    padding: 0.5rem 1rem;
-    text-align: left;
-    color: $Blue2;
-    width: 10rem;
-    align-items: center;
-    overflow: hidden;
-    width: 9rem;
+
+
+th {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  color: $Blue2;
+  width: 10rem;
+  align-items: center;
+  overflow: hidden;
+  width: 9rem;
+
 }
-td{
-    padding: 0.5rem 1rem;
-    color: $Blue2;
-    width: 10rem;
-    align-items: center;
-    overflow: hidden;
-    width: 9rem;
+
+td {
+  padding: 0.5rem 1rem;
+  color: $Blue2;
+  width: 10rem;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  // width: 9rem;
 }
+
 
 //CSS CỦA CHECKBOX - COPY TRÊN MẠNG TỐT NHẤT ĐỪNG ĐỤNG VÀO
 .container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked~.checkmark {
+  background-color: $Blue;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.visible-data {
+  * {
+    transition: 0.5s;
   }
-  
-  /* Hide the browser's default checkbox */
-  .container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
+}
+
+.visible-data:hover {
+
+  transition: 0.5s;
+  cursor: pointer;
+  background-color: lighten($Blue, 40);
+
+  td {
+    transition: 0.5s;
+
+    color: $Blue;
   }
-  
-  /* Create a custom checkbox */
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 1.5rem;
-    width: 1.5rem;
-    background-color: #eee;
-    border-radius: 4px;
+
+  th {
+    transition: 0.5s;
+
+    color: $Blue;
   }
-  
-  /* On mouse-over, add a grey background color */
-  .container:hover input ~ .checkmark {
-    background-color: #ccc;
+
+  th>label>span {
+    transition: 0.5s;
+
+    border: $Blue2 0.001rem solid;
   }
-  
-  /* When the checkbox is checked, add a blue background */
-  .container input:checked ~ .checkmark {
-    background-color: $Blue;
+
+  .lead-phone:hover {
+
+    div {
+      transition: 0.5s;
+      background-color: $Blue;
+      color: #fff;
+    }
+
   }
-  
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
+
+  .lead-mail:hover {
+    div {
+      transition: 0.5s;
+      background-color: $Blue;
+      color: #fff;
+    }
   }
-  
-  /* Show the checkmark when checked */
-  .container input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  /* Style the checkmark/indicator */
-  .container .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
+}
+
+.lead-mail div {
+  transition: 0.5s;
+  padding: 0.312rem 0;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto 0;
+
+}
+
+.lead-phone div {
+  transition: 0.5s;
+  padding: 0.312rem 0;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto 0;
+}
