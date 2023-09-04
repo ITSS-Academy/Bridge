@@ -5,15 +5,14 @@ import { UpdateLeadDto } from './dto/update-lead.dto';
 
 @Controller('leads')
 export class LeadsController {
-  constructor(private readonly leadsService: LeadsService) {}
+  constructor(private readonly leadsService: LeadsService,) {}
 
   @Post('/createLead')
-  async create(@Body() createLeadDto: CreateLeadDto) {
-    let result = await this.leadsService.create(createLeadDto);
-    console.log('result ' + result);
+  async create(@Body() body: any) {
+    return await this.leadsService.create(body);
   }
 
-  @Get()
+  @Get('/getAll')
   findAll() {
     return this.leadsService.findAll();
   }

@@ -1,5 +1,5 @@
-import { Observable } from 'rxjs';
-import { Component } from '@angular/core';
+import { Observable, map } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { LeadsService } from './leads.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -8,21 +8,45 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: './leads.component.html',
   styleUrls: ['./leads.component.scss'],
 })
-export class LeadsComponent {
+export class LeadsComponent implements OnInit{
   leads!: Observable<any>;
+  subLeads:any[] = []
+    //ĐỔI TITLE THÀNH TÊN TRANG
+    title = 'Leads';
 
+    pageEmpty = true;
   constructor(private leadService: LeadsService) {
+
     // this.leads = this.leadService.getAllLeads();
     // this.leads.subscribe((data) => {
     //   console.log(data);
     // })
   }
 
+  ngOnInit(): void {
+    console.log(this.leads);
+    this.getAllLeads();
+    console.log(this.pageEmpty);
+  }
+
+  async getAllLeads() {
+    this.leads = (await this.leadService.getAllLeads()).pipe(
+      map((result: any) =>
+        result.map((item: any) => {
+          this.subLeads.push(item.data().data)
+          // console.log(item.data());
+          return item.data().data;
+        })
+      )
+    );
+    console.log(this.leads);
+
+    this.pageEmpty = false;
+    // console.log(result.docs.map((item: any) => item.data()));
+  }
 
 
-  //ĐỔI TITLE THÀNH TÊN TRANG
-  title = 'Leads';
-  pageEmpty = true;
+
 
   // addInfo() {
   //   this.pageEmpty = !this.pageEmpty;

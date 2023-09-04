@@ -2,7 +2,7 @@
   "targets": {
     "crmtest-6249f": {
       "hosting": {
-        "client": [
+        "BridgeClient": [
           "crmtest-6249f"
         ]
       }

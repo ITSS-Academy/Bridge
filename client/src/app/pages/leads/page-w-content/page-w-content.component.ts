@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Component, Input, OnInit } from '@angular/core';
 import { LeadsService } from '../leads.service';
 
@@ -7,20 +7,10 @@ import { LeadsService } from '../leads.service';
   templateUrl: './page-w-content.component.html',
   styleUrls: ['./page-w-content.component.scss'],
 })
-export class PageWContentComponent implements OnInit {
+export class PageWContentComponent{
   @Input()
   leads!: Observable<any>;
 
   constructor(public leadService: LeadsService) {}
-  ngOnInit(): void {
-    this.getAllLeads();
-  }
-
-   getAllLeads() {
-    let result = this.leadService.getAllLeads();
-    result.subscribe((data) => {
-      console.log(data);
-    });
-    // console.log(result.docs.map((item: any) => item.data()));
-  }
+  
 }

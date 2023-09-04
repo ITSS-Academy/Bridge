@@ -12,6 +12,7 @@ export class TokenService {
     private http: HttpService,
     private configService: ConfigService,
   ) {
+    this.getToken();
     console.log('token service ' + this.api_url);
   }
 
@@ -24,6 +25,7 @@ export class TokenService {
       })
       .pipe(map((response) => response.data));
     result.subscribe(async (data) => {
+      this.token = data.access_token;
     });
     return result;
   }

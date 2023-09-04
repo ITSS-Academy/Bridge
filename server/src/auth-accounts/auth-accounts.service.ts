@@ -88,11 +88,12 @@ export class AuthAccountService {
 
   async login(account: any) {
     let isExisted = await this.findOne(account.username);
+    console.log(isExisted);
     if (isExisted) {
-      let res = await this.userService.fineUserByEmail(isExisted.email);
+      let res = await this.userService.findUserByEmail(isExisted.email);
       if (isExisted.id == '') {
         await this.authModel
-          .findOneAndUpdate({ email: isExisted.email }, { id: res.id })
+          .findOneAndUpdate({ email: isExisted.email }, { id: res.data.id })
           .exec();
       }
       console.log(res);

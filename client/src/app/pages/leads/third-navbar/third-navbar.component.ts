@@ -73,7 +73,7 @@ export class ThirdNavbarComponent implements OnInit {
       },
     };
     console.log(lead);
-    let result = await this.leadService.addLead(lead)
+    let result = this.leadService.addLead(lead)
     const subscription:any = result.subscribe({
       next: (data) => {
         console.log(data);
