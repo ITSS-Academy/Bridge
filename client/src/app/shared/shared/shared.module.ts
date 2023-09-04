@@ -13,6 +13,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TuiDataListModule } from '@taiga-ui/core';
 import { TuiComboBoxModule, TuiDataListWrapperModule } from '@taiga-ui/kit';
 import { SecondNavbarComponent } from 'src/app/components/second-navbar/second-navbar.component';
+import { SecondNavbarAvatarComponent } from 'src/app/components/second-navbar-avatar/second-navbar-avatar.component';
 import { LoadingComponent } from 'src/app/components/loading/loading.component';
 import { AppSideBarComponent } from 'src/app/components/app-sidebar/side-bar.component';
 //Angular Material
@@ -28,7 +29,7 @@ import {HttpClientModule} from '@angular/common/http';
     SecondNavbarComponent,
     LoadingComponent,
     AppSideBarComponent,
-
+    SecondNavbarAvatarComponent,
   ],
   imports: [
     CommonModule,
