@@ -20,9 +20,8 @@
 
         <button
           class="button buttonMainAction"
-
+          (click)="showDialog(dialogAddOrg, 'auto')"
         >
-        <!--  -->
           <span class="material-symbols-outlined"> add </span>
 
           <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
@@ -143,6 +142,10 @@
         </table>
       </div>
     </div>
+
+
+  </div>
+</div>
 
     <!-- DIALOG -->
     <ng-template id="dialogAddOrg" #dialogAddOrg let-observer>
@@ -270,5 +273,3 @@
         </div>
       </form>
     </ng-template>
-  </div>
-</div>

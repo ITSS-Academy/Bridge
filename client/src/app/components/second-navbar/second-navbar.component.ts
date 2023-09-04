@@ -1,4 +1,4 @@
-import { Component,Input, NgModule } from '@angular/core';
+import { Component,Input, NgModule, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -29,16 +29,23 @@ interface bookmark {
   styleUrls: ['./second-navbar.component.scss']
 
 })
-export class SecondNavbarComponent {
+export class SecondNavbarComponent implements OnInit {
   @Input()
     
   title!: string;
+
+  ngOnInit() : void {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}')
+    console.log(this.currentUser);
+  }
+  currentUser:any;
+
   constructor(public route: Router) {
     if (this.navPages.length>10){
       this.navPages.length = 10
     }
   }
-
+  
   navPages:bookmark[] = [
     {name: 'Leads', route: '/leads'},
     {name: 'Contacts', route: '/contacts'},
@@ -85,5 +92,5 @@ export class SecondNavbarComponent {
     this.route.navigate([`/${path}`]);
   }
 
-  // 
+  
 }
