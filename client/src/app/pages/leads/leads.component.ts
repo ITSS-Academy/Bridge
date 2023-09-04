@@ -16,6 +16,7 @@ export class LeadsComponent implements OnInit{
 
     pageEmpty = true;
   constructor(private leadService: LeadsService) {
+    console.log(this.leads)
 
     // this.leads = this.leadService.getAllLeads();
     // this.leads.subscribe((data) => {
@@ -24,14 +25,12 @@ export class LeadsComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log(this.leads);
     this.getAllLeads();
-    console.log(this.pageEmpty);
   }
 
   async getAllLeads() {
     this.leads = (await this.leadService.getAllLeads()).pipe(
-      map((result: any) =>
+      map((result: any) => 
         result.map((item: any) => {
           this.subLeads.push(item.data().data)
           // console.log(item.data());
@@ -39,10 +38,7 @@ export class LeadsComponent implements OnInit{
         })
       )
     );
-    console.log(this.leads);
-
-    this.pageEmpty = false;
-    // console.log(result.docs.map((item: any) => item.data()));
+    console.log(this.leads);    // console.log(result.docs.map((item: any) => item.data()));
   }
 
 
