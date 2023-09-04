@@ -1,3 +1,6 @@
+<!-- <app-page-empty></app-page-empty> -->
+
+
 <div class="contentPage">
     <table>
         <tr>
@@ -20,23 +23,17 @@
             <th><b>CITY</b></th>
 
           </tr>
-          <tr>
+          <tr *ngFor="let lead of (this.leads | async)">
             <!-- CHECKBOX -->
             <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
                 <input type="checkbox">
                 <span class="checkmark"></span>
               </label></th>
             <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
-            <td>Vo Van Viet</td>
-            <td>vovanviet4444@gmail.com</td>
-            <td>0337063119</td>
-            <td>Bridge CRM</td>
-
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-
+            <td>{{lead.attributes.full_name!}}</td>
+            <td>{{lead.attributes.email1!}}</td>
+            <td>{{lead.attributes.phone_mobile!}}</td>
+            <td>{{lead.attributes.department!}}</td>
           </tr>
     </table>
   </div>

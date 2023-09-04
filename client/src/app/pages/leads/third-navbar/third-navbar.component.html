@@ -45,6 +45,7 @@
       <div class="container-dialog">
         <p class="title-dialog">First name</p>
         <tui-input
+        [formControl]="firstName"
           style="outline: none !important"
           class="input-dialog"
           tuiTextfieldSize="s"
@@ -59,6 +60,7 @@
       <div class="container-dialog">
         <p class="title-dialog">Last name</p>
         <tui-input
+        [formControl]="lastName2"
           class="input-dialog"
           tuiTextfieldSize="s"
           [(ngModel)]="lastName"
@@ -72,6 +74,7 @@
       <div class="container-dialog">
         <p class="title-dialog">Company</p>
         <tui-input
+        [formControl]="company2"
           class="input-dialog"
           tuiTextfieldSize="s"
           [(ngModel)]="company"
@@ -85,6 +88,7 @@
       <div class="container-dialog">
         <p class="title-dialog">Email</p>
         <tui-input
+        [formControl]="email2"
           class="input-dialog"
           tuiTextfieldSize="s"
           [(ngModel)]="email"
@@ -98,6 +102,7 @@
       <div class="container-dialog">
         <p class="title-dialog">Phone</p>
         <tui-input-phone-international
+          [formControl]="phone2"
           class="input-dialog"
           [countries]="(phones | tuiSortCountries | async) || []"
           [(countryIsoCode)]="countryIsoCode"
@@ -133,7 +138,7 @@
     <!--DIV NÚT CANCEL VÀ SAVE-->
     <div class="cancel-save">
       <button class="button-cancel" type="submit">Cancel</button>
-      <button class="button-add" type="submit">Add</button>
+      <button class="button-add"(click)="addLead()">Add</button>
     </div>
   </form>
 </ng-template>

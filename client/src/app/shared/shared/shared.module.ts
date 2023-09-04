@@ -13,11 +13,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TuiDataListModule } from '@taiga-ui/core';
 import { TuiComboBoxModule, TuiDataListWrapperModule } from '@taiga-ui/kit';
 import { SecondNavbarComponent } from 'src/app/components/second-navbar/second-navbar.component';
+import { SecondNavbarAvatarComponent } from 'src/app/components/second-navbar-avatar/second-navbar-avatar.component';
 import { LoadingComponent } from 'src/app/components/loading/loading.component';
 import { AppSideBarComponent } from 'src/app/components/app-sidebar/side-bar.component';
 //Angular Material
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     FirstNavbarComponent,
@@ -26,7 +29,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     SecondNavbarComponent,
     LoadingComponent,
     AppSideBarComponent,
-
+    SecondNavbarAvatarComponent,
   ],
   imports: [
     CommonModule,
@@ -39,6 +42,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     TuiComboBoxModule,
     TuiDataListModule,
     TuiDataListWrapperModule,
+    HttpClientModule,
 
     //Angular Material
     MatProgressSpinnerModule,
@@ -56,6 +60,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     TuiComboBoxModule,
     TuiDataListModule,
     TuiDataListWrapperModule,
+    HttpClientModule,
+
     //components
     FirstNavbarComponent,
     NavbarUserManagementComponent,

@@ -18,7 +18,7 @@ import { TuiDay } from '@taiga-ui/cdk';
 @Component({
   selector: 'app-third-navbar',
   templateUrl: './third-navbar.component.html',
-  styleUrls: ['./third-navbar.component.scss'],
+  styleUrls: ['./third-navbar.component.scss','./third-navbar.component.less'],
   providers: [TuiDialogFormService],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,

@@ -71,7 +71,7 @@ $LightGray: #f2f2f2;
 }
 
 //DIV CHỨA NỘI DUNG CHÍNH CỦA DIALOG
-.content-dialog {
+.contents-dialog-org {
   height: fit-content;
   width: 30rem;
   display: flex;
@@ -98,7 +98,7 @@ $LightGray: #f2f2f2;
 
     //INPUT BOX
     .input-dialog {
-      width: 16rem;
+      width: 18rem;
       border-radius: 8px;
       box-shadow: none;
       border: 1px solid #58c2ce;

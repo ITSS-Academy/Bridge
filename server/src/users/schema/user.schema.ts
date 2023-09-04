@@ -5,7 +5,7 @@ export type UserDocument = HydratedDocument<User>;
 
 @Schema({strict: false})
 export class User {
-
+    
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

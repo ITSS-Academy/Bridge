@@ -19,6 +19,10 @@ import { SignUpEffect } from './pages/signup/ngrx/effect/signup.effect';
 import { loginReducer } from './pages/login/ngrx/reducer/login.reducer';
 import { LoginEffect } from './pages/login/ngrx/effect/login.effect';
 import { SuccessComponent } from './components/success/success.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,10 @@ import { SuccessComponent } from './components/success/success.component';
     EffectsModule.forRoot([
       SignUpEffect,
       LoginEffect
-    ])
+    ]),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
   ],
   exports: [SharedModule],
   providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],

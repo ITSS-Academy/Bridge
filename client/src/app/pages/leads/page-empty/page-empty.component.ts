@@ -12,7 +12,7 @@ export class PageEmptyComponent implements OnInit{
   constructor() {}
   ngOnInit() {}
 
-  emitAddInfo() {
-    this.addInfo.emit();
-  }
+  // emitAddInfo() {
+  //   this.addInfo.emit();
+  // }
 }
