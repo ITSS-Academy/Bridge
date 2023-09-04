@@ -39,7 +39,6 @@ export class SecondNavbarComponent implements OnInit{
     }
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
   navPages:bookmark[] = [

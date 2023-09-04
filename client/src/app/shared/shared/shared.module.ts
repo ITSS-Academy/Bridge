@@ -18,6 +18,8 @@ import { AppSideBarComponent } from 'src/app/components/app-sidebar/side-bar.com
 //Angular Material
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     FirstNavbarComponent,
@@ -39,6 +41,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     TuiComboBoxModule,
     TuiDataListModule,
     TuiDataListWrapperModule,
+    HttpClientModule,
 
     //Angular Material
     MatProgressSpinnerModule,
@@ -56,6 +59,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     TuiComboBoxModule,
     TuiDataListModule,
     TuiDataListWrapperModule,
+    HttpClientModule,
+
     //components
     FirstNavbarComponent,
     NavbarUserManagementComponent,

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "crmtest-6249f": {
+      "hosting": {
+        "client": [
+          "crmtest-6249f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "crmtest-6249f"
+  }
+}
