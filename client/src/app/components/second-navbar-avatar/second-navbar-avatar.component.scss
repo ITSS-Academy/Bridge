@@ -27,8 +27,8 @@ b {
 }
 
 .avatar{
-    height: 55px;
-    width: 55px;
+    height: 47px;
+    width: 47px;
     border-radius: 50%;
     box-sizing: border-box;
     // box-shadow: 0px 0px 4px $Blue;
@@ -36,18 +36,20 @@ b {
 }
 
 .avatarImage{
-    height: 48px;
-    width: 48px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     box-sizing: border-box;
-    border: 2px solid white;
+    border: 3px solid $LightGray;
 }
 
 .avatar:hover{
+    // transition: ease-out 0.1s;
     border: 4px solid $Blue;
 }
 
 .avatar.open{
+    // transition: ease-out 0.1s;
     border: 4px solid $Blue;
 }
 
@@ -94,6 +96,7 @@ b {
 }
 
 .dropdownBoxOption{
+    font-size: 16px;
     width: 100%;
     background-color: white;
     padding: 0.5rem 0;
