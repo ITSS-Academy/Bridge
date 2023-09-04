@@ -11,5 +11,7 @@ import { AuthAccountService } from './auth-accounts.service';
   imports: [HttpModule,UsersModule,MongooseModule.forFeature([{name: AuthAccount.name, schema: AuthAccountSchema}])], 
   controllers: [AuthAccountsController],
   providers: [AuthAccountService,TokenService],
+
+  exports: [AuthAccountService]
 })
 export class AuthAccountModule {}

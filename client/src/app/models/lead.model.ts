@@ -6,5 +6,7 @@ export interface Lead{
     email: string;
     phone: string;
     assignedTo: string;
-    
 }
+
+
+export interface Leads{}

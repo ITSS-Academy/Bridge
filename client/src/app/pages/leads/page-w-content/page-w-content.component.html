@@ -31,8 +31,8 @@
         </label></th>
       <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
       <td>{{lead.attributes.full_name!}}</td>
-      <td class="lead-mail"><div>{{lead.attributes.email1!}}</div></td>
-      <td class="lead-phone"><div>{{lead.attributes.phone_mobile!}}</div></td>
+      <td class="lead-mail"><div *ngIf="lead.attributes.email1">{{lead.attributes.email1!}}</div></td>
+      <td class="lead-phone"><div *ngIf="lead.attributes.phone_mobile" >{{lead.attributes.phone_mobile!}}</div></td>
       <td>{{lead.attributes.department!}}</td>
       <td></td>
       <td></td>

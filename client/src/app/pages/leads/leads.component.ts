@@ -2,6 +2,8 @@ import { Observable, map } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { LeadsService } from './leads.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { LeadState } from './ngrx/state/lead.state';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-leads',
@@ -15,8 +17,9 @@ export class LeadsComponent implements OnInit{
     title = 'Leads';
 
     pageEmpty = true;
-  constructor(private leadService: LeadsService) {
-    console.log(this.leads)
+    
+    constructor(private leadService: LeadsService) {
+    
 
     // this.leads = this.leadService.getAllLeads();
     // this.leads.subscribe((data) => {
@@ -32,13 +35,12 @@ export class LeadsComponent implements OnInit{
     this.leads = (await this.leadService.getAllLeads()).pipe(
       map((result: any) => 
         result.map((item: any) => {
-          this.subLeads.push(item.data().data)
           // console.log(item.data());
           return item.data().data;
         })
       )
     );
-    console.log(this.leads);    // console.log(result.docs.map((item: any) => item.data()));
+    // console.log(this.leads);    // console.log(result.docs.map((item: any) => item.data()));
   }
 
 

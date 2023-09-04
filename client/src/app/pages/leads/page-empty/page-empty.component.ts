@@ -70,14 +70,14 @@ export class PageEmptyComponent implements OnInit{
       },
     };
     console.log(lead);
-    let result = this.leadService.addLead(lead)
-    const subscription:any = result.subscribe({
-      next: (data) => {
-        console.log(data);
-        return;
-      },
-      complete: () => subscription.unsubscribe(),
-    })
+    // let result = this.leadService.addLead(lead)
+    // const subscription:any = result.subscribe({
+    //   next: (data) => {
+    //     console.log(data);
+    //     return;
+    //   },
+    //   complete: () => subscription.unsubscribe(),
+    // })
     // await this.leadService.getAllLeads();
   }
 

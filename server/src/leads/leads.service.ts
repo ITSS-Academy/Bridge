@@ -32,7 +32,7 @@ export class LeadsService {
     });
   }
 
-  async create(body: any) {
+  create(body: any) {
     let result = this.http
       .post(`${this.api_url}/Api/V8/module`, body, {
         headers: {
@@ -42,8 +42,8 @@ export class LeadsService {
       .pipe(map((response) => response.data));
     return result.pipe(
       map((res) => {
-        console.log(res);
-        return this.docRef.add(res);
+        this.docRef.add(res);
+        return res;
       }),
     );
   }

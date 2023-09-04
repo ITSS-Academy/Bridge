@@ -112,11 +112,14 @@ export class AuthAccountService {
     return result;
   }
 
-  update(id: number, updateAuthAccountDto: UpdateAuthAccountDto) {
-    return `This action updates a #${id} authAccount`;
+  update(id: string, updateAuthAccountDto: UpdateAuthAccountDto) {
+    return this.authModel.findOneAndUpdate({id: id}, updateAuthAccountDto).exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} authAccount`;
+  async remove(id: string) {
+    await this.authModel.findOneAndDelete({ id: id }).exec()
+    return await this.userService.remove(id);
+
+    
   }
 }
