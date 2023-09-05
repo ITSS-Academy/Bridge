@@ -22,7 +22,18 @@ export class LeadEffect {
             })
         ));
 
-    // updateLead$ = createEffect(() =>);
+    deleteLead$ = createEffect(() =>
+        this.action$.pipe(
+            ofType(LeadAction.deleteLead),
+            switchMap((id: any) => this.leadService.deleteLead(id.id)),
+            map(( ) => {
+                return LeadAction.deleteLeadSuccess();
+            }),
+            catchError((error) => {
+                return of(LeadAction.deleteLeadFailure({ error: error }));
+            })
+        )
+    )
     // deleteLead$ = createEffect(() =>);
 
 }

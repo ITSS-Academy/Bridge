@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-second-navbar-avatar',
   templateUrl: './second-navbar-avatar.component.html',
   styleUrls: ['./second-navbar-avatar.component.scss'],
 })
 export class SecondNavbarAvatarComponent {
+
   
   toggleDropdown() {
     const toggledDropdown = document.getElementById('avatar');
@@ -15,11 +17,14 @@ export class SecondNavbarAvatarComponent {
       dropdownBox?.classList.toggle('closed');
     }
   }
-  constructor(public route: Router) {}
+  constructor(public route: Router, private authService: AuthService) {}
 
   navToAdmin() {
     this.route.navigate(['/admin-users']);
   }
 
-  logOut() {}
+  logOut() {
+    this.authService.logout();
+    this.route.navigate(['/login']);
+  }
 }
