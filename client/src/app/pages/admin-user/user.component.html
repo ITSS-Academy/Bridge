@@ -7,7 +7,7 @@
     <div class="first-container">
       <div class="picture-container">
         <img
-          *ngIf="this.currentUser.data.attributes.photo == '' "
+          *ngIf="!this.currentUser"
           id="picture"
           src="https://wallpaperaccess.com/full/2362086.png"
         />
