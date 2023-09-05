@@ -59,6 +59,20 @@ td {
   // width: 9rem;
 }
 
+.action {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+// th:last-child {
+//   padding: 0;
+// }
+
+// td:last-child {
+//   padding: 0;
+// }
 
 //CSS CỦA CHECKBOX - COPY TRÊN MẠNG TỐT NHẤT ĐỪNG ĐỤNG VÀO
 .container {

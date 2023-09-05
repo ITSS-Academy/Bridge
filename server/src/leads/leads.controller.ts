@@ -28,7 +28,7 @@ export class LeadsController {
   }
 
   @Delete('/delete/:id')
-  remove(@Param('id') id: any) {
+  remove(@Param('id') id: string) {
     return this.leadsService.remove(id);
   }
 }
