@@ -21,7 +21,7 @@
       <th><b>LAST CONTACT ON</b></th>
       <th><b>COUNTRY</b></th>
       <th><b>CITY</b></th>
-
+        <th>ACTION</th>
     </tr>
     <tr class="visible-data" *ngFor="let lead of (this.leads | async)">
       <!-- CHECKBOX -->
@@ -38,6 +38,12 @@
       <td></td>
       <td></td>
       <td></td>
+      <td>
+        <div class="action">
+          <span class="material-symbols-outlined" >edit</span>
+        <span class="material-symbols-outlined" (click)="deleteLead(lead.id)">delete</span>
+        </div>
+      </td>
     </tr>
   </table>
 </div>

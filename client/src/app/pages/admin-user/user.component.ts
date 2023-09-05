@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   Inject,
+  OnDestroy,
   ViewEncapsulation,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -18,7 +19,7 @@ import { TuiCountryIsoCode } from '@taiga-ui/i18n';
   changeDetection: ChangeDetectionStrategy.OnPush,
   // encapsulation: ViewEncapsulation.None,
 })
-export class UserComponent {
+export class UserComponent{
   //user dialog
   name = '';
   primaryGroup = '';
@@ -54,6 +55,7 @@ export class UserComponent {
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
   }
+
 
   onModelChangeName(name: string): void {
     this.name = name;

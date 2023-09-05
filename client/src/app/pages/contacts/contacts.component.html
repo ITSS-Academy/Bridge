@@ -14,8 +14,7 @@
   <div class="body" style="position: relative; z-index: 1">
     <!-- NỘI DUNG TRANG RỖNG-->
     <app-display-no-data-contacts
-      *ngIf="pageEmpty"
-      (addInfo)="addInfo()"
+    *ngIf="(this.contacts |async)?.length == 0"
       [title]="title"
     ></app-display-no-data-contacts>
     <!-- TRANG CÓ NỘI DUNG -->
