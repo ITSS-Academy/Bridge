@@ -129,32 +129,32 @@ td {
   transform: rotate(45deg);
 }
 
-.visible-data {
-  * {
-    transition: 0.5s;
-  }
-}
+// .visible-data {
+//   * {
+//     transition: 0.5s;
+//   }
+// }
 
 .visible-data:hover {
 
-  transition: 0.5s;
+  // transition: 0.5s;
   cursor: pointer;
   background-color: lighten($Blue, 40);
 
   td {
-    transition: 0.5s;
+    // transition: 0.5s;
 
     color: $Blue;
   }
 
   th {
-    transition: 0.5s;
+    // transition: 0.5s;
 
     color: $Blue;
   }
 
   th>label>span {
-    transition: 0.5s;
+    // transition: 0.5s;
 
     border: $Blue2 0.001rem solid;
   }
@@ -162,7 +162,7 @@ td {
   .lead-phone:hover {
 
     div {
-      transition: 0.5s;
+      // transition: 0.5s;
       background-color: $Blue;
       color: #fff;
     }
@@ -171,7 +171,7 @@ td {
 
   .lead-mail:hover {
     div {
-      transition: 0.5s;
+      // transition: 0.5s;
       background-color: $Blue;
       color: #fff;
     }
@@ -179,8 +179,8 @@ td {
 }
 
 .lead-mail div {
-  transition: 0.5s;
-  padding: 0.312rem 0;
+  // transition: 0.5s;
+  padding: 0.312rem 0.5rem;
   border-radius: 8px;
   display: flex;
   justify-content: center;
@@ -190,8 +190,8 @@ td {
 }
 
 .lead-phone div {
-  transition: 0.5s;
-  padding: 0.312rem 0;
+  // transition: 0.5s;
+  padding: 0.312rem 0.5rem;
   border-radius: 8px;
   display: flex;
   justify-content: center;

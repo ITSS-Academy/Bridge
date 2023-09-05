@@ -11,6 +11,7 @@ import { ConfigModule } from '@nestjs/config';
 import { LeadsModule } from './leads/leads.module';
 import databaseConfig from './configs/database.config';
 import { TokenController } from './token/token.controller';
+import { ContactsModule } from './contacts/contacts.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { TokenController } from './token/token.controller';
     AuthAccountModule,
     AccountsModule,
     LeadsModule,
+    ContactsModule,
   ],
   controllers: [AppController, TokenController],
   providers: [AppService, TokenService],
