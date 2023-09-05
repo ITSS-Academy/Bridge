@@ -63,11 +63,11 @@ export class AuthAccountsController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAuthAccountDto: UpdateAuthAccountDto) {
-    return this.authAccountService.update(+id, updateAuthAccountDto);
+    return this.authAccountService.update(id, updateAuthAccountDto);
   }
 
-  @Delete(':id')
+  @Delete('/delete/:id')
   remove(@Param('id') id: string) {
-    return this.authAccountService.remove(+id);
+    return this.authAccountService.remove(id);
   }
 }

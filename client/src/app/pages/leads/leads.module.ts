@@ -7,15 +7,14 @@ import { LeadsComponent } from './leads.component';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { PageEmptyComponent } from './page-empty/page-empty.component';
 import { PageWContentComponent } from './page-w-content/page-w-content.component';
-import { ThirdNavbarComponent } from './third-navbar/third-navbar.component';
-
+import {ThirdNavbarComponent} from '../leads/third-navbar/third-navbar.component';
 
 @NgModule({
   declarations: [
     LeadsComponent,
     PageEmptyComponent,
     PageWContentComponent,
-    ThirdNavbarComponent
+    ThirdNavbarComponent,
   ],
   imports: [
     CommonModule,

@@ -10,7 +10,7 @@
     </div>
 
     <div class="emptyPageContent" style="margin-top: 1rem">
-      <button
+      <button (click)="showDialog(dialogAddLeads, 'auto')"
         class="button buttonMainAction"
         style="margin-right: 0"
       >
@@ -20,3 +20,122 @@
     </div>
   </div>
 </div>
+
+
+<!-- DIALOG -->
+<ng-template id="dialogAddLead" #dialogAddLeads let-observer>
+  <!--FORM CHỨA NỘI DUNG DIALOG-->
+  <form
+    id="form-container"
+    [formGroup]="exampleForm"
+    (ngSubmit)="observer.complete()"
+  >
+    <!--CHỮ TỰA ĐỀ CỦA DIALOG-->
+    <p id="header-dialog">Add Lead</p>
+
+    <!--DIV CHỨA NỘI DUNG DIALOG-->
+    <div class="contents-dialog-lead">
+      <!--DIV FIRST NAME-->
+      <div class="container-dialog">
+        <p class="title-dialog">First name</p>
+        <tui-input
+        [formControl]="firstName"
+          style="outline: none !important"
+          class="input-dialog"
+          tuiTextfieldSize="s"
+          [(ngModel)]="name"
+          (ngModelChange)="onModelChangeName($event)"
+        >
+          Type first name
+        </tui-input>
+      </div>
+
+      <!--DIV LAST NAME-->
+      <div class="container-dialog">
+        <p class="title-dialog">Last name</p>
+        <tui-input
+        [formControl]="lastName2"
+          class="input-dialog"
+          tuiTextfieldSize="s"
+          [(ngModel)]="lastName"
+          (ngModelChange)="onModelChangeLastName($event)"
+        >
+          Type last name
+        </tui-input>
+      </div>
+
+      <!--DIV COMPANY-->
+      <div class="container-dialog">
+        <p class="title-dialog">Company</p>
+        <tui-input
+        [formControl]="company2"
+          class="input-dialog"
+          tuiTextfieldSize="s"
+          [(ngModel)]="company"
+          (ngModelChange)="onModelChangeCompany($event)"
+        >
+          Type company
+        </tui-input>
+      </div>
+
+      <!--DIV EMAIL-->
+      <div class="container-dialog">
+        <p class="title-dialog">Email</p>
+        <tui-input
+        [formControl]="email2"
+          class="input-dialog"
+          tuiTextfieldSize="s"
+          [(ngModel)]="email"
+          (ngModelChange)="onModelChangeEmail($event)"
+        >
+          Type here
+        </tui-input>
+      </div>
+
+      <!--DIV PHONE-->
+      <div class="container-dialog">
+        <p class="title-dialog">Phone</p>
+        <tui-input-phone-international
+          [formControl]="phone2"
+          class="input-dialog"
+          [countries]="(phones | tuiSortCountries | async) || []"
+          [(countryIsoCode)]="countryIsoCode"
+          [tuiTextfieldLabelOutside]="true"
+          tuiTextfieldSize="m"
+          style="border-radius: 8px"
+        >
+          (optional)
+        </tui-input-phone-international>
+      </div>
+
+      <!--DIV ASSIGNED TO-->
+      <div class="container-dialog">
+        <p class="title-dialog">Assigned to</p>
+
+        <tui-combo-box
+          class="input-dialog"
+          [formControl]="controlAssignments"
+          [stringify]="stringifyAssignment"
+          tuiTextfieldSize="s"
+        >
+          Choose/Type here
+
+          <tui-data-list-wrapper
+            *tuiDataList
+            [items]="assignments | tuiFilterByInputWith : stringifyAssignment"
+            [itemContent]="stringifyAssignment | tuiStringifyContent"
+          ></tui-data-list-wrapper>
+        </tui-combo-box>
+      </div>
+    </div>
+
+    <!--DIV NÚT CANCEL VÀ SAVE-->
+    <div class="cancel-save">
+      <button class="button-cancel" type="submit">Cancel</button>
+      <button class="button-add"(click)="addLead()">Add</button>
+    </div>
+  </form>
+</ng-template>
+
+
+

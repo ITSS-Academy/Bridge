@@ -8,8 +8,8 @@ export class LeadsController {
   constructor(private readonly leadsService: LeadsService,) {}
 
   @Post('/createLead')
-  async create(@Body() body: any) {
-    return await this.leadsService.create(body);
+  create(@Body() body: any) {
+    return this.leadsService.create(body);
   }
 
   @Get('/getAll')
@@ -18,17 +18,17 @@ export class LeadsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.leadsService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return await this.leadsService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateLeadDto: UpdateLeadDto) {
-    return this.leadsService.update(+id, updateLeadDto);
+  @Patch('/update/')
+  update(@Body() body: any) {
+    return this.leadsService.update(body.data.id, body);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.leadsService.remove(+id);
+  @Delete('/delete/:id')
+  remove(@Param('id') id: any) {
+    return this.leadsService.remove(id);
   }
 }

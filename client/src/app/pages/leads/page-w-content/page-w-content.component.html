@@ -2,38 +2,42 @@
 
 
 <div class="contentPage">
-    <table>
-        <tr>
-            <!-- CHECKBOX -->
-            <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-              </label></th>
+  <table>
+    <tr>
+      <!-- CHECKBOX -->
+      <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
+          <input type="checkbox">
+          <span class="checkmark"></span>
+        </label></th>
 
-            <th style="width: max-content; padding: 0.5rem;"><span class="material-symbols-outlined">edit_document</span></th>
-            <th><b>NAME</b></th>
-            <th><b>EMAIL</b></th>
-            <th><b>PHONE NUMBER</b></th>
-            <th><b>COMPANY</b></th>
-            <th><b>WEBSITE</b></th>
+      <th style="width: max-content; padding: 0.5rem;"><span class="material-symbols-outlined">edit_document</span></th>
+      <th><b>NAME</b></th>
+      <th><b>EMAIL</b></th>
+      <th><b>PHONE NUMBER</b></th>
+      <th><b>COMPANY</b></th>
+      <th><b>WEBSITE</b></th>
 
 
-            <th><b>LAST CONTACT ON</b></th>
-            <th><b>COUNTRY</b></th>
-            <th><b>CITY</b></th>
+      <th><b>LAST CONTACT ON</b></th>
+      <th><b>COUNTRY</b></th>
+      <th><b>CITY</b></th>
 
-          </tr>
-          <tr *ngFor="let lead of (this.leads | async)">
-            <!-- CHECKBOX -->
-            <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-              </label></th>
-            <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
-            <td>{{lead.attributes.full_name!}}</td>
-            <td>{{lead.attributes.email1!}}</td>
-            <td>{{lead.attributes.phone_mobile!}}</td>
-            <td>{{lead.attributes.department!}}</td>
-          </tr>
-    </table>
-  </div>
+    </tr>
+    <tr class="visible-data" *ngFor="let lead of (this.leads | async)">
+      <!-- CHECKBOX -->
+      <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
+          <input type="checkbox">
+          <span class="checkmark"></span>
+        </label></th>
+      <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
+      <td>{{lead.attributes.full_name!}}</td>
+      <td class="lead-mail"><div *ngIf="lead.attributes.email1">{{lead.attributes.email1!}}</div></td>
+      <td class="lead-phone"><div *ngIf="lead.attributes.phone_mobile" >{{lead.attributes.phone_mobile!}}</div></td>
+      <td>{{lead.attributes.department!}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+</div>

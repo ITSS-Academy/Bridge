@@ -8,32 +8,41 @@ import {
   OnInit,
   Input,
 } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { TuiDialogService, TuiDialogSize } from '@taiga-ui/core';
 import { TuiDialogFormService } from '@taiga-ui/kit';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import { TuiCountryIsoCode } from '@taiga-ui/i18n';
 import { Lead } from 'src/app/models/lead.model';
 import { LeadsService } from '../leads.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { LeadState } from '../ngrx/state/lead.state';
+import { Observable } from 'rxjs';
+import { LeadAction } from '../ngrx/action/lead.action';
 
 @Component({
   selector: 'app-third-navbar',
   templateUrl: './third-navbar.component.html',
   styleUrls: ['./third-navbar.component.scss'],
   providers: [TuiDialogFormService],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
+  // encapsulation: ViewEncapsulation.None,
 })
 export class ThirdNavbarComponent implements OnInit {
   @Input() title!: string;
   @Output() public addInfo = new EventEmitter();
 
+  lead$!: Observable<LeadState>;
+
   constructor(
     @Inject(TuiDialogFormService)
     private readonly dialogForm: TuiDialogFormService,
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
-    private leadService: LeadsService
+    private leadService: LeadsService,
+    private store: Store<{ lead: LeadState }>,
   ) {
+    this.lead$ = store.select('lead');
+
     this.exampleForm.addControl('firstName', this.firstName);
     this.exampleForm.addControl('lastName2', this.lastName2);
     this.exampleForm.addControl('company2', this.company2);
@@ -73,15 +82,10 @@ export class ThirdNavbarComponent implements OnInit {
       },
     };
     console.log(lead);
-    let result = this.leadService.addLead(lead)
-    const subscription:any = result.subscribe({
-      next: (data) => {
-        console.log(data);
-        return;
-      },
-      complete: () => subscription.unsubscribe(),
+    this.store.dispatch(LeadAction.addLead({ lead: lead }));
+    this.lead$.subscribe((data) => {
+      console.log(data);
     })
-    // await this.leadService.getAllLeads();
   }
 
   name = '';

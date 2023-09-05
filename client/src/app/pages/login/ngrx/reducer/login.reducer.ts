@@ -1,7 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { LoginState } from "../state/login.state";
 import { LoginAction } from "../action/login.action";
-import { state } from "@angular/animations";
 
 
 const initialState: LoginState = {

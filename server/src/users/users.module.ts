@@ -6,6 +6,8 @@ import { TokenService } from 'src/token/token.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User } from './entities/user.entity';
 import { UserSchema } from './schema/user.schema';
+import { AuthAccountService } from 'src/auth-accounts/auth-accounts.service';
+import { AuthAccountModule } from 'src/auth-accounts/auth-accounts.module';
 
 
 @Module({

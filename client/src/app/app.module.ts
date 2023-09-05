@@ -10,7 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 //Taiga UI
 
 import { SharedModule } from './shared/shared/shared.module';
-import { SecondNavbarComponent } from './components/second-navbar/second-navbar.component';
 import { SubNavbarMainComponent } from './components/sub-navbar-main/sub-navbar-main.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -23,6 +22,8 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { LeadEffect } from './pages/leads/ngrx/effect/lead.effect';
+import { leadReducer } from './pages/leads/ngrx/reducer/lead.reducer';
 
 @NgModule({
   declarations: [
@@ -40,11 +41,13 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
     StoreModule.forRoot({
       signup: SignUpReducer,
-      login: loginReducer
+      login: loginReducer,
+      lead: leadReducer,
     }, {}),
     EffectsModule.forRoot([
       SignUpEffect,
-      LoginEffect
+      LoginEffect,
+      LeadEffect,
     ]),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

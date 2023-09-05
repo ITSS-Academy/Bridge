@@ -7,3 +7,6 @@ export interface Lead{
     phone: string;
     assignedTo: string;
 }
+
+
+export interface Leads{}

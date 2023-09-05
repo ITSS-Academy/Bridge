@@ -20,4 +20,16 @@ export class LeadsService {
   async getAllLeads() {
     return collectionSnapshots(this.collection);
   }
+
+  getLeadById(id: string) {
+    return this.http.get(`http://localhost:3000/leads/${id}`) as Observable<any>;
+  }
+
+  updateLead(id: string, body: any) {
+    return this.http.patch(`http://localhost:3000/leads/${id}`, body) as Observable<any>;
+  }
+
+  deleteLead(id: string) {
+    return this.http.delete(`http://localhost:3000/leads/delete/${id}`) as Observable<any>;
+  }
 }
