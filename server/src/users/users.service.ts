@@ -12,7 +12,6 @@ import { AuthAccountService } from 'src/auth-accounts/auth-accounts.service';
 
 @Injectable()
 export class UsersService {
-  subUserInfo: any;
   token = '';
   api_url = this.configService.get<string>('CORE_APIs');
   db = getFirestore();
