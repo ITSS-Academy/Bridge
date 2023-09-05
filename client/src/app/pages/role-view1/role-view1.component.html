@@ -1,14 +1,38 @@
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-/>
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 <app-navbar-user-management></app-navbar-user-management>
 <div class="body">
   <app-sidebar></app-sidebar>
   <div class="container">
-    
-    <div class="tree">
+
+    <div class="pageButton" >
+      <button class="addRoleButton" size="m" type="button" *ngIf="!viewTree">
+        <span class="material-symbols-outlined">
+          add
+        </span>
+        Add Role
+      </button>
+    </div>
+
+    <div class="viewButtonHeader">
+      <div class="viewButtonContainer">
+        <button class="treeButton activeButton" type="button" (click)="changeView('tree')">
+          Tree View
+        </button>
+        <button class="listButton" type="button" (click)="changeView('view')">
+          List View
+        </button>
+      </div>
+    </div>
+
+      <app-tree-view *ngIf="viewTree"></app-tree-view>
+      <app-list-view *ngIf="!viewTree"></app-list-view>
+
+  </div>
+</div>
+
+<!-- <div class="tree">
       
       <div class="header"><h2>ROLE HIERARCHY TREE</h2></div>
       <div class="branchContainer" >
@@ -67,10 +91,8 @@
         </div>
       </div>
       </div>
-    </div>
-  </div>
-</div>
-  <!-- <tui-tree
+    </div> -->
+<!-- <tui-tree
       *ngFor="let item of data.children"
       [tuiTreeController]="true"
       [value]="item"
@@ -84,7 +106,7 @@
 
 <!-- </div> -->
 
-      <!-- <div class="branchHolder">
+<!-- <div class="branchHolder">
         <div class="branch">
           <div class="node">
             CEO

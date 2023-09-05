@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { TuiCountryIsoCode } from '@taiga-ui/i18n';
 import { Router } from '@angular/router';
 import {
   TuiDialogContext,
@@ -29,12 +30,7 @@ export class AdminUsersComponent {
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
     public route: Router
   ) {}
-  exampleForm = new FormGroup({
-    groupName: new FormControl(''),
-    groupEmail: new FormControl(''),
-    description: new FormControl(''),
-    groupMember: new FormControl(''),
-  });
+  exampleForm = new FormGroup({});
 
   //control user type selection
   readonly controlUserTypes = new FormControl();
@@ -184,6 +180,18 @@ export class AdminUsersComponent {
     `${item.decimal}`;
   //
 
+  //control phone selection
+  readonly phones = Object.values(TuiCountryIsoCode);
+
+  countryIsoCode = TuiCountryIsoCode.US;
+  //
+
+  //control office phone selection
+  readonly officePhones = Object.values(TuiCountryIsoCode);
+
+  countryIsoCodeOffice = TuiCountryIsoCode.US;
+  //
+
   onClick(
     content: PolymorpheusContent<TuiDialogContext>,
     size: TuiDialogSize
@@ -193,10 +201,10 @@ export class AdminUsersComponent {
         size,
       })
       .subscribe();
-      console.log("open");
+    console.log('open');
   }
 
-  navigateToViewUser(){
+  navigateToViewUser() {
     this.route.navigate(['/user']);
   }
 }

@@ -1,104 +1,163 @@
-// :host{
-//   --tui-primary: #58C2CE;
-//   --tui-primary-hover: #58C2CE;
-//   --tui-text-01: #fff;
-//   --tui-primary-active: #58C2CE;
-//   --tui-base-01: #58C2CE;
-//   --tui-base-02: #58C2CE;
-//   --tui-base-03: #58C2CE;
-//   --tui-base-04: #58C2CE;
-//   --tui-base-05: #58C2CE;
-//   --tui-base-06: #58C2CE;
-//   --tui-base-07: #58C2CE;
-//   --tui-base-08: #58C2CE;
-//   --tui-base-09: #58C2CE;]
-//   --tui-heading-font: 'Montserrat', sans-serif;
-//   --tui-text-font: 'Montserrat', sans-serif;
+$Blue : #58c2ce;
+$Blue2: #2C698D;
+$Blue3: #272643;
+$Blue0: #BAE8E8;
 
+.viewButtonContainer{
+  display: flex;
+}
+
+.treeButton{
+  color: $Blue;
+  border: 1px solid $Blue;
+  color: #ffff;
+  padding: 0.5rem 1rem;
+}
+
+
+// .check-status-container {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+
+//   .button-container {
+//     display: flex;
+//     flex-direction: row;
+//   }
+
+//   .check-active-button {
+//     width: 6.25rem;
+//     height: 2.7rem;
+//     align-items: center;
+//     justify-content: center;
+//     border-top-left-radius: 8px;
+//     border-bottom-left-radius: 8px;
+//     border: 2px solid #58c2ce;
+//     border-right: none;
+//     background-color: #58c2ce;
+//     color: white;
+//     font-size: 1rem;
+//     font-weight: 600;
+//     cursor: pointer;
+
+//     &:hover {
+//       background-color: darken($color: #58c2ce, $amount: 10);
+//       color: darken($color: white, $amount: 3);
+//     }
+//   }
+
+//   .check-inactive-button {
+//     width: 6.25rem;
+//     height: 2.7rem;
+//     align-items: center;
+//     justify-content: center;
+//     border-top-right-radius: 8px;
+//     border-bottom-right-radius: 8px;
+//     border: 2px solid #58c2ce;
+//     background-color: #ffffff;
+//     color: #58c2ce;
+//     font-size: 1rem;
+//     font-weight: 600;
+//     cursor: pointer;
+
+//     &:hover {
+//       background-color: darken($color: white, $amount: 3);
+//     }
+//   }
 // }
 
-.container {
-  // border: 2px solid red;
-  width: 90vw;
-  padding: 4rem 8rem;
-  min-height: 120vh;
-  max-height: max-content;
-}
 
-.field {
+// .container {
+//   // border: 2px solid red;
+//   width: 90vw;
+//   padding: 4rem 8rem;
+//   min-height: 120vh;
+//   max-height: max-content;
+// }
+
+// .field {
+//   display: flex;
+//   justify-items: flex-start;
+//   margin: 1rem 0;
+//   height: max-content;
+// }
+
+// .label {
+//   // border: 2px solid red;
+//   width: 25%;
+
+//   font-size: medium;
+
+//   height: 3rem;
+//   display: flex;
+
+//   align-content: center;
+//   justify-content: flex-start;
+
+//   align-items: center;
+//   justify-items: flex-start;
+// }
+
+// .input {
+//   // border: 2px solid red;
+//   width: 75%;
+//   min-height: 3rem;
+
+//   display: flex;
+
+//   align-content: center;
+//   justify-content: flex-start;
+
+//   align-items: center;
+//   justify-items: flex-start;
+// }
+
+// .privileges {
+//   display: flex;
+// }
+
+// .Input {
+//   height: 20px;
+//   min-width: 15rem;
+//   border: none;
+//   padding: 0.5rem;
+//   border-bottom: 2px solid #58c2ce;
+//   color: #272643;
+//   // font-family: Oswald;
+//   font-style: normal;
+//   font-weight: 700;
+//   line-height: normal;
+//   letter-spacing: 1.6px;
+//   width: 31rem;
+// }
+
+.sidebar-admin-groups {
+  width: 100%;
+  height: 100%;
   display: flex;
-  justify-items: flex-start;
-  margin: 1rem 0;
-  height: max-content;
+  flex-direction: row;
+  height: 100%;
 }
 
-.label {
-  // border: 2px solid red;
-  width: 25%;
+// .roleNameInput {
+//   color: #272643;
+//   // font-family: Oswald;
+//   font-size: 32px;
+//   font-style: normal;
+//   font-weight: 700;
+//   line-height: normal;
+//   letter-spacing: 1.6px;
+// }
 
-  font-size: medium;
-
-  height: 3rem;
-  display: flex;
-
-  align-content: center;
-  justify-content: flex-start;
-
-  align-items: center;
-  justify-items: flex-start;
-}
-
-.input {
-  // border: 2px solid red;
-  width: 75%;
-  min-height: 3rem;
-
-  display: flex;
-
-  align-content: center;
-  justify-content: flex-start;
-
-  align-items: center;
-  justify-items: flex-start;
-}
-
-.privileges {
-  display: flex;
-}
-
-.Input {
-  height: 20px;
-  min-width: 15rem;
-  border: none;
-  padding: 0.5rem;
-  border-bottom: 2px solid #58c2ce;
-  color: #272643;
-  // font-family: Oswald;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: 1.6px;
-  width: 31rem;
-}
-.roleNameInput {
-  color: #272643;
-  // font-family: Oswald;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: 1.6px;
-}
-
-.roleNameLabel {
-  color: #272643;
-  // font-family: Oswald;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: bolder;
-  line-height: normal;
-  letter-spacing: 1.6px;
-}
+// .roleNameLabel {
+//   color: #272643;
+//   // font-family: Oswald;
+//   font-size: 32px;
+//   font-style: normal;
+//   font-weight: bolder;
+//   line-height: normal;
+//   letter-spacing: 1.6px;
+// }
 
 .reportToInput {
   height: 20px;
@@ -142,7 +201,8 @@
 .optionHolder {
   // border: 2px solid red;ax-content;
   border-radius: 8px;
-  border: 2px solid #58c2ce;
+  // border: 2px solid #58c2ce;
+  box-shadow: 0px 8px 12px #f2f2f2;
   background: #e3f6f5;
   padding: 1rem 0.3rem;
   display: flex;
@@ -290,4 +350,73 @@ tui-accordion-item{
   border-bottom: 2px solid #58c2ce;
   margin-bottom: 1.5rem;
   padding: 0 0.5rem;
+}
+
+//CSS CỦA CHECKBOX - COPY TRÊN MẠNG TỐT NHẤT ĐỪNG ĐỤNG VÀO
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: $Blue;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }

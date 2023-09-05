@@ -1,17 +1,18 @@
 :host {
-  --tui-primary: #58c2ce;
+  // --tui-primary: #58c2ce;
   --tui-primary-hover: #58c2ce;
   --tui-text-01: #fff;
-  --tui-primary-active: #58c2ce;
-  --tui-base-01: #58c2ce;
-  --tui-base-02: #58c2ce;
-  --tui-base-03: #58c2ce;
-  --tui-base-04: #58c2ce;
-  --tui-base-05: #58c2ce;
-  --tui-base-06: #58c2ce;
-  --tui-base-07: #58c2ce;
-  --tui-base-08: #58c2ce;
-  --tui-base-09: #58c2ce;
+  --tui-success-bg: #58c2ce;
+  // --tui-primary-active: #58c2ce;
+  // --tui-base-01: #58c2ce;
+  // --tui-base-02: #58c2ce;
+  // --tui-base-03: #58c2ce;
+  // --tui-base-04: #58c2ce;
+  // --tui-base-05: #58c2ce;
+  // --tui-base-06: #58c2ce;
+  // --tui-base-07: #58c2ce;
+  // --tui-base-08: #58c2ce;
+  // --tui-base-09: #58c2ce;
 }
 
 //  p{
@@ -212,11 +213,12 @@ input:focus {
 }
 
 .gachthang {
-  width: 18.75rem;
-  height: 2rem;
-  color: #58c2ce;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+    width: 18.75rem;
+    height: 2rem;
+    color: #58C2CE;
+    ;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }

@@ -16,7 +16,8 @@ import { SecondNavbarComponent } from 'src/app/components/second-navbar/second-n
 import { LoadingComponent } from 'src/app/components/loading/loading.component';
 
 //Angular Material
-// import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 @NgModule({
   declarations: [
     FirstNavbarComponent,
@@ -36,6 +37,10 @@ import { LoadingComponent } from 'src/app/components/loading/loading.component';
     TuiComboBoxModule,
     TuiDataListModule,
     TuiDataListWrapperModule,
+
+    //Angular Material
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
   ],
   exports: [
     //modules
@@ -58,6 +63,9 @@ import { LoadingComponent } from 'src/app/components/loading/loading.component';
     LoadingComponent,
 
     //Angular Material
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+
   ],
   providers: [
     tuiSvgOptionsProvider({

@@ -18,12 +18,14 @@ import { SignUpReducer } from './pages/signup/ngrx/reducer/signup.reducer';
 import { SignUpEffect } from './pages/signup/ngrx/effect/signup.effect';
 import { loginReducer } from './pages/login/ngrx/reducer/login.reducer';
 import { LoginEffect } from './pages/login/ngrx/effect/login.effect';
+import { SuccessComponent } from './components/success/success.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     // SecondNavbarComponent,
     SubNavbarMainComponent,
+    SuccessComponent,
   ],
   imports: [
     BrowserModule,

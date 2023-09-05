@@ -4,71 +4,16 @@
 />
 
 <app-navbar-user-management></app-navbar-user-management>
-<div class="Body" style="display: flex; height: 100%;">
+<div class="Body" style="display: flex; height: 100%">
   <app-sidebar></app-sidebar>
+  
   <div class="container">
-      <div class="page-button">
-        <button class="btn-add-group" size="m" type="button" (click)="navigateToRoleAdd()">
-          <span class="material-symbols-outlined">
-            add
-          </span>
-          Add Role
-        </button>
+    <div class="viewButtonHeader">
+      <div class="viewButtonContainer">
+        <button class="treeButton" type="button">Tree View</button>
+        <button class="listButton" type="button">List View</button>
       </div>
-
-      <table class="table-groups" style="width: 85%">
-        <tr style="font-weight: bold; font-size: 20;">
-          <th>Actions</th>
-          <th>Role</th>
-          <th>Parent Role</th>
-          <th>License Type</th>
-          <th>Can Assign Record To</th>
-        </tr>
-
-        <tr>
-          <td>
-            <span class="material-symbols-outlined edit"> edit </span>
-            <span class="material-symbols-outlined"> delete </span>
-          </td>
-          <td>CEO</td>
-          <td>Organization</td>
-          <td>Standard</td>
-          <td>All Users & All Groups</td>
-        </tr>
-
-        <tr>
-          <td>
-            <span class="material-symbols-outlined edit"> edit </span>
-            <span class="material-symbols-outlined"> delete </span>
-          </td>
-          <td>IT Consultant</td>
-          <td>CEO</td>
-          <td>Standard</td>
-          <td>Same Role Members & All Groups</td>
-        </tr>
-
-        <tr>
-          <td>
-            <span class="material-symbols-outlined edit"> edit </span>
-            <span class="material-symbols-outlined"> delete </span>
-          </td>
-          <td>VP of Sales</td>
-          <td>CEO</td>
-          <td>Standard</td>
-          <td>All Users & All Groups</td>
-        </tr>
-
-        <tr>
-          <td>
-            <span class="material-symbols-outlined edit"> edit </span>
-            <span class="material-symbols-outlined"> delete </span>
-          </td>
-          <td>VP of Customer Service</td>
-          <td>CEO</td>
-          <td>Standard</td>
-          <td>Same Role Members & All Groups</td>
-        </tr>
-
-      </table>
+    </div>
   </div>
+
 </div>

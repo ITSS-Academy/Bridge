@@ -3,114 +3,202 @@ $Blue2: #2C698D;
 $Blue3: #272643;
 $Blue0: #BAE8E8;
 
-.body{
+.body {
     display: flex;
     min-height: 84vh;
 }
 
-.container{
-    padding: 4rem 8rem 8rem;
-    width:65vw
+.pageButton{
+    display: flex;
+    justify-content: flex-end;
+    margin: 1rem 0;
+    height: 20px;
+    width: 100%;
 }
 
-.header{
-    padding: 0.75rem 2rem;
-    width:100%; 
-    // font-size: medium;
-    font-weight: bold;
-    color: #ffff;
+.addRoleButton{
+    padding:1rem 1rem;
+    color:#ffffff;
     background-color: $Blue;
-    border-radius: 8px 8px 0 0;
-}
-
-
-.branchContainer{
-    width:100%; 
-    padding: 2rem 2rem 4rem; 
-    background-color: #E3F6F5; 
-    border-radius: 0 0 8px 8px;
-}
-
-.node:hover{
-    color: #ffff;
-    background-color: $Blue;
-    // .userRootButton {
-    //     opacity: 100%;
-    //     transition: 0.5s;
-    // }
-    // box-shadow: 0px 4px 12px $Blue;
-    // transition: ease-in 0.1s;
-}
-.node{
-    // margin: 1rem;
-    // margin-bottom: 0;
-    border-radius: 8px;
-    border: 2px solid $Blue;
-    padding: 0.1rem 0.75rem 0.1rem 1.25rem;
-    // min-width: 5rem;
-    max-width: max-content;
-    // max-height: 2rem;]]
-    color: $Blue;
-    background-color: #ffff;
-    font-weight: bold;
-    font-size: 22;
     display: flex;
     align-items: center;
-    justify-items: center;
-    justify-content: space-between;
-}
-
-.userRoot{
-    color: #ffff;
-    background-color: $Blue;
-    box-shadow: 0px 4px 12px $Blue;
-    margin-bottom: 1rem;
-}
-.buttonHolder{
-    margin-left: 2rem;
-    display: flex;
-}
-.userRootButton{
-    background-color: #ffff;
-    border: none;
+    // align-content: space-between;
+    border: 1px solid $Blue;
     border-radius: 8px;
-    color: $Blue ;
-    height: 2rem;
-    width: 2rem;
-    font-weight: bold;
-    font-size: 30px;
+}
 
+.container {
+    padding: 1.4rem 5.9rem 8rem;
+    width: 100%;
+    display: block;
+}
+
+.viewButtonHeader {
     display: flex;
+    justify-content: center;
+}
+
+.viewButtonContainer {
+    display: flex;
+}
+
+.treeButton {
+    box-sizing: border-box;
+    width: 6.25rem;
+    height: 2.7rem;
     align-items: center;
     justify-content: center;
-    margin: 0.5rem 0;
-    margin-left: 0.5rem;
-    // opacity: 0;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border: 2px solid #58c2ce;
+    background-color: #ffffff;
+    color: #58c2ce;
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    &:hover {
+        border: darken($color: #58c2ce, $amount: 10);
+      background-color: darken($color: #58c2ce, $amount: 10);
+      color: darken($color: white, $amount: 3);
+    }
 }
 
-.branch{
-    border-radius: 3px;
+.listButton {
     box-sizing: border-box;
-    max-width: max-content;
-    // min-height: 5rem;
-    max-height:max-content; 
-    margin:0.25rem 0 0 1.5rem;
-    padding: 0.5rem;
-    padding-left: 0.5rem;
-    border-left: 4px solid $Blue0;
+    width: 6.25rem;
+    height: 2.7rem;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border: 2px solid #58c2ce;
+    background-color: #ffffff;
+    color: #58c2ce;
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    &:hover {
+        border: darken($color: #58c2ce, $amount: 10);
+        background-color: darken($color: #58c2ce, $amount: 10);
+      color: darken($color: white, $amount: 3);;
+    }
 }
 
-.branch:hover{
-    // .node{
-    //     color: #ffff;
-    //     background-color: $Blue;
-    // }
-    border-left: 4px solid $Blue;
+.listButton:focus{
+    // border: 2px solid #58c2ce;
+    // border-right: none;
+    background-color: #58c2ce;
+    color: white;
+    font-weight: 500;
+}
+.treeButton:focus{
+    // border: 2px solid #58c2ce;
+    // border-right: none;
+    background-color: #58c2ce;
+    color: white;
+    font-weight: 500;
 }
 
-.folderOpen{
-    margin-bottom: 0.5rem;
-}
+// .header{
+//     padding: 0.75rem 2rem;
+//     width:100%; 
+//     // font-size: medium;
+//     font-weight: bold;
+//     color: #ffff;
+//     background-color: $Blue;
+//     border-radius: 8px 8px 0 0;
+// }
+
+
+// .branchContainer{
+//     width:100%; 
+//     padding: 2rem 2rem 4rem; 
+//     background-color: #E3F6F5; 
+//     border-radius: 0 0 8px 8px;
+// }
+
+// .node:hover{
+//     color: #ffff;
+//     background-color: $Blue;
+//     // .userRootButton {
+//     //     opacity: 100%;
+//     //     transition: 0.5s;
+//     // }
+//     // box-shadow: 0px 4px 12px $Blue;
+//     // transition: ease-in 0.1s;
+// }
+// .node{
+//     // margin: 1rem;
+//     // margin-bottom: 0;
+//     border-radius: 8px;
+//     border: 2px solid $Blue;
+//     padding: 0.1rem 0.75rem 0.1rem 1.25rem;
+//     // min-width: 5rem;
+//     max-width: max-content;
+//     // max-height: 2rem;]]
+//     color: $Blue;
+//     background-color: #ffff;
+//     font-weight: bold;
+//     font-size: 22;
+//     display: flex;
+//     align-items: center;
+//     justify-items: center;
+//     justify-content: space-between;
+// }
+
+// .userRoot{
+//     color: #ffff;
+//     background-color: $Blue;
+//     box-shadow: 0px 4px 12px $Blue;
+//     margin-bottom: 1rem;
+// }
+// .buttonHolder{
+//     margin-left: 2rem;
+//     display: flex;
+// }
+// .userRootButton{
+//     background-color: #ffff;
+//     border: none;
+//     border-radius: 8px;
+//     color: $Blue ;
+//     height: 2rem;
+//     width: 2rem;
+//     font-weight: bold;
+//     font-size: 30px;
+
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     margin: 0.5rem 0;
+//     margin-left: 0.5rem;
+//     // opacity: 0;
+// }
+
+// .branch{
+//     border-radius: 3px;
+//     box-sizing: border-box;
+//     max-width: max-content;
+//     // min-height: 5rem;
+//     max-height:max-content; 
+//     margin:0.25rem 0 0 1.5rem;
+//     padding: 0.5rem;
+//     padding-left: 0.5rem;
+//     border-left: 4px solid $Blue0;
+// }
+
+// .branch:hover{
+//     // .node{
+//     //     color: #ffff;
+//     //     background-color: $Blue;
+//     // }
+//     border-left: 4px solid $Blue;
+// }
+
+// .folderOpen{
+//     margin-bottom: 0.5rem;
+// }
 
 // .branchHolder{
 //     padding-left: 2rem;
@@ -141,7 +229,7 @@ $Blue0: #BAE8E8;
 // }
 
 // @import '@taiga-ui/core/styles/taiga-ui-local.scss';
- 
+
 // :host {
 //     .transition(background);
 //     position: relative;
@@ -151,7 +239,7 @@ $Blue0: #BAE8E8;
 //     padding: 0 0.5rem;
 //     border-radius: var(--tui-radius-xs);
 //     background: var(--tui-base-01);
- 
+
 //     &:before,
 //     &:after {
 //         content: '';
@@ -159,18 +247,18 @@ $Blue0: #BAE8E8;
 //         left: -0.75rem;
 //         z-index: -1;
 //     }
- 
+
 //     &:before {
 //         width: 1rem;
 //         border-bottom: 1px solid var(--tui-base-04);
 //     }
- 
+
 //     &:after {
 //         top: -1rem;
 //         bottom: 1rem;
 //         border-left: 1px solid var(--tui-base-04);
 //     }
- 
+
 //     &._expandable {
 //         &:hover {
 //             cursor: pointer;
@@ -178,7 +266,7 @@ $Blue0: #BAE8E8;
 //         }
 //     }
 // }
- 
+
 // tui-svg {
 //     position: relative;
 //     background: inherit;

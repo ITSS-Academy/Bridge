@@ -18,22 +18,25 @@
           <span class="material-symbols-outlined"> expand_more </span>
         </button>
 
-        <button style="cursor: pointer;" class="button buttonMainAction">
+        <button
+          class="button buttonMainAction"
+          (click)="showDialog(dialogAddOrg, 'auto')"
+        >
           <span class="material-symbols-outlined"> add </span>
 
           <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
-          <span style="margin: 0 1rem" (click)="addTask()">Add Organization</span>
+          <span style="margin: 0 1rem">Add Organization</span>
         </button>
       </div>
       <div class="rightNavContent">
         <button
           class="button buttonRightNavContent"
-          style="padding: 0.25rem 1rem; min-width: max-content; color: #58C2CE;"
+          style="padding: 0.25rem 1rem; min-width: max-content; color: #58c2ce"
         >
           <span class="material-symbols-outlined"> rule_settings </span>
         </button>
 
-        <button style="color: #58C2CE;" class="button buttonRightNavContent">
+        <button style="color: #58c2ce" class="button buttonRightNavContent">
           <span class="material-symbols-outlined"> chevron_left </span>
 
           <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
@@ -43,16 +46,17 @@
         </button>
       </div>
     </div>
-   
-    <div class="body" >
-        <!-- NỘI DUNG TRANG RỖNG-->
-      <div class="emptyPage" *ngIf="pageEmpty">
 
+    <div class="body">
+      <!-- NỘI DUNG TRANG RỖNG-->
+      <div class="emptyPage" *ngIf="pageEmpty">
         <!--TRANH CỦA TRANG EMPTY - MN THAY ĐỔI ĐỂ PHÙ HỢP VỚI TRANG-->
-        <img src="./assets/team checklist-rafiki.png" class="emptyPageImage" />
+        <img
+          src="../../../assets/At the office-amico.png"
+          class="emptyPageImage"
+        />
 
         <div class="emptyPageContentContainer">
-
           <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
           <div class="emptyPageContent"><b>THERE ARE NO ORGANIZATION</b></div>
 
@@ -62,7 +66,11 @@
           </div>
 
           <div class="emptyPageContent" style="margin-top: 1rem">
-            <button class="button buttonMainAction" style="margin-right: 0">
+            <button
+              class="button buttonMainAction"
+              style="margin-right: 0"
+              (click)="addTask()"
+            >
               <span class="material-symbols-outlined"> add </span>
 
               <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
@@ -75,49 +83,187 @@
       <!-- TRANG CÓ NỘI DUNG -->
       <div class="contentPage" *ngIf="!pageEmpty">
         <table>
-            <tr>
-                <!-- CHECKBOX -->
-                <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </label></th>
+          <tr>
+            <!-- CHECKBOX -->
+            <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
+              <label class="container">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+              </label>
+            </th>
 
-                <th style="width: max-content; padding: 0.5rem;"><span class="material-symbols-outlined">edit_document</span></th>
-                <th><b>NAME</b></th>
-                <th><b>ASSIGN TO</b></th>
-                <th><b>START DATE & TIME</b></th>
-                <th><b>DUE DATE & TIME</b></th>
-                <th><b>STAGE</b></th>
-              </tr>
-              <tr>
-                <!-- CHECKBOX -->
-                <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </label></th>
-                <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
-                <td>Design Web Page</td>
-                <td>Team CRM</td>
-                <td>16-08-2023 01:47 PM</td>
-                <td>26-08-2023 12:00 AM</td>
-                <td>In Progress</td>
-              </tr>
-              <tr>
-                <!-- CHECKBOX -->
-                <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </label></th>
-                <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
-                <td>Presentation</td>
-                <td>Team CRM</td>
-                <td>pending</td>
-                <td>pending</td>
-                <td>Pending</td>
-              </tr>
+            <th style="width: max-content; padding: 0.5rem">
+              <span class="material-symbols-outlined">edit_document</span>
+            </th>
+            <th><b>NAME</b></th>
+            <th><b>ASSIGN TO</b></th>
+            <th><b>START DATE & TIME</b></th>
+            <th><b>DUE DATE & TIME</b></th>
+            <th><b>STAGE</b></th>
+          </tr>
+          <tr>
+            <!-- CHECKBOX -->
+            <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
+              <label class="container">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+              </label>
+            </th>
+            <td style="width: 1rem; padding: 0.5rem">
+              <span class="material-symbols-outlined">star</span>
+            </td>
+            <td>Design Web Page</td>
+            <td>Team CRM</td>
+            <td>16-08-2023 01:47 PM</td>
+            <td>26-08-2023 12:00 AM</td>
+            <td>In Progress</td>
+          </tr>
+          <tr>
+            <!-- CHECKBOX -->
+            <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
+              <label class="container">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+              </label>
+            </th>
+            <td style="width: 1rem; padding: 0.5rem">
+              <span class="material-symbols-outlined">star</span>
+            </td>
+            <td>Presentation</td>
+            <td>Team CRM</td>
+            <td>pending</td>
+            <td>pending</td>
+            <td>Pending</td>
+          </tr>
         </table>
       </div>
-
     </div>
+
+    <!-- DIALOG -->
+    <ng-template id="dialogAddOrg" #dialogAddOrg let-observer>
+
+      <!--FORM CHỨA NỘI DUNG HIỂN THỊ DIALOG-->
+      <form
+        id="form-container"
+        [formGroup]="exampleForm"
+        (ngSubmit)="observer.complete()"
+      >
+
+        <!--TỰA ĐỀ BỰ ORGANIZATION-->
+        <p id="header-dialog">Add Organization</p>
+
+        <!--DIV CHỨA NỘI DUNG CHÍNH CỦA DIALOG-->
+        <div class="contents-dialog-lead">
+
+          <!--ORGANIZATION NAME-->
+          <div class="container-dialog">
+            <p class="title-dialog">Organization name</p>
+            <tui-input
+              style="outline: none !important"
+              class="input-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="name"
+              (ngModelChange)="onModelChangeOrgName($event)"
+            >
+              Type here
+            </tui-input>
+          </div>
+
+          <!--TITLE-->
+          <div class="container-dialog">
+            <p class="title-dialog">Website</p>
+            <tui-input
+              class="input-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="website"
+            >
+              Type here (optional)
+            </tui-input>
+          </div>
+
+          <!--PHONE-->
+          <div class="container-dialog">
+            <p class="title-dialog">Phone</p>
+            <tui-input-phone-international
+              class="input-dialog"
+              [countries]="(phones | tuiSortCountries | async) || []"
+              [(countryIsoCode)]="countryIsoCode"
+              [tuiTextfieldLabelOutside]="true"
+              tuiTextfieldSize="m"
+            >
+              Type here (optional)
+            </tui-input-phone-international>
+          </div>
+
+          <!--TYPE-->
+          <div class="container-dialog">
+            <p class="title-dialog">Type</p>
+
+            <tui-combo-box
+              class="input-dialog"
+              [formControl]="controlTypes"
+              [stringify]="stringifyType"
+              tuiTextfieldSize="s"
+            >
+              Choose/Type here
+
+              <tui-data-list-wrapper
+                *tuiDataList
+                [items]="types | tuiFilterByInputWith : stringifyType"
+                [itemContent]="stringifyType | tuiStringifyContent"
+              ></tui-data-list-wrapper>
+            </tui-combo-box>
+          </div>
+
+          <!--ASSIGNED TO-->
+          <div class="container-dialog">
+            <p class="title-dialog">Assigned to</p>
+
+            <tui-combo-box
+              class="input-dialog"
+              [formControl]="controlAssignments"
+              [stringify]="stringifyAssignment"
+              tuiTextfieldSize="s"
+            >
+              Choose/Type here
+
+              <tui-data-list-wrapper
+                *tuiDataList
+                [items]="
+                  assignments | tuiFilterByInputWith : stringifyAssignment
+                "
+                [itemContent]="stringifyAssignment | tuiStringifyContent"
+              ></tui-data-list-wrapper>
+            </tui-combo-box>
+          </div>
+
+          <!--STATUS-->
+          <div class="container-dialog">
+            <p class="title-dialog">Organization status</p>
+
+            <tui-combo-box
+              class="input-dialog"
+              [formControl]="controlStatuses"
+              [stringify]="stringifyStatus"
+              tuiTextfieldSize="s"
+            >
+              Choose/Type here
+
+              <tui-data-list-wrapper
+                *tuiDataList
+                [items]="statuses | tuiFilterByInputWith : stringifyStatus"
+                [itemContent]="stringifyStatus | tuiStringifyContent"
+              ></tui-data-list-wrapper>
+            </tui-combo-box>
+          </div>
+        </div>
+
+        <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
+        <div class="cancel-save">
+          <button class="button-cancel" type="submit">Cancel</button>
+          <button class="button-add" type="submit">Add</button>
+        </div>
+      </form>
+    </ng-template>
   </div>
 </div>

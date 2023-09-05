@@ -25,6 +25,16 @@ export class AuthAccountService {
     });
   }
 
+  async checkExisted(username: string, email: string) {
+    let existedUsername = await this.authModel.findOne({ username: username }).exec();
+    let existedEmail = await this.authModel.findOne({email: email}).exec();
+    if(existedUsername || existedEmail){
+      return true;     
+    }else{
+      return false;
+    }
+  }
+
   async create(createAuthAccountDto: CreateAuthAccountDto) {
     let isExist = await this.authModel
       .findOne({ username: createAuthAccountDto.username })
@@ -56,17 +66,34 @@ export class AuthAccountService {
     }
   }
 
-  async login(account:any) {
+  async checkAuth(account: any) {
     let isExisted = await this.findOne(account.username);
     if (isExisted) {
-      let result = await bcrypt.compare(account.password, isExisted.hash_password);
+      let result = await bcrypt.compare(
+        account.password,
+        isExisted.hash_password,
+      );
       if (result) {
-        return isExisted
-      } else {
-        throw new Error('Password is incorrect');
+        return true;
+      }else{
+        return false;
       }
-    }else{
-      throw new Error('Username is not existed');
+    } else {
+      return false;
+    }
+  }
+
+  async login(account: any) {
+    let isExisted = await this.findOne(account.username);
+    if (isExisted) {
+      let res = await this.userService.fineUserByEmail(isExisted.email);
+      if (isExisted.id == '') {
+        await this.authModel
+          .findOneAndUpdate({ email: isExisted.email }, { id: res.id })
+          .exec();
+      }
+      console.log(res);
+        return isExisted;
     }
   }
 

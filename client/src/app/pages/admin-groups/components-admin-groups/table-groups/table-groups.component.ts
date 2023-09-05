@@ -46,7 +46,7 @@ class roleSub {
     ) {}
 
     toString(): string {
-        return `${this.roleSubName} ${this.type}(R & S)`
+        return `${this.roleSubName} ${this.type}(R&S)`
     }
 }
 
@@ -113,6 +113,7 @@ export class TableGroupsComponent {
                 size,
             })
             .subscribe();
+        console.log('open')
     }
 
     readonly search$ = new Subject<string | null>();
