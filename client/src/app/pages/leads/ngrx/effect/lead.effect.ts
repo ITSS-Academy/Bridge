@@ -20,6 +20,9 @@ export class LeadEffect {
             catchError((error) => {
                 return of(LeadAction.addLeadFailure({ error: error }));
             })
-        ))
+        ));
+
+    // updateLead$ = createEffect(() =>);
+    // deleteLead$ = createEffect(() =>);
 
 }
