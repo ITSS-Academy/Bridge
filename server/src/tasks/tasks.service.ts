@@ -6,12 +6,11 @@ import { map } from 'rxjs';
 import { getFirestore } from 'firebase-admin/firestore';
 
 @Injectable()
-export class LeadsService {
+export class TasksService {
   api_url = this.configService.get<string>('CORE_APIs');
   token = '';
-  
   db = getFirestore();
-  docRef = this.db.collection('leads');
+  docRef = this.db.collection('tasks');
 
   constructor(
     private http: HttpService,
@@ -43,9 +42,9 @@ export class LeadsService {
   async findAll() {
     try {
       const snapshot = await this.docRef.get();
-      const leads = snapshot.docs.map((doc) => doc.data().data);
-      console.log(leads);
-      return leads;
+      const tasks = snapshot.docs.map((doc) => doc.data().data);
+      console.log(tasks);
+      return tasks;
     } catch (err) {
       console.log(err);
       return null;
@@ -54,15 +53,15 @@ export class LeadsService {
 
   async findOne(id: string) {
     try {
-      let lead!: any;
-      const leadRef = this.docRef.where('data.id', '==', id);
-      await leadRef.get().then((snapshot) => {
+      let task!: any;
+      const taskRef = this.docRef.where('data.id', '==', id);
+      await taskRef.get().then((snapshot) => {
         snapshot.forEach((doc) => {
-          lead = doc.data();
-          console.log(lead);
+          task = doc.data();
+          console.log(task);
         });
       });
-      return lead;
+      return task;
     } catch (err) {
       console.log(err);
       return null;
@@ -79,8 +78,8 @@ export class LeadsService {
       .pipe(map((response) => response.data));
     const subscription = result.subscribe({
       next: async (res) => {
-        const leadRef = this.docRef.where('data.id', '==', id);
-        await leadRef.get().then((snapshot) => {
+        const taskRef = this.docRef.where('data.id', '==', id);
+        await taskRef.get().then((snapshot) => {
           snapshot.forEach((doc) => {
             doc.ref.update({ ...res });
           });
@@ -91,18 +90,17 @@ export class LeadsService {
     return result;
   }
 
-
   remove(id: string) {
     let result = this.http
-      .delete(`${this.api_url}/Api/V8/module/Leads/${id}`, {
+      .delete(`${this.api_url}/Api/V8/module/Tasks/${id}`, {
         headers: {
           Authorization: `Bearer ${this.tokenService.token}`,
         },
       })
       .pipe(map((response) => response.data));
 
-    const userRef = this.docRef.where('data.id', '==', id);
-    userRef.get().then((snapshot) => {
+    const taskRef = this.docRef.where('data.id', '==', id);
+    taskRef.get().then((snapshot) => {
       snapshot.forEach((doc) => {
         console.log(doc.data());
         doc.ref.delete();
