@@ -7,7 +7,7 @@
     </button>
     <button
       class="button buttonMainAction"
-      (click)="onClick(content, 'auto')"
+      (click)="showDialog(content, 'auto')"
     >
       <span class="material-symbols-outlined"> add </span>
       <span style="margin: 0 1rem">Add {{ title }}</span>
@@ -27,21 +27,18 @@
     </button>
   </div>
 </div>
+
 <!--DIALOG CONTACT-->
 <ng-template #content let-observer>
-
   <!--DIV BỰ BAO QUANH CHỨA NỘI DUNG HIỂN THỊ DIALOG-->
   <div class="box-form">
-
     <!--FORM CHỨA NỘI DUNG HIỂN THỊ NỘI DUNG VÀ CHỈNH SỬA CHIỀU RỘNG CỦA DIALOG-->
     <form [formGroup]="contactsForm" (ngSubmit)="observer.complete()">
-
       <!--TỰA ĐỂ CHÍNH BỰ CỦA DIALOG CONTACT-->
       <h2 class="title-dialog">Add Contact</h2>
 
       <!--DIV CHỨA NỘI DUNG CHÍNH CỦA DIALOG-->
       <div class="form-contacts">
-
         <!--DIV BÊN TRÁI HIỂN THỊ TOÀN BỘ TIÊU ĐỀ THEO DẠNG COLUMN-->
         <div class="all-label">
           <label for="fname">First Name</label>
@@ -56,40 +53,45 @@
 
         <!--DIV BÊN PHẢI HIỂN THỊ TOÀN BỘ BOX NHẬP THEO DẠNG COLUMN-->
         <div class="all-input">
-
           <!--FIRSTNAME-->
           <tui-input
-            formControlName="firstname"
+            [formControl]="firstName"
             type="text"
             id="fname"
             name="firstname"
             tuiTextfieldSize="s"
+            [(ngModel)]="firstName2"
             [tuiTextfieldLabelOutside]="true"
-          >Type here</tui-input>
+            >Type here</tui-input
+          >
 
           <!--LASTNAME-->
           <tui-input
-            formControlName="lastName"
+            [formControl]="lastName"
             type="text"
             id="lname"
             name="lastname"
             tuiTextfieldSize="s"
+            [(ngModel)]="lastName2"
             [tuiTextfieldLabelOutside]="true"
-          >Type here</tui-input>
+            >Type here</tui-input
+          >
 
           <!--EMAIL-->
           <tui-input
-            formControlName="email"
+            [formControl]="email"
             type="text"
             id="email"
             name="email"
             tuiTextfieldSize="s"
+            [(ngModel)]="email2"
             [tuiTextfieldLabelOutside]="true"
-          >Type here</tui-input>
+            >Type here</tui-input
+          >
 
           <!--PHONE-->
           <tui-input-phone-international
-            formControlName="phone"
+            [formControl]="phone"
             type="text"
             id="phone"
             name="phone"
@@ -97,20 +99,21 @@
             [tuiTextfieldLabelOutside]="true"
             [countries]="(countries | tuiSortCountries | async) || []"
             [(countryIsoCode)]="countryIsoCode"
-
           >
-          Input here
+            Input here
           </tui-input-phone-international>
 
           <!--ORGANIZATION-->
           <tui-input
-            formControlName="organizationName"
+            [formControl]="organizationName"
             type="text"
             id="orgName"
             name="orgName"
             tuiTextfieldSize="s"
+            [(ngModel)]="orgName2"
             [tuiTextfieldLabelOutside]="true"
-          >Type here</tui-input>
+            >Type here</tui-input
+          >
 
           <!--ASSIGNED TO-->
           <tui-combo-box
@@ -130,8 +133,8 @@
 
           <!--STAGES-->
           <tui-combo-box
+            [formControl]="controlLife"
             tuiTextfieldSize="s"
-            formControlName="lifeycleStage"
             [stringify]="stringifyLife"
             id="lifeCycleStage"
             class="input"
@@ -147,8 +150,8 @@
 
           <!--STATUS-->
           <tui-combo-box
+            [formControl]="controlStatus"
             tuiTextfieldSize="s"
-            formControlName="status"
             [stringify]="stringifyStatus"
             id="status"
             class="input"
@@ -163,12 +166,12 @@
           </tui-combo-box>
         </div>
       </div>
-    </form>
 
-    <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
-    <div class="cancel-save">
-      <button class="button-cancel" type="submit">Cancel</button>
-      <button class="button-add" type="submit">Add</button>
-    </div>
+      <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
+      <div class="cancel-save">
+        <button class="button-cancel" type="submit">Cancel</button>
+        <button class="button-add" (click)="addContact()">Add</button>
+      </div>
+    </form>
   </div>
 </ng-template>

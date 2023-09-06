@@ -71,7 +71,6 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-bottom: 4rem;
   width: 31rem;
 }
 
@@ -188,6 +187,7 @@ form {
   flex-direction: row;
   gap: 1rem;
   justify-content: center;
+  padding-top: 4rem;
 
   .button-cancel {
     width: 5rem;

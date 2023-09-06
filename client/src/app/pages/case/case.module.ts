@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { CaseRoutingModule } from './case-routing.module';
 import { CaseComponent } from './case.component';
-
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { PageEmptyComponent } from './page-empty/page-empty.component';
 import { PageWContentComponent } from './page-w-content/page-w-content.component';

@@ -1,120 +1,349 @@
-$Blue : #58c2ce;
-$Blue2: #2C698D;
+$Blue: #58c2ce;
+$Blue2: #2c698d;
 $Blue3: #272643;
-$Blue0: #BAE8E8;
-$LightGray:#F2F2F2;
+$Blue0: #bae8e8;
+$LightGray: #f2f2f2;
 
-.button{
-    background-color: #fff;
-    color: $Blue;
-    min-width: 10rem;
-    border-radius: 8px;
-    border: 2px solid $Blue;
-    padding: 0.25rem 1rem;
-    margin-right: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+.button {
+  background-color: #fff;
+  color: $Blue;
+  min-width: 10rem;
+  border-radius: 8px;
+  border: 2px solid $Blue;
+  padding: 0.25rem 1rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.buttonMainAction{
-    background-color:$Blue ;
-    color: #fff;
+.buttonMainAction {
+  background-color: $Blue;
+  color: #fff;
+}
+
+.action {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
 }
 
 //CSS CỦA TRANG CÓ NỘI DUNG
-table{
-    background-color: #fff;
-    width: 100vw
+table {
+  background-color: #fff;
+  width: 100vw;
 }
-tr{
-    padding: 0.5rem 3rem;
-    align-items: center;
-    border-bottom: 1px solid $LightGray;
+tr {
+  padding: 0.5rem 3rem;
+  align-items: center;
+  border-bottom: 1px solid $LightGray;
 }
-th{
-    padding: 0.5rem 3rem;
-    text-align: left;
-    color: $Blue2;
-    width: 10rem;
-    align-items: center;
+th {
+  padding: 0.5rem 3rem;
+  text-align: left;
+  color: $Blue2;
+  width: 10rem;
+  align-items: center;
 }
-td{
-    padding: 0.5rem 3rem;
-    color: $Blue2;
-    width: 10rem;
-    align-items: center;
+td {
+  padding: 0.5rem 3rem;
+  color: $Blue2;
+  width: 10rem;
+  align-items: center;
 }
 
 //CSS CỦA CHECKBOX - COPY TRÊN MẠNG TỐT NHẤT ĐỪNG ĐỤNG VÀO
 .container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: $Blue;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+th {
+  width: fit-content;
+}
+
+/*BẮT ĐẦU STYLE DIALOG*/
+//STYLE DIV BAO QUANH CHỨA NỘI DUNG HIỂN THỊ DIALOG
+.box-form {
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+}
+
+//FORM DIALOG CONTACT
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 4rem;
+  width: 31rem;
+}
+
+//STYLE TỰA ĐỀ CHÍNH BỰ
+.title-dialog {
+  margin: 0;
+  padding-bottom: 10px;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #58c2ce;
+  color: #2c698d;
+  font-weight: 600;
+}
+
+//STYLE DIV CHỨA NỘI DUNG CHÍNH CỦA DIALOG
+.form-contacts {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+//STYLE DIV HIỂN THỊ TOÀN BỘ TIÊU ĐỀ
+.all-label {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.all-label label {
+  width: 10rem;
+  font-size: 1rem;
+  color: #2c698d;
+  font-weight: 400;
+  margin: 0;
+}
+
+//STYLE DIV CHỨA TOÀN BỘ BOX INPUT
+.all-input {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+//FIRST NAME
+#fname {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//LAST NAME
+#lname {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//EMAIL
+#email {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//PHONE
+#phone {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//ORG NAME
+#orgName {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//ASSIGNED TO
+#assignTo {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//STAGES
+#lifeCycleStage {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//STATUS
+#status {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//DIV CHỨA NÚT CANCEL VÀ SAVE
+.cancel-save {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+
+  .button-cancel {
+    width: 5rem;
+    height: 1.875r;
+    border-radius: 8px;
+    background-color: #ffffff;
+    border: 2px solid #58c2ce;
+    color: #58c2ce;
+    font-size: 14px;
     cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+
+    &:hover {
+      background-color: darken($color: white, $amount: 3);
+    }
   }
-  
-  /* Hide the browser's default checkbox */
-  .container input {
-    position: absolute;
-    opacity: 0;
+
+  .button-add {
+    width: 5rem;
+    height: 1.875rem;
+    border-radius: 8px;
+    background-color: #58c2ce;
+    color: #ffffff;
+    border: none;
+    font-size: 14px;
     cursor: pointer;
-    height: 0;
-    width: 0;
+
+    &:hover {
+      background-color: darken($color: #58c2ce, $amount: 10);
+      color: darken($color: white, $amount: 3);
+    }
   }
-  
-  /* Create a custom checkbox */
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 1.5rem;
-    width: 1.5rem;
-    background-color: #eee;
-    border-radius: 4px;
-  }
-  
-  /* On mouse-over, add a grey background color */
-  .container:hover input ~ .checkmark {
-    background-color: #ccc;
-  }
-  
-  /* When the checkbox is checked, add a blue background */
-  .container input:checked ~ .checkmark {
-    background-color: $Blue;
-  }
-  
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  /* Show the checkmark when checked */
-  .container input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  /* Style the checkmark/indicator */
-  .container .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+}
+
+.visible-data:hover {
+  // transition: 0.5s;
+  cursor: pointer;
+  background-color: lighten($Blue, 40);
+
+  td {
+    // transition: 0.5s;
+
+    color: $Blue;
   }
 
   th {
-    width: fit-content;
+    // transition: 0.5s;
+
+    color: $Blue;
   }
+
+  th > label > span {
+    // transition: 0.5s;
+
+    border: $Blue2 0.001rem solid;
+  }
+
+  .lead-phone:hover {
+    div {
+      // transition: 0.5s;
+      background-color: $Blue;
+      color: #fff;
+    }
+  }
+
+  .lead-mail:hover {
+    div {
+      // transition: 0.5s;
+      background-color: $Blue;
+      color: #fff;
+    }
+  }
+}
+
+.lead-mail div {
+  // transition: 0.5s;
+  padding: 0.312rem 0.5rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto 0;
+}
+
+.lead-phone div {
+  // transition: 0.5s;
+  padding: 0.312rem 0.5rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto 0;
+}
