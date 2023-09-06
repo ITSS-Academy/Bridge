@@ -78,10 +78,9 @@ export class ThirdNavbarComponent implements OnInit {
         type: 'Lead',
       },
     };
-    let lead: Lead = {
+    let lead: any = {
       data: {
         type: 'Leads',
-        id: '',
         attributes: {
           modified_by_name: '',
           alt_address_city: '',
