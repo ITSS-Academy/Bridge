@@ -1,9 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { ContactsService } from './contacts.service';
-import { CreateContactDto } from './dto/create-contact.dto';
-import { UpdateContactDto } from './dto/update-contact.dto';
 
-@Controller('leads')
+@Controller('contacts')
 export class ContactsController {
   constructor(private readonly contactsService: ContactsService,) {}
 
@@ -18,16 +16,16 @@ export class ContactsController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
-    return await this.contactsService.findOne(id);
+  findOne(@Param('id') id: string) {
+    return this.contactsService.findOne(id);
   }
 
-  @Patch('/update/')
+  @Patch('/update')
   update(@Body() body: any) {
     return this.contactsService.update(body.data.id, body);
   }
 
-  @Delete('/delete/:id')
+  @Delete('delete/:id')
   remove(@Param('id') id: string) {
     return this.contactsService.remove(id);
   }

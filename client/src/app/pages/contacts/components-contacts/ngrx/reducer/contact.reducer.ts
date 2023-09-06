@@ -11,7 +11,7 @@ const initialState: ContactState = {
     error: ''
 }
 
-export const leadReducer = createReducer(
+export const contactReducer = createReducer(
     initialState,
     // Add Lead
     on(ContactAction.addContact, (state, action) => {

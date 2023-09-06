@@ -9,7 +9,6 @@ import { getFirestore } from 'firebase-admin/firestore';
 export class ContactsService {
   api_url = this.configService.get<string>('CORE_APIs');
   token = '';
-
   db = getFirestore();
   docRef = this.db.collection('contacts');
 

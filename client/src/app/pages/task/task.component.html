@@ -14,9 +14,8 @@
   <div class="body" style="position: relative; z-index: 1">
     <!-- NỘI DUNG TRANG RỖNG-->
     <app-page-empty
-      *ngIf="pageEmpty"
-      (addInfo)="addInfo()"
-      [title]="title"
+    *ngIf="(this.tasks | async)?.length == 0"
+    [title]="title"
     ></app-page-empty>
     <!-- TRANG CÓ NỘI DUNG -->
     <app-page-w-content *ngIf="!pageEmpty"></app-page-w-content>

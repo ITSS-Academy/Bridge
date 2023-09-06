@@ -5,8 +5,8 @@ import { HttpModule } from '@nestjs/axios';
 import { TokenService } from 'src/token/token.service';
 
 @Module({
-  controllers: [ContactsController],
   imports: [HttpModule],
+  controllers: [ContactsController],
   providers: [ContactsService, TokenService],
 })
 export class ContactsModule {}

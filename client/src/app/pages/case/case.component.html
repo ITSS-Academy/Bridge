@@ -14,11 +14,13 @@
   <div class="body" style="position: relative; z-index: 1">
     <!-- NỘI DUNG TRANG RỖNG-->
     <app-page-empty
-      *ngIf="pageEmpty"
-      (addInfo)="addInfo()"
+      *ngIf="(this.cases | async)?.length == 0"
       [title]="title"
     ></app-page-empty>
     <!-- TRANG CÓ NỘI DUNG -->
-    <app-page-w-content *ngIf="!pageEmpty"></app-page-w-content>
+    <app-page-w-content
+      *ngIf="(this.cases | async)?.length != 0"
+      [cases]="this.cases"
+    ></app-page-w-content>
   </div>
 </div>

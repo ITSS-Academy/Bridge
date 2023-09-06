@@ -14,10 +14,13 @@
   <div class="body" style="position: relative; z-index: 1">
     <!-- NỘI DUNG TRANG RỖNG-->
     <app-display-no-data-contacts
-    *ngIf="(this.contacts |async)?.length == 0"
+      *ngIf="(this.contacts | async)?.length == 0"
       [title]="title"
     ></app-display-no-data-contacts>
     <!-- TRANG CÓ NỘI DUNG -->
-    <app-display-have-data-contacts *ngIf="!pageEmpty"></app-display-have-data-contacts>
+    <app-display-have-data-contacts
+      *ngIf="(this.contacts | async)?.length != 0"
+      [contacts]="this.contacts"
+    ></app-display-have-data-contacts>
   </div>
 </div>

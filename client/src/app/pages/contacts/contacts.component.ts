@@ -13,13 +13,10 @@ import { Store } from '@ngrx/store';
 export class ContactsComponent implements OnInit {
   constructor(public contactsService: ContactsService) {}
   contacts!: Observable<any>;
+  subContacts: any[] = [];
   //ĐỔI TITLE THÀNH TÊN TRANG
   title = 'Contacts';
   pageEmpty = true;
-
-  // addInfo() {
-  //   this.pageEmpty = !this.pageEmpty;
-  // }
 
   ngOnInit(): void {
     this.getAllContacts();
