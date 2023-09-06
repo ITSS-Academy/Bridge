@@ -167,3 +167,10 @@ td{
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+  .statusOptionDropdown{
+    position: absolute;
+    z-index: 99;
+    height: 6rem;
+    width: 8rem;
+    background-color: $LightGray;
+  }

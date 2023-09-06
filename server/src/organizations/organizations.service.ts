@@ -32,8 +32,9 @@ export class OrganizationsService {
       })
       .pipe(map((response) => response.data));
     return result.pipe(
-      map((res) => {
-        this.docRef.add(res);
+      map(async (res) => {
+        console.log(res)
+        await this.docRef.add(res);
         return res;
       }),
     );
