@@ -1,0 +1,21 @@
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+/>
+
+<!-- QUAN TRỌNG: NẾU NHƯ LÀM DIALOG TUYỆT ĐỐI KHÔNG BỎ TRONG DIV NÀY -->
+<div class="background">
+  <app-second-navbar [title]="title"></app-second-navbar>
+  <!-- THANH NAV THỨ 3 -->
+  <app-third-navbar
+    style="position: relative; z-index: 1"
+    [title]="title"
+  ></app-third-navbar>
+  <div class="body" style="position: relative; z-index: 1">
+    <!-- NỘI DUNG TRANG RỖNG-->
+  <app-page-empty *ngIf="(this.leads |async)?.length == 0" [title]="title"></app-page-empty>
+    
+    <!-- TRANG CÓ NỘI DUNG -->
+    <app-page-w-content  *ngIf="(this.leads |async)?.length != 0" [leads]="this.leads"></app-page-w-content>
+  </div>
+</div>

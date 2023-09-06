@@ -7,7 +7,7 @@ import { CaseComponent } from './case.component';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { PageEmptyComponent } from './page-empty/page-empty.component';
 import { PageWContentComponent } from './page-w-content/page-w-content.component';
-import { ThirdNavbarComponent } from './third-navbar/third-navbar.component';
+import { ThirdNavbarComponent } from '../case/third-navbar/third-navbar.component';
 
 
 @NgModule({
@@ -15,7 +15,7 @@ import { ThirdNavbarComponent } from './third-navbar/third-navbar.component';
     CaseComponent,
     PageEmptyComponent,
     PageWContentComponent,
-    ThirdNavbarComponent
+    ThirdNavbarComponent,
   ],
   imports: [
     CommonModule,

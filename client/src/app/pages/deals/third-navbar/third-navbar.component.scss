@@ -1,0 +1,258 @@
+$Blue: #58c2ce;
+$Blue2: #2c698d;
+$Blue3: #272643;
+$Blue0: #bae8e8;
+$LightGray: #f2f2f2;
+
+//CSS CỦA THANH NAV THỨ 3 --->
+.thirdNavbar {
+  background-color: #f2f2f2;
+  width: 100vw;
+  height: 66px;
+  border-bottom: 5px solid #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem;
+  box-sizing: border-box;
+}
+
+.leftNavContent {
+  display: flex;
+}
+
+.rightNavContent {
+  display: flex;
+}
+
+.button {
+  background-color: #fff;
+  color: $Blue;
+  min-width: 10rem;
+  border-radius: 8px;
+  border: 2px solid $Blue;
+  padding: 0.25rem 1rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.buttonMainAction {
+  background-color: $Blue;
+  color: #fff;
+  cursor: pointer;
+}
+
+.buttonRightNavContent {
+  border: 2px solid #fff;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+//CSS CỦA THANH NAV THỨ 3 <----
+
+/*STYLE DIALOG*/
+//DIALOG CHÍNH DEAL
+//FORM CHỨA NỘI DUNG HIỂN THỊ BÊN TRONG DIALOG
+#form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+//TỰA ĐỀ BỰ CỦA DIALOG STYLE
+#header-dialog {
+  margin: 0;
+  padding-bottom: 10px;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #58c2ce;
+  color: #2c698d;
+  font-weight: 600;
+}
+
+//DIV CHỨA NỘI DUNG CHÍNH CỦA DIALOG STYLE
+.contents-dialog {
+  height: fit-content;
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  padding-left: 1rem;
+
+  //DIV CHỨA TỪNG DÒNG NỘI DUNG CHÍNH STYLE
+  .container-dialog {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    //TIÊU ĐỀ CỦA TỪNG DÒNG NỘI DUNG CHÍNH STYLE
+    .title-dialog {
+      width: 10rem;
+      font-size: 1rem;
+      color: #2c698d;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    //BOX INPUT CỦA TỪNG DÒNG NỘI DUNG STYLE
+    .input-dialog {
+      width: 17rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
+}
+
+//NÚT NHỎ HIỆN THỊ NỘI DUNG CHỌN
+.input-dialog-choose {
+  width: 6rem;
+  border: 1px solid #58c2ce;
+}
+
+//DIV CHỨA NÚT CANCEL VÀ SAVE
+.cancel-save {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+
+  .button-cancel {
+    width: 5rem;
+    height: 1.875r;
+    border-radius: 8px;
+    background-color: #ffffff;
+    border: 2px solid #58c2ce;
+    color: #58c2ce;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($color: white, $amount: 3);
+    }
+  }
+
+  .button-add {
+    width: 5rem;
+    height: 1.875rem;
+    border-radius: 8px;
+    background-color: #58c2ce;
+    color: #ffffff;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($color: #58c2ce, $amount: 10);
+      color: darken($color: white, $amount: 3);
+    }
+  }
+}
+
+//NÚT THÊM ( + ) BÊN TRONG NỘI DUNG DIALOG
+.dialog-button {
+  border: none;
+  background-color: #58c2ce;
+  color: white;
+  display: flex;
+  cursor: pointer;
+  height: 2.1rem;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+
+  &:hover {
+    background-color: darken($color: #58c2ce, $amount: 10);
+    color: darken($color: white, $amount: 3);
+  }
+}
+
+//CSS INPUT AMOUNT
+#input-dialog-amount {
+  width: 11rem;
+  border-top-left-radius: 8px ;
+  border-bottom-left-radius: 8px;
+  border-top-right-radius: 0 ;
+  border-bottom-right-radius: 0;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//CSS INPUT PROBABILITY
+#input-dialog-probability {
+  width: 14.8rem;
+  border-top-left-radius: 8px ;
+  border-bottom-left-radius: 8px;
+  border-top-right-radius: 0 ;
+  border-bottom-right-radius: 0;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//CSS INPUT ORG NAME
+#input-dialog-org {
+  width: 14.8rem;
+  box-shadow: none;
+  border-top-left-radius: 8px ;
+  border-bottom-left-radius: 8px;
+  border-top-right-radius: 0 ;
+  border-bottom-right-radius: 0;
+  border: 1px solid #58c2ce;
+}
+
+//HIỂN THỊ NÚT %
+.percentage {
+    width: 2.25rem;
+    height: 2.1rem;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: #58c2ce;
+    color: #ffffff;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+  }
+  
+
+//DIALOG PHỤ KHI ẤN VÀO NÚT ( + )
+//STYLE CSS
+//DIV HIỂN THỊ NỘI DUNG CHÍNH CỦA DIALOG ORGANIZATION
+.contents-dialog-org {
+  height: fit-content;
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  padding-left: 1rem;
+
+  //DIV HIỂN THỊ NỘI DUNG TỪNG DÒNG DIALOG
+  .container-dialog {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    //TIÊU ĐỀ TỪNG DÒNG 
+    .title-dialog {
+      width: 10rem;
+      font-size: 1rem;
+      color: #2c698d;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    //INPUT BOX TỪNG DÒNG
+    .input-dialog {
+      width: 16rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
+}
+

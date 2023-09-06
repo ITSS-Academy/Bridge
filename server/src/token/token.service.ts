@@ -1,26 +1,32 @@
 import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { map } from 'rxjs';
+import { ConfigService } from '@nestjs/config';
+
 @Injectable()
 export class TokenService {
-    token = '';
+  token = '';
+  api_url = this.configService.get<string>('CORE_APIs');
 
-    constructor(private http: HttpService) {
+  constructor(
+    private http: HttpService,
+    private configService: ConfigService,
+  ) {
+    this.getToken();
+    console.log('token service ' + this.api_url);
+  }
 
-    }
-
-
-    getToken() {
-      let result = this.http.post('http://localhost:80/Api/access_token', {
+  getToken() {
+    let result = this.http
+      .post(`${this.api_url}/Api/access_token`, {
         grant_type: 'client_credentials',
-        client_id: '122458be-76cd-d8b8-db95-64afffe6bc59',
-        client_secret: 'admin',
-      }).pipe(map((response) => response.data));
-      result.subscribe(async (data) => {
-        // this.token = await data.access_token;
-        // console.log(this.token);
+        client_id: '4def8f38-2c52-754b-a5fe-64ed9269eeaf',
+        client_secret: '123',
       })
-      return result;
-    }
-
+      .pipe(map((response) => response.data));
+    result.subscribe(async (data) => {
+      this.token = data.access_token;
+    });
+    return result;
+  }
 }

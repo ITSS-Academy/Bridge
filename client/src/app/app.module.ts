@@ -10,7 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 //Taiga UI
 
 import { SharedModule } from './shared/shared/shared.module';
-import { SecondNavbarComponent } from './components/second-navbar/second-navbar.component';
 import { SubNavbarMainComponent } from './components/sub-navbar-main/sub-navbar-main.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -19,6 +18,14 @@ import { SignUpEffect } from './pages/signup/ngrx/effect/signup.effect';
 import { loginReducer } from './pages/login/ngrx/reducer/login.reducer';
 import { LoginEffect } from './pages/login/ngrx/effect/login.effect';
 import { SuccessComponent } from './components/success/success.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { LeadEffect } from './pages/leads/ngrx/effect/lead.effect';
+import { leadReducer } from './pages/leads/ngrx/reducer/lead.reducer';
+import { TaskEffect } from './pages/task/ngrx/effect/task.effect';
+import { taskReducer } from './pages/task/ngrx/reducer/task.reducer';
 
 @NgModule({
   declarations: [
@@ -36,12 +43,19 @@ import { SuccessComponent } from './components/success/success.component';
 
     StoreModule.forRoot({
       signup: SignUpReducer,
-      login: loginReducer
+      login: loginReducer,
+      lead: leadReducer,
+      task: taskReducer
     }, {}),
     EffectsModule.forRoot([
       SignUpEffect,
-      LoginEffect
-    ])
+      LoginEffect,
+      LeadEffect,
+      TaskEffect
+    ]),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
   ],
   exports: [SharedModule],
   providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],

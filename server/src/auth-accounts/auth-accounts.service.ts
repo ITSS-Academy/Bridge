@@ -8,16 +8,19 @@ import * as bcrypt from 'bcrypt';
 import { Md5 } from 'ts-md5';
 import { UsersService } from 'src/users/users.service';
 import { TokenService } from 'src/token/token.service';
+import { ConfigService } from '@nestjs/config';
 
 const md5 = new Md5();
 
 @Injectable()
 export class AuthAccountService {
   token = '';
+  api_url = this.configService.get<string>('CORE_APIs');
   constructor(
     @InjectModel(AuthAccount.name) public authModel: Model<AuthAccount>,
     public userService: UsersService,
     public tokenService: TokenService,
+    private configService: ConfigService
   ) {
     let result = this.tokenService.getToken();
     result.subscribe((res) => {
@@ -85,11 +88,12 @@ export class AuthAccountService {
 
   async login(account: any) {
     let isExisted = await this.findOne(account.username);
+    console.log(isExisted);
     if (isExisted) {
-      let res = await this.userService.fineUserByEmail(isExisted.email);
+      let res = await this.userService.findUserByEmail(isExisted.email);
       if (isExisted.id == '') {
         await this.authModel
-          .findOneAndUpdate({ email: isExisted.email }, { id: res.id })
+          .findOneAndUpdate({ email: isExisted.email }, { id: res.data.id })
           .exec();
       }
       console.log(res);
@@ -108,11 +112,14 @@ export class AuthAccountService {
     return result;
   }
 
-  update(id: number, updateAuthAccountDto: UpdateAuthAccountDto) {
-    return `This action updates a #${id} authAccount`;
+  update(id: string, updateAuthAccountDto: UpdateAuthAccountDto) {
+    return this.authModel.findOneAndUpdate({id: id}, updateAuthAccountDto).exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} authAccount`;
+  async remove(id: string) {
+    await this.authModel.findOneAndDelete({ id: id }).exec()
+    return await this.userService.remove(id);
+
+    
   }
 }

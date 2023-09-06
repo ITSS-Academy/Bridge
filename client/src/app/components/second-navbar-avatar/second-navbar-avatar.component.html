@@ -1,0 +1,22 @@
+<div style="display: block; width: 13rem">
+  <div class="container">
+    <div class="avatar center" id="avatar" (click)="toggleDropdown()">
+      <img src="./assets/Spinning Axe.png" class="avatarImage" />
+    </div>
+  </div>
+
+  <div class="dropdownBox closed center" id="dropdownBox">
+    <div class="dropdownBoxHeader center">
+        <img src="./assets/Spinning Axe.png" class="dropdownBoxAvatarImage" />
+    </div>
+    <div class="dropdownBoxBody center">
+      <b>Spinning Axe</b>
+      <p>IT Consultant</p>
+    </div>
+    <div class="dropdownBoxOptionContainer center">
+        <div class="dropdownBoxOption center" id="User Reference" (click)="navToAdmin()">User Reference</div>
+        <div class="dropdownBoxOption center" id="Log Out"  (click)="logOut()">Log Out</div>
+    </div>
+    <div class="dropdownBoxFooter"></div>
+  </div>
+</div>

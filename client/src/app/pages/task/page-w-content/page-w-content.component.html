@@ -1,44 +1,44 @@
 <div class="contentPage">
-    <table>
-        <tr>
-            <!-- CHECKBOX -->
-            <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-              </label></th>
+  <table>
+    <tr>
+      <!-- CHECKBOX -->
+      <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
+        <label class="container">
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+      </th>
 
-            <th style="width: max-content; padding: 0.5rem;"><span class="material-symbols-outlined">edit_document</span></th>
-            <th><b>NAME</b></th>
-            <th><b>ASSIGN TO</b></th>
-            <th><b>START DATE & TIME</b></th>
-            <th><b>DUE DATE & TIME</b></th>
-            <th><b>STAGE</b></th>
-          </tr>
-          <tr>
-            <!-- CHECKBOX -->
-            <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-              </label></th>
-            <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
-            <td>Design Web Page</td>
-            <td>Team CRM</td>
-            <td>16-08-2023 01:47 PM</td>
-            <td>26-08-2023 12:00 AM</td>
-            <td>In Progress</td>
-          </tr>
-          <tr>
-            <!-- CHECKBOX -->
-            <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-              </label></th>
-            <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
-            <td>Presentation</td>
-            <td>Team CRM</td>
-            <td>pending</td>
-            <td>pending</td>
-            <td>Pending</td>
-          </tr>
-    </table>
-  </div>
+      <th style="width: max-content; padding: 0.5rem">
+        <span class="material-symbols-outlined">edit_document</span>
+      </th>
+      <th><b>NAME</b></th>
+      <th><b>ASSIGN TO</b></th>
+      <th><b>START DATE & TIME</b></th>
+      <th><b>DUE DATE & TIME</b></th>
+      <th><b>STAGE</b></th>
+      <th><b>LOCATION</b></th>
+      <th><b>PRIORITY</b></th>
+    </tr>
+    <tr *ngFor="let task of (this.tasks | async)">
+      <!-- CHECKBOX -->
+      <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
+        <label class="container">
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+      </th>
+      <td style="width: 1rem; padding: 0.5rem">
+        <span class="material-symbols-outlined">star</span>
+      </td>
+      <td>{{task.attributes.name}}</td>
+      <td>{{task.attributes.assigned_to_c}}</td>
+      <td>16-08-2023 01:47 PM</td>
+      <td>26-08-2023 12:00 AM</td>
+      <td>{{task.attributes.status}}</td>
+      <td>{{task.attributes.location_c}}</td>
+      <td>{{task.attributes.priority}}</td>
+    </tr>
+    
+  </table>
+</div>

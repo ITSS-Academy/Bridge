@@ -4,7 +4,7 @@
 />
 <div>
   <div>
-    <app-second-navbar [title]="title"></app-second-navbar>
+    <!-- <app-second-navbar [title]="title"></app-second-navbar> -->
 
     <!-- THANH NAV THỨ 3 -->
     <div class="thirdNavbar">
@@ -20,9 +20,10 @@
 
         <button
           class="button buttonMainAction"
-          (click)="showDialog(dialogAddLeads, 'auto')"
+
         >
-          <span class="material-symbols-outlined"> add </span>
+        <!-- (click)="showDialog(dialogAddOrg, 'auto')" -->
+        <span class="material-symbols-outlined"> add </span>
 
           <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
           <span style="margin: 0 1rem">Add Lead</span>
@@ -140,13 +141,13 @@
     </div>
 
     <!-- DIALOG -->
-    <ng-template id="dialogAddLead" #dialogAddLeads let-observer>
+    <!-- <ng-template id="dialogAddLead" #dialogAddLeads let-observer> -->
       <!--FORM CHỨA NỘI DUNG DIALOG-->
-      <form
+      <!-- <form
         id="form-container"
         [formGroup]="exampleForm"
         (ngSubmit)="observer.complete()"
-      >
+      > -->
         <!--CHỮ TỰA ĐỀ CỦA DIALOG-->
         <p id="header-dialog">Add Lead</p>
 
@@ -154,7 +155,7 @@
         <div class="contents-dialog-lead">
 
           <!--DIV FIRST NAME-->
-          <div class="container-dialog">
+          <!-- <div class="container-dialog">
             <p class="title-dialog">First name</p>
             <tui-input
               style="outline: none !important"
@@ -165,10 +166,10 @@
             >
               Type first name
             </tui-input>
-          </div>
+          </div> -->
 
           <!--DIV LAST NAME-->
-          <div class="container-dialog">
+          <!-- <div class="container-dialog">
             <p class="title-dialog">Last name</p>
             <tui-input
               class="input-dialog"
@@ -178,10 +179,10 @@
             >
               Type last name
             </tui-input>
-          </div>
+          </div> -->
 
           <!--DIV COMPANY-->
-          <div class="container-dialog">
+          <!-- <div class="container-dialog">
             <p class="title-dialog">Company</p>
             <tui-input
               class="input-dialog"
@@ -191,10 +192,10 @@
             >
               Type company
             </tui-input>
-          </div>
+          </div> -->
 
           <!--DIV EMAIL-->
-          <div class="container-dialog">
+          <!-- <div class="container-dialog">
             <p class="title-dialog">Email</p>
             <tui-input
               class="input-dialog"
@@ -204,10 +205,10 @@
             >
               Type here
             </tui-input>
-          </div>
+          </div> -->
 
           <!--DIV PHONE-->
-          <div class="container-dialog">
+          <!-- <div class="container-dialog">
             <p class="title-dialog">Phone</p>
             <tui-input-phone-international
               class="input-dialog"
@@ -219,10 +220,10 @@
             >
               (optional)
             </tui-input-phone-international>
-          </div>
+          </div> -->
 
           <!--DIV ASSIGNED TO-->
-          <div class="container-dialog">
+          <!-- <div class="container-dialog">
             <p class="title-dialog">Assigned to</p>
 
             <tui-combo-box
@@ -242,14 +243,14 @@
               ></tui-data-list-wrapper>
             </tui-combo-box>
           </div>
-        </div>
+        </div> -->
 
         <!--DIV NÚT CANCEL VÀ SAVE-->
         <div class="cancel-save">
           <button class="button-cancel" type="submit">Cancel</button>
           <button class="button-add" type="submit">Add</button>
         </div>
-      </form>
-    </ng-template>
+      <!-- </form>
+    </ng-template> -->
   </div>
 </div>

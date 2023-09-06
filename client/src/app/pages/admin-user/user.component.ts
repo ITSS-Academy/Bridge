@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   Inject,
+  OnDestroy,
   ViewEncapsulation,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -18,7 +19,7 @@ import { TuiCountryIsoCode } from '@taiga-ui/i18n';
   changeDetection: ChangeDetectionStrategy.OnPush,
   // encapsulation: ViewEncapsulation.None,
 })
-export class UserComponent {
+export class UserComponent{
   //user dialog
   name = '';
   primaryGroup = '';
@@ -45,11 +46,16 @@ export class UserComponent {
     testValue: new FormControl(false), //input value true or false into the form control
   });
 
+  currentUser:any
+
   constructor(
     @Inject(TuiDialogFormService)
     private readonly dialogForm: TuiDialogFormService,
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService
-  ) {}
+  ) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
+  }
+
 
   onModelChangeName(name: string): void {
     this.name = name;

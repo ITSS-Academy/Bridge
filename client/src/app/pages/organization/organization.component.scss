@@ -4,6 +4,10 @@ $Blue3: #272643;
 $Blue0: #BAE8E8;
 $LightGray:#F2F2F2;
 
+:host{
+  --tui-radius-m: 8px;
+}
+
 //CSS CỦA THANH NAV THỨ 3 --->
 .thirdNavbar{
     background-color: #F2F2F2;
@@ -73,8 +77,8 @@ $LightGray:#F2F2F2;
 
 //SIZE CỦA ẢNH, MN TỰ CHỈNH SỬA BẰNG VH VÀ VW CHO THÍCH HỢP
 .emptyPageImage{
-    height: 45vh;
-    width: 60vh;
+    height: 40vh;
+    width: 40vh;
 }
 .emptyPageContentContainer{
     margin-top: 2rem;

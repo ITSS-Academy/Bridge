@@ -1,0 +1,166 @@
+<!-- <app-page-empty></app-page-empty> -->
+
+
+<div class="contentPage">
+  <table>
+    <tr>
+      <!-- CHECKBOX -->
+      <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
+          <input type="checkbox">
+          <span class="checkmark"></span>
+        </label></th>
+
+      <th style="width: max-content; padding: 0.5rem;"><span class="material-symbols-outlined">edit_document</span></th>
+      <th><b>NAME</b></th>
+      <th><b>EMAIL</b></th>
+      <th><b>PHONE NUMBER</b></th>
+      <th><b>COMPANY</b></th>
+      <th><b>WEBSITE</b></th>
+      <th><b>LAST CONTACT ON</b></th>
+      <th><b>COUNTRY</b></th>
+      <th><b>CITY</b></th>
+        <th>ACTION</th>
+    </tr>
+    <tr class="visible-data" *ngFor="let lead of (this.leads | async)">
+      <!-- CHECKBOX -->
+      <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
+          <input type="checkbox">
+          <span class="checkmark"></span>
+        </label></th>
+      <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
+      <td>{{lead.attributes.full_name!}}</td>
+      <td class="lead-mail"><div *ngIf="lead.attributes.email1">{{lead.attributes.email1!}}</div></td>
+      <td class="lead-phone"><div *ngIf="lead.attributes.phone_mobile" >{{lead.attributes.phone_mobile!}}</div></td>
+      <td>{{lead.attributes.department!}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+        <div class="action">
+          <span class="material-symbols-outlined" (click)="showDialog(dialogAddLeads, 'auto')">edit</span>
+        <span class="material-symbols-outlined" (click)="deleteLead(lead.id)">delete</span>
+        </div>
+      </td>
+
+      <!-- DIALOG -->
+<ng-template id="dialogAddLead"  #dialogAddLeads let-observer>
+  <!--FORM CHỨA NỘI DUNG DIALOG-->
+  <form
+    id="form-container"
+    [formGroup]="exampleForm"
+    (ngSubmit)="observer.complete()"
+  >
+    <!--CHỮ TỰA ĐỀ CỦA DIALOG-->
+    <p id="header-dialog">Update Lead</p>
+
+    <!--DIV CHỨA NỘI DUNG DIALOG-->
+    <div class="contents-dialog-lead">
+      <!--DIV FIRST NAME-->
+      <div class="container-dialog">
+        <p class="title-dialog">First name</p>
+        <tui-input
+        [formControl]="firstName"
+          style="outline: none !important"
+          class="input-dialog"
+          tuiTextfieldSize="s"
+          ngModel="{{lead.attributes.first_name}}"
+        >
+          Type first name
+        </tui-input>
+      </div>
+
+      <!--DIV LAST NAME-->
+      <div class="container-dialog">
+        <p class="title-dialog">Last name</p>
+        <tui-input
+        [formControl]="lastName2"
+          class="input-dialog"
+          tuiTextfieldSize="s"
+          ngModel="{{lead.attributes.last_name}}"
+        >
+          Type last name
+        </tui-input>
+      </div>
+
+      <!--DIV COMPANY-->
+      <div class="container-dialog">
+        <p class="title-dialog">Company</p>
+        <tui-input
+        [formControl]="company2"
+          class="input-dialog"
+          tuiTextfieldSize="s"
+          ngModel="{{lead.attributes.department}}"
+        >
+          Type company
+        </tui-input>
+      </div>
+
+      <!--DIV EMAIL-->
+      <div class="container-dialog">
+        <p class="title-dialog">Email</p>
+        <tui-input
+        [formControl]="email2"
+          class="input-dialog"
+          tuiTextfieldSize="s"
+          ngModel="{{lead.attributes.email1!}}"
+        >
+          Type here
+        </tui-input>
+      </div>
+
+      <!--DIV PHONE-->
+      <div class="container-dialog">
+        <p class="title-dialog">Phone</p>
+        <tui-input-phone-international
+          [formControl]="phone2"
+          class="input-dialog"
+          [countries]="(phones | tuiSortCountries | async) || []"
+          [(countryIsoCode)]="countryIsoCode"
+          [tuiTextfieldLabelOutside]="true"
+          tuiTextfieldSize="m"
+          style="border-radius: 8px"
+          ngModel="{{lead.attributes.phone_mobile!}}"
+        >
+          (optional)
+        </tui-input-phone-international>
+      </div>
+
+      <!--DIV ASSIGNED TO-->
+      <div class="container-dialog">
+        <p class="title-dialog">Assigned to</p>
+
+        <tui-combo-box
+          class="input-dialog"
+          [formControl]="controlAssignments"
+          [stringify]="stringifyAssignment"
+          tuiTextfieldSize="s"
+          ngModel="{{lead.attributes.assigned_user_name}}"
+        >
+          Choose/Type here
+
+          <tui-data-list-wrapper
+            *tuiDataList
+            [items]="assignments | tuiFilterByInputWith : stringifyAssignment"
+            [itemContent]="stringifyAssignment | tuiStringifyContent"
+          ></tui-data-list-wrapper>
+        </tui-combo-box>
+      </div>
+    </div>
+
+    <!--DIV NÚT CANCEL VÀ SAVE-->
+    <div class="cancel-save">
+      <button class="button-cancel" type="submit">Cancel</button>
+      <button class="button-add" (click)="updateLead(lead)">update</button>
+    </div>
+  </form>
+</ng-template>
+
+
+    </tr>
+  </table>
+</div>
+
+
+
+

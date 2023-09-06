@@ -1,9 +1,13 @@
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-<div class="second-navbar">
-  <div class="top-navbar">
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+/>
+
+<div class="second-navbar" style="position: relative; z-index: 100">
+  <div class="top-navbar" style="position: relative; z-index: 200">
     <div class="container-logo-user">
-    <div class="logo-list-page">
-      <svg
+      <div class="logo-list-page">
+        <svg
           width="89"
           height="51"
           viewBox="0 0 89 51"
@@ -74,44 +78,43 @@
             stroke="white"
             stroke-width="4"
           />
-          
         </svg>
-      <ul class="list-page" *ngFor="let page of this.navPages">
-        <li (click)="navigateToLeads(page.route)">{{page.name}}</li>
-      </ul>
-    </div>
-    <div class="user">
-      <span class="material-symbols-outlined">
-        account_circle
-        </span>
-    </div>
-  </div>
-  </div>
-  <div class="bottom-navbar">
-    <div class="container-title-icons">
-      <div class="title-page">
-        <p>{{title}}</p>
+        <ul class="list-page" *ngFor="let page of this.navPages">
+          <li class="pageToChoose" (click)="navigateTo(page.route)">
+            {{ page.name }}
+          </li>
+        </ul>
       </div>
-        <div class="icons">
-          <span class="material-symbols-outlined">
-            search
-            </span>
-          <span class="material-symbols-outlined">
-              update
-            </span>
-          <span class="material-symbols-outlined">
-              add_circle
-            </span>
-          <span class="material-symbols-outlined">
-              calendar_today
-            </span>
-          <span class="material-symbols-outlined">
-              notifications
-            </span>
-            <span class="material-symbols-outlined">
-              mail
-              </span>
-        </div>
+    </div>
   </div>
+  <div
+    class="bottom-navbar"
+    style="display: flex; position: relative; z-index: 1"
+  >
+    <div
+      class="overlay"
+      id="sidebar"
+      style="display: flex; justify-content: flex-end"
+    >
+      <app-side-bar [favorites]="navPages"></app-side-bar>
+    </div>
+
+    <div
+      class="container-title-icons"
+      id="title"
+      style="position: relative; z-index: 1"
+    >
+      <div class="title-page">
+        <button class="showSideBarButton" (click)="showSideBar()">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <p>{{ title }}</p>
+      </div>
+      
+    </div>
+
+    <div style="margin-right: 4.2rem;">
+      <app-second-navbar-avatar></app-second-navbar-avatar>
+    </div>
   </div>
 </div>

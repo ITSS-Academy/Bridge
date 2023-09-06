@@ -2,11 +2,12 @@
 
 // @import 'mixins/textfield.scss';
 
-[tuiWrapper][data-appearance="textfield"] {
-  background: var(--tui-base-01);
-  color: var(--tui-text-01);
-  box-shadow: none;
-}
+
+$Blue : #58c2ce;
+$Blue2: #2C698D;
+$Blue3: #272643;
+$Blue0: #BAE8E8;
+$LightGray:#F2F2F2;
 
 .content-groups {
   width: 85%;
@@ -79,10 +80,11 @@ td:first-child {
   cursor: pointer;
 }
 //Dialog
+
 .cancel-save {
   display: flex;
   flex-direction: row;
-  gap: 50px;
+  gap: 20px;
   justify-content: center;
   margin-top: 30px;
 }
@@ -98,11 +100,6 @@ td:first-child {
   cursor: pointer;
 }
 
-.btn-cancel:hover {
-  color: #ffffff;
-  background-color: #58c2ce;
-}
-
 .btn-save {
   width: 80px;
   height: 30px;
@@ -114,11 +111,6 @@ td:first-child {
   cursor: pointer;
 }
 
-.btn-save:hover {
-  color: #58c2ce;
-  background-color: #ffffff;
-  border: 2px solid #58c2ce;
-}
 
 .form-group {
   display: flex;
@@ -137,32 +129,58 @@ td:first-child {
   font-size: 16px;
   font-weight: 510;
 }
-.box input {
+
+.tui-input {
   width: 400px;
-  height: 30px;
-  border: none;
-  border-bottom: 1px dashed #58c2ce;
-  outline: none;
+  border: 1px solid #58c2ce;
+  border-radius: 8px;
 }
 
+.box-gname {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+}
+
+.box-gname label{
+  color: #2c698d;
+  font-size: 16px;
+  font-weight: 510;
+}
+
+.box-gemail {
+  display: flex;
+  flex-direction: row;
+  gap: 102px;
+}
+
+.box-gemail label{
+  color: #2c698d;
+  font-size: 16px;
+  font-weight: 510;
+}
+
+.box-gdesc {
+  display: flex;
+  flex-direction: row;
+  gap: 108px;
+}
+
+.box-gdesc label{
+  color: #2c698d;
+  font-size: 16px;
+  font-weight: 510;
+}
 .box-gmember {
   display: flex;
   flex-direction: row;
-  gap: 130px;
+  gap: 84px;
 }
 
 .box-gmember label {
   color: #2c698d;
   font-size: 16px;
   font-weight: 510;
-}
-
-.box-gmember input {
-  width: 400px;
-  height: 30px;
-  border: none;
-  border-bottom: 1px dashed #58c2ce;
-  outline: none;
 }
 
 .color-roles {
@@ -221,8 +239,7 @@ td:first-child {
 //tui-multiple-select
 
 .tui-multi-select {
-  width: 400px;
-  height: 30px;
+  max-width: 400px;
 }
 
 .template {
@@ -230,6 +247,24 @@ td:first-child {
   align-items: center;
 }
 
+.tui-multi-select {
+  width: 400px;
+  height: 56px;
+  border-radius: 8px;
+  border: 1px solid #58c2ce;
+}
 .avatar {
   margin: 0 0.5rem 0 -0.25rem;
+}
+
+.title-group {
+  border-bottom: 2px solid #58c2ce;
+  margin-bottom: 30px;
+  color: #2C698D;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.title-group p {
+  margin-top: 0;
 }

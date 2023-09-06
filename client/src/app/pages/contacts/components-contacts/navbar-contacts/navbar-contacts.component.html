@@ -2,23 +2,15 @@
   <div class="leftNavContent">
     <button class="button">
       <span class="material-symbols-outlined"> filter_list </span>
-
-      <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
-      <span style="margin: 0 1rem">My Contacts</span>
-
+      <span style="margin: 0 1rem">My {{ title }}</span>
       <span class="material-symbols-outlined"> expand_more </span>
     </button>
-
     <button
       class="button buttonMainAction"
-      size="m"
-      type="button"
       (click)="onClick(content, 'auto')"
     >
       <span class="material-symbols-outlined"> add </span>
-
-      <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
-      <span style="margin: 0 1rem">Add Contacts</span>
+      <span style="margin: 0 1rem">Add {{ title }}</span>
     </button>
   </div>
   <div class="rightNavContent">
@@ -28,18 +20,13 @@
     >
       <span class="material-symbols-outlined"> rule_settings </span>
     </button>
-
     <button class="button buttonRightNavContent">
       <span class="material-symbols-outlined"> chevron_left </span>
-
-      <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
       <span style="margin: 0 1rem">1 to 2</span>
-
       <span class="material-symbols-outlined"> chevron_right </span>
     </button>
   </div>
 </div>
-
 <!--DIALOG CONTACT-->
 <ng-template #content let-observer>
 
@@ -110,6 +97,7 @@
             [tuiTextfieldLabelOutside]="true"
             [countries]="(countries | tuiSortCountries | async) || []"
             [(countryIsoCode)]="countryIsoCode"
+
           >
           Input here
           </tui-input-phone-international>
