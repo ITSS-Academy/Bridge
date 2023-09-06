@@ -48,6 +48,7 @@
           style="outline: none !important"
           class="input-dialog"
           tuiTextfieldSize="s"
+          [formControl]="Name"
           [(ngModel)]="name"
           (ngModelChange)="onModelChangeName($event)"
         >
@@ -81,7 +82,9 @@
         <tui-input
           style="outline: none !important"
           class="input-dialog"
+
           tuiTextfieldSize="s"
+          [formControl]="Estimatetime"
           [(ngModel)]="time"
           (ngModelChange)="onModelChangeTime($event)"
         >
@@ -96,7 +99,8 @@
         <tui-input-date
           [(ngModel)]="test"
           class="input-dialog"
-          formControlName="testValue"
+          
+          [formControl]="DuedateTime"
           tuiTextfieldSize="s"
         >
           Choose a date
@@ -151,6 +155,7 @@
           style="outline: none !important"
           class="input-dialog"
           tuiTextfieldSize="s"
+          [formControl]="Location"
           [(ngModel)]="location"
           (ngModelChange)="onModelChangeLocation($event)"
         >
@@ -185,6 +190,7 @@
         <tui-textarea
           style="outline: none !important"
           class="input-dialog"
+          [formControl]="Description"
           [expandable]="false"
           [tuiTextfieldLabelOutside]="true"
           >Type a text
@@ -195,7 +201,7 @@
     <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
     <div class="cancel-save">
       <button class="button-cancel" type="submit">Cancel</button>
-      <button class="button-add" type="submit">Add</button>
+      <button class="button-add" type="submit" (click)="addTask()">Add</button>
     </div>
   </form>
 </ng-template>
