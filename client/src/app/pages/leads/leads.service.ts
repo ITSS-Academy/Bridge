@@ -25,8 +25,8 @@ export class LeadsService {
     return this.http.get(`${environment.API_URL}/leads/${id}`) as Observable<any>;
   }
 
-  updateLead(id: string, body: any) {
-    return this.http.patch(`${environment.API_URL}/leads/${id}`, body) as Observable<any>;
+  updateLead(body: any) {
+    return this.http.patch(`${environment.API_URL}/leads/update`, body) as Observable<any>;
   }
 
   deleteLead(id: string) {

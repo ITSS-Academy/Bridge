@@ -3,16 +3,12 @@ import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { TokenService } from 'src/token/token.service';
 import { map } from 'rxjs';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { Lead } from './schema/lead.schema';
 import { getFirestore } from 'firebase-admin/firestore';
 
 @Injectable()
 export class LeadsService {
   api_url = this.configService.get<string>('CORE_APIs');
   token = '';
-  subLeadInfo: any;
 
   db = getFirestore();
   docRef = this.db.collection('leads');
@@ -94,7 +90,6 @@ export class LeadsService {
     });
     return result;
   }
-
 
   remove(id: string) {
     let result = this.http

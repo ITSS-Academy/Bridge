@@ -6,12 +6,11 @@ import { map } from 'rxjs';
 import { getFirestore } from 'firebase-admin/firestore';
 
 @Injectable()
-export class ContactsService {
+export class OrganizationsService {
   api_url = this.configService.get<string>('CORE_APIs');
   token = '';
-
   db = getFirestore();
-  docRef = this.db.collection('contacts');
+  docRef = this.db.collection('organizations');
 
   constructor(
     private http: HttpService,
@@ -43,9 +42,9 @@ export class ContactsService {
   async findAll() {
     try {
       const snapshot = await this.docRef.get();
-      const contacts = snapshot.docs.map((doc) => doc.data().data);
-      console.log(contacts);
-      return contacts;
+      const organizations = snapshot.docs.map((doc) => doc.data().data);
+      console.log(organizations);
+      return organizations;
     } catch (err) {
       console.log(err);
       return null;
@@ -54,15 +53,15 @@ export class ContactsService {
 
   async findOne(id: string) {
     try {
-      let contactToFind!: any;
-      const contactRef = this.docRef.where('data.id', '==', id);
-      await contactRef.get().then((snapshot) => {
+      let organization!: any;
+      const orgRef = this.docRef.where('data.id', '==', id);
+      await orgRef.get().then((snapshot) => {
         snapshot.forEach((doc) => {
-          contactToFind = doc.data();
-          console.log(contactToFind);
+          organization = doc.data();
+          console.log(organization);
         });
       });
-      return contactToFind;
+      return organization;
     } catch (err) {
       console.log(err);
       return null;
@@ -79,8 +78,8 @@ export class ContactsService {
       .pipe(map((response) => response.data));
     const subscription = result.subscribe({
       next: async (res) => {
-        const contactRef = this.docRef.where('data.id', '==', id);
-        await contactRef.get().then((snapshot) => {
+        const orgRef = this.docRef.where('data.id', '==', id);
+        await orgRef.get().then((snapshot) => {
           snapshot.forEach((doc) => {
             doc.ref.update({ ...res });
           });
@@ -93,15 +92,15 @@ export class ContactsService {
 
   remove(id: string) {
     let result = this.http
-      .delete(`${this.api_url}/Api/V8/module/Contacts/${id}`, {
+      .delete(`${this.api_url}/Api/V8/module/Accounts/${id}`, {
         headers: {
           Authorization: `Bearer ${this.tokenService.token}`,
         },
       })
       .pipe(map((response) => response.data));
 
-    const contactRef = this.docRef.where('data.id', '==', id);
-    contactRef.get().then((snapshot) => {
+    const orgRef = this.docRef.where('data.id', '==', id);
+    orgRef.get().then((snapshot) => {
       snapshot.forEach((doc) => {
         console.log(doc.data());
         doc.ref.delete();

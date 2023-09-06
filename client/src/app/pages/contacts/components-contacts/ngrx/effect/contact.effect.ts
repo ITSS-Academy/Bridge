@@ -7,12 +7,17 @@ import { ContactsService } from '../../../contact.service';
 
 @Injectable()
 export class ContactEffect {
-  constructor(private action$: Actions, private ContactService: ContactsService) {}
+  constructor(
+    private action$: Actions,
+    private ContactService: ContactsService
+  ) {}
 
   addContact$ = createEffect(() =>
     this.action$.pipe(
       ofType(ContactAction.addContact),
-      switchMap((contact: any) => this.ContactService.addContact(contact.contact)),
+      switchMap((contact: any) =>
+        this.ContactService.addContact(contact.contact)
+      ),
       map((contact: any) => {
         return ContactAction.addContactSuccess({ contact: contact });
       }),

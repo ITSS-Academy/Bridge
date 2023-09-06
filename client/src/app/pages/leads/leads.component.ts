@@ -19,10 +19,6 @@ export class LeadsComponent implements OnInit {
   pageEmpty = true;
 
   constructor(private leadService: LeadsService) {
-    // this.leads = this.leadService.getAllLeads();
-    // this.leads.subscribe((data) => {
-    //   console.log(data);
-    // })
   }
 
   ngOnInit(): void {
@@ -33,15 +29,9 @@ export class LeadsComponent implements OnInit {
     this.leads = (await this.leadService.getAllLeads()).pipe(
       map((result: any) =>
         result.map((item: any) => {
-          // console.log(item.data());
           return item.data().data;
         })
       )
     );
-    // console.log(this.leads);    // console.log(result.docs.map((item: any) => item.data()));
   }
-
-  // addInfo() {
-  //   this.pageEmpty = !this.pageEmpty;
-  // }
 }

@@ -3,32 +3,32 @@ import { ContactsService } from './contacts.service';
 import { CreateContactDto } from './dto/create-contact.dto';
 import { UpdateContactDto } from './dto/update-contact.dto';
 
-@Controller('contacts')
+@Controller('leads')
 export class ContactsController {
-  constructor(private readonly contactsService: ContactsService) {}
+  constructor(private readonly contactsService: ContactsService,) {}
 
-  @Post()
-  create(@Body() createContactDto: CreateContactDto) {
-    return this.contactsService.create(createContactDto);
+  @Post('/createContact')
+  create(@Body() body: any) {
+    return this.contactsService.create(body);
   }
 
-  @Get()
+  @Get('/getAll')
   findAll() {
     return this.contactsService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.contactsService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return await this.contactsService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateContactDto: UpdateContactDto) {
-    return this.contactsService.update(+id, updateContactDto);
+  @Patch('/update/')
+  update(@Body() body: any) {
+    return this.contactsService.update(body.data.id, body);
   }
 
-  @Delete(':id')
+  @Delete('/delete/:id')
   remove(@Param('id') id: string) {
-    return this.contactsService.remove(+id);
+    return this.contactsService.remove(id);
   }
 }

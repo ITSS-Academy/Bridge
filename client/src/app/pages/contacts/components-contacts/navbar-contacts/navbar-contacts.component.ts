@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Inject, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  Input,
+} from '@angular/core';
 import {
   TuiDialogContext,
   TuiDialogService,
@@ -7,17 +12,31 @@ import {
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TuiCountryIsoCode } from '@taiga-ui/i18n';
+import { TuiDialogFormService } from '@taiga-ui/kit';
+import { ContactsService } from '../../contact.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { ContactState } from '../ngrx/state/contact.state';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-navbar-contacts',
   templateUrl: './navbar-contacts.component.html',
-  styleUrls: ['./navbar-contacts.component.scss','./navbar-contacts.component.less'],
+  styleUrls: [
+    './navbar-contacts.component.scss',
+    './navbar-contacts.component.less',
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [TuiDialogFormService],
 })
 export class NavbarContactsComponent {
   @Input() title!: string;
   constructor(
-    @Inject(TuiDialogService) private readonly dialogs: TuiDialogService
+    @Inject(TuiDialogFormService)
+    private readonly dialogForm: TuiDialogFormService,
+    @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
+    private contactService: ContactsService,
+    public authService: AuthService,
+    private store: Store<{ contact: ContactState }>
   ) {}
 
   onClick(
@@ -41,7 +60,7 @@ export class NavbarContactsComponent {
     lifeycleStage: new FormControl(),
     status: new FormControl(),
   });
-  
+
   //phone
   readonly countries = Object.values(TuiCountryIsoCode);
 

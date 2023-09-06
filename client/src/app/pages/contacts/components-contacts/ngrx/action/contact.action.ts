@@ -1,9 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 import { Contact } from 'src/app/models/contact.model';
 
-
 export const ContactAction = {
-  addContact: createAction('[Lead] Add Lead', props<{ contact : Contact }>()),
+  addContact: createAction('[Contact] Add Contact', props<{ contact: Contact }>()),
   addContactSuccess: createAction(
     '[Contact] Add Contact Success',
     props<{ contact: Contact }>()
@@ -23,14 +22,20 @@ export const ContactAction = {
     props<{ error: any }>()
   ),
 
-  updateContact: createAction('[Contact] Update Contact', props<{ contact: any }>()),
+  updateContact: createAction(
+    '[Contact] Update Contact',
+    props<{ contact: any }>()
+  ),
   updateContactSuccess: createAction('[Contact] Update Contact Success'),
   updateContactFailure: createAction(
     '[Contact] Update Contact Failure',
     props<{ error: any }>()
   ),
 
-  deleteContact: createAction('[Contact] Delete Contact', props<{ id: string }>()),
+  deleteContact: createAction(
+    '[Contact] Delete Contact',
+    props<{ id: string }>()
+  ),
   deleteContactSuccess: createAction('[Contact] Delete Contact Success'),
   deleteContactFailure: createAction(
     '[Contact] Delete Contact Failure',
