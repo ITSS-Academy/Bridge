@@ -37,32 +37,30 @@ export class SecondNavbarComponent implements OnInit {
   }
   currentUser: any;
 
-  constructor(public route: Router) {
+  constructor(public route: Router) {  
     if (this.navPages.length > 10) {
       this.navPages.length = 10;
     }
   }
+
+  navTo(path: string) {
+    this.route.navigate([`/${path}`]);
+  }
   navPages: bookmark[] = [
-    { name: 'Leads', route: '/leads' },
+    { name: 'Leads', route: '/leads'},
     { name: 'Contacts', route: '/contacts' },
     { name: 'Organizations', route: '/organizations' },
     { name: 'Tasks', route: '/tasks' },
     { name: 'Cases', route: '/cases' },
     { name: 'Deals', route: '/deals' },
     { name: 'Events', route: '/events' },
+    { name: 'Dashboard', route: '/dashboard' },
   ];
   content?: table[];
 
-  navigateTo(route: any) {
-    if (route != null) {
-      this.route.navigate([route]);
-
-      const sidebar = document.getElementById('sidebar');
-      if (sidebar) {
-        sidebar.classList.remove('chosen');
-        this.content = [];
-        this.empty = true;
-      }
+  navigateTo(page: bookmark) {
+    if (page.route != null) {
+      this.route.navigate([page.route]);
     }
   }
 
@@ -82,9 +80,5 @@ export class SecondNavbarComponent implements OnInit {
       this.content = [];
       this.empty = true;
     }
-  }
-
-  navTo(path: any) {
-    this.route.navigate([`/${path}`]);
   }
 }
