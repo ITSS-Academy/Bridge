@@ -48,8 +48,8 @@
           style="outline: none !important"
           class="input-dialog"
           tuiTextfieldSize="s"
-          [(ngModel)]="name"
-          (ngModelChange)="onModelChangeOrgName($event)"
+          [formControl]="organizationName"
+         
         >
           Type here
         </tui-input>
@@ -61,7 +61,7 @@
         <tui-input
           class="input-dialog"
           tuiTextfieldSize="s"
-          [(ngModel)]="website"
+          [formControl]="website"
         >
           Type here (optional)
         </tui-input>
@@ -76,6 +76,7 @@
           [(countryIsoCode)]="countryIsoCode"
           [tuiTextfieldLabelOutside]="true"
           tuiTextfieldSize="m"
+          [formControl]="phone"
         >
           Type here (optional)
         </tui-input-phone-international>
@@ -145,7 +146,7 @@
     <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
     <div class="cancel-save">
       <button class="button-cancel" type="submit">Cancel</button>
-      <button class="button-add" type="submit">Add</button>
+      <button class="button-add" (click)="addOrganization()">Add</button>
     </div>
   </form>
 </ng-template>
