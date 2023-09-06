@@ -93,10 +93,11 @@
       </div>
 
       <!--DUE DATE-->
-      <div class="container-dialog">
+      <div  class="container-dialog">
         <p class="title-dialog">Due date & Time</p>
 
         <tui-input-date
+          [(ngModel)]="test"
           class="input-dialog"
           
           [formControl]="DuedateTime"

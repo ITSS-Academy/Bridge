@@ -14,7 +14,10 @@ export class LeadsService {
 
   //CRUD
   addLead(body: any) {
-    return this.http.post(`${environment.API_URL}/leads/createLead`, body) as Observable<any>;
+    return this.http.post(
+      `${environment.API_URL}/leads/createLead`,
+      body
+    ) as Observable<any>;
   }
 
   async getAllLeads() {
@@ -22,14 +25,22 @@ export class LeadsService {
   }
 
   getLeadById(id: string) {
-    return this.http.get(`${environment.API_URL}/leads/${id}`) as Observable<any>;
+    return this.http.get(
+      `${environment.API_URL}/leads/${id}`
+    ) as Observable<any>;
   }
 
   updateLead(body: any) {
-    return this.http.patch(`${environment.API_URL}/leads/update`, body) as Observable<any>;
+    console.log(body);
+    return this.http.patch(
+      `${environment.API_URL}/leads/update`,
+      body
+    ) as Observable<any>;
   }
 
   deleteLead(id: string) {
-    return this.http.delete(`${environment.API_URL}/leads/delete/${id}`) as Observable<any>;
+    return this.http.delete(
+      `${environment.API_URL}/leads/delete/${id}`
+    ) as Observable<any>;
   }
 }
