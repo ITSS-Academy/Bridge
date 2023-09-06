@@ -43,7 +43,7 @@ tr{
 th{
   box-sizing: border-box;
   padding: 0.5rem 1.5rem;
-    text-align: left;
+    text-align: center;
     color: $Blue2;
     width: 10rem;
 }
@@ -52,12 +52,12 @@ td{
   padding: 0.5rem 1.5rem;
     color: $Blue2;
     width: 10rem;
+    text-align: center;
 }
 
 .status{
   box-sizing: border-box;
   padding:0.25rem 1rem;
-  width: max-content;
   border-radius: 8px;
 }
 
@@ -84,7 +84,7 @@ td{
 .priority{
   box-sizing: border-box;
   display: flex;
-  align-content: flex-end;
+  justify-content: center;
 }
 
 .high{
