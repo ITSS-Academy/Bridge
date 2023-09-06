@@ -1,22 +1,30 @@
-<div style="display: block; width: 13rem">
+<div style="display: block; width: 16rem">
   <div class="container">
     <div class="avatar center" id="avatar" (click)="toggleDropdown()">
       <img src="./assets/Spinning Axe.png" class="avatarImage" />
     </div>
+    <div class="avatarStatus {{option.color}}" id="statusCircle"></div>
   </div>
 
-  <div class="dropdownBox closed center" id="dropdownBox">
+  <div class="dropdownBox closed " id="dropdownBox">
     <div class="dropdownBoxHeader center">
         <img src="./assets/Spinning Axe.png" class="dropdownBoxAvatarImage" />
     </div>
     <div class="dropdownBoxBody center">
       <b>Spinning Axe</b>
-      <p>IT Consultant</p>
+      <p style="color: #2C698D;">SpinningAxe123@gmail.com</p>
+      <div class="statusOption" (click)="changeStatus()"><div class="avatarStatus {{option.color}}" style="top:0px;left: 0px;" id="statusCircle"></div>{{option.name}}<span class="material-symbols-outlined">expand_more</span></div>
     </div>
-    <div class="dropdownBoxOptionContainer center">
-        <div class="dropdownBoxOption center" id="User Reference" (click)="navToAdmin()">User Reference</div>
-        <div class="dropdownBoxOption center" id="Log Out"  (click)="logOut()">Log Out</div>
+    <div class="dropdownBoxOptionContainer">
+        <div class="dropdownBoxOption " id="User Reference" (click)="navToAdmin()"><span class="material-symbols-outlined" style="margin-right: 1rem;">
+          settings_account_box
+          </span>User Reference</div>
+        <div class="dropdownBoxOption " id="Whats New"><span class="material-symbols-outlined" style="margin-right: 1rem;">
+          redeem
+          </span>What's New</div>
+        <div class="dropdownBoxOption " id="Log Out" (click)="logOut()"><span class="material-symbols-outlined" style="margin-right: 1rem;">logout</span>Log Out</div>
     </div>
-    <div class="dropdownBoxFooter"></div>
+    <div class="dropdownBoxFooter">
+    </div>
   </div>
 </div>
