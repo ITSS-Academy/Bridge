@@ -20,6 +20,32 @@ export class LeadEffect {
             catchError((error) => {
                 return of(LeadAction.addLeadFailure({ error: error }));
             })
-        ))
+        ));
+
+    deleteLead$ = createEffect(() =>
+        this.action$.pipe(
+            ofType(LeadAction.deleteLead),
+            switchMap((id: any) => this.leadService.deleteLead(id.id)),
+            map(( ) => {
+                return LeadAction.deleteLeadSuccess();
+            }),
+            catchError((error) => {
+                return of(LeadAction.deleteLeadFailure({ error: error }));
+            })
+        )
+    )
+
+    updateLead$ = createEffect(() => 
+        this.action$.pipe(
+            ofType(LeadAction.updateLead),
+            switchMap((lead: any) => this.leadService.updateLead(lead.lead)),
+            map((lead:any ) => {
+                return LeadAction.updateLeadSuccess();
+            }),
+            catchError((error) => {
+                return of(LeadAction.updateLeadFailure({ error: error }));
+            })
+        ));
+    
 
 }

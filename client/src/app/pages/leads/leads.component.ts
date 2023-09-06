@@ -10,22 +10,14 @@ import { Store } from '@ngrx/store';
   templateUrl: './leads.component.html',
   styleUrls: ['./leads.component.scss'],
 })
-export class LeadsComponent implements OnInit{
+export class LeadsComponent implements OnInit {
   leads!: Observable<any>;
-  subLeads:any[] = []
-    //ĐỔI TITLE THÀNH TÊN TRANG
-    title = 'Leads';
+  subLeads: any[] = [];
+  //ĐỔI TITLE THÀNH TÊN TRANG
+  title = 'Leads';
+  pageEmpty = true;
 
-    pageEmpty = true;
-    
-    constructor(private leadService: LeadsService) {
-    
-
-    // this.leads = this.leadService.getAllLeads();
-    // this.leads.subscribe((data) => {
-    //   console.log(data);
-    // })
-  }
+  constructor(private leadService: LeadsService) {}
 
   ngOnInit(): void {
     this.getAllLeads();
@@ -33,21 +25,11 @@ export class LeadsComponent implements OnInit{
 
   async getAllLeads() {
     this.leads = (await this.leadService.getAllLeads()).pipe(
-      map((result: any) => 
+      map((result: any) =>
         result.map((item: any) => {
-          // console.log(item.data());
-          return item.data().data;
+          return item.data();
         })
       )
     );
-    // console.log(this.leads);    // console.log(result.docs.map((item: any) => item.data()));
   }
-
-
-
-
-  // addInfo() {
-  //   this.pageEmpty = !this.pageEmpty;
-  // }
-
 }

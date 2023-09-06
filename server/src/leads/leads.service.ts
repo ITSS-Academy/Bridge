@@ -1,21 +1,14 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { CreateLeadDto } from './dto/create-lead.dto';
-import { UpdateLeadDto } from './dto/update-lead.dto';
+import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { TokenService } from 'src/token/token.service';
 import { map } from 'rxjs';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { Lead } from './schema/lead.schema';
-import { initializeApp } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 
 @Injectable()
 export class LeadsService {
   api_url = this.configService.get<string>('CORE_APIs');
   token = '';
-  subLeadInfo: any;
 
   db = getFirestore();
   docRef = this.db.collection('leads');
@@ -24,7 +17,6 @@ export class LeadsService {
     private http: HttpService,
     private configService: ConfigService,
     private tokenService: TokenService,
-    @InjectModel(Lead.name) public leadModel: Model<Lead>,
   ) {
     let result = this.tokenService.getToken();
     result.subscribe((res) => {
@@ -51,9 +43,9 @@ export class LeadsService {
   async findAll() {
     try {
       const snapshot = await this.docRef.get();
-      const users = snapshot.docs.map((doc) => doc.data().data);
-      console.log(users);
-      return users;
+      const leads = snapshot.docs.map((doc) => doc.data().data);
+      console.log(leads);
+      return leads;
     } catch (err) {
       console.log(err);
       return null;
@@ -62,25 +54,24 @@ export class LeadsService {
 
   async findOne(id: string) {
     try {
-      let user!: any;
-      const userRef = this.docRef.where('data.id', '==', id);
-      await userRef.get().then((snapshot) => {
+      let lead!: any;
+      const leadRef = this.docRef.where('data.id', '==', id);
+      await leadRef.get().then((snapshot) => {
         snapshot.forEach((doc) => {
-          user = doc.data();
-          console.log(user);
+          lead = doc.data();
+          console.log(lead);
         });
       });
-      return user;
+      return lead;
     } catch (err) {
       console.log(err);
       return null;
     }
   }
 
-  async update(id: string, body: any) {
+  async update(body: any) {
     console.log(body);
-    console.log(id);
-    console.log(this.tokenService.token);
+    console.log(body.data.id);
     let result = this.http
       .patch(`${this.api_url}/Api/V8/module`, body, {
         headers: {
@@ -90,8 +81,8 @@ export class LeadsService {
       .pipe(map((response) => response.data));
     const subscription = result.subscribe({
       next: async (res) => {
-        const userRef = this.docRef.where('data.id', '==', id);
-        await userRef.get().then((snapshot) => {
+        const leadRef = this.docRef.where('data.id', '==', body.data.id);
+        await leadRef.get().then((snapshot) => {
           snapshot.forEach((doc) => {
             doc.ref.update({ ...res });
           });
@@ -103,7 +94,6 @@ export class LeadsService {
   }
 
   remove(id: string) {
-    console.log(id);
     let result = this.http
       .delete(`${this.api_url}/Api/V8/module/Leads/${id}`, {
         headers: {

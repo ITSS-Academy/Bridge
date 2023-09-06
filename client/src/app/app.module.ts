@@ -24,6 +24,10 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { LeadEffect } from './pages/leads/ngrx/effect/lead.effect';
 import { leadReducer } from './pages/leads/ngrx/reducer/lead.reducer';
+import { contactReducer } from './pages/contacts/components-contacts/ngrx/reducer/contact.reducer';
+import { ContactEffect } from './pages/contacts/components-contacts/ngrx/effect/contact.effect';
+import { TaskEffect } from './pages/task/ngrx/effect/task.effect';
+import { taskReducer } from './pages/task/ngrx/reducer/task.reducer';
 
 @NgModule({
   declarations: [
@@ -43,11 +47,15 @@ import { leadReducer } from './pages/leads/ngrx/reducer/lead.reducer';
       signup: SignUpReducer,
       login: loginReducer,
       lead: leadReducer,
+      contact: contactReducer,
+      task: taskReducer
     }, {}),
     EffectsModule.forRoot([
       SignUpEffect,
       LoginEffect,
       LeadEffect,
+      ContactEffect,
+      TaskEffect
     ]),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
