@@ -38,7 +38,8 @@ export class ThirdNavbarComponent implements OnInit {
     @Inject(TuiDialogFormService)
     private readonly dialogForm: TuiDialogFormService,
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService
-  ) {}
+  ) {
+  }
 
   readonly testForm = new FormGroup({
     testValue: new FormControl(),
@@ -47,6 +48,10 @@ export class ThirdNavbarComponent implements OnInit {
   exampleForm = new FormGroup({});
 
   ngOnInit() {}
+
+  showDate(){
+    console.log(this.testForm.value.testValue)
+  }
 
   onModelChangeName(name: string): void {
     this.name = name;

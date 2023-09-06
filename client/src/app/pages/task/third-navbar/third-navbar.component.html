@@ -90,18 +90,20 @@
       </div>
 
       <!--DUE DATE-->
-      <div  class="container-dialog">
-        <p class="title-dialog">Due date & Time</p>
-
-        <tui-input-date
-          [(ngModel)]="test"
-          class="input-dialog"
-          formControlName="testValue"
-          tuiTextfieldSize="s"
-        >
-          Choose a date
-        </tui-input-date>
-      </div>
+      <form [formGroup]="testForm">
+        <div  class="container-dialog">
+          <p class="title-dialog">Due date & Time</p>
+  
+          <tui-input-date
+            [(ngModel)]="test"
+            class="input-dialog"
+            formControlName="testValue"
+            tuiTextfieldSize="s"
+          >
+            Choose a date
+          </tui-input-date>
+        </div>
+      </form>
 
       <!--STAGE-->
       <div class="container-dialog">
@@ -195,7 +197,7 @@
     <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
     <div class="cancel-save">
       <button class="button-cancel" type="submit">Cancel</button>
-      <button class="button-add" type="submit">Add</button>
+      <button class="button-add" type="submit"(click)="showDate()" >Add</button>
     </div>
   </form>
 </ng-template>

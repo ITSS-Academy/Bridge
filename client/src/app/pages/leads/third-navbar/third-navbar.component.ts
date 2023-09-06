@@ -70,7 +70,6 @@ export class ThirdNavbarComponent implements OnInit {
   company2: FormControl = new FormControl('');
   email2: FormControl = new FormControl('');
   phone2: FormControl = new FormControl('');
-  // assignedTo: FormControl = new FormControl('');
 
   async addLead() {
     let subLead: any = {
