@@ -135,10 +135,8 @@
           [formControl]="controlAssignments"
           [stringify]="stringifyAssignment"
           tuiTextfieldSize="s"
-          ngModel="{{lead.attributes.assigned_user_name}}"
+          ngModel="{{lead.attributes.assigned_user_name!}}"
         >
-          Choose/Type here
-
           <tui-data-list-wrapper
             *tuiDataList
             [items]="assignments | tuiFilterByInputWith : stringifyAssignment"

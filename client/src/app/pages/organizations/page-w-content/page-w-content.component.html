@@ -16,21 +16,28 @@
             <th><b>LAST CONTACT ON</b></th>
             <th><b>COUNTRY</b></th>
             <th><b>CITY</b></th>
+            <th>Action</th>
           </tr>
-          <tr>
+          <tr *ngFor="let organization of (this.organizations | async)">
             <!-- CHECKBOX -->
             <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
                 <input type="checkbox">
                 <span class="checkmark"></span>
               </label></th>
             <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
-            <td>ITSS</td>
-            <td>ITSS@gmail.com</td>
-            <td>ITSS.com</td>
+            <td >{{organization.attributes.name!}}</td>
             <td></td>
-            <td>Today</td>
-            <td>Viet Nam</td>
-            <td>TP.HCM</td>
+            <td><div *ngIf="organization.attributes.website">{{organization.attributes.website!}}></div></td>
+            <td><div *ngIf="organization.attributes.phone_office">{{organization.attributes.phone_office!}}></div></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <div class="action">
+                <span class="material-symbols-outlined" >edit</span>
+              <span class="material-symbols-outlined" (click)="deleteOrganization(organization.id)">delete</span>
+              </div>
+            </td>
           </tr>
     </table>
   </div>

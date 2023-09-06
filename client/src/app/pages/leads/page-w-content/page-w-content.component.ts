@@ -153,6 +153,7 @@ export class PageWContentComponent{
     //   },
     // };
     // (lead.data.type = 'Leads'),
+    console.log(lead);
       (lead.attributes.first_name =
         this.exampleForm.controls['firstName'].value),
       (lead.attributes.last_name =

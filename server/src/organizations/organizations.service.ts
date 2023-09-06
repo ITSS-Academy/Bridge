@@ -33,6 +33,7 @@ export class OrganizationsService {
       .pipe(map((response) => response.data));
     return result.pipe(
       map((res) => {
+        console.log(res)
         this.docRef.add(res);
         return res;
       }),

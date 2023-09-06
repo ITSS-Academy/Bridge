@@ -22,7 +22,7 @@ export class LeadsController {
     return await this.leadsService.findOne(id);
   }
 
-  @Patch('/update/')
+  @Patch('/update')
   update(@Body() body: any) {
     return this.leadsService.update(body.data.id, body);
   }
