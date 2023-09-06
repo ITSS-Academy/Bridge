@@ -53,15 +53,15 @@ export class ContactsService {
 
   async findOne(id: string) {
     try {
-      let contact!: any;
+      let contactToFind!: any;
       const contactRef = this.docRef.where('data.id', '==', id);
       await contactRef.get().then((snapshot) => {
         snapshot.forEach((doc) => {
-          contact = doc.data();
-          console.log(contact);
+          contactToFind = doc.data();
+          console.log(contactToFind);
         });
       });
-      return contact;
+      return contactToFind;
     } catch (err) {
       console.log(err);
       return null;
@@ -92,7 +92,7 @@ export class ContactsService {
 
   remove(id: string) {
     let result = this.http
-      .delete(`${this.api_url}/Api/V8/module/Cases/${id}`, {
+      .delete(`${this.api_url}/Api/V8/module/Contacts/${id}`, {
         headers: {
           Authorization: `Bearer ${this.tokenService.token}`,
         },

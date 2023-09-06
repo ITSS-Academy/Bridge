@@ -9,7 +9,7 @@ import { getFirestore } from 'firebase-admin/firestore';
 export class LeadsService {
   api_url = this.configService.get<string>('CORE_APIs');
   token = '';
-  
+
   db = getFirestore();
   docRef = this.db.collection('leads');
 
@@ -92,7 +92,6 @@ export class LeadsService {
     });
     return result;
   }
-
 
   remove(id: string) {
     let result = this.http

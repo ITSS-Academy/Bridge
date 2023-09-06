@@ -14,6 +14,10 @@ import { TuiDialogFormService } from '@taiga-ui/kit';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import { TuiCountryIsoCode } from '@taiga-ui/i18n';
 import { TuiDay } from '@taiga-ui/cdk';
+import { Observable } from 'rxjs';
+import { TaskState } from '../ngrx/state/task.state';
+import { Store } from '@ngrx/store';
+import { TaskAction } from '../ngrx/action/task.action';
 
 @Component({
   selector: 'app-third-navbar',
@@ -29,6 +33,8 @@ export class ThirdNavbarComponent implements OnInit {
   emitAddInfo() {
     this.addInfo.emit();
   }
+  task$!: Observable<TaskState>;
+  currentUser!: any;
   name = '';
   time = '';
   location = '';
@@ -37,14 +43,64 @@ export class ThirdNavbarComponent implements OnInit {
   constructor(
     @Inject(TuiDialogFormService)
     private readonly dialogForm: TuiDialogFormService,
-    @Inject(TuiDialogService) private readonly dialogs: TuiDialogService
-  ) {}
+    @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
+    private store: Store<{ task: TaskState }>
+  ) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    this.task$ = this.store.select('task');
+
+    this.exampleForm.addControl('Name', this.Name);
+    this.exampleForm.addControl('Assignedto', this.Assignedto);
+    this.exampleForm.addControl('Estimatetime', this.Estimatetime);
+    this.exampleForm.addControl('DuedateTime', this.DuedateTime);
+    this.exampleForm.addControl('Stage', this.Stage);
+    this.exampleForm.addControl('Priority', this.Priority);
+    this.exampleForm.addControl('Location', this.Location);
+    this.exampleForm.addControl('Tasktype', this.Tasktype);
+    this.exampleForm.addControl('Description', this.Description);
+
+  }
+  addTask() {
+    let task: any = {
+      data: {
+        type: 'Tasks',
+        attributes: {
+          name: this.exampleForm.controls['Name'].value,
+          assigned_to_c: this.stringifyAssignment(this.controlAssignments.value),
+          // date_start: this.exampleForm.controls['Estimatetime'].value,
+          // date_due: this.exampleForm.controls['DuedateTime'].value,
+          status: this.stringifyStage(this.controlStages.value),
+          priority: this.stringifyPriority(this.controlPriorities.value),
+          location_c: this.exampleForm.controls['Location'].value,
+          task_type_c: this.stringifyTask(this.controlTasks.value),
+          description: this.exampleForm.controls['Description'].value,
+        }
+      }
+
+    }
+    this.store.dispatch(TaskAction.addTask({ task: task }));
+    this.task$.subscribe((result) => {
+      console.log(result);
+    });
+  }
 
   readonly testForm = new FormGroup({
-    testValue: new FormControl(),
+  testValue: new FormControl()
+
   });
 
-  exampleForm = new FormGroup({});
+
+  exampleForm:FormGroup = new FormGroup({});
+
+  Name: FormControl = new FormControl('');
+  Assignedto: FormControl = new FormControl('');
+  Estimatetime: FormControl = new FormControl('');
+  DuedateTime: FormControl = new FormControl(new TuiDay(2021, 9, 1));
+  Stage: FormControl = new FormControl('');
+  Priority: FormControl = new FormControl('');
+  Location: FormControl = new FormControl('');
+  Tasktype: FormControl = new FormControl('');
+  Description: FormControl = new FormControl('');
 
   ngOnInit() {}
 
@@ -140,4 +196,5 @@ export class ThirdNavbarComponent implements OnInit {
         complete: () => {},
       });
   }
+
 }
