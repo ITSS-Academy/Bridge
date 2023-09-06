@@ -44,7 +44,7 @@ export class OrganizationEffect {
               return OrganizationAction.updateOrganizationSuccess();
           }),
           catchError((error) => {
-              return of(OrganizationAction.addOrganizationFailure({ error: error }));
+              return of(OrganizationAction.updateOrganizationFailure({ error: error }));
           })
       ));
   

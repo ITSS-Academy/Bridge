@@ -184,9 +184,12 @@ export class ThirdNavbarComponent {
       // // lead.data.attributes.created_by_name = this.currentUser.data.attributes.full_name;
       console.log(organization);
     this.store.dispatch(OrganizationAction.addOrganization({ organization: organization }));
-    this.organization$.subscribe((data) => {
-      console.log(data);
-    });
+    const subcription:any = this.organization$.subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      complete: () => subcription.unsubscribe()
+    })
   }
 
 
