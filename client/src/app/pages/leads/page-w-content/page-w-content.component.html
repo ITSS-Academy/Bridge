@@ -28,18 +28,18 @@
           <span class="checkmark"></span>
         </label></th>
       <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
-      <td>{{lead.attributes.full_name!}}</td>
-      <td class="lead-mail"><div *ngIf="lead.attributes.email1">{{lead.attributes.email1!}}</div></td>
-      <td class="lead-phone"><div *ngIf="lead.attributes.phone_mobile" >{{lead.attributes.phone_mobile!}}</div></td>
-      <td>{{lead.attributes.department!}}</td>
+      <td>{{lead.data.attributes.full_name!}}</td>
+      <td class="lead-mail"><div *ngIf="lead.data.attributes.email1">{{lead.data.attributes.email1!}}</div></td>
+      <td class="lead-phone"><div *ngIf="lead.data.attributes.phone_mobile" >{{lead.data.attributes.phone_mobile!}}</div></td>
+      <td>{{lead.data.attributes.department!}}</td>
       <td></td>
       <td></td>
       <td></td>
       <td></td>
       <td>
         <div class="action">
-          <span class="material-symbols-outlined" (click)="showDialog(dialogAddLeads, 'auto')">edit</span>
-        <span class="material-symbols-outlined" (click)="deleteLead(lead.id)">delete</span>
+          <span class="material-symbols-outlined" (click)="showDialog(dialogAddLeads, 'auto', lead)">edit</span>
+        <span class="material-symbols-outlined" (click)="deleteLead(lead.data.id)">delete</span>
         </div>
       </td>
 
@@ -64,7 +64,7 @@
           style="outline: none !important"
           class="input-dialog"
           tuiTextfieldSize="s"
-          ngModel="{{lead.attributes.first_name}}"
+          ngModel="{{lead.data.attributes.first_name}}"
         >
           Type first name
         </tui-input>
@@ -77,7 +77,7 @@
         [formControl]="lastName2"
           class="input-dialog"
           tuiTextfieldSize="s"
-          ngModel="{{lead.attributes.last_name}}"
+          ngModel="{{lead.data.attributes.last_name}}"
         >
           Type last name
         </tui-input>
@@ -90,7 +90,7 @@
         [formControl]="company2"
           class="input-dialog"
           tuiTextfieldSize="s"
-          ngModel="{{lead.attributes.department}}"
+          ngModel="{{lead.data.attributes.department}}"
         >
           Type company
         </tui-input>
@@ -103,7 +103,7 @@
         [formControl]="email2"
           class="input-dialog"
           tuiTextfieldSize="s"
-          ngModel="{{lead.attributes.email1!}}"
+          ngModel="{{lead.data.attributes.email1!}}"
         >
           Type here
         </tui-input>
@@ -120,7 +120,7 @@
           [tuiTextfieldLabelOutside]="true"
           tuiTextfieldSize="m"
           style="border-radius: 8px"
-          ngModel="{{lead.attributes.phone_mobile!}}"
+          ngModel="{{lead.data.attributes.phone_mobile!}}"
         >
           (optional)
         </tui-input-phone-international>
@@ -135,7 +135,8 @@
           [formControl]="controlAssignments"
           [stringify]="stringifyAssignment"
           tuiTextfieldSize="s"
-          ngModel="{{lead.attributes.assigned_user_name!}}"
+          [ngModel]="lead.data.attributes.assigned_user_name"
+          [valueContent]="lead.data.attributes.assigned_user_name"
         >
           <tui-data-list-wrapper
             *tuiDataList

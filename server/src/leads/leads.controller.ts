@@ -24,7 +24,8 @@ export class LeadsController {
 
   @Patch('/update')
   update(@Body() body: any) {
-    return this.leadsService.update(body.data.id, body);
+    console.log(body.data.id);
+    return this.leadsService.update(body);
   }
 
   @Delete('/delete/:id')

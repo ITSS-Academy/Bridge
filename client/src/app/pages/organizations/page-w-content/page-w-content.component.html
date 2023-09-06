@@ -16,7 +16,7 @@
             <th><b>LAST CONTACT ON</b></th>
             <th><b>COUNTRY</b></th>
             <th><b>CITY</b></th>
-            <th>Action</th>
+            <th><b>ACTION</b></th>
           </tr>
           <tr *ngFor="let organization of (this.organizations | async)">
             <!-- CHECKBOX -->
@@ -25,10 +25,10 @@
                 <span class="checkmark"></span>
               </label></th>
             <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
-            <td >{{organization.attributes.name!}}</td>
+            <td >{{organization.data.attributes.name!}}</td>
             <td></td>
-            <td><div *ngIf="organization.attributes.website">{{organization.attributes.website!}}></div></td>
-            <td><div *ngIf="organization.attributes.phone_office">{{organization.attributes.phone_office!}}></div></td>
+            <td><div *ngIf="organization.data.attributes.website">{{organization.data.attributes.website!}}></div></td>
+            <td><div *ngIf="organization.data.attributes.phone_office">{{organization.data.attributes.phone_office!}}></div></td>
             <td></td>
             <td></td>
             <td></td>

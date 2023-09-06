@@ -75,7 +75,7 @@ export class ThirdNavbarComponent {
 
 
   async addOrganization() {
-    let organization: Organization = {
+    let organization: any = {
       data: {
         type: 'Accounts',
         attributes: {

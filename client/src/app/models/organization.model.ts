@@ -1,6 +1,7 @@
 export interface Organization {
   data: {
     type: string;
+    id: string;
     attributes: {
       parent_name: string;
       account_type: string;

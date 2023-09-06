@@ -32,6 +32,7 @@ export class ThirdNavbarComponent implements OnInit {
   name = '';
   time = '';
   location = '';
+  test = ''
 
   constructor(
     @Inject(TuiDialogFormService)

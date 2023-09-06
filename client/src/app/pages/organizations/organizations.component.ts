@@ -27,7 +27,7 @@ export class OrganizationsComponent implements OnInit{
     this.organizations = (await this.organizationService.getAllOrganizations()).pipe(
       map((result: any) =>
         result.map((item: any) => {
-          return item.data().data;
+          return item.data();
         })
       )
     );

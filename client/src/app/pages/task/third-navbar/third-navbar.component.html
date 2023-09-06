@@ -90,10 +90,11 @@
       </div>
 
       <!--DUE DATE-->
-      <div class="container-dialog">
+      <div  class="container-dialog">
         <p class="title-dialog">Due date & Time</p>
 
         <tui-input-date
+          [(ngModel)]="test"
           class="input-dialog"
           formControlName="testValue"
           tuiTextfieldSize="s"
@@ -184,7 +185,6 @@
         <tui-textarea
           style="outline: none !important"
           class="input-dialog"
-          formControlName="testValue1"
           [expandable]="false"
           [tuiTextfieldLabelOutside]="true"
           >Type a text
