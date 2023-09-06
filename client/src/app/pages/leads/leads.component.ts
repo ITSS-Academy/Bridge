@@ -27,7 +27,7 @@ export class LeadsComponent implements OnInit {
     this.leads = (await this.leadService.getAllLeads()).pipe(
       map((result: any) =>
         result.map((item: any) => {
-          return item.data().data;
+          return item.data();
         })
       )
     );

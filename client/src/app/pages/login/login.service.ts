@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AuthAccount } from 'src/app/models/auth-account.model';
 import { LoginAccount } from 'src/app/models/login-account.model';
 import { environment } from 'src/environments/environment';
@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class LoginService {
-
+  
   constructor(private http: HttpClient) { }
 
   

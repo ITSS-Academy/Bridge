@@ -15,11 +15,13 @@ import { TuiDialogFormService } from '@taiga-ui/kit';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import { Lead } from 'src/app/models/lead.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { ContactAction } from '../../contacts/components-contacts/ngrx/action/contact.action';
 
 @Component({
   selector: 'app-page-w-content',
   templateUrl: './page-w-content.component.html',
   styleUrls: ['./page-w-content.component.scss'],
+  providers:[TuiDialogFormService]
 })
 export class PageWContentComponent {
   @Input()
@@ -54,6 +56,10 @@ export class PageWContentComponent {
   onModelChangeCaseTitle(caseTitle: string): void {
     this.caseTitle2 = caseTitle;
     this.dialogForm.markAsDirty();
+  }
+
+  deleteCase(id: string) {
+    this.store.dispatch(CaseAction.deleteCase({ id: id }));
   }
 
   //control status selection

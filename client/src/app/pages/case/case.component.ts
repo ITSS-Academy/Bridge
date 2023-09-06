@@ -11,7 +11,7 @@ import { CaseState } from './ngrx/state/case.state';
   styleUrls: ['./case.component.scss'],
 })
 export class CaseComponent implements OnInit {
-  constructor(public casesService: CasesService) {}
+  constructor(public caseService: CasesService) {}
   cases!: Observable<any>;
   subCases: any[] = [];
   //ĐỔI TITLE THÀNH TÊN TRANG
@@ -23,7 +23,7 @@ export class CaseComponent implements OnInit {
   }
 
   async getAllCases() {
-    this.cases = (await this.casesService.getAllCases()).pipe(
+    this.cases = (await this.caseService.getAllCases()).pipe(
       map((result: any) =>
         result.map((item: any) => {
           // console.log(item.data());

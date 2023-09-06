@@ -69,7 +69,9 @@ export class LeadsService {
     }
   }
 
-  async update(id: string, body: any) {
+  async update(body: any) {
+    console.log(body);
+    console.log(body.data.id);
     let result = this.http
       .patch(`${this.api_url}/Api/V8/module`, body, {
         headers: {
@@ -79,7 +81,7 @@ export class LeadsService {
       .pipe(map((response) => response.data));
     const subscription = result.subscribe({
       next: async (res) => {
-        const leadRef = this.docRef.where('data.id', '==', id);
+        const leadRef = this.docRef.where('data.id', '==', body.data.id);
         await leadRef.get().then((snapshot) => {
           snapshot.forEach((doc) => {
             doc.ref.update({ ...res });

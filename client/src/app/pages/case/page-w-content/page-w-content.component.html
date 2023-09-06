@@ -18,9 +18,10 @@
       <th><b>CONTACT NAME</b></th>
       <th><b>ORGANIZATION NAME</b></th>
       <th><b>RESOLUTION DUE</b></th>
+      <th>ACTION</th>
     </tr>
 
-    <tr>
+    <tr class="visible-data" *ngFor="let case of this.cases | async">
       <!-- CHECKBOX -->
       <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
         <label class="container">
@@ -31,7 +32,7 @@
       <td style="width: 1rem; padding: 0.5rem">
         <span class="material-symbols-outlined">star</span>
       </td>
-      <td>Product not working</td>
+      <td></td>
       <td><div class="status waitForCustomer">Wait For Customer</div></td>
       <td>
         <div class="priority urgent">
@@ -42,6 +43,20 @@
       <td></td>
       <td></td>
       <td>-119d 23h 18m</td>
+      <td>
+        <div class="action">
+          <span
+            class="material-symbols-outlined"
+            (click)="showDialog(dialogAddCase, 'auto')"
+            >edit</span
+          >
+          <span
+            class="material-symbols-outlined"
+            (click)="deleteCase(case.data.id)"
+            >delete</span
+          >
+        </div>
+      </td>
     </tr>
 
     <tr>
@@ -116,7 +131,6 @@
     </tr>
   </table>
 </div>
-
 
 <!-- DIALOG MAIN CASE -->
 <ng-template id="dialogAddCase" #dialogAddCase let-observer>
@@ -194,7 +208,12 @@
             [formControl]="controlContacts"
             [stringify]="stringifyContact"
             tuiTextfieldSize="s"
-            style="border-top-left-radius: 8px; border-bottom-left-radius: 8px; border-top-right-radius: 0; border-bottom-right-radius: 0"
+            style="
+              border-top-left-radius: 8px;
+              border-bottom-left-radius: 8px;
+              border-top-right-radius: 0;
+              border-bottom-right-radius: 0;
+            "
           >
             Standard
 

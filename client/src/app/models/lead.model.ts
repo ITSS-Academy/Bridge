@@ -1,6 +1,7 @@
 export interface Lead {
   data: {
     type: string;
+    id: string;
     attributes: {
       alt_address_city: string;
       birthdate: string;
