@@ -6,9 +6,13 @@ import { Store } from '@ngrx/store';
 import { LeadAction } from '../ngrx/action/lead.action';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TuiCountryIsoCode } from '@taiga-ui/i18n';
-import {TuiDialogContext, TuiDialogService, TuiDialogSize} from '@taiga-ui/core';
+import {
+  TuiDialogContext,
+  TuiDialogService,
+  TuiDialogSize,
+} from '@taiga-ui/core';
 import { TuiDialogFormService } from '@taiga-ui/kit';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import { Lead } from 'src/app/models/lead.model';
 @Component({
   selector: 'app-page-w-content',
@@ -16,7 +20,7 @@ import { Lead } from 'src/app/models/lead.model';
   styleUrls: ['./page-w-content.component.scss'],
   providers: [TuiDialogFormService],
 })
-export class PageWContentComponent{
+export class PageWContentComponent {
   @Input()
   leads!: Observable<any>;
 
@@ -25,10 +29,12 @@ export class PageWContentComponent{
   currentUser!: any;
 
   constructor(
-    public leadService: LeadsService,private store: Store<{ lead: LeadState }>, 
+    public leadService: LeadsService,
+    private store: Store<{ lead: LeadState }>,
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
-    @Inject(TuiDialogFormService) private readonly dialogForm: TuiDialogFormService,
-    ) {
+    @Inject(TuiDialogFormService)
+    private readonly dialogForm: TuiDialogFormService
+  ) {
     this.lead$ = store.select('lead');
     this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
     this.exampleForm.addControl('firstName', this.firstName);
@@ -38,9 +44,9 @@ export class PageWContentComponent{
     this.exampleForm.addControl('phone2', this.phone2);
     this.exampleForm.addControl('assignedTo', this.controlAssignments);
   }
-  
+
   deleteLead(id: string) {
-    this.store.dispatch(LeadAction.deleteLead({ id: id}));
+    this.store.dispatch(LeadAction.deleteLead({ id: id }));
   }
 
   updateLead(lead: any) {
@@ -152,7 +158,9 @@ export class PageWContentComponent{
     //     },
     //   },
     // };
-    // (lead.data.type = 'Leads'),
+    console.log(lead);
+
+    (lead.type = 'Leads'),
       (lead.attributes.first_name =
         this.exampleForm.controls['firstName'].value),
       (lead.attributes.last_name =
@@ -166,11 +174,12 @@ export class PageWContentComponent{
         this.controlAssignments.value
       )),
       (lead.attributes.assigned_user_id = this.currentUser.data.id);
-      lead.attributes.modified_user_id = this.currentUser.data.id;
-      lead.attributes.modified_by_name = this.currentUser.data.attributes.full_name;
-      // lead.data.attributes.created_by_name = this.currentUser.data.attributes.full_name;
+    lead.attributes.modified_user_id = this.currentUser.data.id;
+    lead.attributes.modified_by_name =
+      this.currentUser.data.attributes.full_name;
+    // lead.data.attributes.created_by_name = this.currentUser.data.attributes.full_name;
     console.log(lead);
-    this.store.dispatch(LeadAction.updateLead({lead: {...lead}}));
+    this.store.dispatch(LeadAction.updateLead({ lead: { ...lead } }));
     this.lead$.subscribe((data) => {
       console.log(data);
     });
@@ -231,5 +240,4 @@ export class PageWContentComponent{
         },
       });
   }
-
 }
