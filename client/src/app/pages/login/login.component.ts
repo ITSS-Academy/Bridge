@@ -19,6 +19,7 @@ import { AuthService } from 'src/app/services/auth.service';
   // encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent {
+  
   notification = '';
   status = '';
   show = false;
