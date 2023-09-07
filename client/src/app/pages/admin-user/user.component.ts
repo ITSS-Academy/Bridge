@@ -6,7 +6,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { TuiDialogService, TuiDialogContext } from '@taiga-ui/core';
+import { TuiDialogService, TuiDialogContext, TuiDialogSize } from '@taiga-ui/core';
 import { TuiDialogFormService } from '@taiga-ui/kit';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import { TuiCountryIsoCode } from '@taiga-ui/i18n';
@@ -56,6 +56,9 @@ export class UserComponent{
     this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
   }
 
+  usersForm: FormGroup = new FormGroup({});
+  employeesForm: FormGroup = new FormGroup({});
+  currenciesForm: FormGroup = new FormGroup({});
 
   onModelChangeName(name: string): void {
     this.name = name;
@@ -210,7 +213,7 @@ export class UserComponent{
   countryIsoCodeOffice = TuiCountryIsoCode.US;
   //
 
-  showDialog(content: PolymorpheusContent): void {
+  showDialog(content: PolymorpheusContent,size: TuiDialogSize): void {
     const closeable = this.dialogForm.withPrompt({
       label: 'Are you sure?',
       data: {
@@ -219,7 +222,7 @@ export class UserComponent{
     });
 
     this.dialogs
-      .open(content, { closeable, dismissible: closeable })
+      .open(content, { closeable, dismissible: closeable ,size})
       .subscribe({
         complete: () => {
           this.name = '';

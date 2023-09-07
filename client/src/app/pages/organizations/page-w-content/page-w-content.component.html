@@ -1,6 +1,6 @@
 <div class="contentPage">
     <table>
-        <tr>
+        <tr *ngIf="(this.organizations | async)">
             <!-- CHECKBOX -->
             <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
                 <input type="checkbox">

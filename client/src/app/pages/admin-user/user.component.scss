@@ -1,11 +1,11 @@
-:host{
-  input:focus{
+:host {
+  input:focus {
     outline: red 1px solid;
   }
-  --tui-primary: #58C2CE !important;
-  --tui-primary-hover: #58C2CE !important;
-  --tui-primary-active: #58C2CE !important;
-  --tui-secondary-hover: #58C2CE;
+  --tui-primary: #58c2ce !important;
+  --tui-primary-hover: #58c2ce !important;
+  --tui-primary-active: #58c2ce !important;
+  --tui-secondary-hover: #58c2ce;
   --tui-text-01: #fff;
   // --tui-base-01: #58C2CE;
   // --tui-base-02: #58C2CE;
@@ -16,8 +16,8 @@
   // --tui-base-07: #58C2CE;
   // --tui-base-08: #58C2CE;
   // --tui-base-09: #58C2CE;
-  --tui-heading-font: 'Montserrat', sans-serif;
-  --tui-text-font: 'Montserrat', sans-serif;
+  --tui-heading-font: "Montserrat", sans-serif;
+  --tui-text-font: "Montserrat", sans-serif;
   --tui-radius-m: 8px !important;
 }
 
@@ -48,9 +48,9 @@
     width: 5rem;
     height: 1.875rem;
     background-color: white;
-    border: 2px solid #58C2CE;
+    border: 2px solid #58c2ce;
     border-radius: 8px;
-    color: #58C2CE;
+    color: #58c2ce;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.1rem;
@@ -58,7 +58,7 @@
 
     &:hover {
       background-color: darken($color: white, $amount: 3);
-      color: darken($color: #58C2CE, $amount: 10);
+      color: darken($color: #58c2ce, $amount: 10);
     }
   }
 
@@ -75,12 +75,13 @@
     cursor: pointer;
 
     &:hover {
-      background-color: darken($color: #58C2CE, $amount: 10);
+      background-color: darken($color: #58c2ce, $amount: 10);
       color: darken($color: white, $amount: 3);
     }
   }
 }
 
+//USER INFO
 .first-container {
   width: 100%;
   height: fit-content;
@@ -309,6 +310,7 @@
   }
 }
 
+//EMPLOYEE INFO
 .second-container {
   width: 100%;
   height: fit-content;
@@ -344,7 +346,7 @@
       #edit-icon-employee-info {
         color: #2c698d;
         font-size: 1.2rem;
-        cursor:  pointer;
+        cursor: pointer;
 
         &:hover {
           color: lighten($color: #2c698d, $amount: 20);
@@ -844,686 +846,678 @@
   }
 }
 
-.dialog-user {
-  width: 100%;
-  height: fit-content;
+//FORM CONTAIN DIALOG (PUBLIC ID)
+#form-container {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
 
-  #title-dialog-user {
-    margin: 0;
-    padding-bottom: 10px;
-    font-size: 1.5rem;
-    border-bottom: 2px solid #58c2ce;
-    color: #2c698d;
-    font-weight: 600;
+//DIALOG USER
+#title-dialog-user {
+  margin: 0;
+  padding-bottom: 10px;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #58c2ce;
+  color: #2c698d;
+  font-weight: 600;
+}
+
+.contents-dialog-user {
+  height: fit-content;
+  width: 50rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+  .display-name-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding-left: 1rem;
+
+    #title-display-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    #input-display-dialog {
+      width: 14.375rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+    #input-display-dialog::selection {
+      border: 0.2rem solid #58c2ce;
+    }
   }
 
-  .contents-dialog-user {
+  .primary-group-container-dialog {
+    width: fit-content;
     height: fit-content;
-    width: 50rem;
-    padding-top: 2rem;
-    padding-bottom: 4rem;
-    display: grid;
-    grid-gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding-left: 1rem;
 
-    .display-name-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 1rem;
-      padding-left: 1rem;
-
-      #title-display-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
-
-      #input-display-dialog {
-        width: 14.375rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;       
-
-      }
-      #input-display-dialog::selection{
-        border: 0.2rem solid #58c2ce;        
-      }
+    #title-primary-group-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .primary-group-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 1rem;
-      padding-left: 1rem;
+    #input-primary-group-dialog {
+      width: 14.375rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
 
-      #title-primary-group-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+  .email-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 4.7rem;
+    padding-left: 1rem;
 
-      #input-primary-group-dialog {
-        width: 14.375rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #title-email-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .email-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 4.7rem;
-      padding-left: 1rem;
+    #input-email-dialog {
+      width: 14.375rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
 
-      #title-email-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+  .report-to-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 3.15rem;
+    padding-left: 1rem;
 
-      #input-email-dialog {
-        width: 14.375rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #title-report-to-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .report-to-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 3.15rem;
-      padding-left: 1rem;
+    #input-report-to-dialog {
+      width: 14.375rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
 
-      #title-report-to-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+  .role-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 5.1rem;
+    padding-left: 1rem;
 
-      #input-report-to-dialog {
-        width: 14.375rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #title-role-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .role-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 5.1rem;
-      padding-left: 1rem;
+    #input-role-dialog {
+      width: 14.375rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
 
-      #title-role-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+  .language-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 2.9rem;
+    padding-left: 1rem;
 
-      #input-role-dialog {
-        width: 14.375rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #title-language-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .language-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 2.9rem;
-      padding-left: 1rem;
-
-      #title-language-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
-
-      #input-language-dialog {
-        width: 14.375rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #input-language-dialog {
+      width: 14.375rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
     }
   }
 }
 
-.dialog-employee {
-  width: 100%;
-  height: fit-content;
+//EMPLOYEE DIALOG
+#title-dialog-employee {
+  margin: 0;
+  padding-bottom: 10px;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #58c2ce;
+  color: #2c698d;
+  font-weight: 600;
+}
 
-  #title-dialog-employee {
-    margin: 0;
-    padding-bottom: 10px;
-    font-size: 1.5rem;
-    border-bottom: 2px solid #58c2ce;
-    color: #2c698d;
-    font-weight: 600;
+.contents-dialog-employee {
+  height: fit-content;
+  width: 50rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+  .first-name-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 3.8rem;
+    padding-left: 1rem;
+
+    #title-first-name-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    #input-first-name-dialog {
+      width: 14.375rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
   }
 
-  .contents-dialog-employee {
+  .last-name-container-dialog {
+    width: fit-content;
     height: fit-content;
-    width: 50rem;
-    padding-top: 2rem;
-    padding-bottom: 4rem;
-    display: grid;
-    grid-gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-direction: row;
+    gap: 2.4rem;
+    padding-left: 1rem;
 
-    .first-name-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 3.8rem;
-      padding-left: 1rem;
-
-      #title-first-name-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
-
-      #input-first-name-dialog {
-        width: 14.375rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #title-last-name-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .last-name-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 2.4rem;
-      padding-left: 1rem;
+    #input-last-name-dialog {
+      width: 14.375rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
 
-      #title-last-name-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+  .second-email-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding-left: 1rem;
 
-      #input-last-name-dialog {
-        width: 14.375rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #title-second-email-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .second-email-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 1rem;
-      padding-left: 1rem;
+    #input-second-email-dialog {
+      width: 14.375rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
 
-      #title-second-email-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+  .mobile-phone-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-left: 1rem;
 
-      #input-second-email-dialog {
-        width: 14.375rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #title-mobile-phone-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .mobile-phone-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding-left: 1rem;
+    #input-mobile-phone-dialog {
+      width: 14.375rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
 
-      #title-mobile-phone-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+  .office-phone-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 2.7rem;
+    padding-left: 1rem;
 
-      #input-mobile-phone-dialog {
-        width: 14.375rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-        
-      }
+    #title-office-phone-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .office-phone-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 2.7rem;
-      padding-left: 1rem;
+    #input-office-phone-dialog {
+      width: 14.375rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
 
-      #title-office-phone-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+  .fax-number-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 1.9rem;
+    padding-left: 1rem;
 
-      #input-office-phone-dialog {
-        width: 14.375rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #title-fax-number-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .fax-number-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 1.9rem;
-      padding-left: 1rem;
+    #input-fax-number-dialog {
+      width: 14.375rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
 
-      #title-fax-number-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+  .home-address-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    padding-left: 1rem;
 
-      #input-fax-number-dialog {
-        width: 14.375rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #title-home-address-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .home-address-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 2rem;
-      padding-left: 1rem;
+    #input-home-address-dialog {
+      width: 14.375rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
 
-      #title-home-address-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+  .city-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 5.4rem;
+    padding-left: 1rem;
 
-      #input-home-address-dialog {
-        width: 14.375rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #title-city-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .city-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 5.4rem;
-      padding-left: 1rem;
+    #input-city-dialog {
+      width: 14.375rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
 
-      #title-city-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+  .state-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 6.2rem;
+    padding-left: 1rem;
 
-      #input-city-dialog {
-        width: 14.375rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #title-state-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .state-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 6.2rem;
-      padding-left: 1rem;
+    #input-state-dialog {
+      width: 14.375rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
 
-      #title-state-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+  .country-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 3.5rem;
+    padding-left: 1rem;
 
-      #input-state-dialog {
-        width: 14.375rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #title-country-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .country-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 3.5rem;
-      padding-left: 1rem;
-
-      #title-country-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
-
-      #input-country-dialog {
-        width: 14.375rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #input-country-dialog {
+      width: 14.375rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
     }
   }
 }
 
-.dialog-currency-number{
-  width: 100%;
-  height: fit-content;
+//CURRENCY DIALOG
+#title-dialog-currency-number {
+  margin: 0;
+  padding-bottom: 10px;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #58c2ce;
+  color: #2c698d;
+  font-weight: 600;
+}
 
-  #title-dialog-currency-number {
-    margin: 0;
-    padding-bottom: 10px;
-    font-size: 1.5rem;
-    border-bottom: 2px solid #58c2ce;
-    color: #2c698d;
-    font-weight: 600;
+.contents-dialog-currency-number {
+  height: fit-content;
+  width: 51rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+  .preferred-currency-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding-left: 0.5rem;
+
+    #title-preferred-currency-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    #input-preferred-dialog {
+      width: 13rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
   }
 
-  .contents-dialog-currency-number {
+  .digit-grouping-pattern-container-dialog {
+    width: fit-content;
     height: fit-content;
-    width: 51rem;
-    padding-top: 2rem;
-    padding-bottom: 4rem;
-    display: grid;
-    grid-gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    padding-right: 0.5rem;
 
-    .preferred-currency-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 1rem;
-      padding-left: 0.5rem;
-
-      #title-preferred-currency-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
-
-      #input-preferred-dialog {
-        width: 13rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #title-digit-grouping-pattern-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .digit-grouping-pattern-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 1.5rem;
-      padding-right: 0.5rem;
+    #input-digit-grouping-pattern-dialog {
+      width: 12.3rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
 
-      #title-digit-grouping-pattern-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+  .decimal-separator-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 1.3rem;
+    padding-left: 0.5rem;
 
-      #input-digit-grouping-pattern-dialog {
-        width: 12.3rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #title-decimal-separator-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .decimal-separator-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 1.3rem;
-      padding-left: 0.5rem ;
+    #input-decimal-separator-dialog {
+      width: 13rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
 
-      #title-decimal-separator-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+  .digit-grouping-separator-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    padding-right: 0.5rem;
 
-      #input-decimal-separator-dialog {
-        width: 13rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #title-digit-grouping-separator-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .digit-grouping-separator-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 0.5rem;
-      padding-right: 0.5rem;
+    #input-digit-grouping-separator-dialog {
+      width: 12.3rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
 
-      #title-digit-grouping-separator-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+  .symbol-placement-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 1.2rem;
+    padding-left: 0.5rem;
 
-      #input-digit-grouping-separator-dialog {
-        width: 12.3rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #title-symbol-placement-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .symbol-placement-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 1.2rem;
-      padding-left: 0.5rem;
+    #input-symbol-placement-dialog {
+      width: 13rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
 
-      #title-symbol-placement-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+  .currency-decimal-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 3.6rem;
+    padding-right: 0.5rem;
 
-      #input-symbol-placement-dialog {
-        width: 13rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #title-currency-decimal-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .currency-decimal-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 3.6rem;
-      padding-right: 0.5rem;
+    #input-currency-decimal-dialog {
+      width: 12.3rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
 
-      #title-currency-decimal-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+  .currency-format-container-dialog {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 2.2rem;
+    padding-left: 0.5rem;
 
-      #input-currency-decimal-dialog {
-        width: 12.3rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #title-currency-format-dialog {
+      margin: 0;
+      padding-top: 0.313rem;
+      color: #2c698d;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
 
-    .currency-format-container-dialog {
-      width: fit-content;
-      height: fit-content;
-      display: flex;
-      flex-direction: row;
-      gap: 2.2rem;
-      padding-left: 0.5rem;
-
-      #title-currency-format-dialog {
-        margin: 0;
-        padding-top: 0.313rem;
-        color: #2c698d;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
-
-      #input-currency-format-dialog {
-        width: 13rem;
-        border-radius: 8px;
-        box-shadow: none;
-        border: 1px solid #58c2ce;
-      }
+    #input-currency-format-dialog {
+      width: 13rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
     }
   }
 }
 
-tui-input{
+tui-input {
   outline: 0.1rem !important;
 }
 
-::ng-deep t-custom-content ng-star-inserted{
+::ng-deep t-custom-content ng-star-inserted {
   width: fit-content !important;
 }
-

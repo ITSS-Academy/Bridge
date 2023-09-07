@@ -1,6 +1,6 @@
 <div class="contentPage">
   <table>
-    <tr>
+    <tr *ngIf="(this.tasks | async)">
       <!-- CHECKBOX -->
       <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
         <label class="container">
@@ -31,13 +31,13 @@
       <td style="width: 1rem; padding: 0.5rem">
         <span class="material-symbols-outlined">star</span>
       </td>
-      <td>{{task.attributes.name}}</td>
-      <td>{{task.attributes.assigned_to_c}}</td>
+      <td>{{task.data.attributes.name}}</td>
+      <td>{{task.data.attributes.assigned_to_c}}</td>
       <td>16-08-2023 01:47 PM</td>
       <td>26-08-2023 12:00 AM</td>
-      <td>{{task.attributes.status}}</td>
-      <td>{{task.attributes.location_c}}</td>
-      <td>{{task.attributes.priority}}</td>
+      <td>{{task.data.attributes.status}}</td>
+      <td>{{task.data.attributes.location_c}}</td>
+      <td>{{task.data.attributes.priority}}</td>
     </tr>
     
   </table>

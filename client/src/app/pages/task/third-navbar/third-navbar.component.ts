@@ -38,7 +38,7 @@ export class ThirdNavbarComponent implements OnInit {
   name = '';
   time = '';
   location = '';
-  test = ''
+  test: TuiDay | null = null;
 
   constructor(
     @Inject(TuiDialogFormService)
@@ -51,8 +51,8 @@ export class ThirdNavbarComponent implements OnInit {
 
     this.exampleForm.addControl('Name', this.Name);
     this.exampleForm.addControl('Assignedto', this.Assignedto);
-    this.exampleForm.addControl('Estimatetime', this.Estimatetime);
-    this.exampleForm.addControl('DuedateTime', this.DuedateTime);
+    // this.exampleForm.addControl('Estimatetime', this.Estimatetime);
+    // this.exampleForm.addControl('DuedateTime', this.DuedateTime);
     this.exampleForm.addControl('Stage', this.Stage);
     this.exampleForm.addControl('Priority', this.Priority);
     this.exampleForm.addControl('Location', this.Location);
@@ -79,13 +79,17 @@ export class ThirdNavbarComponent implements OnInit {
 
     }
     this.store.dispatch(TaskAction.addTask({ task: task }));
-    this.task$.subscribe((result) => {
-      console.log(result);
-    });
+    let subscription:any = this.task$.subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      complete: () => subscription.unsubscribe()
+    })
+    console.log(this.test?.toLocalNativeDate().getDate());
   }
 
   readonly testForm = new FormGroup({
-  testValue: new FormControl()
+    testValue: new FormControl()
 
   });
 
@@ -103,6 +107,10 @@ export class ThirdNavbarComponent implements OnInit {
   Description: FormControl = new FormControl('');
 
   ngOnInit() {}
+
+  showDate(){
+    console.log(this.testForm.value.testValue)
+  }
 
   onModelChangeName(name: string): void {
     this.name = name;
