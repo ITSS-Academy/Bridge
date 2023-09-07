@@ -25,6 +25,4 @@ export class FirstNavbarComponent {
   navToSignUp(){
     this.router.navigate(['signup']);
   }
-
-
 }

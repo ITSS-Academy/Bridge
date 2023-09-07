@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
-interface option{
+interface option {
   name: string;
   color: string;
 }
@@ -13,8 +13,6 @@ interface option{
   styleUrls: ['./second-navbar-avatar.component.scss'],
 })
 export class SecondNavbarAvatarComponent {
-
-  
   toggleDropdown() {
     const toggledDropdown = document.getElementById('avatar');
     const dropdownBox = document.getElementById('dropdownBox');
@@ -24,18 +22,21 @@ export class SecondNavbarAvatarComponent {
     }
   }
 
-
   index = 0;
-  optionBox:option[] = [{name: "Online",color:"online"},{name: "Busy",color:"busy"},{name: "Offline", color:""}]
-  option:option=this.optionBox[this.index];
-  
-  changeStatus(){
-    if(this.index<2){
-      this.index ++
+  optionBox: option[] = [
+    { name: 'Online', color: 'online' },
+    { name: 'Busy', color: 'busy' },
+    { name: 'Offline', color: '' },
+  ];
+  option: option = this.optionBox[this.index];
+
+  changeStatus() {
+    if (this.index < 2) {
+      this.index++;
     } else {
-      this.index =0
+      this.index = 0;
     }
-    
+
     this.option = this.optionBox[this.index];
   }
   constructor(public route: Router, private authService: AuthService) {}
@@ -45,7 +46,9 @@ export class SecondNavbarAvatarComponent {
   }
 
   logOut() {
-    this.authService.logout();
     this.route.navigate(['/login']);
+    setTimeout(() => {
+      this.authService.logout();
+    }, 1000);
   }
 }
