@@ -42,7 +42,7 @@ export const contactReducer = createReducer(
     }),
 
 
-    // Get Leads
+    // Get Contacts
     on(ContactAction.getContacts, (state) => {
         return {
             ...state,

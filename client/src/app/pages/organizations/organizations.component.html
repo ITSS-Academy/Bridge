@@ -22,6 +22,6 @@
 <p>{{(this.organization$ | async)?.loading}}</p>
 
 <ng-template
-  [tuiAlertOptions]="{status: status, autoClose: true}" [(tuiAlert)]="show">
+  [tuiAlertOptions]="{status: status, autoClose: 100000}" [(tuiAlert)]="show">
   {{this.notification}}
   </ng-template>

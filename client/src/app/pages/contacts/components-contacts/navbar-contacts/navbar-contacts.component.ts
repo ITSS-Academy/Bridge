@@ -78,7 +78,7 @@ export class NavbarContactsComponent {
         type: 'Contact',
       },
     };
-    let contact: Contact = {
+    let contact: any = {
       data: {
         type: 'Contacts',
         attributes: {
@@ -199,26 +199,20 @@ export class NavbarContactsComponent {
         this.contactsForm.controls['firstName'].value),
       (contact.data.attributes.last_name =
         this.contactsForm.controls['lastName'].value),
-      (contact.data.attributes.email1 =
+      (contact.data.attributes.email_c =
         this.contactsForm.controls['email'].value),
       (contact.data.attributes.phone_mobile =
         this.contactsForm.controls['phone'].value),
       (contact.data.attributes.department =
         this.contactsForm.controls['organizationName'].value),
-      (contact.data.attributes.assigned_user_name = this.stringifyAssignment(
-        this.controlAssignments.value
-      )),
       (contact.data.attributes.title = this.stringifyLife(
         this.controlLife.value
       )),
-      (contact.data.attributes.event_status_name = this.stringifyStatus(
+      (contact.data.attributes.status_c = this.stringifyStatus(
         this.controlStatus.value
       )),
-      (contact.data.attributes.assigned_user_id = this.currentUser.data.id);
-    contact.data.attributes.modified_user_id = this.currentUser.data.id;
-    contact.data.attributes.modified_by_name =
-      this.currentUser.data.attributes.full_name;
-    // lead.data.attributes.created_by_name = this.currentUser.data.attributes.full_name;
+      contact.data.attributes.assigned_to_name_c= this.stringifyAssignment(
+        this.controlAssignments.value),
     console.log(contact);
     this.store.dispatch(ContactAction.addContact({ contact: contact }));
     this.contact$.subscribe((data) => {

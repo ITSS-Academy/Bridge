@@ -22,7 +22,7 @@ import { Lead } from 'src/app/models/lead.model';
 })
 export class PageWContentComponent {
   @Input()
-  leads!: Observable<any>;
+  // leads!: Observable<any>;
 
   lead$!: Observable<LeadState>;
 

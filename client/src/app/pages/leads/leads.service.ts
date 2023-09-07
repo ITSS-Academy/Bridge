@@ -20,6 +20,16 @@ export class LeadsService {
     ) as Observable<any>;
   }
 
+  getAllLeadsNgRx() {
+    return collectionSnapshots(this.collection).pipe(
+      map((result: any) =>
+        result.map((item: any) => {
+          return item.data();
+        })
+      )
+    );
+  }
+
   async getAllLeads() {
     return collectionSnapshots(this.collection);
   }

@@ -17,7 +17,6 @@ import { SignUpReducer } from './pages/signup/ngrx/reducer/signup.reducer';
 import { SignUpEffect } from './pages/signup/ngrx/effect/signup.effect';
 import { loginReducer } from './pages/login/ngrx/reducer/login.reducer';
 import { LoginEffect } from './pages/login/ngrx/effect/login.effect';
-import { SuccessComponent } from './components/success/success.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
@@ -38,7 +37,6 @@ import { CaseEffect } from './pages/case/ngrx/effect/case.effect';
     AppComponent,
     // SecondNavbarComponent,
     SubNavbarMainComponent,
-    SuccessComponent,
   ],
   imports: [
     BrowserModule,

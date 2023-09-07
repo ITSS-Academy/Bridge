@@ -5,6 +5,9 @@
 
 <!-- QUAN TRỌNG: NẾU NHƯ LÀM DIALOG TUYỆT ĐỐI KHÔNG BỎ TRONG DIV NÀY -->
 <div class="background">
+  <div class="loading">
+    <app-loading *ngIf="(this.contacts$|async)?.loading == true"></app-loading>
+  </div>
   <app-second-navbar [title]="title"></app-second-navbar>
   <!-- THANH NAV THỨ 3 -->
   <app-navbar-contacts
@@ -14,13 +17,13 @@
   <div class="body" style="position: relative; z-index: 1">
     <!-- NỘI DUNG TRANG RỖNG-->
     <app-display-no-data-contacts
-      *ngIf="(this.contacts | async)?.length == 0"
+      *ngIf="(this.contacts$ | async)?.contacts?.length == 0"
       [title]="title"
     ></app-display-no-data-contacts>
     <!-- TRANG CÓ NỘI DUNG -->
     <app-display-have-data-contacts
-      *ngIf="(this.contacts | async)?.length != 0"
-      [contacts]="this.contacts"
+      *ngIf="(this.contacts$ | async)?.contacts?.length != 0"
+      [contact$]="this.contacts$"
     ></app-display-have-data-contacts>
   </div>
 </div>

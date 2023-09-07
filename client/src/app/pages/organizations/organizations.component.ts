@@ -35,15 +35,15 @@ export class OrganizationsComponent implements OnInit {
         if (data.status == 'Delete organization success') {
           this.notification = 'Delete successfully';
           this.status = 'success';
-          this.show = data.isAlerted;
+          this.show = true;
         } else if (data.status == 'Add organization success') {
           this.notification = 'Add successfully';
           this.status = 'success';
-          this.show = data.isAlerted;
+          this.show = true;
         } else if (data.status == 'Update organization success') {
           this.notification = 'Update successfully';
           this.status = 'success';
-          this.show = data.isAlerted;
+          this.show = true;
         }
       },
       complete: () => {

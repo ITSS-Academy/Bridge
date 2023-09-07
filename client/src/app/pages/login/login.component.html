@@ -42,7 +42,16 @@
           <p class="churemember">Remember Account</p>
         </div>
       </div>
-      <div (click)="login()" class="nutlogin">
+
+      <!-- <ng-template #loginn>
+          <app-success id="login" [content]="content" ></app-success>
+      </ng-template> -->
+        <app-success hidden="true" id="login" [content]="content" ></app-success>
+      <app-warning hidden="true" id="login" [content]="content" ></app-warning>
+    <app-error hidden="true" id="login" [content]="content" ></app-error>
+
+      <div
+        (click)="login()" class="nutlogin">
         <p>LOGIN</p>
       </div>
       <div class="gachthang">
@@ -61,3 +70,8 @@
 <!-- <div *ngIf="(this.login$ | async)?.loading == true">
   <app-loading></app-loading>
 </div> -->
+
+<ng-template
+  [tuiAlertOptions]="{status: status, autoClose: 100000}" [(tuiAlert)]="show">
+  {{this.notification}}
+  </ng-template>

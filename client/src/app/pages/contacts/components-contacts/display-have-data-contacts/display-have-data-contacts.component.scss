@@ -33,23 +33,27 @@ $LightGray: #f2f2f2;
 table {
   background-color: #fff;
   width: 100vw;
+  text-align: center;
 }
 tr {
-  padding: 0.5rem 3rem;
+  padding: 0.5rem 2rem;
   align-items: center;
   border-bottom: 1px solid $LightGray;
+  text-align: center;
 }
 th {
-  padding: 0.5rem 3rem;
+  padding: 0.5rem 2rem;
   text-align: left;
   color: $Blue2;
   width: 10rem;
+  text-align: center;
   align-items: center;
 }
 td {
-  padding: 0.5rem 3rem;
+  padding: 0.5rem 2rem;
   color: $Blue2;
   width: 10rem;
+  text-align: center;
   align-items: center;
 }
 
@@ -156,7 +160,7 @@ form {
 //STYLE DIV CHỨA NỘI DUNG CHÍNH CỦA DIALOG
 .form-contacts {
   display: flex;
-  flex-direction: row;
+  // flex-direction: row;
   gap: 20px;
   align-items: center;
   justify-content: center;
@@ -167,7 +171,8 @@ form {
 .all-label {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  justify-content: center;
+  gap: 29.5px;
 }
 
 .all-label label {
@@ -182,6 +187,7 @@ form {
 .all-input {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 20px;
 }
 
@@ -248,6 +254,14 @@ form {
   box-shadow: none;
   border: 1px solid #58c2ce;
 }
+
+#title {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
 
 //DIV CHỨA NÚT CANCEL VÀ SAVE
 .cancel-save {

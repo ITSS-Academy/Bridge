@@ -39,5 +39,33 @@ export class ContactEffect {
       })
     )
   );
+
+  updateContact$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(ContactAction.updateContact),
+      switchMap((contact: any) =>
+        this.ContactService.updateContact(contact.contact)
+      ),
+      map(() => {
+        return ContactAction.updateContactSuccess();
+      }),
+      catchError((error) => {
+        return of(ContactAction.updateContactFailure({ error: error }));
+      })
+    )
+  );
+
+  getAllContacts$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(ContactAction.getContacts),
+      switchMap(() => this.ContactService.getAllContactsNgRx()),
+      map((contacts: any) => {
+        return ContactAction.getContactsSuccess({ contacts: contacts });
+      }),
+      catchError((error) => {
+        return of(ContactAction.getContactsFailure({ error: error }));
+      })
+    )
+  );
   // deleteLead$ = createEffect(() =>);
 }

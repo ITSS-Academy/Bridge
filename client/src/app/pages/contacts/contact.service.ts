@@ -17,6 +17,19 @@ export class ContactsService {
     return this.http.post(`${environment.API_URL}/contacts/createContact`, body) as Observable<any>;
   }
 
+
+  getAllContactsNgRx() {
+    return collectionSnapshots(this.collection).pipe(
+      map((result: any) =>
+        result.map((item: any) => {
+          return item.data();
+        })
+      )
+    );
+  }
+  
+
+
   async getAllContacts() {
     return collectionSnapshots(this.collection);
   }
@@ -25,8 +38,8 @@ export class ContactsService {
     return this.http.get(`${environment.API_URL}/contacts/${id}`) as Observable<any>;
   }
 
-  updateContact(id: string, body: any) {
-    return this.http.patch(`${environment.API_URL}/contacts/${id}`, body) as Observable<any>;
+  updateContact(body: any) {
+    return this.http.patch(`${environment.API_URL}/contacts/update`, body) as Observable<any>;
   }
 
   deleteContact(id: string) {

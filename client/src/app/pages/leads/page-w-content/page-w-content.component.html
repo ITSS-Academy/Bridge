@@ -1,6 +1,6 @@
 <div class="contentPage">
   <table>
-    <tr *ngIf="(this.leads | async)">
+    <tr *ngIf="(this.lead$ | async)">
       <!-- CHECKBOX -->
       <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;">
         <label class="container">
@@ -22,7 +22,7 @@
       <th><b>CITY</b></th>
       <th>ACTION</th>
     </tr>
-    <tr class="visible-data" *ngFor="let lead of this.leads | async">
+    <tr class="visible-data" *ngFor="let lead of (this.lead$ | async)?.leads">
       <!-- CHECKBOX -->
       <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
         <label class="container">
@@ -158,7 +158,7 @@
             <div class="cancel-save">
               <button class="button-cancel" type="submit">Cancel</button>
               <button class="button-add" (click)="updateLead(lead)">
-                update
+                Update
               </button>
             </div>
           </div>
