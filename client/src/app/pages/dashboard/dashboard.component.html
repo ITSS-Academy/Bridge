@@ -36,19 +36,86 @@
 
       <div class="sectionTitle"><span>Your Tasks</span>
       <span (click)="navTo('tasks')" style="color: #58c2ce;display: flex; align-items: center; cursor: pointer;">Tasks<span class="material-symbols-outlined">double_arrow</span></span></div>
-      <div class="sectionHeader"></div>
-      <div class="section"></div>
+      <div class="sectionHeader">
+        <table>
+          <tr>
+            <th>TITLE</th>
+            <th>DUE DATE</th>
+            <th>PRIORITY</th>
+            <th>PROGRESS</th>
+          </tr>
+        </table>
+      </div>
+      <div class="section">
+
+      <table>
+        <tr>
+          <td>MAKE THE CRM</td>
+          <td>7/9/2023</td>
+          <td class="priorityTd {{priority.color}}"><span class="material-symbols-outlined">flag</span>{{priority.name}}</td>
+          <td><div class="tdDiv {{progress.color}}">{{progress.name}}</div></td>
+        </tr>
+
+      </table>
+
+      </div>
 
       <div class="sectionTitle"><span>Your Deals</span>
         <span (click)="navTo('deals')" style="color: #58c2ce;display: flex; align-items: center; cursor: pointer;">Deals<span class="material-symbols-outlined">double_arrow</span></span></div>
-      <div class="sectionHeader"></div>
-      <div class="section"></div>
+      <div class="sectionHeader">
+
+        <table>
+          <tr>
+            <th>TITLE</th>
+            <th>ORGANIZATION</th>
+            <th>DUE DATE</th>
+            <th>SALE STAGE</th>
+          </tr>
+        </table>
+
+      </div>
+      <div class="section">
+
+        <table>
+        <tr>
+          <td>ITSS SMALL DEAL</td>
+          <td>ITSS</td>
+          <td>11/9/2023</td>
+          <td><div class="tdDiv {{saleStage.color}}">{{saleStage.name}}</div></td>
+        </tr>
+
+      </table>
+
+      </div>
 
       <div class="sectionTitle">Your Cases
         <span (click)="navTo('cases')" style="color: #58c2ce;display: flex; align-items: center; cursor: pointer;">Cases<span class="material-symbols-outlined">double_arrow</span></span>
       </div>
-      <div class="sectionHeader"></div>
-      <div class="section"></div>
+      <div class="sectionHeader">
+
+        <table>
+          <tr>
+            <th>TITLE</th>
+            <th>STATUS</th>
+            <th>PRIORITY</th>
+            <th>PROGRESS</th>
+          </tr>
+        </table>
+
+      </div>
+      <div class="section">
+
+        <table>
+          <tr>
+            <td>MAKE THE CRM</td>
+            <td><div class="tdDiv {{status.color}}">{{status.name}}</div></td>
+            <td class="priorityTd {{priority.color}}"><span class="material-symbols-outlined">flag</span>{{priority.name}}</td>
+            <td><div class="tdDiv {{progress.color}}">{{progress.name}}</div></td>
+          </tr>
+
+        </table>
+
+      </div>
     </div>
     <div class="sidebarRight">
       <div class="profile">
