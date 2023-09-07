@@ -13,7 +13,7 @@
       <span class="material-symbols-outlined"> add </span>
 
       <!-- THAY ĐỔI CHỮ DƯỚI THÀNH NỘI DUNG CỦA TRANG -->
-      <span style="margin: 0 1rem" (click)="emitAddTask()">Add Event</span>
+      <span style="margin: 0 1rem" (click)="onClick(content, 'auto')">Add Event</span>
     </button>
   </div>
   <div class="rightNavContent">
@@ -34,3 +34,75 @@
     </button>
   </div>
 </div>
+
+
+<!-- dialog -->
+<ng-template #content let-observer>
+  <h2 class="title-dialog">Add Events</h2>
+    <div class="box-form">
+    <form [formGroup]="eventForm" (ngSubmit)="observer.complete()">
+      <div class="form-event">   
+        <div class="all-label">
+          <label for="name">Name</label>
+          <label for="start-time">Start Date & Time</label>
+          <label for="end-time">End Date & Time</label>
+          <label for="act-type">Activity Type</label>
+          <label for="agenda">Agenda</label>
+          <label for="part">Participants</label>
+        </div>    
+        <div class="all-input">
+          <tui-input formControlName = "eventName" class="tui-input" type="text" id="name" name="firstname" tuiTextfieldSize="s">Event name </tui-input>
+          
+          <tui-input-date-time formControlName = "startTime"  class="tui-input" id="start-time" [tuiTextfieldCleaner]="true" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true">
+          Choose date and time
+          <input
+            placeholder="10.10.1998 01:22"
+            tuiTextfield
+            />
+           </tui-input-date-time>
+           
+           <tui-input-date-time formControlName = "endTime" id="end-time" class="tui-input" [tuiTextfieldCleaner]="true" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true">
+            Choose date and time
+            <input
+              placeholder="10.10.1998 01:22"
+              tuiTextfield
+              />
+             </tui-input-date-time>
+             
+             <tui-combo-box
+             tuiTextfieldSize="s"
+             formControlName="actType"
+             class="tui-input"
+             [stringify]="stringify"
+             [tuiTextfieldLabelOutside]="true"
+         >
+             Type
+          
+             <tui-data-list-wrapper *tuiDataList [itemContent]="stringify | tuiStringifyContent" [items]="allActType | tuiFilterByInputWith: stringify" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true"
+             ></tui-data-list-wrapper>
+            </tui-combo-box>
+
+            <tui-input
+            tuiTextfieldSize="s"
+            formControlName="agenda"
+            class="tui-input"
+            [tuiTextfieldLabelOutside]="true"
+            >Note for event</tui-input>
+
+        <tui-input formControlName="part" class="tui-input" id="part" name="part" tuiTextfieldSize="s"  [tuiTextfieldLabelOutside]="true">
+          user or group
+          <tui-data-list-wrapper
+              *tuiDataList
+              [items]="allPart"
+              [labels]="labels"
+          ></tui-data-list-wrapper>
+      </tui-input>
+        </div>
+        </div>
+        <div class="cancel-save">
+          <button class="btn-cancel" type="submit">Cancel</button>  
+          <button class="btn-save" (click)="addEvent()">Save</button>
+        </div>
+    </form>
+    </div>
+</ng-template>

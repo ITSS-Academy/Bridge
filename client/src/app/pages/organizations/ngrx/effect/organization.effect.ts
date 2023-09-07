@@ -23,7 +23,7 @@ export class OrganizationEffect {
           })
       ));
 
-  deleteLead$ = createEffect(() =>
+  deleteOrganization$ = createEffect(() =>
       this.action$.pipe(
           ofType(OrganizationAction.deleteOrganization),
           switchMap((id: any) => this.organizationService.deleteOrganization(id.id)),
@@ -36,7 +36,7 @@ export class OrganizationEffect {
       )
   )
 
-  updateLead$ = createEffect(() => 
+  updateOrganization$ = createEffect(() => 
       this.action$.pipe(
           ofType(OrganizationAction.updateOrganization),
           switchMap((organization: any) => this.organizationService.updateOrganization(organization. organization)),
