@@ -21,7 +21,6 @@ export class PageWContentComponent {
   @Input()
   tasks!: Observable<any>;
 
-  task$!: Observable<TaskState>;
 
   currentUser!: any;
 
@@ -32,7 +31,7 @@ export class PageWContentComponent {
     @Inject(TuiDialogFormService)
     private readonly dialogForm: TuiDialogFormService
   ) {
-    this.task$ = store.select('task');
+    this.tasks = store.select('task');
     this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
     this.exampleForm.addControl('firstName', this.firstName);
     this.exampleForm.addControl('lastName2', this.lastName2);
@@ -190,7 +189,7 @@ export class PageWContentComponent {
     // console.log(leadToUpdate);
     console.log(TaskToUpdate);
     this.store.dispatch(TaskAction.updateTask({ task: TaskToUpdate }));
-    this.task$.subscribe((data) => {
+    this.tasks.subscribe((data) => {
       console.log(data);
     });
     console.log(task);

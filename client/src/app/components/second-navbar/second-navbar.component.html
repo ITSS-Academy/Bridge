@@ -13,6 +13,7 @@
           viewBox="0 0 89 51"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          style="margin-right: 1rem;"
         >
           <rect x="10" y="37" width="69.334" height="4.81486" fill="white" />
           <rect
@@ -79,17 +80,20 @@
             stroke-width="4"
           />
         </svg>
+
         <ul class="list-page" *ngFor="let page of this.navPages">
-          <li class="pageToChoose" (click)="navigateTo(page.route)">
-            {{ page.name }}
+          <li class="Page" (click)="navigateTo(page)" id={{page.name}}>
+            <div class="chosen" *ngIf="title==page.name">{{ page.name }}</div>
+            <div class="notChosen" *ngIf="title!=page.name">{{ page.name }}</div>
           </li>
         </ul>
+
       </div>
     </div>
   </div>
   <div
     class="bottom-navbar"
-    style="display: flex; position: relative; z-index: 1"
+    style="display: flex; position: relative; z-index: 300;"
   >
     <div
       class="overlay"

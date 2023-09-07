@@ -1,174 +1,436 @@
-$Blue : #58c2ce;
-$Blue2: #2C698D;
+$Blue: #58c2ce;
+$Blue2: #2c698d;
 $Blue3: #272643;
 $Blue0: #96d5d5;
-$LightGray:#F2F2F2;
+$LightGray: #f2f2f2;
 
 $Red2: #b50000;
 $Red: #fb1e1e;
 $Yellow: #ffca0b;
 $Green: #a4e617;
 
-.button{
+.button {
   box-sizing: border-box;
-    background-color: #fff;
-    color: $Blue;
-    min-width: 10rem;
-    border-radius: 8px;
-    border: 2px solid $Blue;
-    padding: 0.25rem 1rem;
-    margin-right: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.buttonMainAction{
-    background-color:$Blue ;
-    color: #fff;
-}
-
-//CSS CỦA TRANG CÓ NỘI DUNG
-table{
-  box-sizing: border-box;
-    background-color: #fff;
-    width: 100vw
-}
-tr{
-  box-sizing: border-box;
-    padding: 0.5rem 1.5rem;
-    align-content: center;
-    border-bottom: 1px solid $LightGray;
-}
-th{
-  box-sizing: border-box;
-  padding: 0.5rem 1.5rem;
-    text-align: left;
-    color: $Blue2;
-    width: 10rem;
-}
-td{
-  box-sizing: border-box;
-  padding: 0.5rem 1.5rem;
-    color: $Blue2;
-    width: 10rem;
-}
-
-.status{
-  box-sizing: border-box;
-  padding:0.25rem 1rem;
-  width: max-content;
+  background-color: #fff;
+  color: $Blue;
+  min-width: 10rem;
   border-radius: 8px;
+  border: 2px solid $Blue;
+  padding: 0.25rem 1rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.assigned{
+.buttonMainAction {
   background-color: $Blue;
   color: #fff;
 }
 
-.open{
+.action {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+//CSS CỦA TRANG CÓ NỘI DUNG
+table {
+  background-color: #fff;
+  width: 100vw;
+}
+tr {
+  padding: 0.5rem 1.5rem;
+  align-content: center;
+  border-bottom: 1px solid $LightGray;
+  align-items: center;
+}
+th {
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+  color: $Blue2;
+  width: 10rem;
+  align-items: center;
+}
+td {
+  padding: 0.5rem 1.5rem;
+  color: $Blue2;
+  width: 10rem;
+  justify-content: center;
+  text-align: center;
+}
+
+.status {
+  box-sizing: border-box;
+  padding: 0.25rem 1rem;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.assigned {
+  background-color: $Blue;
+  color: #fff;
+}
+
+.open {
   color: #fff;
   background-color: $Blue0;
 }
 
-.waitForCustomer{
+.waitForCustomer {
   background-color: $Blue2;
   color: #fff;
 }
 
-.waitFor3rdParty{
+.waitFor3rdParty {
   background-color: $Blue2;
   color: #fff;
 }
 
-.priority{
+.priority {
   box-sizing: border-box;
   display: flex;
-  align-content: flex-end;
+  justify-content: center;
 }
 
-.high{
+.high {
   color: $Red;
 }
 
-.medium{
+.medium {
   color: $Yellow;
 }
 
-.low{
+.low {
   color: $Blue;
 }
 
-.urgent{
+.urgent {
   color: $Red2;
   font-weight: 500;
 }
 
 //CSS CỦA CHECKBOX - COPY TRÊN MẠNG TỐT NHẤT ĐỪNG ĐỤNG VÀO
 .container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: $Blue;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/*STYLE DIALOG*/
+//DIALOG CHÍNH DEAL
+//FORM CHỨA NỘI DUNG HIỂN THỊ BÊN TRONG DIALOG
+#form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+//TỰA ĐỀ BỰ CỦA DIALOG STYLE
+.header-dialog {
+  margin: 0;
+  padding-bottom: 10px;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #58c2ce;
+  color: #2c698d;
+  font-weight: 600;
+}
+
+//DIV CHỨA NỘI DUNG CHÍNH CỦA DIALOG STYLE
+.content-dialog-main {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  padding-left: 1rem;
+
+  //DIV CHỨA TỪNG DÒNG NỘI DUNG CHÍNH STYLE
+  .container-dialog {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    //TIÊU ĐỀ CỦA TỪNG DÒNG NỘI DUNG CHÍNH STYLE
+    .title-dialog {
+      width: 10rem;
+      font-size: 1rem;
+      color: #2c698d;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    //BOX INPUT CỦA TỪNG DÒNG NỘI DUNG STYLE
+    .input-dialog {
+      width: 16rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
+}
+
+//DIV CHỨA NÚT CANCEL VÀ SAVE
+.cancel-save {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+
+  .button-cancel {
+    width: 5rem;
+    height: 1.875r;
+    border-radius: 8px;
+    background-color: #ffffff;
+    border: 2px solid #58c2ce;
+    color: #58c2ce;
+    font-size: 14px;
     cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+
+    &:hover {
+      background-color: darken($color: white, $amount: 3);
+    }
   }
-  
-  /* Hide the browser's default checkbox */
-  .container input {
-    position: absolute;
-    opacity: 0;
+
+  .button-add {
+    width: 5rem;
+    height: 1.875rem;
+    border-radius: 8px;
+    background-color: #58c2ce;
+    color: #ffffff;
+    border: none;
+    font-size: 14px;
     cursor: pointer;
-    height: 0;
-    width: 0;
+
+    &:hover {
+      background-color: darken($color: #58c2ce, $amount: 10);
+      color: darken($color: white, $amount: 3);
+    }
   }
-  
-  /* Create a custom checkbox */
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 1.5rem;
-    width: 1.5rem;
-    background-color: #eee;
-    border-radius: 4px;
+}
+
+//NÚT THÊM ( + ) BÊN TRONG NỘI DUNG DIALOG
+.dialog-button {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border: none;
+  background-color: #58c2ce;
+  color: white;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($color: #58c2ce, $amount: 10);
+    color: darken($color: white, $amount: 3);
   }
-  
-  /* On mouse-over, add a grey background color */
-  .container:hover input ~ .checkmark {
-    background-color: #ccc;
+}
+
+//CUSTOM INPUT CONTACT
+#input-dialog-contact {
+  width: 13.8rem;
+  // border-top-left-radius: 8px;
+  // border-bottom-left-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//DIALOG CONTACT SUB CSS
+//BẮT ĐẦU
+.form-contacts {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+//STYLE DIV HIỂN THỊ TOÀN BỘ TIÊU ĐỀ
+.all-label {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.all-label label {
+  width: 10rem;
+  font-size: 1rem;
+  color: #2c698d;
+  font-weight: 400;
+  margin: 0;
+}
+
+//STYLE DIV CHỨA TOÀN BỘ BOX INPUT
+.all-input {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+//FIRST NAME
+#fname {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//LAST NAME
+#lname {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//EMAIL
+#email {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//PHONE
+#phone {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//ORG NAME
+#orgName {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//ASSIGNED TO
+#assignTo {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//STAGES
+#lifeCycleStage {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//STATUS
+#status {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+.visible-data:hover {
+  // transition: 0.5s;
+  cursor: pointer;
+  background-color: lighten($Blue, 40);
+
+  td {
+    // transition: 0.5s;
+
+    color: $Blue;
   }
-  
-  /* When the checkbox is checked, add a blue background */
-  .container input:checked ~ .checkmark {
-    background-color: $Blue;
+
+  th {
+    // transition: 0.5s;
+
+    color: $Blue;
   }
-  
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
+
+  th > label > span {
+    // transition: 0.5s;
+
+    border: $Blue2 0.001rem solid;
   }
-  
-  /* Show the checkmark when checked */
-  .container input:checked ~ .checkmark:after {
-    display: block;
+
+  .lead-phone:hover {
+    div {
+      // transition: 0.5s;
+      background-color: $Blue;
+      color: #fff;
+    }
   }
-  
-  /* Style the checkmark/indicator */
-  .container .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+
+  .lead-mail:hover {
+    div {
+      // transition: 0.5s;
+      background-color: $Blue;
+      color: #fff;
+    }
   }
+}

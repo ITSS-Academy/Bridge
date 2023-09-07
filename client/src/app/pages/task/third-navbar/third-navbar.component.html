@@ -93,19 +93,20 @@
       </div>
 
       <!--DUE DATE-->
-      <div  class="container-dialog">
-        <p class="title-dialog">Due date & Time</p>
-
-        <tui-input-date
-          [(ngModel)]="test"
-          class="input-dialog"
-          
-          [formControl]="DuedateTime"
-          tuiTextfieldSize="s"
-        >
-          Choose a date
-        </tui-input-date>
-      </div>
+      <form [formGroup]="testForm">
+        <div  class="container-dialog">
+          <p class="title-dialog">Due date & Time</p>
+  
+          <tui-input-date
+            formControlName="testValue"
+            [(ngModel)]="test"
+            class="input-dialog"
+            tuiTextfieldSize="s"
+          >
+            Choose a date
+          </tui-input-date>
+        </div>
+      </form>
 
       <!--STAGE-->
       <div class="container-dialog">

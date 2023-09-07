@@ -9,7 +9,7 @@ import { getFirestore } from 'firebase-admin/firestore';
 export class LeadsService {
   api_url = this.configService.get<string>('CORE_APIs');
   token = '';
-  
+
   db = getFirestore();
   docRef = this.db.collection('leads');
 
@@ -33,8 +33,8 @@ export class LeadsService {
       })
       .pipe(map((response) => response.data));
     return result.pipe(
-      map((res) => {
-        this.docRef.add(res);
+      map(async (res) => {
+        await this.docRef.add(res);
         return res;
       }),
     );
@@ -92,7 +92,6 @@ export class LeadsService {
     });
     return result;
   }
-
 
   remove(id: string) {
     let result = this.http

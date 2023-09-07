@@ -1,0 +1,373 @@
+$Blue : #58c2ce;
+$Blue2: #2C698D;
+$Blue3: #272643;
+$Blue0: #BAE8E8;
+$LightGray:#F2F2F2;
+$Red2: #b50000;
+$Red: #fb1e1e;
+$Yellow: #ffca0b;
+$Green: #a4e617;
+.background{
+    background-color: $LightGray;
+    width: 100vw;
+    min-height: 100vh;
+    max-height: max-content;
+    box-sizing: border-box;
+}
+
+.body{
+    width: 100vw;
+    height: max-content;
+    background-color: $LightGray;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 5rem;
+}
+.sidebar{
+    margin-top: 2rem;
+    color: $Blue2;
+    background-color: #ffff;
+    border-radius: 0 8px 8px 0;
+    min-height: 85vh;
+    width: 18rem;
+    position: sticky;
+    // box-shadow: 0px 0px 12px #a8a8a8;
+    margin-right: 2rem;
+    // overflow-y: scroll;
+    box-sizing: border-box;
+    // box-shadow: 4px 4px 8px #cacaca ;
+    padding: 2rem 4rem;
+}
+
+.sidebarSection{
+    width: 11rem;
+    font-size: 18px;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid $LightGray;
+}
+
+.sidebarSectionButton{
+    width: 11rem;
+    color: $Blue;
+    font-size: 18px;
+    margin: 2rem 0;
+}
+.content{
+    width: 60vw;
+    min-height: 100vh;
+    padding-top: 2rem;
+}
+
+.header{
+    // border: 1px solid red;
+    margin-top: 1rem;
+    width: 100%;
+    padding:  1rem 3rem;
+    height: 9rem;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: $Blue;
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+    box-shadow: 4px 4px 8px #cacaca ;
+    // justify-content: space-between;
+}
+
+.headerText{
+    margin-left: 4rem;
+    height: max-content;
+    color: white;
+}
+
+.headerText b{
+    text-transform: uppercase;
+}
+.headerText p{
+    margin: 0;
+    font-size: 20px;
+}
+
+.headerImage{
+    height: 12rem;
+    width: 11rem;
+    position: relative;
+    // top: 2rem
+}
+
+.quickViewBar{
+    width: 100%;
+    box-sizing: border-box;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quickViewCard{
+    width: 13rem;
+    height: 7rem;
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-sizing: border-box;
+    // box-shadow: 0px 4px 8px white;
+    position: relative;
+    top: 0px;
+    transition: top 0.25s, box-shadow 0.25s;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+.quickViewCardImg{
+    margin: 0 0 0 1rem ;
+    font-size: 40px;
+    // font-weight: 600;
+}
+
+.quickViewCard:hover{
+    top: -10px;
+    box-shadow: 0px 4px 8px #cacaca;
+    cursor: pointer;
+    
+}
+
+.quickViewCard b{
+    font-size: 20px;
+}
+
+.sectionTitle{
+    width: 100%;
+    height: max-content;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    margin-top: 2rem; 
+    box-sizing: border-box;
+    
+    display: flex;
+    justify-content: space-between;
+}
+
+.section{
+    margin-top: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    height: max-content;
+    display: flex;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0px 0px 4px #cacaca ;
+    min-height: 5rem;
+}
+
+.sectionHeader{
+    border-radius: 8px;
+    // background-color: white;
+    min-height: 3rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0px 0px 4px #cacaca ;
+    box-sizing: border-box;
+
+    background-color: $Blue;
+    color: white;
+}
+
+table{
+    // background-color: #fff;
+    width: 100%;
+}
+tr{
+    
+    align-items: center;
+    // border-bottom: 1px solid $LightGray;
+    font-size: 16px;
+    justify-content: space-between;
+}   
+th{
+
+    width: 13rem;
+    text-align: center;
+    // color: $Blue3;
+    align-items: center;
+    overflow: hidden;  
+}
+td{
+    // margin: 1rem 0;
+    border-bottom: 1px solid $LightGray;
+    padding: 1rem 0;
+    width: 13rem;
+    text-align: center;
+    color: $Blue3;
+    align-items: center;
+    overflow: hidden;
+}
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tdDiv{
+    margin: 0 2rem;
+    padding: 0.25rem 1rem;
+    border-radius: 8px;
+    background-color: $Blue;
+    color: white;
+}
+
+.priorityTd{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .red{
+    color: $Red;
+  }
+  
+  .yellow{
+    color: $Yellow;
+  }
+  
+  .blue{
+    color: $Blue;
+  }
+  
+  .darkRed{
+    color: $Red2;
+    font-weight: 500;
+  }
+
+  .green{
+    color: $Green;
+  }
+
+  .highlight{
+    // border: 1px solid black;
+    border-radius: 8px;
+    overflow: hidden;
+    width: max-content;
+    padding: 0.25rem 1rem;
+    color: $Blue2;
+    background-color: $Blue0;
+  }
+
+  .yellowDiv{
+    background-color: $Yellow;
+    color:#fff;
+  }
+
+  .greenDiv{
+    background-color: $Green;
+    color:#fff;
+  }
+  
+  .redDiv{
+    background-color: $Red;
+    color:#fff;
+  }
+  .blueDiv{
+    background-color: $Blue;
+    color:#fff;
+  }
+  .urgentDiv{
+    background-color: $Red2;
+    color:#fff;
+  }
+
+  .sidebarRight{
+    margin-top: 2rem;
+    color: #ffff;
+    background-color: #ffff;
+    border-radius: 8px 0 0 8px;
+    min-height: 85vh;
+    width: 18rem;
+    position: sticky;
+    // box-shadow: 0px 0px 12px #a8a8a8;
+    margin-left: 2rem;
+    // overflow-y: scroll;
+    box-sizing: border-box;
+    padding: 0 2rem;
+    // box-shadow: 4px 4px 8px #cacaca ;
+}
+
+.profile{
+    padding: 1rem 1rem;
+    min-height: 15rem;
+    border-bottom: 2px solid $LightGray;
+    margin-bottom: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $Blue3;
+    // justifycontent: center;
+}
+
+.profile b{
+    font-size: large;
+    margin: 1rem 0;
+}
+.profile span{
+    font-size: 14px;
+    margin: 0.3rem 0;
+}
+
+.profileImage{
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    border: 6px solid white;
+    box-shadow: 4px 4px 8px #cacaca ;
+    margin: 1rem 0;
+}
+
+.calender{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: max-content;
+    border-bottom: 2px solid $LightGray;
+    margin-bottom: 1rem;
+    color: $Blue3;
+}
+
+.calender b{
+    font-size: large;
+    margin: 1rem;
+    color: $Blue3;
+}
+
+.upcomingEvent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: max-content;
+    border-bottom: 2px solid $LightGray;
+    margin-bottom: 1rem;
+    color: $Blue3;
+}
+
+.upcomingEvent b{
+    font-size: large;
+    margin: 1rem;
+    color: $Blue3;
+}
+
+.upcomingEventSection{
+    border-top: 2px solid $LightGray;
+    width: 18rem;
+    padding: 1rem;
+    box-sizing: border-box;
+}

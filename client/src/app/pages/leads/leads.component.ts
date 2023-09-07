@@ -15,11 +15,9 @@ export class LeadsComponent implements OnInit {
   subLeads: any[] = [];
   //ĐỔI TITLE THÀNH TÊN TRANG
   title = 'Leads';
-
   pageEmpty = true;
 
-  constructor(private leadService: LeadsService) {
-  }
+  constructor(private leadService: LeadsService) {}
 
   ngOnInit(): void {
     this.getAllLeads();

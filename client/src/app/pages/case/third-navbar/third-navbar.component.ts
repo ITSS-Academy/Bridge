@@ -1,11 +1,8 @@
 import {
   Component,
-  Output,
-  EventEmitter,
   OnInit,
   ChangeDetectionStrategy,
   Inject,
-  ViewEncapsulation,
   Input,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -13,43 +10,135 @@ import { TuiDialogService, TuiDialogSize } from '@taiga-ui/core';
 import { TuiDialogFormService } from '@taiga-ui/kit';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import { TuiCountryIsoCode } from '@taiga-ui/i18n';
-import { TuiDay } from '@taiga-ui/cdk';
+import { Observable } from 'rxjs';
+import { CasesService } from '../case.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Store } from '@ngrx/store';
+import { Case } from 'src/app/models/case.model';
+import { CaseAction } from '../ngrx/action/case.action';
+import { CaseState } from '../ngrx/state/case.state';
 
 @Component({
   selector: 'app-third-navbar',
   templateUrl: './third-navbar.component.html',
-  styleUrls: ['./third-navbar.component.scss','./third-navbar.component.less'],
+  styleUrls: ['./third-navbar.component.scss', './third-navbar.component.less'],
   providers: [TuiDialogFormService],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
 })
 export class ThirdNavbarComponent implements OnInit {
   @Input() title!: string;
-  @Output() public addCase = new EventEmitter();
+  currentUser!: any;
+  case$!: Observable<CaseState>;
 
   constructor(
     @Inject(TuiDialogFormService)
     private readonly dialogForm: TuiDialogFormService,
-    @Inject(TuiDialogService) private readonly dialogs: TuiDialogService
-  ) {}
+    @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
+    private caseService: CasesService,
+    public authService: AuthService,
+    private store: Store<{ case: CaseState }>
+  ) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
+    this.case$ = store.select('case');
+    this.casesForm.addControl('caseTitle', this.caseTitle);
+    this.casesForm.addControl('organizationName', this.orgName);
 
-  caseTitle = '';
+    console.log(this.currentUser);
+  }
 
-  exampleForm = new FormGroup({});
-  readonly contactsForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl(''),
-    phone: new FormControl('', Validators.minLength(12)),
-    organizationName: new FormControl(''),
-    assignTo: new FormControl(),
-    lifeycleStage: new FormControl(),
-    status: new FormControl(),
-  });
+  casesForm: FormGroup = new FormGroup({});
+  contactsForm: FormGroup = new FormGroup({});
+  caseTitle: FormControl = new FormControl('');
+  orgName: FormControl = new FormControl('');
 
-  onModelChangeCaseTitle(caseTitle: string): void {
-    this.caseTitle = caseTitle;
-    this.dialogForm.markAsDirty();
+
+  async addCase() {
+    let subCase: any = {
+      data: {
+        type: 'Case',
+      },
+    };
+    let caseToAdd: Case = {
+      data: {
+        type: 'Cases',
+        attributes: {
+          name: '',
+          modified_user_id: '',
+          modified_by_name: '',
+          created_by: '',
+          created_by_name: '',
+          description: '',
+          deleted: '',
+          created_by_link: '',
+          modified_user_link: '',
+          assigned_user_id: '',
+          assigned_user_name: '',
+          assigned_user_link: '',
+          SecurityGroups: '',
+          case_number: '',
+          type: '',
+          status: '',
+          priority: '',
+          resolution: '',
+          work_log: '',
+          suggestion_box: '',
+          account_name: '',
+          account_name1: '',
+          account_id: '',
+          state: '',
+          case_attachments_display: '',
+          case_update_form: '',
+          contact_created_by: '',
+          contact_created_by_name: '',
+          contact_created_by_id: '',
+          tasks: '',
+          notes: '',
+          meetings: '',
+          emails: '',
+          documents: '',
+          calls: '',
+          bugs: '',
+          contacts: '',
+          accounts: '',
+          project: '',
+          update_text: '',
+          internal: '',
+          aop_case_updates_threaded: '',
+          aop_case_updates: '',
+          aop_case_events: '',
+        },
+      },
+    };
+    (caseToAdd.data.type = 'Cases'),
+      (caseToAdd.data.attributes.name =
+        this.contactsForm.controls['caseTitle'].value),
+      (caseToAdd.data.attributes.account_name =
+        this.contactsForm.controls['orgName'].value),
+      (caseToAdd.data.attributes.status = this.stringifyStatus(
+        this.controlStatuses.value
+      )),
+      (caseToAdd.data.attributes.priority = this.stringifyPriority(
+        this.controlPriorities.value
+      )),
+      (caseToAdd.data.attributes.contacts = this.stringifyContact(
+        this.controlContacts.value
+      )),
+      (caseToAdd.data.attributes.internal = this.stringifyContact(
+        this.controlGroups.value
+      )),
+      (caseToAdd.data.attributes.assigned_user_name = this.stringifyAssignment(
+        this.controlAssignments.value
+      )),
+      (caseToAdd.data.attributes.assigned_user_id = this.currentUser.data.id);
+    caseToAdd.data.attributes.modified_user_id = this.currentUser.data.id;
+    caseToAdd.data.attributes.modified_by_name =
+      this.currentUser.data.attributes.full_name;
+    // lead.data.attributes.created_by_name = this.currentUser.data.attributes.full_name;
+    console.log(caseToAdd);
+    this.store.dispatch(CaseAction.addCase({ case: caseToAdd }));
+    this.case$.subscribe((data) => {
+      console.log(data);
+    });
   }
 
   //control status selection
@@ -157,12 +246,9 @@ export class ThirdNavbarComponent implements OnInit {
 
   readonly stringifyStatusContact = (statusContact: { name: string }): string =>
     `${statusContact.name} `;
+  //
 
   ngOnInit() {}
-
-  emitAddCase() {
-    this.addCase.emit();
-  }
 
   //Hiển thị Dialog
   showDialog(content: PolymorpheusContent, size: TuiDialogSize): void {
@@ -174,9 +260,11 @@ export class ThirdNavbarComponent implements OnInit {
     });
 
     this.dialogs
-      .open(content, { closeable, dismissible: closeable, size })
+      .open(content, { closeable, dismissible: closeable, size:size })
       .subscribe({
-        complete: () => {},
+        complete: () => {
+          this;
+        },
       });
   }
 }

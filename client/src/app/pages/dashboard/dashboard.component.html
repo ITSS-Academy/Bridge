@@ -1,0 +1,138 @@
+<div class="background">
+  <app-second-navbar [title]="title"></app-second-navbar>
+  <!-- <div class="dashboardSelectorBar"></div> -->
+  <div class="body">
+    <div class="sidebar">
+      <div style="position: fixed; margin-top: 1rem;">
+        <div class="sidebarSection">SIDEBAR</div>
+        <div class="sidebarSectionButton">DASHBOARD</div>
+        <div class="sidebarSectionButton">PROFILE</div>
+        <div class="sidebarSectionButton">TIMELINE</div>
+        <div class="sidebarSectionButton">MESSAGES</div>
+        <div class="sidebarSectionButton">PREFERENCES</div>
+        <div class="sidebarSectionButton">LOG OUT</div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="header">
+        <img
+          src="./assets/Low code development-amico (1).png"
+          class="headerImage"
+        />
+        <div class="headerText">
+          <p style="font-size: 30px">Welcome, <b>Spinnging Axe</b> !</p>
+          <br />
+          <p>You have <b>3</b> new Tasks today</p>
+        </div>
+      </div>
+
+      <div class="sectionTitle"></div>
+      <div class="quickViewBar">
+        <div class="quickViewCard"><b>1 Tasks</b><span class="material-symbols-outlined quickViewCardImg">description</span></div>
+        <div class="quickViewCard"><b>1 Deals</b><span class="material-symbols-outlined quickViewCardImg">currency_exchange</span></div>
+        <div class="quickViewCard"><b>1 Cases</b> <span class="material-symbols-outlined quickViewCardImg">cases</span></div>
+        <div class="quickViewCard"><b>0 Events</b> <span class="material-symbols-outlined quickViewCardImg">calendar_month</span></div>
+      </div>
+
+      <div class="sectionTitle"><span class="center">Your Tasks <span class="material-symbols-outlined"  style="margin: 0 0 5px 5px;">description</span></span>
+      <span (click)="navTo('tasks')" style="color: #58c2ce;display: flex; align-items: center; cursor: pointer;">Tasks<span class="material-symbols-outlined">double_arrow</span></span></div>
+      <div class="sectionHeader">
+        <table>
+          <tr>
+            <th>TITLE</th>
+            <th>DUE DATE</th>
+            <th>PRIORITY</th>
+            <th>PROGRESS</th>
+          </tr>
+        </table>
+      </div>
+      <div class="section">
+
+      <table>
+        <tr>
+          <td>MAKE THE CRM</td>
+          <td>7/9/2023</td>
+          <td class="priorityTd {{priority.color}}"><span class="material-symbols-outlined">flag</span>{{priority.name}}</td>
+          <td><div class="tdDiv {{progress.color}}">{{progress.name}}</div></td>
+        </tr>
+
+      </table>
+
+      </div>
+
+      <div class="sectionTitle"><span class="center">Your Deals <span class="material-symbols-outlined"  style="margin: 0 0 5px 10px;">currency_exchange</span></span>
+        <span (click)="navTo('deals')" style="color: #58c2ce;display: flex; align-items: center; cursor: pointer;">Deals<span class="material-symbols-outlined">double_arrow</span></span></div>
+      <div class="sectionHeader">
+
+        <table>
+          <tr>
+            <th>TITLE</th>
+            <th>ORGANIZATION</th>
+            <th>DUE DATE</th>
+            <th>SALE STAGE</th>
+          </tr>
+        </table>
+
+      </div>
+      <div class="section">
+
+        <table>
+        <tr>
+          <td>ITSS SMALL DEAL</td>
+          <td>ITSS</td>
+          <td>11/9/2023</td>
+          <td><div class="tdDiv {{saleStage.color}}">{{saleStage.name}}</div></td>
+        </tr>
+
+      </table>
+
+      </div>
+
+      <div class="sectionTitle"><span class="center">Your Cases <span class="material-symbols-outlined"  style="margin: 0 0 2px 10px;">cases</span></span>
+        <span (click)="navTo('cases')" style="color: #58c2ce;display: flex; align-items: center; cursor: pointer;">Cases<span class="material-symbols-outlined">double_arrow</span></span>
+      </div>
+      <div class="sectionHeader">
+
+        <table>
+          <tr>
+            <th>TITLE</th>
+            <th>STATUS</th>
+            <th>PRIORITY</th>
+            <th>PROGRESS</th>
+          </tr>
+        </table>
+
+      </div>
+      <div class="section">
+
+        <table>
+          <tr>
+            <td>MAKE THE CRM</td>
+            <td><div class="tdDiv {{status.color}}">{{status.name}}</div></td>
+            <td class="priorityTd {{priority.color}}"><span class="material-symbols-outlined">flag</span>{{priority.name}}</td>
+            <td><div class="tdDiv {{progress.color}}">{{progress.name}}</div></td>
+          </tr>
+
+        </table>
+
+      </div>
+    </div>
+    <div class="sidebarRight">
+      <div class="profile">
+        <img src="./assets/Spinning Axe.png" class="profileImage" />
+        <b>Spinning Axe</b>
+        <span>SpinningAxe123@gmail.com</span>
+        <span>Role: IT Consultant</span>
+        <span>Report To: Tran Minh Quan</span>
+      </div>
+      <div class="calender">
+        <b class="center">Calender <span class="material-symbols-outlined" style="margin: 0 0 0 5px;">calendar_month</span></b>
+        <tui-calendar></tui-calendar>
+      </div>
+      <div class="upcomingEvent">
+        <b>Upcoming Events</b>
+        <div class="upcomingEventSection">No Data Found</div>
+      </div>
+    </div>
+  </div>
+</div>
