@@ -57,6 +57,8 @@ export class UserComponent{
   }
 
   usersForm: FormGroup = new FormGroup({});
+  employeesForm: FormGroup = new FormGroup({});
+  currenciesForm: FormGroup = new FormGroup({});
 
   onModelChangeName(name: string): void {
     this.name = name;
@@ -220,7 +222,7 @@ export class UserComponent{
     });
 
     this.dialogs
-      .open(content, { closeable, dismissible: closeable })
+      .open(content, { closeable, dismissible: closeable ,size})
       .subscribe({
         complete: () => {
           this.name = '';
