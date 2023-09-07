@@ -25,8 +25,8 @@ export class CasesService {
     return this.http.get(`${environment.API_URL}/cases/${id}`) as Observable<any>;
   }
 
-  updateCase(id: string, body: any) {
-    return this.http.patch(`${environment.API_URL}/cases/${id}`, body) as Observable<any>;
+  updateCase(body: any) {
+    return this.http.patch(`${environment.API_URL}/cases/`, body) as Observable<any>;
   }
 
   deleteCase(id: string) {
