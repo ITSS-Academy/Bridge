@@ -242,100 +242,103 @@
       [formGroup]="usersForm"
       (ngSubmit)="observer.complete()"
     >
-      <div class="dialog-user">
-        <p id="title-dialog-user">Edit: User Information</p>
+      <p id="title-dialog-user">Edit: User Information</p>
 
-        <div class="contents-dialog-user">
-          <div class="display-name-container-dialog">
-            <p id="title-display-dialog">Display name</p>
-            <tui-input
-              style="outline: none !important"
-              id="input-display-dialog"
-              tuiTextfieldSize="s"
-              [(ngModel)]="name"
-              (ngModelChange)="onModelChangeName($event)"
-            >
-              Type name
-            </tui-input>
-          </div>
-
-          <div class="primary-group-container-dialog">
-            <p id="title-primary-group-dialog">Primary group</p>
-            <tui-input
-              id="input-primary-group-dialog"
-              tuiTextfieldSize="s"
-              [(ngModel)]="primaryGroup"
-              (ngModelChange)="onModelChangeGroup($event)"
-            >
-              Type group
-            </tui-input>
-          </div>
-
-          <div class="email-container-dialog">
-            <p id="title-email-dialog">Email</p>
-            <tui-input
-              id="input-email-dialog"
-              tuiTextfieldSize="s"
-              [(ngModel)]="email"
-              (ngModelChange)="onModelChangeEmail($event)"
-            >
-              Type email
-            </tui-input>
-          </div>
-
-          <div class="report-to-container-dialog">
-            <p id="title-report-to-dialog">Report to</p>
-            <tui-input
-              id="input-report-to-dialog"
-              tuiTextfieldSize="s"
-              [(ngModel)]="reportTo"
-              (ngModelChange)="onModelChangeReport($event)"
-            >
-              To ...
-            </tui-input>
-          </div>
-
-          <div class="role-container-dialog">
-            <p id="title-role-dialog">Role</p>
-            <tui-input
-              id="input-role-dialog"
-              tuiTextfieldSize="s"
-              [(ngModel)]="role"
-            >
-              Type role
-            </tui-input>
-          </div>
-
-          <div class="language-container-dialog">
-            <p id="title-language-dialog">Language</p>
-
-            <tui-combo-box
-              id="input-language-dialog"
-              [formControl]="controlLanguages"
-              [stringify]="stringifyLanguage"
-              tuiTextfieldSize="s"
-            >
-              Choose your language
-
-              <tui-data-list-wrapper
-                *tuiDataList
-                [items]="languages | tuiFilterByInputWith : stringifyLanguage"
-                [itemContent]="stringifyLanguage | tuiStringifyContent"
-              ></tui-data-list-wrapper>
-            </tui-combo-box>
-          </div>
+      <div class="contents-dialog-user">
+        <div class="display-name-container-dialog">
+          <p id="title-display-dialog">Display name</p>
+          <tui-input
+            style="outline: none !important"
+            id="input-display-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="name"
+            (ngModelChange)="onModelChangeName($event)"
+          >
+            Type name
+          </tui-input>
         </div>
 
-        <div class="save-canceled-container">
-          <button class="canceled-button" type="submit">Cancel</button>
-          <button class="save-button" type="submit">Save</button>
+        <div class="primary-group-container-dialog">
+          <p id="title-primary-group-dialog">Primary group</p>
+          <tui-input
+            id="input-primary-group-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="primaryGroup"
+            (ngModelChange)="onModelChangeGroup($event)"
+          >
+            Type group
+          </tui-input>
         </div>
+
+        <div class="email-container-dialog">
+          <p id="title-email-dialog">Email</p>
+          <tui-input
+            id="input-email-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="email"
+            (ngModelChange)="onModelChangeEmail($event)"
+          >
+            Type email
+          </tui-input>
+        </div>
+
+        <div class="report-to-container-dialog">
+          <p id="title-report-to-dialog">Report to</p>
+          <tui-input
+            id="input-report-to-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="reportTo"
+            (ngModelChange)="onModelChangeReport($event)"
+          >
+            To ...
+          </tui-input>
+        </div>
+
+        <div class="role-container-dialog">
+          <p id="title-role-dialog">Role</p>
+          <tui-input
+            id="input-role-dialog"
+            tuiTextfieldSize="s"
+            [(ngModel)]="role"
+          >
+            Type role
+          </tui-input>
+        </div>
+
+        <div class="language-container-dialog">
+          <p id="title-language-dialog">Language</p>
+
+          <tui-combo-box
+            id="input-language-dialog"
+            [formControl]="controlLanguages"
+            [stringify]="stringifyLanguage"
+            tuiTextfieldSize="s"
+          >
+            Choose your language
+
+            <tui-data-list-wrapper
+              *tuiDataList
+              [items]="languages | tuiFilterByInputWith : stringifyLanguage"
+              [itemContent]="stringifyLanguage | tuiStringifyContent"
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+        </div>
+      </div>
+
+      <div class="save-canceled-container">
+        <button class="canceled-button" type="submit">Cancel</button>
+        <button class="save-button" type="submit">Save</button>
       </div>
     </form>
   </ng-template>
 
-  <ng-template id="dialogEmployeeInfo" #dialogEmployeeInfo let-context>
-    <div class="dialog-employee">
+  <!--DIALOG EMPLOYEE-->
+  <ng-template id="dialogEmployeeInfo" #dialogEmployeeInfo let-observer>
+    <form
+      id="form-container"
+      [formGroup]="employeesForm"
+      (ngSubmit)="observer.complete()"
+    >
       <p id="title-dialog-employee">Edit: Employee Information</p>
 
       <div class="contents-dialog-employee">
@@ -464,14 +467,19 @@
       </div>
 
       <div class="save-canceled-container">
-        <button class="canceled-button">Cancel</button>
-        <button class="save-button" (click)="context.complete()">Save</button>
+        <button class="canceled-button" type="submit">Cancel</button>
+        <button class="save-button" type="submit">Save</button>
       </div>
-    </div>
+    </form>
   </ng-template>
 
-  <ng-template id="dialogCurrencyNumber" #dialogCurrencyNumber let-context>
-    <div class="dialog-currency-number">
+  <!--DIALOG CURRENCY-->
+  <ng-template id="dialogCurrencyNumber" #dialogCurrencyNumber let-observer>
+    <form
+      id="form-container"
+      [formGroup]="currenciesForm"
+      (ngSubmit)="observer.complete()"
+    >
       <p id="title-dialog-currency-number">
         Edit: Currency and number preferences
       </p>
@@ -631,10 +639,10 @@
       </div>
 
       <div class="save-canceled-container">
-        <button class="canceled-button">Cancel</button>
-        <button class="save-button" (click)="context.complete()">Save</button>
+        <button class="canceled-button" type="submit">Cancel</button>
+        <button class="save-button" type="submit">Save</button>
       </div>
-    </div>
+    </form>
   </ng-template>
 </div>
 
