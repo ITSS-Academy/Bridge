@@ -1,174 +1,181 @@
-$Blue : #58c2ce;
-$Blue2: #2C698D;
+$Blue: #58c2ce;
+$Blue2: #2c698d;
 $Blue3: #272643;
 $Blue0: #96d5d5;
-$LightGray:#F2F2F2;
+$LightGray: #f2f2f2;
 
 $Red2: #b50000;
 $Red: #fb1e1e;
 $Yellow: #ffca0b;
 $Green: #a4e617;
 
-.button{
+.button {
   box-sizing: border-box;
-    background-color: #fff;
-    color: $Blue;
-    min-width: 10rem;
-    border-radius: 8px;
-    border: 2px solid $Blue;
-    padding: 0.25rem 1rem;
-    margin-right: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.buttonMainAction{
-    background-color:$Blue ;
-    color: #fff;
-}
-
-//CSS CỦA TRANG CÓ NỘI DUNG
-table{
-  box-sizing: border-box;
-    background-color: #fff;
-    width: 100vw
-}
-tr{
-  box-sizing: border-box;
-    padding: 0.5rem 1.5rem;
-    align-content: center;
-    border-bottom: 1px solid $LightGray;
-}
-th{
-  box-sizing: border-box;
-  padding: 0.5rem 1.5rem;
-    text-align: left;
-    color: $Blue2;
-    width: 10rem;
-}
-td{
-  box-sizing: border-box;
-  padding: 0.5rem 1.5rem;
-    color: $Blue2;
-    width: 10rem;
-}
-
-.status{
-  box-sizing: border-box;
-  padding:0.25rem 1rem;
-  width: max-content;
+  background-color: #fff;
+  color: $Blue;
+  min-width: 10rem;
   border-radius: 8px;
+  border: 2px solid $Blue;
+  padding: 0.25rem 1rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.assigned{
+.buttonMainAction {
   background-color: $Blue;
   color: #fff;
 }
 
-.open{
+.action {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+//CSS CỦA TRANG CÓ NỘI DUNG
+table {
+  background-color: #fff;
+  width: 100vw;
+}
+tr {
+  padding: 0.5rem 1.5rem;
+  align-content: center;
+  border-bottom: 1px solid $LightGray;
+  align-items: center;
+}
+th {
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+  color: $Blue2;
+  width: 10rem;
+  align-items: center;
+}
+td {
+  padding: 0.5rem 1.5rem;
+  color: $Blue2;
+  width: 10rem;
+  justify-content: center;
+  text-align: center;
+}
+
+.status {
+  box-sizing: border-box;
+  padding: 0.25rem 1rem;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.assigned {
+  background-color: $Blue;
+  color: #fff;
+}
+
+.open {
   color: #fff;
   background-color: $Blue0;
 }
 
-.waitForCustomer{
+.waitForCustomer {
   background-color: $Blue2;
   color: #fff;
 }
 
-.waitFor3rdParty{
+.waitFor3rdParty {
   background-color: $Blue2;
   color: #fff;
 }
 
-.priority{
+.priority {
   box-sizing: border-box;
   display: flex;
-  align-content: flex-end;
+  justify-content: center;
 }
 
-.high{
+.high {
   color: $Red;
 }
 
-.medium{
+.medium {
   color: $Yellow;
 }
 
-.low{
+.low {
   color: $Blue;
 }
 
-.urgent{
+.urgent {
   color: $Red2;
   font-weight: 500;
 }
 
 //CSS CỦA CHECKBOX - COPY TRÊN MẠNG TỐT NHẤT ĐỪNG ĐỤNG VÀO
 .container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  /* Hide the browser's default checkbox */
-  .container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-  
-  /* Create a custom checkbox */
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 1.5rem;
-    width: 1.5rem;
-    background-color: #eee;
-    border-radius: 4px;
-  }
-  
-  /* On mouse-over, add a grey background color */
-  .container:hover input ~ .checkmark {
-    background-color: #ccc;
-  }
-  
-  /* When the checkbox is checked, add a blue background */
-  .container input:checked ~ .checkmark {
-    background-color: $Blue;
-  }
-  
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  /* Show the checkmark when checked */
-  .container input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  /* Style the checkmark/indicator */
-  .container .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: $Blue;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

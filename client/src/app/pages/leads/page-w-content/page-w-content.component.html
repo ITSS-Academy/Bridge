@@ -22,10 +22,11 @@
       <th><b>CITY</b></th>
       <th>ACTION</th>
     </tr>
-    <tr class="visible-data" *ngFor="let lead of (this.leads | async)">
+    <tr class="visible-data" *ngFor="let lead of this.leads | async">
       <!-- CHECKBOX -->
-      <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
-          <input type="checkbox">
+      <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
+        <label class="container">
+          <input type="checkbox" />
           <span class="checkmark"></span>
         </label></th>
       <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
@@ -51,7 +52,11 @@
       <!-- DIALOG -->
       <ng-template id="dialogAddLead" #dialogAddLeads let-observer>
         <!--FORM CHỨA NỘI DUNG DIALOG-->
-        <form id="form-container" [formGroup]="exampleForm" (ngSubmit)="observer.complete()">
+        <form
+          id="form-container"
+          [formGroup]="exampleForm"
+          (ngSubmit)="observer.complete()"
+        >
           <!--CHỮ TỰA ĐỀ CỦA DIALOG-->
           <p id="header-dialog">Update Lead</p>
 
@@ -60,8 +65,13 @@
             <!--DIV FIRST NAME-->
             <div class="container-dialog">
               <p class="title-dialog">First name</p>
-              <tui-input [formControl]="firstName" style="outline: none !important" class="input-dialog"
-                tuiTextfieldSize="s" ngModel="{{lead.data.attributes.first_name}}">
+              <tui-input
+                [formControl]="firstName"
+                style="outline: none !important"
+                class="input-dialog"
+                tuiTextfieldSize="s"
+                ngModel="{{ lead.data.attributes.first_name }}"
+              >
                 Type first name
               </tui-input>
             </div>
@@ -69,8 +79,12 @@
             <!--DIV LAST NAME-->
             <div class="container-dialog">
               <p class="title-dialog">Last name</p>
-              <tui-input [formControl]="lastName2" class="input-dialog" tuiTextfieldSize="s"
-                ngModel="{{lead.data.attributes.last_name}}">
+              <tui-input
+                [formControl]="lastName2"
+                class="input-dialog"
+                tuiTextfieldSize="s"
+                ngModel="{{ lead.data.attributes.last_name }}"
+              >
                 Type last name
               </tui-input>
             </div>
@@ -78,8 +92,12 @@
             <!--DIV COMPANY-->
             <div class="container-dialog">
               <p class="title-dialog">Company</p>
-              <tui-input [formControl]="company2" class="input-dialog" tuiTextfieldSize="s"
-                ngModel="{{lead.data.attributes.department}}">
+              <tui-input
+                [formControl]="company2"
+                class="input-dialog"
+                tuiTextfieldSize="s"
+                ngModel="{{ lead.data.attributes.department }}"
+              >
                 Type company
               </tui-input>
             </div>
@@ -87,8 +105,12 @@
             <!--DIV EMAIL-->
             <div class="container-dialog">
               <p class="title-dialog">Email</p>
-              <tui-input [formControl]="email2" class="input-dialog" tuiTextfieldSize="s"
-                ngModel="{{lead.data.attributes.email1!}}">
+              <tui-input
+                [formControl]="email2"
+                class="input-dialog"
+                tuiTextfieldSize="s"
+                ngModel="{{ lead.data.attributes.email1! }}"
+              >
                 Type here
               </tui-input>
             </div>
@@ -96,10 +118,16 @@
             <!--DIV PHONE-->
             <div class="container-dialog">
               <p class="title-dialog">Phone</p>
-              <tui-input-phone-international [formControl]="phone2" class="input-dialog"
-                [countries]="(phones | tuiSortCountries | async) || []" [(countryIsoCode)]="countryIsoCode"
-                [tuiTextfieldLabelOutside]="true" tuiTextfieldSize="m" style="border-radius: 8px"
-                ngModel="{{lead.data.attributes.phone_mobile!}}">
+              <tui-input-phone-international
+                [formControl]="phone2"
+                class="input-dialog"
+                [countries]="(phones | tuiSortCountries | async) || []"
+                [(countryIsoCode)]="countryIsoCode"
+                [tuiTextfieldLabelOutside]="true"
+                tuiTextfieldSize="m"
+                style="border-radius: 8px"
+                ngModel="{{ lead.data.attributes.phone_mobile! }}"
+              >
                 (optional)
               </tui-input-phone-international>
             </div>
@@ -107,27 +135,35 @@
             <!--DIV ASSIGNED TO-->
             <div class="container-dialog">
               <p class="title-dialog">Assigned to</p>
-
-              <tui-combo-box class="input-dialog" [formControl]="controlAssignments" [stringify]="stringifyAssignment"
-                tuiTextfieldSize="s" [ngModel]="lead.data.attributes.assigned_user_name"
-                [valueContent]="lead.data.attributes.assigned_user_name">
+              <tui-combo-box
+                class="input-dialog"
+                [formControl]="controlAssignments"
+                [stringify]="stringifyAssignment"
+                tuiTextfieldSize="s"
+                [ngModel]="lead.data.attributes.assigned_user_name"
+                [valueContent]="lead.data.attributes.assigned_user_name"
+              >
                 Choose/Type here
-
-                <tui-data-list-wrapper *tuiDataList [items]="assignments | tuiFilterByInputWith : stringifyAssignment"
-                  [itemContent]="stringifyAssignment | tuiStringifyContent"></tui-data-list-wrapper>
+                <tui-data-list-wrapper
+                  *tuiDataList
+                  [items]="
+                    assignments | tuiFilterByInputWith : stringifyAssignment
+                  "
+                  [itemContent]="stringifyAssignment | tuiStringifyContent"
+                ></tui-data-list-wrapper>
               </tui-combo-box>
             </div>
-          </div>
 
-          <!--DIV NÚT CANCEL VÀ SAVE-->
-          <div class="cancel-save">
-            <button class="button-cancel" type="submit">Cancel</button>
-            <button class="button-add" (click)="updateLead(lead)">update</button>
+            <!--DIV NÚT CANCEL VÀ SAVE-->
+            <div class="cancel-save">
+              <button class="button-cancel" type="submit">Cancel</button>
+              <button class="button-add" (click)="updateLead(lead)">
+                update
+              </button>
+            </div>
           </div>
         </form>
       </ng-template>
-
-
     </tr>
   </table>
 </div>

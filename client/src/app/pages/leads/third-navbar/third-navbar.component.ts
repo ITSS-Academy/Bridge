@@ -179,7 +179,7 @@ export class ThirdNavbarComponent implements OnInit {
           lawful_basis_source: '',
           event_accept_status: '',
           alt_address_street_3: '',
-          do_not_call: '0',
+          do_not_call: '',
           refered_by: '',
           // created_by_name: this.currentUser.data.attributes.full_name,
         },

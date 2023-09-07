@@ -1,0 +1,71 @@
+<div class="background">
+  <app-second-navbar [title]="title"></app-second-navbar>
+  <!-- <div class="dashboardSelectorBar"></div> -->
+  <div class="body">
+    <div class="sidebar">
+      <div style="position: fixed">
+        <div class="sidebarSection">SIDEBAR</div>
+        <div class="sidebarSectionButton">DASHBOARD</div>
+        <div class="sidebarSectionButton">PROFILE</div>
+        <div class="sidebarSectionButton">TIMELINE</div>
+        <div class="sidebarSectionButton">MESSAGES</div>
+        <div class="sidebarSectionButton">PREFERENCES</div>
+        <div class="sidebarSectionButton">LOG OUT</div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="header">
+        <img
+          src="./assets/Low code development-amico (1).png"
+          class="headerImage"
+        />
+        <div class="headerText">
+          <p style="font-size: 30px">Welcome, <b>Spinnging Axe</b> !</p>
+          <br />
+          <p>You have <b>3</b> new Tasks today</p>
+        </div>
+      </div>
+
+      <div class="sectionTitle"></div>
+      <div class="quickViewBar">
+        <div class="quickViewCard"><b>Tasks</b></div>
+        <div class="quickViewCard"><b>Deals</b></div>
+        <div class="quickViewCard"><b>Cases</b></div>
+        <div class="quickViewCard"><b>Events</b></div>
+      </div>
+
+      <div class="sectionTitle"><span>Your Tasks</span>
+      <span (click)="navTo('tasks')" style="color: #58c2ce;display: flex; align-items: center; cursor: pointer;">Tasks<span class="material-symbols-outlined">double_arrow</span></span></div>
+      <div class="sectionHeader"></div>
+      <div class="section"></div>
+
+      <div class="sectionTitle"><span>Your Deals</span>
+        <span (click)="navTo('deals')" style="color: #58c2ce;display: flex; align-items: center; cursor: pointer;">Deals<span class="material-symbols-outlined">double_arrow</span></span></div>
+      <div class="sectionHeader"></div>
+      <div class="section"></div>
+
+      <div class="sectionTitle">Your Cases
+        <span (click)="navTo('cases')" style="color: #58c2ce;display: flex; align-items: center; cursor: pointer;">Cases<span class="material-symbols-outlined">double_arrow</span></span>
+      </div>
+      <div class="sectionHeader"></div>
+      <div class="section"></div>
+    </div>
+    <div class="sidebarRight">
+      <div class="profile">
+        <img src="./assets/Spinning Axe.png" class="profileImage" />
+        <b>Spinning Axe</b>
+        <span>SpinningAxe123@gmail.com</span>
+        <span>Role: IT Consultant</span>
+        <span>Report To: Tran Minh Quan</span>
+      </div>
+      <div class="calender">
+        <b>Calender</b>
+        <tui-calendar></tui-calendar>
+      </div>
+      <div class="upcomingEvent">
+        <b>Upcoming Events</b>
+        <div class="upcomingEventSection">No Data Found</div>
+      </div>
+    </div>
+  </div>
+</div>

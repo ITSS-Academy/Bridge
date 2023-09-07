@@ -1,0 +1,51 @@
+export interface Case {
+  data: {
+    type: String;
+    attributes: {
+      name: String;
+      modified_user_id: String;
+      modified_by_name: String;
+      created_by: String;
+      created_by_name: String;
+      description: String;
+      deleted: String;
+      created_by_link: String;
+      modified_user_link: String;
+      assigned_user_id: String;
+      assigned_user_name: String;
+      assigned_user_link: String;
+      SecurityGroups: String;
+      case_number: String;
+      type: String;
+      status: String;
+      priority: String;
+      resolution: String;
+      work_log: String;
+      suggestion_box: String;
+      account_name: String;
+      account_name1: String;
+      account_id: String;
+      state: String;
+      case_attachments_display: String;
+      case_update_form: String;
+      contact_created_by: String;
+      contact_created_by_name: String;
+      contact_created_by_id: String;
+      tasks: String;
+      notes: String;
+      meetings: String;
+      emails: String;
+      documents: String;
+      calls: String;
+      bugs: String;
+      contacts: String;
+      accounts: String;
+      project: String;
+      update_text: String;
+      internal: String;
+      aop_case_updates_threaded: String;
+      aop_case_updates: String;
+      aop_case_events: String;
+    };
+  };
+}

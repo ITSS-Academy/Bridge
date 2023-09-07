@@ -31,7 +31,7 @@
   <!--FORM CHỨA NỘI DUNG DIALOG-->
   <form
     id="form-container"
-    [formGroup]="exampleForm"
+    [formGroup]="casesForm"
     (ngSubmit)="observer.complete()"
   >
     <!--TỰA ĐỀ BỰ CỦA DIALOG CASE-->
@@ -158,12 +158,39 @@
           ></tui-data-list-wrapper>
         </tui-combo-box>
       </div>
+
+      <!--ORGANIZATION NAME-->
+      <div class="container-dialog">
+        <p class="title-dialog">Organization name</p>
+        <tui-input
+          style="outline: none !important"
+          class="input-dialog"
+          tuiTextfieldSize="s"
+          [(ngModel)]="orgName"
+          (ngModelChange)="onModelChangeCaseTitle($event)"
+        >
+          Type here
+        </tui-input>
+      </div>
+
+      <!--DUE DATE-->
+      <div class="container-dialog">
+        <p class="title-dialog">Resolute due</p>
+
+        <tui-input-date
+          class="input-dialog"
+          formControlName="testValue"
+          tuiTextfieldSize="s"
+        >
+          Choose a date
+        </tui-input-date>
+      </div>
     </div>
 
     <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
     <div class="cancel-save">
       <button class="button-cancel" type="submit">Cancel</button>
-      <button class="button-add" type="submit">Add</button>
+      <button class="button-add" type="submit" (click)="addCase()">Add</button>
     </div>
   </form>
 </ng-template>
