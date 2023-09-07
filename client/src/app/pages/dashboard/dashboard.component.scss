@@ -113,12 +113,32 @@ $Green: #a4e617;
     border-radius: 8px;
     padding: 2rem;
     box-sizing: border-box;
+    // box-shadow: 0px 4px 8px white;
+    position: relative;
+    top: 0px;
+    transition: top 0.25s, box-shadow 0.25s;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+.quickViewCardImg{
+    margin: 0 0 0 1rem ;
+    font-size: 40px;
+    // font-weight: 600;
+}
+
+.quickViewCard:hover{
+    top: -10px;
     box-shadow: 0px 4px 8px #cacaca;
+    cursor: pointer;
+    
 }
 
 .quickViewCard b{
     font-size: 20px;
-    // color: #fff;
 }
 
 .sectionTitle{
@@ -135,7 +155,7 @@ $Green: #a4e617;
 }
 
 .section{
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     width: 100%;
     box-sizing: border-box;
     height: max-content;
@@ -149,7 +169,7 @@ $Green: #a4e617;
 
 .sectionHeader{
     border-radius: 8px;
-    background-color: white;
+    // background-color: white;
     min-height: 3rem;
     padding: 1rem;
     display: flex;
@@ -157,16 +177,19 @@ $Green: #a4e617;
     align-items: center;
     box-shadow: 0px 0px 4px #cacaca ;
     box-sizing: border-box;
+
+    background-color: $Blue;
+    color: white;
 }
 
 table{
-    background-color: #fff;
+    // background-color: #fff;
     width: 100%;
 }
 tr{
     
     align-items: center;
-    border-bottom: 1px solid $LightGray;
+    // border-bottom: 1px solid $LightGray;
     font-size: 16px;
     justify-content: space-between;
 }   
@@ -174,12 +197,13 @@ th{
 
     width: 13rem;
     text-align: center;
-    color: $Blue3;
+    // color: $Blue3;
     align-items: center;
     overflow: hidden;  
 }
 td{
     // margin: 1rem 0;
+    border-bottom: 1px solid $LightGray;
     padding: 1rem 0;
     width: 13rem;
     text-align: center;
@@ -260,12 +284,6 @@ td{
   .urgentDiv{
     background-color: $Red2;
     color:#fff;
-  }
-
-  .progress{
-    background-color: $Blue;
-    color:#fff;
-    font-weight: 500;
   }
 
   .sidebarRight{

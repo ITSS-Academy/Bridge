@@ -3,7 +3,7 @@
   <!-- <div class="dashboardSelectorBar"></div> -->
   <div class="body">
     <div class="sidebar">
-      <div style="position: fixed">
+      <div style="position: fixed; margin-top: 1rem;">
         <div class="sidebarSection">SIDEBAR</div>
         <div class="sidebarSectionButton">DASHBOARD</div>
         <div class="sidebarSectionButton">PROFILE</div>
@@ -28,13 +28,13 @@
 
       <div class="sectionTitle"></div>
       <div class="quickViewBar">
-        <div class="quickViewCard"><b>Tasks</b></div>
-        <div class="quickViewCard"><b>Deals</b></div>
-        <div class="quickViewCard"><b>Cases</b></div>
-        <div class="quickViewCard"><b>Events</b></div>
+        <div class="quickViewCard"><b>1 Tasks</b><span class="material-symbols-outlined quickViewCardImg">description</span></div>
+        <div class="quickViewCard"><b>1 Deals</b><span class="material-symbols-outlined quickViewCardImg">currency_exchange</span></div>
+        <div class="quickViewCard"><b>1 Cases</b> <span class="material-symbols-outlined quickViewCardImg">cases</span></div>
+        <div class="quickViewCard"><b>0 Events</b> <span class="material-symbols-outlined quickViewCardImg">calendar_month</span></div>
       </div>
 
-      <div class="sectionTitle"><span>Your Tasks</span>
+      <div class="sectionTitle"><span class="center">Your Tasks <span class="material-symbols-outlined"  style="margin: 0 0 5px 5px;">description</span></span>
       <span (click)="navTo('tasks')" style="color: #58c2ce;display: flex; align-items: center; cursor: pointer;">Tasks<span class="material-symbols-outlined">double_arrow</span></span></div>
       <div class="sectionHeader">
         <table>
@@ -60,7 +60,7 @@
 
       </div>
 
-      <div class="sectionTitle"><span>Your Deals</span>
+      <div class="sectionTitle"><span class="center">Your Deals <span class="material-symbols-outlined"  style="margin: 0 0 5px 10px;">currency_exchange</span></span>
         <span (click)="navTo('deals')" style="color: #58c2ce;display: flex; align-items: center; cursor: pointer;">Deals<span class="material-symbols-outlined">double_arrow</span></span></div>
       <div class="sectionHeader">
 
@@ -88,7 +88,7 @@
 
       </div>
 
-      <div class="sectionTitle">Your Cases
+      <div class="sectionTitle"><span class="center">Your Cases <span class="material-symbols-outlined"  style="margin: 0 0 2px 10px;">cases</span></span>
         <span (click)="navTo('cases')" style="color: #58c2ce;display: flex; align-items: center; cursor: pointer;">Cases<span class="material-symbols-outlined">double_arrow</span></span>
       </div>
       <div class="sectionHeader">
@@ -126,7 +126,7 @@
         <span>Report To: Tran Minh Quan</span>
       </div>
       <div class="calender">
-        <b>Calender</b>
+        <b class="center">Calender <span class="material-symbols-outlined" style="margin: 0 0 0 5px;">calendar_month</span></b>
         <tui-calendar></tui-calendar>
       </div>
       <div class="upcomingEvent">
