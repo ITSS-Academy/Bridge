@@ -27,7 +27,7 @@ export const contactReducer = createReducer(
         return {
             ...state,
             loading: false,
-            lead: action.contact,
+            contact: action.contact,
             status: "Add contact success",
             error: ''
         }

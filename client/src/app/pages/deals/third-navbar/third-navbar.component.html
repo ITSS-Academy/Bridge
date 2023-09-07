@@ -1,32 +1,32 @@
 <div class="thirdNavbar">
-    <div class="leftNavContent">
-      <button class="button">
-        <span class="material-symbols-outlined"> filter_list </span>
-        <span style="margin: 0 1rem">My {{ title }}</span>
-        <span class="material-symbols-outlined"> expand_more </span>
-      </button>
-      <button
-        class="button buttonMainAction"
-        (click)="showDialog(dialogAddDeal, 'auto')"
-      >
-        <span class="material-symbols-outlined"> add </span>
-        <span style="margin: 0 1rem">Add {{ title }}</span>
-      </button>
-    </div>
-    <div class="rightNavContent">
-      <button
-        class="button buttonRightNavContent"
-        style="padding: 0.25rem 1rem; min-width: max-content"
-      >
-        <span class="material-symbols-outlined"> rule_settings </span>
-      </button>
-      <button class="button buttonRightNavContent">
-        <span class="material-symbols-outlined"> chevron_left </span>
-        <span style="margin: 0 1rem">1 to 2</span>
-        <span class="material-symbols-outlined"> chevron_right </span>
-      </button>
-    </div>
+  <div class="leftNavContent">
+    <button class="button">
+      <span class="material-symbols-outlined"> filter_list </span>
+      <span style="margin: 0 1rem">My {{ title }}</span>
+      <span class="material-symbols-outlined"> expand_more </span>
+    </button>
+    <button
+      class="button buttonMainAction"
+      (click)="showDialog(dialogAddDeal, 'auto')"
+    >
+      <span class="material-symbols-outlined"> add </span>
+      <span style="margin: 0 1rem">Add {{ title }}</span>
+    </button>
   </div>
+  <div class="rightNavContent">
+    <button
+      class="button buttonRightNavContent"
+      style="padding: 0.25rem 1rem; min-width: max-content"
+    >
+      <span class="material-symbols-outlined"> rule_settings </span>
+    </button>
+    <button class="button buttonRightNavContent">
+      <span class="material-symbols-outlined"> chevron_left </span>
+      <span style="margin: 0 1rem">1 to 2</span>
+      <span class="material-symbols-outlined"> chevron_right </span>
+    </button>
+  </div>
+</div>
 
 <!-- DIALOG MAIN DEAL -->
 <ng-template id="dialogAddDeal" #dialogAddDeal let-observer>
@@ -45,6 +45,7 @@
       <div class="container-dialog">
         <p class="title-dialog">Deal name</p>
         <tui-input
+          [formControl]="dealName"
           style="outline: none !important"
           class="input-dialog"
           tuiTextfieldSize="s"
@@ -61,6 +62,7 @@
 
         <div style="display: flex">
           <tui-input
+            [formControl]="amount2"
             id="input-dialog-amount"
             tuiTextfieldSize="s"
             [(ngModel)]="amount"
@@ -227,6 +229,7 @@
 
         <div style="display: flex">
           <tui-input
+            [formControl]="probability2"
             style="outline: none !important"
             id="input-dialog-probability"
             tuiTextfieldSize="s"
@@ -243,7 +246,7 @@
     <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
     <div class="cancel-save">
       <button class="button-cancel" type="submit">Cancel</button>
-      <button class="button-add" type="submit">Add</button>
+      <button class="button-add" type="submit" (click)="addDeal()">Add</button>
     </div>
   </form>
 </ng-template>

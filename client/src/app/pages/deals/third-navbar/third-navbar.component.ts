@@ -1,19 +1,25 @@
 import {
-  Component,
-  Output,
-  EventEmitter,
-  OnInit,
   ChangeDetectionStrategy,
+  Component,
   Inject,
-  ViewEncapsulation,
   Input,
 } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { TuiDialogService, TuiDialogSize } from '@taiga-ui/core';
-import { TuiDialogFormService } from '@taiga-ui/kit';
+import {
+  TuiDialogContext,
+  TuiDialogService,
+  TuiDialogSize,
+} from '@taiga-ui/core';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TuiCountryIsoCode } from '@taiga-ui/i18n';
-import { TuiDay } from '@taiga-ui/cdk';
+import { TuiDialogFormService } from '@taiga-ui/kit';
+import { DealsService } from '../deals.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { DealState } from '../ngrx/state/deal.state';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Deal } from 'src/app/models/deal.model';
+import { DealAction } from '../ngrx/action/deal.action';
 
 @Component({
   selector: 'app-third-navbar',
@@ -21,20 +27,28 @@ import { TuiDay } from '@taiga-ui/cdk';
   styleUrls: ['./third-navbar.component.scss'],
   providers: [TuiDialogFormService],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
 })
 export class ThirdNavbarComponent {
   @Input() title!: string;
-  @Output() public addDeal= new EventEmitter();
+  currentUser!: any;
+  deal$!: Observable<DealState>;
+  dealsForm: any;
 
   constructor(
     @Inject(TuiDialogFormService)
     private readonly dialogForm: TuiDialogFormService,
-    @Inject(TuiDialogService) private readonly dialogs: TuiDialogService
-  ) {}
+    @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
+    private dealService: DealsService,
+    public authService: AuthService,
+    private store: Store<{ deal: DealState }>
+  ) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
+    this.deal$ = store.select('deal');
+    this.exampleForm.addControl('dealName', this.dealName);
+    this.exampleForm.addControl('amount2', this.amount2);
+    this.exampleForm.addControl('probability ', this.probability2);
 
-  emitAddDeal() {
-    this.addDeal.emit();
+    console.log(this.currentUser);
   }
 
   //CODE DIALOG
@@ -47,9 +61,101 @@ export class ThirdNavbarComponent {
 
   ngOnInit() {}
 
-  exampleForm = new FormGroup({});
+  exampleForm: FormGroup = new FormGroup({});
+  dealName: FormControl = new FormControl('');
+  amount2: FormControl = new FormControl('');
+  probability2: FormControl = new FormControl('');
+
   exampleFormSub = new FormGroup({});
 
+  async addDeal() {
+    let subDeal: any = {
+      data: {
+        type: 'Opportunity',
+      },
+    };
+    let deal: Deal = {
+      data: {
+        type: 'Opportunities',
+        attributes: {
+          name: '',
+          modified_user_id: '',
+          modified_by_name: '',
+          created_by: '',
+          created_by_name: '',
+          description: '',
+          deleted: '',
+          created_by_link: '',
+          modified_user_link: '',
+          assigned_user_id: '',
+          assigned_user_name: '',
+          assigned_user_link: '',
+          SecurityGroups: '',
+          opportunity_type: '',
+          account_name: '',
+          account_id: '',
+          campaign_id: '',
+          campaign_name: '',
+          campaign_opportunities: '',
+          lead_source: '',
+          amount: '',
+          amount_usdollar: '',
+          currency_id: '',
+          currency_name: '',
+          currency_symbol: '',
+          probability: '',
+          accounts: '',
+          contacts: '',
+          tasks: '',
+          notes: '',
+          meetings: '',
+          calls: '',
+          emails: '',
+          documents: '',
+          project: '',
+          leads: '',
+          campaigns: '',
+          campaign_link: '',
+          currencies: '',
+          aos_quotes: '',
+          aos_contracts: '',
+          date_closed: '',
+          next_step: '',
+          sales_stage: '',
+        },
+      },
+    };
+    (deal.data.type = 'Opportunities'),
+      (deal.data.attributes.name = this.dealsForm.controls['dealName'].value),
+      (deal.data.attributes.amount = this.dealsForm.controls['amount2'].value),
+      (deal.data.attributes.probability =
+        this.dealsForm.controls['probablity2'].value),
+      (deal.data.attributes.campaign_name = this.stringifyOrg(
+        this.controlOrgs.value
+      )),
+      (deal.data.attributes.campaign_link = this.stringifyPipeLine(
+        this.controlPipeLines.value
+      )),
+      (deal.data.attributes.sales_stage = this.stringifyStage(
+        this.controlStages.value
+      )),
+      (deal.data.attributes.assigned_user_name = this.stringifyAssignment(
+        this.controlAssignments.value
+      )),
+      (deal.data.attributes.lead_source = this.stringifySource(
+        this.controlSources.value
+      )),
+      (deal.data.attributes.assigned_user_id = this.currentUser.data.id);
+    deal.data.attributes.modified_user_id = this.currentUser.data.id;
+    deal.data.attributes.modified_by_name =
+      this.currentUser.data.attributes.full_name;
+    // lead.data.attributes.created_by_name = this.currentUser.data.attributes.full_name;
+    console.log(deal);
+    this.store.dispatch(DealAction.addDeal({ deal: deal }));
+    this.deal$.subscribe((data) => {
+      console.log(data);
+    });
+  }
 
   onModelChangeName(name: string): void {
     this.name = name;
@@ -203,7 +309,13 @@ export class ThirdNavbarComponent {
     this.dialogs
       .open(content, { closeable, dismissible: closeable, size })
       .subscribe({
-        complete: () => {},
+        complete: () => {
+          this.name = '';
+          this.probability = '';
+          this.amount = '';
+          this.nameOrg = '';
+          this.website = '';
+        },
       });
   }
 }
