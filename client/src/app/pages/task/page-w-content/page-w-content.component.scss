@@ -28,22 +28,24 @@ table {
   width: 100vw;
 }
 tr {
-  padding: 0.5rem 3rem;
+  padding: 0.5rem 1.5rem;
   align-items: center;
+  text-align: center;
   border-bottom: 1px solid $LightGray;
 }
 th {
-  padding: 0.5rem 3rem;
-  text-align: left;
+  padding: 0.5rem 1.5rem;
+  text-align: center;
   color: $Blue2;
   width: 10rem;
   align-items: center;
 }
 td {
-  padding: 0.5rem 3rem;
+  padding: 0.5rem 1.5rem;
   color: $Blue2;
   width: 10rem;
   align-items: center;
+  text-align: center;
 }
 
 //CSS CỦA CHECKBOX - COPY TRÊN MẠNG TỐT NHẤT ĐỪNG ĐỤNG VÀO

@@ -4,4 +4,5 @@ export interface OrganizationState {
   loading: boolean;
   status: string | null;
   error: any;
+  isAlerted: boolean;
 }

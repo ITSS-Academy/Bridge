@@ -25,14 +25,9 @@ export class TaskComponent implements OnInit {
     this.tasks = (await this.taskService.getAllTask()).pipe(
       map((result: any) =>
         result.map((item: any) => {
-          return item.data().data;
+          return item.data();
         })
       )
     );
   }
-  addTask() {
-    
-  }
-
-
 }

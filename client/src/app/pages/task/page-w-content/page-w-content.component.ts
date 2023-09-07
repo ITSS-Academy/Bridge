@@ -11,7 +11,6 @@ export class PageWContentComponent {
   @Input()
   tasks!: Observable<any>;
 
-  task$!: Observable<TaskState>;
 
   currentUser!: any;
   
