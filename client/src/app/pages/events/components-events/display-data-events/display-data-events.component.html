@@ -17,23 +17,102 @@
           <th><b>STATUS</b></th>       
           <th><b>ACTIVITY TYPE</b></th>
           <th><b>ALL DAY</b></th>
+          <th><b>ACTION</b></th>
         </tr>
-        <tr>
+        <tr *ngFor="let event of (this.events | async)">
           <!-- CHECKBOX -->
           <th style="width: 2rem; padding: 0 1rem 1rem 2rem;"><label class="container">
               <input type="checkbox">
               <span class="checkmark"></span>
             </label></th>
           <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
-          <td>sale 15% for all items</td>
-          <td>Nguyen</td>
-          <td>2023-08-31 AM</td>
-          <td>03:00 AM</td>
-          <td>2023-08-31 AM</td>
-          <td>03:00 AM</td>
-          <td>Planed</td>
-          <td>Call</td>
-          <td>No</td>
+          <td>{{event.data.attributes.name!}}</td>
+          <td>{{event.data.attributes.assigned_user_name}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>{{event.data.attributes.activity_status_type }}</td>
+          <td></td>
+          <td>          
+              <span class="material-symbols-outlined edit" (click)="onClick(dialogAddEvent, 'auto', event)">edit</span>
+            <span class="material-symbols-outlined delete" (click)="deleteEvent(event.data.id)">delete</span>      
+          </td>
+
+          <!-- dialog -->
+<ng-template #dialogAddEvent let-observer>
+  <h2 class="title-dialog">Add Events</h2>
+    <div class="box-form">
+    <form [formGroup]="eventForm" (ngSubmit)="observer.complete()">
+      <div class="form-event">   
+        <div class="all-label">
+          <label for="name">Name</label>
+          <label for="start-time">Start Date & Time</label>
+          <label for="end-time">End Date & Time</label>
+          <label for="act-type">Activity Type</label>
+          <label for="agenda">Agenda</label>
+          <label for="part">Participants</label>
+        </div>    
+        <div class="all-input">
+          <tui-input formControlName = "eventName" class="tui-input" type="text" id="name" name="firstname" tuiTextfieldSize="s">Event name </tui-input>
+          
+          <tui-input-date-time formControlName = "startTime"  class="tui-input" id="start-time" [tuiTextfieldCleaner]="true" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true">
+          Choose date and time
+          <input
+            placeholder="10.10.1998 01:22"
+            tuiTextfield
+            />
+           </tui-input-date-time>
+           
+           <tui-input-date-time formControlName = "endTime" id="end-time" class="tui-input" [tuiTextfieldCleaner]="true" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true">
+            Choose date and time
+            <input
+              placeholder="10.10.1998 01:22"
+              tuiTextfield
+              />
+             </tui-input-date-time>
+             
+             <tui-combo-box
+             tuiTextfieldSize="s"
+             formControlName="actType"
+             class="tui-input"
+             [stringify]="stringify"
+             [tuiTextfieldLabelOutside]="true"
+         >
+             Type
+          
+             <tui-data-list-wrapper *tuiDataList [itemContent]="stringify | tuiStringifyContent" [items]="allActType | tuiFilterByInputWith: stringify" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true"
+             ></tui-data-list-wrapper>
+            </tui-combo-box>
+
+            <tui-input
+            tuiTextfieldSize="s"
+            formControlName="agenda"
+            class="tui-input"
+            [tuiTextfieldLabelOutside]="true"
+            >Note for event</tui-input>
+
+        <tui-input formControlName="part" class="tui-input" id="part" name="part" tuiTextfieldSize="s"  [tuiTextfieldLabelOutside]="true">
+          user or group
+          <tui-data-list-wrapper
+              *tuiDataList
+              [items]="allPart"
+              [labels]="labels"
+          ></tui-data-list-wrapper>
+      </tui-input>
+        </div>
+        </div>
+        <div class="cancel-save">
+          <button class="btn-cancel" type="submit">Cancel</button>  
+          <button class="btn-save" (click)="updateEvent(event)">Save</button>
+        </div>
+    </form>
+    </div>
+</ng-template>
         </tr>
   </table>
 </div>
+
+
+

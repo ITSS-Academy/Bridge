@@ -117,3 +117,97 @@ td{
   th {
     width: fit-content;
   }
+
+  .edit {
+    cursor: pointer;
+  }
+
+  .delete {
+    cursor: pointer;
+  }
+
+  //dialog
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-event {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-dialog {
+  margin: 0;
+  color:#2c698d;
+  border-bottom: 2px solid #58C2CE;
+  padding-bottom: 1rem;
+}
+
+.all-label {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.all-label label {
+  font-size: 16px;
+  font-weight: 400;
+  color: #2c698d;
+}
+
+.all-input {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tui-input {
+  width: 300px;
+  border: 1px solid #58C2CE;
+  border-radius: 8px;
+}
+
+.btn-save {
+  border-radius: 8px;
+  background-color: #58C2CE;
+  width: 100px;
+  height: 30px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.box-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+
+  height: 440px;
+  width: 30rem;
+}
+
+.cancel-save {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 60px;
+}
+
+.btn-cancel {
+  border-radius: 8px;
+  width: 100px;
+  height: 30px;
+  background-color: white;
+  border: 1px solid #58C2CE;
+  color: #58C2CE;
+  cursor: pointer;
+}

@@ -12,7 +12,7 @@ const initialState: OrganizationState = {
 
 export const organizationReducer = createReducer(
   initialState,
-  // Add Lead
+  // Add Organization
   on(OrganizationAction.addOrganization, (state, action) => {
       return {
           ...state,
@@ -26,7 +26,7 @@ export const organizationReducer = createReducer(
       return {
           ...state,
           loading: false,
-          lead: action.organization,
+          organization: action.organization,
           status: "Add organization success",
           error: ''
       }
@@ -72,7 +72,7 @@ export const organizationReducer = createReducer(
   on(OrganizationAction.updateOrganization, (state, action) => {
       return {
           ...state,
-          lead: action.organization,
+          organization: action.organization,
           loading: true,
           status: "Updating organization...",
           error: ''
@@ -95,8 +95,9 @@ export const organizationReducer = createReducer(
       }
   }),
 
-  // Delete Lead
+  // Delete Organization
   on(OrganizationAction.deleteOrganization, (state, action) => {
+        // state.loading = false;
       return {
           ...state,
           loading: true,
@@ -126,16 +127,16 @@ export const organizationReducer = createReducer(
       return {
           ...state,
           loading: true,
-          status: "Getting lead...",
+          status: "Getting organizaiton...",
           error: ''
       }
   }),
   on(OrganizationAction.getOrganizationSuccess, (state, action) => {
       return {
           ...state,
-          lead: action.organization,
+          organization: action.organization,
           loading: false,
-          status: "Get lead success",
+          status: "Get organization success",
           error: ''
       }
   }),
@@ -143,7 +144,7 @@ export const organizationReducer = createReducer(
       return {
           ...state,
           loading: false,
-          status: "Get lead failure",
+          status: "Get organization failure",
           error: action.error
       }
   })

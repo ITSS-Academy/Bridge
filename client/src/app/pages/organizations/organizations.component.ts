@@ -25,9 +25,14 @@ export class OrganizationsComponent implements OnInit{
 
   constructor(private organizationService: OrganizationsService, private store: Store<{ organization: OrganizationState }>) {
     this.organization$ = store.select('organization');
-    const subcription:any = this.organization$.subscribe({
+
+  }
+
+  ngOnInit(): void {
+    this.getAllOrganizations();
+    let subcription:any = this.organization$.subscribe({
       next: (data) => {
-        console.log(data);
+        // console.log(data);
         if(data.status == "Delete organization success"){
           this.notification = "Delete successfully";
           this.status = "success";
@@ -46,10 +51,6 @@ export class OrganizationsComponent implements OnInit{
       },
       complete: () => subcription.unsubscribe()
     })
-  }
-
-  ngOnInit(): void {
-    this.getAllOrganizations();
   }
 
   async getAllOrganizations() {

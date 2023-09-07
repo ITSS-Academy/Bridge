@@ -30,6 +30,8 @@ import { contactReducer } from './pages/contacts/components-contacts/ngrx/reduce
 import { ContactEffect } from './pages/contacts/components-contacts/ngrx/effect/contact.effect';
 import { TaskEffect } from './pages/task/ngrx/effect/task.effect';
 import { taskReducer } from './pages/task/ngrx/reducer/task.reducer';
+import { eventReducer } from './pages/events/ngrx/reducer/event.reducer';
+import { EventEffect } from './pages/events/ngrx/effect/event.effect';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { taskReducer } from './pages/task/ngrx/reducer/task.reducer';
       lead: leadReducer,
       organization: organizationReducer,
       contact: contactReducer,
-      task: taskReducer
+      task: taskReducer,
+      event: eventReducer,
     }, {}),
     EffectsModule.forRoot([
       SignUpEffect,
@@ -59,7 +62,8 @@ import { taskReducer } from './pages/task/ngrx/reducer/task.reducer';
       LeadEffect,
       OrganizationEffect,
       ContactEffect,
-      TaskEffect
+      TaskEffect,
+      EventEffect
     ]),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
