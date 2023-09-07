@@ -2,7 +2,11 @@ import { Component, Inject, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ContactState } from '../ngrx/state/contact.state';
 import { Store } from '@ngrx/store';
-import { TuiDialogContext, TuiDialogService, TuiDialogSize } from '@taiga-ui/core';
+import {
+  TuiDialogContext,
+  TuiDialogService,
+  TuiDialogSize,
+} from '@taiga-ui/core';
 import { TuiDialogFormService } from '@taiga-ui/kit';
 import { AuthService } from 'src/app/services/auth.service';
 import { ContactsService } from '../../contact.service';
@@ -49,7 +53,7 @@ export class DisplayHaveDataContactsComponent {
   }
 
   //CODE DIALOG
-  // exampleForm = new FormGroup({}); 
+  // exampleForm = new FormGroup({});
   contactsForm: FormGroup = new FormGroup({});
   firstName: FormControl = new FormControl('');
   lastName: FormControl = new FormControl('');

@@ -1,27 +1,32 @@
-import { Observable, map } from 'rxjs';
-import { Component, Inject, Input, OnInit } from '@angular/core';
-import { CasesService } from '../case.service';
-import { CaseState } from '../ngrx/state/case.state';
-import { Store } from '@ngrx/store';
-import { CaseAction } from '../ngrx/action/case.action';
-import { FormControl, FormGroup } from '@angular/forms';
-import { TuiCountryIsoCode } from '@taiga-ui/i18n';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  Input,
+} from '@angular/core';
 import {
   TuiDialogContext,
   TuiDialogService,
   TuiDialogSize,
 } from '@taiga-ui/core';
-import { TuiDialogFormService } from '@taiga-ui/kit';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
-import { Lead } from 'src/app/models/lead.model';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TuiCountryIsoCode } from '@taiga-ui/i18n';
+import { TuiDialogFormService } from '@taiga-ui/kit';
+import { CasesService } from '../case.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { ContactAction } from '../../contacts/components-contacts/ngrx/action/contact.action';
+import { CaseState } from '../ngrx/state/case.state';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Case } from 'src/app/models/case.model';
+import { CaseAction } from '../ngrx/action/case.action';
 
 @Component({
   selector: 'app-page-w-content',
   templateUrl: './page-w-content.component.html',
   styleUrls: ['./page-w-content.component.scss'],
-  providers:[TuiDialogFormService]
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [TuiDialogFormService],
 })
 export class PageWContentComponent {
   @Input()
@@ -181,7 +186,10 @@ export class PageWContentComponent {
     this.dialogs
       .open(content, { closeable, dismissible: closeable, size })
       .subscribe({
-        complete: () => {},
+        complete: () => {
+          this.caseTitle2 = '';
+          this.orgName2 = '';
+        },
       });
   }
 }

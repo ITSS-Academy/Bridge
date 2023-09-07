@@ -1,11 +1,8 @@
 import {
   Component,
-  Output,
-  EventEmitter,
   OnInit,
   ChangeDetectionStrategy,
   Inject,
-  ViewEncapsulation,
   Input,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -13,7 +10,6 @@ import { TuiDialogService, TuiDialogSize } from '@taiga-ui/core';
 import { TuiDialogFormService } from '@taiga-ui/kit';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import { TuiCountryIsoCode } from '@taiga-ui/i18n';
-import { TuiDay } from '@taiga-ui/cdk';
 import { Observable } from 'rxjs';
 import { CasesService } from '../case.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -28,7 +24,6 @@ import { CaseState } from '../ngrx/state/case.state';
   styleUrls: ['./third-navbar.component.scss', './third-navbar.component.less'],
   providers: [TuiDialogFormService],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
 })
 export class ThirdNavbarComponent implements OnInit {
   @Input() title!: string;
@@ -51,18 +46,11 @@ export class ThirdNavbarComponent implements OnInit {
     console.log(this.currentUser);
   }
 
-  caseTitle2 = '';
-  orgName2 = '';
-
   casesForm: FormGroup = new FormGroup({});
   contactsForm: FormGroup = new FormGroup({});
   caseTitle: FormControl = new FormControl('');
   orgName: FormControl = new FormControl('');
 
-  onModelChangeCaseTitle(caseTitle: string): void {
-    this.caseTitle2 = caseTitle;
-    this.dialogForm.markAsDirty();
-  }
 
   async addCase() {
     let subCase: any = {
@@ -259,7 +247,7 @@ export class ThirdNavbarComponent implements OnInit {
   readonly stringifyStatusContact = (statusContact: { name: string }): string =>
     `${statusContact.name} `;
   //
-  
+
   ngOnInit() {}
 
   //Hiển thị Dialog
@@ -274,7 +262,9 @@ export class ThirdNavbarComponent implements OnInit {
     this.dialogs
       .open(content, { closeable, dismissible: closeable, size })
       .subscribe({
-        complete: () => {},
+        complete: () => {
+          this;
+        },
       });
   }
 }

@@ -4,6 +4,7 @@
   <app-sidebar></app-sidebar>
 
   <div class="main-contents-container-user">
+    <!--USER INFO-->
     <div class="first-container">
       <div class="picture-container">
         <img
@@ -11,7 +12,12 @@
           id="picture"
           src="https://wallpaperaccess.com/full/2362086.png"
         />
-        <img *ngIf="this.currentUser.data.attributes.photo != '' " id="picture" src="{{this.currentUser.data.attributes.photo}}" alt="">
+        <img
+          *ngIf="this.currentUser.data.attributes.photo != ''"
+          id="picture"
+          src="{{ this.currentUser.data.attributes.photo }}"
+          alt=""
+        />
         <button class="upload-container">
           <span id="upload-icon" class="material-symbols-outlined">upload</span>
           <p id="upload-content">Upload</p>
@@ -24,7 +30,7 @@
           <span
             id="edit-icon-user-info"
             class="material-symbols-outlined"
-            (click)="showDialog(dialogUserInfo)"
+            (click)="showDialog(dialogUserInfo, 'auto')"
           >
             edit
           </span>
@@ -34,8 +40,17 @@
         <div class="contents-user-info">
           <div class="display-name-container">
             <p id="title-display">Display name</p>
-            <div *ngIf="this.currentUser.data.attributes.full_name == '' " id="underline"></div>
-            <p id="title-display" style="color: #272643;" *ngIf="this.currentUser.data.attributes.full_name != '' ">{{this.currentUser.data.attributes.full_name}}</p>
+            <div
+              *ngIf="this.currentUser.data.attributes.full_name == ''"
+              id="underline"
+            ></div>
+            <p
+              id="title-display"
+              style="color: #272643"
+              *ngIf="this.currentUser.data.attributes.full_name != ''"
+            >
+              {{ this.currentUser.data.attributes.full_name }}
+            </p>
           </div>
 
           <div class="primary-group-container">
@@ -45,8 +60,17 @@
 
           <div class="email-container">
             <p id="title-email">Email</p>
-            <div  *ngIf="this.currentUser.data.attributes.email1 == '' " id="underline-email"></div>
-            <p id="title-email" style="color: #272643;" *ngIf="this.currentUser.data.attributes.full_name != '' ">{{this.currentUser.data.attributes.email1}}</p>
+            <div
+              *ngIf="this.currentUser.data.attributes.email1 == ''"
+              id="underline-email"
+            ></div>
+            <p
+              id="title-email"
+              style="color: #272643"
+              *ngIf="this.currentUser.data.attributes.full_name != ''"
+            >
+              {{ this.currentUser.data.attributes.email1 }}
+            </p>
           </div>
 
           <div class="report-to-container">
@@ -67,6 +91,7 @@
       </div>
     </div>
 
+    <!--EMPLOYEE INFO-->
     <div class="second-container">
       <div class="employee-info-container">
         <div class="title-employee-info-container">
@@ -74,7 +99,7 @@
           <span
             id="edit-icon-employee-info"
             class="material-symbols-outlined"
-            (click)="showDialog(dialogEmployeeInfo)"
+            (click)="showDialog(dialogEmployeeInfo, 'auto')"
           >
             edit
           </span>
@@ -84,8 +109,17 @@
         <div class="contents-employee-info">
           <div class="first-name-container">
             <p id="title-first-name">First name</p>
-            <div  *ngIf="this.currentUser.data.attributes.first_name == '' " id="underline-first-name"></div>
-            <p id="title-first-name" style="color: #272643;" *ngIf="this.currentUser.data.attributes.first_name != '' ">{{this.currentUser.data.attributes.first_name}}</p>
+            <div
+              *ngIf="this.currentUser.data.attributes.first_name == ''"
+              id="underline-first-name"
+            ></div>
+            <p
+              id="title-first-name"
+              style="color: #272643"
+              *ngIf="this.currentUser.data.attributes.first_name != ''"
+            >
+              {{ this.currentUser.data.attributes.first_name }}
+            </p>
           </div>
 
           <div class="last-name-container">
@@ -136,6 +170,7 @@
       </div>
     </div>
 
+    <!--CURRENCY INFO-->
     <div class="third-container">
       <div class="currency-number-container">
         <div class="title-currency-number-container">
@@ -143,7 +178,7 @@
           <span
             id="edit-icon-currency-number"
             class="material-symbols-outlined"
-            (click)="showDialog(dialogCurrencyNumber)"
+            (click)="showDialog(dialogCurrencyNumber, 'auto')"
           >
             edit
           </span>
@@ -200,96 +235,103 @@
     </div>
   </div>
 
-  <ng-template id="dialogUserInfo" #dialogUserInfo let-context>
-    <div class="dialog-user">
-      <p id="title-dialog-user">Edit: User Information</p>
+  <!--DIALOG USER-->
+  <ng-template id="dialogUserInfo" #dialogUserInfo let-observer>
+    <form
+      id="form-container"
+      [formGroup]="usersForm"
+      (ngSubmit)="observer.complete()"
+    >
+      <div class="dialog-user">
+        <p id="title-dialog-user">Edit: User Information</p>
 
-      <div class="contents-dialog-user">
-        <div class="display-name-container-dialog">
-          <p id="title-display-dialog">Display name</p>
-          <tui-input
-            style="outline: none !important"
-            id="input-display-dialog"
-            tuiTextfieldSize="s"
-            [(ngModel)]="name"
-            (ngModelChange)="onModelChangeName($event)"
-          >
-            Type name
-          </tui-input>
+        <div class="contents-dialog-user">
+          <div class="display-name-container-dialog">
+            <p id="title-display-dialog">Display name</p>
+            <tui-input
+              style="outline: none !important"
+              id="input-display-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="name"
+              (ngModelChange)="onModelChangeName($event)"
+            >
+              Type name
+            </tui-input>
+          </div>
+
+          <div class="primary-group-container-dialog">
+            <p id="title-primary-group-dialog">Primary group</p>
+            <tui-input
+              id="input-primary-group-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="primaryGroup"
+              (ngModelChange)="onModelChangeGroup($event)"
+            >
+              Type group
+            </tui-input>
+          </div>
+
+          <div class="email-container-dialog">
+            <p id="title-email-dialog">Email</p>
+            <tui-input
+              id="input-email-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="email"
+              (ngModelChange)="onModelChangeEmail($event)"
+            >
+              Type email
+            </tui-input>
+          </div>
+
+          <div class="report-to-container-dialog">
+            <p id="title-report-to-dialog">Report to</p>
+            <tui-input
+              id="input-report-to-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="reportTo"
+              (ngModelChange)="onModelChangeReport($event)"
+            >
+              To ...
+            </tui-input>
+          </div>
+
+          <div class="role-container-dialog">
+            <p id="title-role-dialog">Role</p>
+            <tui-input
+              id="input-role-dialog"
+              tuiTextfieldSize="s"
+              [(ngModel)]="role"
+            >
+              Type role
+            </tui-input>
+          </div>
+
+          <div class="language-container-dialog">
+            <p id="title-language-dialog">Language</p>
+
+            <tui-combo-box
+              id="input-language-dialog"
+              [formControl]="controlLanguages"
+              [stringify]="stringifyLanguage"
+              tuiTextfieldSize="s"
+            >
+              Choose your language
+
+              <tui-data-list-wrapper
+                *tuiDataList
+                [items]="languages | tuiFilterByInputWith : stringifyLanguage"
+                [itemContent]="stringifyLanguage | tuiStringifyContent"
+              ></tui-data-list-wrapper>
+            </tui-combo-box>
+          </div>
         </div>
 
-        <div class="primary-group-container-dialog">
-          <p id="title-primary-group-dialog">Primary group</p>
-          <tui-input
-            id="input-primary-group-dialog"
-            tuiTextfieldSize="s"
-            [(ngModel)]="primaryGroup"
-            (ngModelChange)="onModelChangeGroup($event)"
-          >
-            Type group
-          </tui-input>
-        </div>
-
-        <div class="email-container-dialog">
-          <p id="title-email-dialog">Email</p>
-          <tui-input
-            id="input-email-dialog"
-            tuiTextfieldSize="s"
-            [(ngModel)]="email"
-            (ngModelChange)="onModelChangeEmail($event)"
-          >
-            Type email
-          </tui-input>
-        </div>
-
-        <div class="report-to-container-dialog">
-          <p id="title-report-to-dialog">Report to</p>
-          <tui-input
-            id="input-report-to-dialog"
-            tuiTextfieldSize="s"
-            [(ngModel)]="reportTo"
-            (ngModelChange)="onModelChangeReport($event)"
-          >
-            To ...
-          </tui-input>
-        </div>
-
-        <div class="role-container-dialog">
-          <p id="title-role-dialog">Role</p>
-          <tui-input
-            id="input-role-dialog"
-            tuiTextfieldSize="s"
-            [(ngModel)]="role"
-          >
-            Type role
-          </tui-input>
-        </div>
-
-        <div class="language-container-dialog">
-          <p id="title-language-dialog">Language</p>
-
-          <tui-combo-box
-            id="input-language-dialog"
-            [formControl]="controlLanguages"
-            [stringify]="stringifyLanguage"
-            tuiTextfieldSize="s"
-          >
-            Choose your language
-
-            <tui-data-list-wrapper
-              *tuiDataList
-              [items]="languages | tuiFilterByInputWith : stringifyLanguage"
-              [itemContent]="stringifyLanguage | tuiStringifyContent"
-            ></tui-data-list-wrapper>
-          </tui-combo-box>
+        <div class="save-canceled-container">
+          <button class="canceled-button" type="submit">Cancel</button>
+          <button class="save-button" type="submit">Save</button>
         </div>
       </div>
-
-      <div class="save-canceled-container">
-        <button class="canceled-button">Cancel</button>
-        <button class="save-button" (click)="context.complete()">Save</button>
-      </div>
-    </div>
+    </form>
   </ng-template>
 
   <ng-template id="dialogEmployeeInfo" #dialogEmployeeInfo let-context>
@@ -338,10 +380,10 @@
             id="input-mobile-phone-dialog"
             [countries]="(phones | tuiSortCountries | async) || []"
             [(countryIsoCode)]="countryIsoCode"
-            [tuiTextfieldLabelOutside] = "true"
-            tuiTextfieldSize= "m"
+            [tuiTextfieldLabelOutside]="true"
+            tuiTextfieldSize="m"
           >
-          Type your number
+            Type your number
           </tui-input-phone-international>
         </div>
 
@@ -351,10 +393,10 @@
             id="input-office-phone-dialog"
             [countries]="(officePhones | tuiSortCountries | async) || []"
             [(countryIsoCode)]="countryIsoCodeOffice"
-            [tuiTextfieldLabelOutside] = "true"
-            tuiTextfieldSize= "m"
+            [tuiTextfieldLabelOutside]="true"
+            tuiTextfieldSize="m"
           >
-          (optional)
+            (optional)
           </tui-input-phone-international>
         </div>
 
