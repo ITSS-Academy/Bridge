@@ -13,7 +13,7 @@ const initialState: OrganizationState = {
 
 export const organizationReducer = createReducer(
   initialState,
-  // Add Lead
+  // Add Organization
   on(OrganizationAction.addOrganization, (state, action) => {
     return {
       ...state,
@@ -24,14 +24,13 @@ export const organizationReducer = createReducer(
     };
   }),
   on(OrganizationAction.addOrganizationSuccess, (state, action) => {
-    return {
-      ...state,
-      loading: false,
-      lead: action.organization,
-      status: 'Add organization success',
-      error: '',
-      isAlerted: true,
-    };
+      return {
+          ...state,
+          loading: false,
+          organization: action.organization,
+          status: "Add organization success",
+          error: ''
+      }
   }),
   on(OrganizationAction.addOrganizationFailure, (state, action) => {
     return {
@@ -71,13 +70,13 @@ export const organizationReducer = createReducer(
 
   // Update Organization
   on(OrganizationAction.updateOrganization, (state, action) => {
-    return {
-      ...state,
-      lead: action.organization,
-      loading: true,
-      status: 'Updating organization...',
-      error: '',
-    };
+      return {
+          ...state,
+          organization: action.organization,
+          loading: true,
+          status: "Updating organization...",
+          error: ''
+      }
   }),
   on(OrganizationAction.updateOrganizationSuccess, (state) => {
     return {
@@ -97,14 +96,15 @@ export const organizationReducer = createReducer(
     };
   }),
 
-  // Delete Lead
+  // Delete Organization
   on(OrganizationAction.deleteOrganization, (state, action) => {
-    return {
-      ...state,
-      loading: true,
-      status: 'Deleting organization...',
-      error: '',
-    };
+        // state.loading = false;
+      return {
+          ...state,
+          loading: true,
+          status: "Deleting organization...",
+          error: ''
+      }
   }),
   on(OrganizationAction.deleteOrganizationSuccess, (state) => {
     return {
@@ -126,28 +126,28 @@ export const organizationReducer = createReducer(
 
   // Get Organization
   on(OrganizationAction.getOrganization, (state, action) => {
-    return {
-      ...state,
-      loading: true,
-      status: 'Getting lead...',
-      error: '',
-    };
+      return {
+          ...state,
+          loading: true,
+          status: "Getting organizaiton...",
+          error: ''
+      }
   }),
   on(OrganizationAction.getOrganizationSuccess, (state, action) => {
-    return {
-      ...state,
-      lead: action.organization,
-      loading: false,
-      status: 'Get lead success',
-      error: '',
-    };
+      return {
+          ...state,
+          organization: action.organization,
+          loading: false,
+          status: "Get organization success",
+          error: ''
+      }
   }),
   on(OrganizationAction.getOrganizationFailure, (state, action) => {
-    return {
-      ...state,
-      loading: false,
-      status: 'Get lead failure',
-      error: action.error,
-    };
+      return {
+          ...state,
+          loading: false,
+          status: "Get organization failure",
+          error: action.error
+      }
   })
 );

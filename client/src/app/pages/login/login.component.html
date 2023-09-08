@@ -46,9 +46,15 @@
       <!-- <ng-template #loginn>
           <app-success id="login" [content]="content" ></app-success>
       </ng-template> -->
-        <app-success hidden="true" id="login" [content]="content" ></app-success>
-      <app-warning hidden="true" id="login" [content]="content" ></app-warning>
-    <app-error hidden="true" id="login" [content]="content" ></app-error>
+      <ng-template #success>
+        <app-success id="login" [cont]="content" ></app-success>
+    </ng-template>
+    <ng-template #warning>
+      <app-warning id="login" [cont]="content" ></app-warning>
+  </ng-template>
+  <ng-template #error>
+    <app-error id="login" [cont]="content" ></app-error>
+</ng-template>
 
       <div
         (click)="login()" class="nutlogin">
@@ -71,7 +77,7 @@
   <app-loading></app-loading>
 </div> -->
 
-<ng-template
+<!-- <ng-template
   [tuiAlertOptions]="{status: status, autoClose: 100000}" [(tuiAlert)]="show">
   {{this.notification}}
-  </ng-template>
+  </ng-template> -->

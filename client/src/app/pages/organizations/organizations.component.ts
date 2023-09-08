@@ -24,12 +24,14 @@ export class OrganizationsComponent implements OnInit {
   organization$!: Observable<OrganizationState>;
   subOrganizations: any[] = [];
 
-  constructor(
-    private organizationService: OrganizationsService,
-    private store: Store<{ organization: OrganizationState }>
-  ) {
-    this.organization$ = this.store.select('organization');
-    this.subscription = this.organization$.subscribe({
+  constructor(private organizationService: OrganizationsService, private store: Store<{ organization: OrganizationState }>) {
+    this.organization$ = store.select('organization');
+
+  }
+
+  ngOnInit(): void {
+    this.getAllOrganizations();
+    let subcription:any = this.organization$.subscribe({
       next: (data) => {
         console.log(data.status);
         if (data.status == 'Delete organization success') {
@@ -50,10 +52,6 @@ export class OrganizationsComponent implements OnInit {
         this.subscription.unsubscribe();
       },
     });
-  }
-
-  ngOnInit(): void {
-    this.getAllOrganizations();
   }
 
   async getAllOrganizations() {

@@ -18,10 +18,3 @@
       [organizations]="this.organizations"></app-page-w-content>
   </div>
 </div>
-
-<p>{{(this.organization$ | async)?.loading}}</p>
-
-<ng-template
-  [tuiAlertOptions]="{status: status, autoClose: 100000}" [(tuiAlert)]="show">
-  {{this.notification}}
-  </ng-template>

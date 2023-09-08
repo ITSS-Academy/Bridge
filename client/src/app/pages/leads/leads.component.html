@@ -17,14 +17,16 @@
   <div class="body" style="position: relative; z-index: 1">
     <!-- NỘI DUNG TRANG RỖNG-->
     <app-page-empty
-      *ngIf="(this.leads$ | async)?.leads?.length== 0"
+      *ngIf="!(this.leads$ | async)"
       [title]="title"
     ></app-page-empty>
 
     <!-- TRANG CÓ NỘI DUNG -->
     <app-page-w-content
-      *ngIf="(this.leads$ | async)?.leads?.length != 0"
+      *ngIf="(this.leads$ | async)"
       [lead$]="this.leads$"
     ></app-page-w-content>
   </div>
 </div>
+
+

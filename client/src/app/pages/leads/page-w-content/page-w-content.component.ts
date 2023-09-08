@@ -1,5 +1,5 @@
 import { Observable, map } from 'rxjs';
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { LeadsService } from '../leads.service';
 import { LeadState } from '../ngrx/state/lead.state';
 import { Store } from '@ngrx/store';
@@ -14,6 +14,7 @@ import {
 import { TuiDialogFormService } from '@taiga-ui/kit';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import { Lead } from 'src/app/models/lead.model';
+import { NotificationService } from 'src/app/services/notification.service';
 @Component({
   selector: 'app-page-w-content',
   templateUrl: './page-w-content.component.html',
@@ -23,17 +24,22 @@ import { Lead } from 'src/app/models/lead.model';
 export class PageWContentComponent {
   @Input()
   // leads!: Observable<any>;
-
   lead$!: Observable<LeadState>;
 
   currentUser!: any;
+
+  content = '';
+  @ViewChild('success') success: any;
+  @ViewChild('warning') warning: any;
+  @ViewChild('error') error: any;
 
   constructor(
     public leadService: LeadsService,
     private store: Store<{ lead: LeadState }>,
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
     @Inject(TuiDialogFormService)
-    private readonly dialogForm: TuiDialogFormService
+    private readonly dialogForm: TuiDialogFormService,
+    private notificationService: NotificationService
   ) {
     this.lead$ = store.select('lead');
     this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
@@ -47,6 +53,12 @@ export class PageWContentComponent {
 
   deleteLead(id: string) {
     this.store.dispatch(LeadAction.deleteLead({ id: id }));
+    this.lead$.subscribe((data) => {
+      if (data.status == 'Delete lead success') {
+        this.content = 'Delete lead success';
+        this.notificationService.showSuccess(this.success);
+      }
+    });
   }
 
   updateLead(lead: any) {
@@ -55,6 +67,9 @@ export class PageWContentComponent {
         type: 'Leads',
         id: '',
         attributes: {
+          assigned_to_id_c: '',
+          assigned_to_name_c: '',
+          email_c: '',
           modified_by_name: '',
           alt_address_city: '',
           birthdate: '',
@@ -166,10 +181,13 @@ export class PageWContentComponent {
     leadToUpdate.data.attributes.first_name = lead.data.attributes.first_name;
     leadToUpdate.data.attributes.last_name = lead.data.attributes.last_name;
     leadToUpdate.data.attributes.department = lead.data.attributes.department;
-    leadToUpdate.data.attributes.email1 = lead.data.attributes.email1;
-    leadToUpdate.data.attributes.phone_mobile = lead.data.attributes.phone_mobile;
-    leadToUpdate.data.attributes.assigned_user_name = lead.data.attributes.assigned_user_name;
-    leadToUpdate.data.attributes.assigned_user_id = lead.data.attributes.assigned_user_id;
+    leadToUpdate.data.attributes.email_c = lead.data.attributes.email_c;
+    leadToUpdate.data.attributes.phone_mobile =
+      lead.data.attributes.phone_mobile;
+    leadToUpdate.data.attributes.assigned_to_name_c =
+      lead.data.attributes.assigned_to_name_c;
+    leadToUpdate.data.attributes.assigned_user_id =
+      lead.data.attributes.assigned_user_id;
 
     (leadToUpdate.data.type = 'Leads'),
       (leadToUpdate.data.attributes.first_name =
@@ -178,25 +196,51 @@ export class PageWContentComponent {
         this.exampleForm.controls['lastName2'].value),
       (leadToUpdate.data.attributes.department =
         this.exampleForm.controls['company2'].value),
-      (leadToUpdate.data.attributes.email1 =
+      (leadToUpdate.data.attributes.email_c =
         this.exampleForm.controls['email2'].value),
       (leadToUpdate.data.attributes.phone_mobile =
         this.exampleForm.controls['phone2'].value),
-      (leadToUpdate.data.attributes.assigned_user_name =
-        this.stringifyAssignment(this.controlAssignments.value)),
-      (leadToUpdate.data.attributes.assigned_user_id = this.currentUser.data.id);
+      leadToUpdate.data.attributes.assigned_to_name_c =
+        this.stringifyAssignment(this.controlAssignments.value ?? '') ,
+      (leadToUpdate.data.attributes.assigned_user_id =
+        this.currentUser.data.id);
     leadToUpdate.data.attributes.modified_user_id = this.currentUser.data.id;
     leadToUpdate.data.attributes.modified_by_name =
       this.currentUser.data.attributes.full_name;
 
-    // lead.data.attributes.created_by_name = this.currentUser.data.attributes.full_name;
-    // console.log(leadToUpdate);
-    console.log(leadToUpdate);
-    this.store.dispatch(LeadAction.updateLead({ lead: leadToUpdate }));
-    this.lead$.subscribe((data) => {
-      console.log(data);
-    });
-    console.log(lead);
+    if (
+      leadToUpdate.data.attributes.first_name == '' ||
+      leadToUpdate.data.attributes.last_name == '' ||
+      leadToUpdate.data.attributes.email_c == '' ||
+      leadToUpdate.data.attributes.phone_mobile == '' ||
+      leadToUpdate.data.attributes.assigned_to_name_c == ''
+    ) {
+      this.content = 'Please fill all required fields';
+      this.notificationService.showWarning(this.warning);
+      return;
+    } else if (
+      leadToUpdate.data.attributes.first_name != '' &&
+      leadToUpdate.data.attributes.last_name != '' &&
+      leadToUpdate.data.attributes.email_c != '' &&
+      leadToUpdate.data.attributes.phone_mobile != '' &&
+      leadToUpdate.data.attributes.assigned_to_name_c != ''
+    ) {
+      this.store.dispatch(LeadAction.updateLead({ lead: leadToUpdate }));
+      let sub:any = this.lead$.subscribe({
+        next: (data) => {
+          if(data.status == "Update lead success"){
+            this.content = 'Update lead success';
+            this.notificationService.showSuccess(this.success);
+            return;
+          }
+        },
+        complete: () => sub.unsubscribe(),
+      })
+    }else{
+      this.content = 'Update lead fail';
+      this.notificationService.showError(this.error);
+      return;
+    }
   }
 
   exampleForm: FormGroup = new FormGroup({});
@@ -231,9 +275,18 @@ export class PageWContentComponent {
   reportTo = '';
   phone = '';
 
-  showDialog(content: PolymorpheusContent, size: TuiDialogSize, lead: any): void {
-    console.log(lead);
-    const closeable = this.dialogForm.withPrompt({
+  showDialog(
+    content: PolymorpheusContent,
+    size: TuiDialogSize,
+    lead: any
+  ): void {
+    this.firstName.setValue(lead.data.attributes.first_name);
+    this.lastName2.setValue(lead.data.attributes.last_name);
+    this.email2.setValue(lead.data.attributes.email1);
+    this.phone2.setValue(lead.data.attributes.phone_mobile);
+    this.company2.setValue(lead.data.attributes.department);
+    this.controlAssignments.setValue(lead.data.attributes.assigned_to_name_c ?? '');
+      const closeable = this.dialogForm.withPrompt({
       label: 'Are you sure?',
       data: {
         content: 'Your data will be <strong>lost</strong>',

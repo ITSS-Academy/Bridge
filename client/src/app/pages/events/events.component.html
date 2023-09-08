@@ -3,13 +3,13 @@
   <div >
     <app-second-navbar [title]="title"></app-second-navbar>
     <!-- THANH NAV THỨ 3 -->
-    <app-navbar-events (addEvent)="addEvent()"></app-navbar-events>
+    <app-navbar-events [title]="title"></app-navbar-events>
    
     <div class="body" >
       <!-- NỘI DUNG TRANG RỖNG-->
-      <app-display-no-data-events *ngIf="pageEmpty" (addEvent)="addEvent()"></app-display-no-data-events>
+      <app-display-no-data-events  *ngIf="(this.events |async)?.length == 0"></app-display-no-data-events>
       <!-- TRANG CÓ NỘI DUNG -->
-      <app-display-data-events *ngIf="!pageEmpty"></app-display-data-events>
+      <app-display-data-events *ngIf="(this.events |async)?.length != 0" [events]="this.events"></app-display-data-events>
     </div>
   </div>
 </div>

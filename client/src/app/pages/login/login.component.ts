@@ -1,4 +1,4 @@
-import { Component, Inject, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Observable, map } from 'rxjs';
 import { LoginState } from './ngrx/state/login.state';
@@ -20,8 +20,13 @@ import { NotificationService } from 'src/app/services/notification.service';
   // encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent {
-  
   content = '';
+  @ViewChild('success') success: any;
+  @ViewChild('warning') warning: any;
+  @ViewChild('error') error: any;
+
+  
+  
   notification = '';
   status = '';
   show = false;
@@ -57,7 +62,7 @@ export class LoginComponent {
     };
     if (account.username == '' || account.password == '') {
       this.content = 'Please enter username and password';
-      this.notificationService.showWarning();
+      this.notificationService.showWarning(this.warning);
       return;
     }
     let check$ = this.loginService.checkAuth(account);
@@ -66,7 +71,7 @@ export class LoginComponent {
         this.userName.setValue('');
         this.password.setValue('');
         this.content = 'Username or password is incorrect';
-        this.notificationService.showError();
+        this.notificationService.showError(this.error);
         return;
       } else {
         this.store.dispatch(LoginAction.login({ loginAccount: account }));
@@ -77,12 +82,7 @@ export class LoginComponent {
             this.userName.setValue('');
             this.password.setValue('');
             this.content = 'Login success';
-            this.notificationService.showSuccess()
-            // this.notification = 'Login success';
-            // this.status = 'success';
-            // this.show = true;
-            // localStorage.removeItem('currentUser');
-            // localStorage.setItem('currentUser', JSON.stringify(this.authService.currentUser));
+            this.notificationService.showSuccess(this.success)
             setTimeout(() => {
               this.router.navigate(['/dashboard']);
             },1400)
@@ -91,7 +91,6 @@ export class LoginComponent {
         });
       }
     });
-    // console.log(this.currentAccount);
     return;
   }
 }

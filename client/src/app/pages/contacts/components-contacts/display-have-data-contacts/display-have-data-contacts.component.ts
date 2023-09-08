@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject, Input, ViewChild } from '@angular/core';
 import { Observable, last } from 'rxjs';
 import { ContactState } from '../ngrx/state/contact.state';
 import { Store } from '@ngrx/store';
@@ -15,6 +15,7 @@ import { TuiCountryIsoCode } from '@taiga-ui/i18n';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import { ContactAction } from '../ngrx/action/contact.action';
 import { Contact } from 'src/app/models/contact.model';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-display-have-data-contacts',
@@ -25,6 +26,11 @@ import { Contact } from 'src/app/models/contact.model';
 export class DisplayHaveDataContactsComponent {
   @Input()
   contact$!: Observable<ContactState>;
+
+  content = '';
+  @ViewChild('success') success: any;
+  @ViewChild('warning') warning: any;
+  @ViewChild('error') error: any;
 
 
   notification = '';
@@ -39,7 +45,8 @@ export class DisplayHaveDataContactsComponent {
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
     private contactService: ContactsService,
     public authService: AuthService,
-    private store: Store<{ contact: ContactState }>
+    private store: Store<{ contact: ContactState }>,
+    private nocationService: NotificationService,
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
     this.contact$ = store.select('contact');
@@ -55,6 +62,17 @@ export class DisplayHaveDataContactsComponent {
 
   deleteContact(id: string) {
     this.store.dispatch(ContactAction.deleteContact({ id: id }));
+    let sub:any = this.contact$.subscribe({
+      next: (data) => {
+        if(data.status == 'Delete contact success') {
+          this.content = 'Delete contact successfully';
+          this.nocationService.showSuccess(this.success);
+          return
+        }
+      },
+      complete: () => sub.unsubscribe()
+    })
+    return;
   }
 
   updateContact(contact: any) {
@@ -69,21 +87,25 @@ export class DisplayHaveDataContactsComponent {
           phone_mobile: this.contactsForm.controls['phone'].value,
           // title: this.contactsForm.controls['title'].value,
           department: this.contactsForm.controls['organizationName'].value,
-          assigned_to_name_c: this.stringifyAssignment(this.controlAssignments.value),
-          status_c: this.stringifyStatus(this.controlStatus.value),
-          stage_c: this.stringifyLife(this.controlLife.value)
+          assigned_to_name_c: this.stringifyAssignment(this.controlAssignments.value ?? ''),
+          status_c: this.stringifyStatus(this.controlStatus.value ?? ''),
+          stage_c: this.stringifyLife(this.controlLife.value ?? '')
         }
       }};
-      if(!newContact.data.attributes.first_name || !newContact.data.attributes.last_name  || !newContact.data.attributes.email_c || !newContact.data.attributes.phone_mobile || !newContact.data.attributes.department || !newContact.data.attributes.assigned_to_name_c || !newContact.data.attributes.status_c || !newContact.data.attributes.stage_c) {
-        this.status = 'error';
-        this.notification = 'Please fill all the required fields';
-        this.show = true;
+      if(!newContact.data.attributes.first_name || !newContact.data.attributes.last_name  || !newContact.data.attributes.email_c || !newContact.data.attributes.phone_mobile || !newContact.data.attributes.department || !newContact.data.attributes.assigned_to_name_c || !newContact.data.attributes.status_c || !newContact.data.attributes.stage_c || !newContact.data.attributes.title) {
+        this.content = 'Please fill all required fields';
+        this.nocationService.showWarning(this.warning);
         return;
+      }else if(newContact.data.attributes.first_name != '' && newContact.data.attributes.last_name != '' && newContact.data.attributes.email_c != '' && newContact.data.attributes.phone_mobile != '' && newContact.data.attributes.department != '' && newContact.data.attributes.assigned_to_name_c != '' && newContact.data.attributes.status_c != '' && newContact.data.attributes.stage_c != '' && newContact.data.attributes.title != '') {
+        this.store.dispatch(ContactAction.updateContact({ contact: newContact }));
+        this.content = 'Update contact successfully';
+        this.nocationService.showSuccess(this.success);
+        return 
       }else{
-        this.store.dispatch(ContactAction.updateContact({ contact: newContact })); 
+        this.content = 'Update contact failed';
+        this.nocationService.showError(this.error);
+        return;
       }
-    
-    console.log(newContact);
   }
 
   //CODE DIALOG
@@ -173,7 +195,7 @@ allLife = [
   showDialog(content: PolymorpheusContent, size: TuiDialogSize, contacts: any): void {
     this.firstName.setValue(contacts.data.attributes.first_name);
     this.lastName.setValue(contacts.data.attributes.last_name);
-    this.email.setValue(contacts.data.attributes.email1);
+    this.email.setValue(contacts.data.attributes.email_c);
     this.phone.setValue(contacts.data.attributes.phone_mobile);
     this.organizationName.setValue(contacts.data.attributes.department);
     this.title.setValue(contacts.data.attributes.title);

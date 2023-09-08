@@ -1,3 +1,13 @@
+<ng-template #success>
+  <app-success id="login" [cont]="content" ></app-success>
+</ng-template>
+<ng-template #warning>
+<app-warning id="login" [cont]="content" ></app-warning>
+</ng-template>
+<ng-template #error>
+<app-error id="login" [cont]="content" ></app-error>
+</ng-template>
+
 <div class="contentPage">
   <table>
     <tr *ngIf="(this.lead$ | async)">
@@ -17,9 +27,9 @@
       <th><b>PHONE NUMBER</b></th>
       <th><b>COMPANY</b></th>
       <th><b>WEBSITE</b></th>
-      <th><b>LAST CONTACT ON</b></th>
-      <th><b>COUNTRY</b></th>
+      <th><b>ASSIGNED TO</b></th>
       <th><b>CITY</b></th>
+      <th><b>COUNTRY</b></th>
       <th>ACTION</th>
     </tr>
     <tr class="visible-data" *ngFor="let lead of (this.lead$ | async)?.leads">
@@ -32,14 +42,14 @@
       <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
       <td>{{lead.data.attributes.full_name!}}</td>
       <td class="lead-mail">
-        <div *ngIf="lead.data.attributes.email1">{{lead.data.attributes.email1!}}</div>
+        <div *ngIf="lead.data.attributes.email_c">{{lead.data.attributes.email_c!}}</div>
       </td>
       <td class="lead-phone">
         <div *ngIf="lead.data.attributes.phone_mobile">{{lead.data.attributes.phone_mobile!}}</div>
       </td>
       <td>{{lead.data.attributes.department!}}</td>
-      <td></td>
-      <td></td>
+      <td>{{lead.data.attributes.website}}</td>
+      <td><div *ngIf="lead.data.attributes.assigned_to_name_c != 'undefined' " >{{lead.data.attributes.assigned_to_name_c}}</div></td>
       <td></td>
       <td></td>
       <td>
@@ -109,7 +119,7 @@
                 [formControl]="email2"
                 class="input-dialog"
                 tuiTextfieldSize="s"
-                ngModel="{{ lead.data.attributes.email1! }}"
+                ngModel="{{ lead.data.attributes.email_c! }}"
               >
                 Type here
               </tui-input>
@@ -140,8 +150,6 @@
                 [formControl]="controlAssignments"
                 [stringify]="stringifyAssignment"
                 tuiTextfieldSize="s"
-                [ngModel]="lead.data.attributes.assigned_user_name"
-                [valueContent]="lead.data.attributes.assigned_user_name"
               >
                 Choose/Type here
                 <tui-data-list-wrapper

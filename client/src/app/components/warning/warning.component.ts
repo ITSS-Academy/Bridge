@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./warning.component.scss']
 })
 export class WarningComponent {
-  @Input() content!: string;
+  @Input() cont!: string;
 }

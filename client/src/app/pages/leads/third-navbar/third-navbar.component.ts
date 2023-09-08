@@ -7,6 +7,7 @@ import {
   EventEmitter,
   OnInit,
   Input,
+  ViewChild,
 } from '@angular/core';
 import { TuiDialogService, TuiDialogSize } from '@taiga-ui/core';
 import { TuiDialogFormService } from '@taiga-ui/kit';
@@ -20,6 +21,7 @@ import { LeadState } from '../ngrx/state/lead.state';
 import { Observable } from 'rxjs';
 import { LeadAction } from '../ngrx/action/lead.action';
 import { AuthService } from 'src/app/services/auth.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-third-navbar',
@@ -36,13 +38,19 @@ export class ThirdNavbarComponent implements OnInit {
   lead$!: Observable<LeadState>;
   currentUser!: any;
 
+  content = '';
+  @ViewChild('success') success: any;
+  @ViewChild('warning') warning: any;
+  @ViewChild('error') error: any;
+
   constructor(
     @Inject(TuiDialogFormService)
-    private readonly dialogForm: TuiDialogFormService,
-    @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
+    private  dialogForm: TuiDialogFormService,
+    @Inject(TuiDialogService) private  dialogs: TuiDialogService,
     private leadService: LeadsService,
     public authService: AuthService,
-    private store: Store<{ lead: LeadState }>
+    private store: Store<{ lead: LeadState }>,
+    private notificationService: NotificationService
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
     this.lead$ = store.select('lead');
@@ -81,6 +89,7 @@ export class ThirdNavbarComponent implements OnInit {
       data: {
         type: 'Leads',
         attributes: {
+          email_c: '',
           modified_by_name: '',
           alt_address_city: '',
           birthdate: '',
@@ -192,21 +201,30 @@ export class ThirdNavbarComponent implements OnInit {
         this.exampleForm.controls['lastName2'].value),
       (lead.data.attributes.department =
         this.exampleForm.controls['company2'].value),
-      (lead.data.attributes.email1 = this.exampleForm.controls['email2'].value),
+      (lead.data.attributes.email_c = this.exampleForm.controls['email2'].value),
       (lead.data.attributes.phone_mobile =
         this.exampleForm.controls['phone2'].value),
-      (lead.data.attributes.assigned_user_name = this.stringifyAssignment(
-        this.controlAssignments.value
+      (lead.data.attributes.assigned_to_name_c = this.stringifyAssignment(
+        this.controlAssignments.value ?? ''
       )),
       (lead.data.attributes.assigned_user_id = this.currentUser.data.id);
       lead.data.attributes.modified_user_id = this.currentUser.data.id;
       lead.data.attributes.modified_by_name = this.currentUser.data.attributes.full_name;
       // lead.data.attributes.created_by_name = this.currentUser.data.attributes.full_name;
     console.log(lead);
-    this.store.dispatch(LeadAction.addLead({ lead: lead }));
-    this.lead$.subscribe((data) => {
-      console.log(data);
-    });
+    if(this.exampleForm.controls['firstName'].value == '' || this.exampleForm.controls['lastName2'].value == '' || this.exampleForm.controls['company2'].value == '' || this.exampleForm.controls['email2'].value == '' || this.exampleForm.controls['phone2'].value == '' || this.controlAssignments.value == ''){
+      this.content = 'Please fill all the fields';
+      this.notificationService.showWarning(this.warning)
+      return;
+    }else if(this.exampleForm.controls['firstName'].value != '' && this.exampleForm.controls['lastName2'].value != '' && this.exampleForm.controls['company2'].value != '' && this.exampleForm.controls['email2'].value != '' && this.exampleForm.controls['phone2'].value != '' && this.controlAssignments.value != ''){
+      this.store.dispatch(LeadAction.addLead({ lead: lead }));
+      this.content = 'Add lead successfully';
+      this.notificationService.showSuccess(this.success)
+    }  
+    else{
+      this.content = 'Add lead failed';
+      this.notificationService.showError(this.error)
+    }
   }
 
   name = '';
@@ -244,18 +262,18 @@ export class ThirdNavbarComponent implements OnInit {
   //control assignment selection
   controlAssignments = new FormControl();
 
-  readonly assignments = [
+   assignments = [
     { assign: 'Khoa Bùi' },
     { assign: 'Dương Thùy' },
     { assign: 'Trí Nguyễn' },
   ];
 
-  readonly stringifyAssignment = (item: { assign: string }): string =>
+   stringifyAssignment:any = (item: { assign: string }): string =>
     `${item.assign}`;
   //
 
   //control phone selection
-  readonly phones = Object.values(TuiCountryIsoCode);
+   phones = Object.values(TuiCountryIsoCode);
 
   countryIsoCode = TuiCountryIsoCode.US;
   //

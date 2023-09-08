@@ -1,3 +1,13 @@
+<ng-template #success>
+  <app-success id="login" [cont]="content" ></app-success>
+</ng-template>
+<ng-template #warning>
+<app-warning id="login" [cont]="content" ></app-warning>
+</ng-template>
+<ng-template #error>
+<app-error id="login" [cont]="content" ></app-error>
+</ng-template>
+
 <ng-template [tuiAlertOptions]="{status: status, autoClose: true}" [(tuiAlert)]="show">
   {{this.notification}}
 </ng-template>
@@ -21,6 +31,7 @@
       <th><b>ORGANIZATION</b></th>
       <th><b>TITLE</b></th>
       <th><b>STAGE</b></th>
+      <th><b>STATUS</b></th>
       <th><b>ASSIGNED TO</b></th>
       <th><b>ACTION</b></th>
 
@@ -52,9 +63,10 @@
           {{ contact.data.attributes.department! }}
         </div>
       </td>
-      <td>{{ contact.data.attributes.title }}</td>
-      <td>{{ contact.data.attributes.stage_c }}</td>
-      <td>{{ contact.data.attributes.assigned_to_name_c }}</td>
+      <td><div *ngIf="contact.data.attributes.title != 'undefined'">{{ contact.data.attributes.title }}</div></td>
+      <td><div *ngIf="contact.data.attributes.stage_c != 'undefined' || contact.data.attributes.stage_c != ''">{{ contact.data.attributes.stage_c }}</div></td>
+      <td><div *ngIf="contact.data.attributes.status_c != 'undefined'">{{ contact.data.attributes.status_c }}</div></td>
+      <td><div *ngIf="contact.data.attributes.assigned_to_name_c != 'undefined'">{{ contact.data.attributes.assigned_to_name_c }}</div></td>
       <td>
         <div class="action">
           <span class="material-symbols-outlined" (click)="showDialog(content, 'auto', contact)"
@@ -85,7 +97,7 @@
                 <label for="phone">Phone</label>
                 <label for="orgName">Organization Name</label>
                 <label for="assignTo">Assign To</label>
-                <label for="lifeCycleStage">LifeCycleStage</label>
+                <label for="lifeCycleStage">Stage</label>
                 <label for="status">Status</label>
                 <label for="title">Title</label>
               </div>

@@ -16,6 +16,6 @@ export class NavbarUserManagementComponent {
   }
 
   backToHome(){
-    this.route.navigate(['/lead'])
+    this.route.navigate(['/leads'])
   }
 }

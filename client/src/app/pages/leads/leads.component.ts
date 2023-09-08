@@ -20,7 +20,6 @@ export class LeadsComponent implements OnInit {
   pageEmpty = true;
 
   constructor(private leadService: LeadsService, private store: Store<{lead: LeadState}>) {
-    this.leads$ = this.store.select('lead');
   }
 
   ngOnInit(): void {
@@ -28,6 +27,7 @@ export class LeadsComponent implements OnInit {
   }
 
   getAllLeads() {
+    this.leads$ = this.store.select('lead');
     this.store.dispatch(LeadAction.getLeads());
   }
 }

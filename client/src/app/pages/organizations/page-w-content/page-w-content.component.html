@@ -1,3 +1,12 @@
+<ng-template #success>
+  <app-success id="login" [cont]="content" ></app-success>
+</ng-template>
+<ng-template #warning>
+<app-warning id="login" [cont]="content" ></app-warning>
+</ng-template>
+<ng-template #error>
+<app-error id="login" [cont]="content" ></app-error>
+</ng-template>
 <div class="contentPage">
     <table>
         <tr *ngIf="(this.organizations | async)">
@@ -10,12 +19,11 @@
             <th style="width: max-content; padding: 0.5rem;"><span class="material-symbols-outlined">edit_document</span></th>
             
             <th><b>ORG NAME</b></th>
-            <th><b>EMAIL</b></th>
             <th><b>WEBSITE</b></th>
             <th><b>PHONE NUMBER</b></th>
-            <th><b>LAST CONTACT ON</b></th>
             <th><b>COUNTRY</b></th>
             <th><b>CITY</b></th>
+            <th><b>ASSIGNED TO</b></th>
             <th><b>ACTION</b></th>
           </tr>
 
@@ -27,12 +35,11 @@
               </label></th>
             <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
             <td >{{organization.data.attributes.name!}}</td>
-            <td></td>
             <td><div *ngIf="organization.data.attributes.website">{{organization.data.attributes.website!}}</div></td>
             <td><div *ngIf="organization.data.attributes.phone_office">{{organization.data.attributes.phone_office!}}</div></td>
             <td></td>
             <td></td>
-            <td></td>
+            <td>{{organization.data.attributes.assigned_to_name_c}}</td>
             <td>
               <div class="action">
                 <span class="material-symbols-outlined" (click)="showDialog(dialogAddOrg, 'auto', organization)">edit</span>
@@ -61,7 +68,6 @@
           class="input-dialog"
           tuiTextfieldSize="s"
           [formControl]="organizationName"
-          ngModel="{{organization.data.attributes.name!}}"
         >
           Type here
         </tui-input>
@@ -74,7 +80,6 @@
           class="input-dialog"
           tuiTextfieldSize="s"
           [formControl]="website"
-          ngModel="{{organization.data.attributes.website!}}"
         >
           Type here (optional)
         </tui-input>
@@ -90,7 +95,6 @@
           [tuiTextfieldLabelOutside]="true"
           tuiTextfieldSize="m"
           [formControl]="phone"
-          ngModel="{{organization.data.attributes.phone_office!}}"
         >
           Type here (optional)
         </tui-input-phone-international>
@@ -105,7 +109,6 @@
           [formControl]="controlTypes"
           [stringify]="stringifyType"
           tuiTextfieldSize="s"
-          ngModel="{{organization.data.attributes.type}}"
           
         >
           Choose/Type here
@@ -127,7 +130,6 @@
           [formControl]="controlAssignments"
           [stringify]="stringifyAssignment"
           tuiTextfieldSize="s"
-          ngModel="{{organization.data.attributes.assigned_to!}}"
         >
           Choose/Type here
 
@@ -148,7 +150,6 @@
           [formControl]="controlStatuses"
           [stringify]="stringifyStatus"
           tuiTextfieldSize="s"
-          ngModel="{{organization.data.attributes.status!}}"
         >
           Choose/Type here
 

@@ -1,5 +1,5 @@
 import { Observable, map } from 'rxjs';
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { OrganizationsService } from '../organizations.service';
 import { OrganizationState } from '../ngrx/state/organization.state';
 import { Store } from '@ngrx/store';
@@ -14,6 +14,7 @@ import {
 import { TuiDialogFormService } from '@taiga-ui/kit';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import { Organization } from 'src/app/models/organization.model';
+import { NotificationService } from 'src/app/services/notification.service';
 @Component({
   selector: 'app-page-w-content',
   templateUrl: './page-w-content.component.html',
@@ -26,6 +27,11 @@ export class PageWContentComponent {
   organization$!: Observable<OrganizationState>;
   currentUser!: any;
 
+  content = '';
+  @ViewChild('success') success: any;
+  @ViewChild('warning') warning: any;
+  @ViewChild('error') error: any;
+
   // notification = '';
   // status = '';
   // show = false;
@@ -34,9 +40,10 @@ export class PageWContentComponent {
     private store: Store<{ organization: OrganizationState }>,
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
     @Inject(TuiDialogFormService)
-    private readonly dialogForm: TuiDialogFormService
+    private readonly dialogForm: TuiDialogFormService,
+    private nocationService: NotificationService
   ) {
-      this.organization$ = store.select('organization');
+    this.organization$ = store.select('organization');
     this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
     this.exampleForm.addControl('organizationName', this.organizationName);
     this.exampleForm.addControl('website', this.website);
@@ -46,26 +53,36 @@ export class PageWContentComponent {
     this.exampleForm.addControl('controlStatuses', this.controlStatuses);
   }
 
- 
   deleteOrganization(id: string) {
-    this.store.dispatch(OrganizationAction.deleteOrganization({ id: id}));
+    this.store.dispatch(OrganizationAction.deleteOrganization({ id: id }));
+    let sub: any = this.organization$.subscribe({
+      next: (data) => {
+        if (data.status == 'Delete organization success') {
+          this.content = 'Delete successfully';
+          this.nocationService.showSuccess(this.success);
+          return;
+        }
+      },
+      complete: () => sub.unsubscribe(),
+    });
   }
-
 
   exampleForm: FormGroup = new FormGroup({});
   organizationName: FormControl = new FormControl('');
   website: FormControl = new FormControl('');
   phone: FormControl = new FormControl('');
-  controlTypes = new FormControl()
+  controlTypes = new FormControl();
   controlAssignments = new FormControl();
   controlStatuses = new FormControl();
-  
+
   async updateOrganization(organization: any) {
     let organizationToUpdate: Organization = {
       data: {
         type: 'Accounts',
         id: '',
         attributes: {
+          assigned_to_id_c: '',
+          assigned_to_name_c: '',
           name: '',
           website: '',
           phone_office: '',
@@ -97,7 +114,7 @@ export class PageWContentComponent {
           invalid_email: '',
           email1: '',
           email_opt_out: '',
-          
+
           campaigns: '',
           members: '',
           // member_of: [],
@@ -119,7 +136,7 @@ export class PageWContentComponent {
           ticker_symbol: '',
           modified_user_link: '',
           description: '',
-          
+
           industry: '',
           prospect_lists: '',
           emails: '',
@@ -145,7 +162,7 @@ export class PageWContentComponent {
           email_addresses_non_primary: '',
           contacts: '',
           aos_quotes: '',
-        }
+        },
       },
     };
     console.log(organization);
@@ -158,28 +175,47 @@ export class PageWContentComponent {
       (organizationToUpdate.data.attributes.phone_office =
         this.exampleForm.controls['phone'].value),
       (organizationToUpdate.data.attributes.account_type = this.stringifyType(
-        this.controlTypes.value
+        this.controlTypes.value ?? ''
       )),
-      (organizationToUpdate.data.attributes.assigned_user_name = this.stringifyAssignment(
-        this.controlAssignments.value
-      )),
+      (organizationToUpdate.data.attributes.assigned_to_name_c =
+        this.stringifyAssignment(this.controlAssignments.value ?? '')),
       (organizationToUpdate.data.attributes.status_c = this.stringifyStatus(
-        this.controlStatuses.value
+        this.controlStatuses.value ?? ''
       )),
-      (organizationToUpdate.data.attributes.assigned_user_id = this.currentUser.data.id);
-      // (organization.data.attributes.assigned_user_id = this.currentUser.data.id);
-      // organization.data.attributes.modified_user_id = this.currentUser.data.id;
-      // organization.data.attributes.modified_by_name = this.currentUser.data.attributes.full_name;
-      // // lead.data.attributes.created_by_name = this.currentUser.data.attributes.full_name;
-      console.log(organizationToUpdate);
-    this.store.dispatch(OrganizationAction.updateOrganization({ organization: organizationToUpdate }));
-    const subcription:any = this.organization$.subscribe({
-      next: (data) => {
-        console.log(data);
-      },
-      complete: () => subcription.unsubscribe()
-    })
-    console.log(organization)
+      (organizationToUpdate.data.attributes.assigned_to_id_c =
+        this.currentUser.data.id);
+    console.log(organizationToUpdate);
+    if (
+      organizationToUpdate.data.attributes.name == '' ||
+      organizationToUpdate.data.attributes.website == '' ||
+      organizationToUpdate.data.attributes.phone_office == '' ||
+      organizationToUpdate.data.attributes.account_type == '' ||
+      organizationToUpdate.data.attributes.assigned_to_name_c == '' ||
+      organizationToUpdate.data.attributes.status_c == ''
+    ) {
+      this.content = 'Please fill all the fields';
+      this.nocationService.showWarning(this.warning);
+      return;
+    } else if (
+      organizationToUpdate.data.attributes.name != '' &&
+      organizationToUpdate.data.attributes.website != '' &&
+      organizationToUpdate.data.attributes.phone_office != '' &&
+      organizationToUpdate.data.attributes.account_type != '' &&
+      organizationToUpdate.data.attributes.assigned_to_name_c != '' &&
+      organizationToUpdate.data.attributes.status_c != ''
+    ) {
+      this.content = 'Organization updated successfully';
+      this.nocationService.showSuccess(this.success);
+      this.store.dispatch(
+        OrganizationAction.updateOrganization({
+          organization: organizationToUpdate,
+        })
+      );
+    } else {
+      this.content = 'Something went wrong';
+      this.nocationService.showError(this.error);
+      return;
+    }
   }
 
   //control phone selection
@@ -228,7 +264,14 @@ export class PageWContentComponent {
     `${item.status}`;
   //
 
-  showDialog(content: PolymorpheusContent, size: TuiDialogSize, organization: any): void {
+  showDialog(
+    content: PolymorpheusContent,
+    size: TuiDialogSize,
+    organization: any
+  ): void {
+    this.phone.setValue(organization.data.attributes.phone_mobile);
+    this.organizationName.setValue(organization.data.attributes.name);
+    this.website.setValue(organization.data.attributes.website);
     console.log(organization);
     const closeable = this.dialogForm.withPrompt({
       label: 'Are you sure?',
@@ -240,9 +283,7 @@ export class PageWContentComponent {
     this.dialogs
       .open(content, { closeable, dismissible: closeable, size })
       .subscribe({
-        complete: () => {
-        },
+        complete: () => {},
       });
   }
-
 }

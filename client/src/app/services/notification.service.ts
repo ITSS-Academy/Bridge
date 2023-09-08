@@ -16,13 +16,13 @@ export class NotificationService {
     horizontalPosition: 'right',
     verticalPosition: 'top',
   }
-  showSuccess() {
-    // this.snackbar.open()
+  showSuccess(template:any) {
+    this.snackbar.openFromTemplate(template,this.config)
   }
-  showWarning() {
-    this.snackbar.openFromComponent(WarningComponent,this.config)
+  showWarning(template:any) {
+    this.snackbar.openFromTemplate(template,this.config)
   }
-  showError(){
-    this.snackbar.openFromComponent(ErrorComponent,this.config)
+  showError(template:any){
+    this.snackbar.openFromTemplate(template,this.config)
   }
 }
