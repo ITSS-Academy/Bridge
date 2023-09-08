@@ -22,7 +22,7 @@
       <th>ACTION</th>
     </tr>
 
-    <tr class="visible-data" *ngFor="let case of this.cases | async">
+    <!-- <tr class="visible-data" *ngFor="let case of this.cases | async">
       <td style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
         <label class="container">
           <input type="checkbox" />
@@ -59,9 +59,9 @@
           >
         </div>
       </td>
-    </tr>
+    </tr> -->
 
-    <!-- <tr>
+    <tr>
 
       <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
         <label class="container">
@@ -81,6 +81,22 @@
       <td></td>
       <td></td>
       <td>-119d 23h 18m</td>
+      <td>
+        <div class="action">
+          <span
+            class="material-symbols-outlined"
+            (click)="showDialog(dialogAddCase, 'auto')"
+            style="cursor: pointer"
+            >edit</span
+          >
+          <span
+            class="material-symbols-outlined"
+
+            style="cursor: pointer"
+            >delete</span
+          >
+        </div>
+      </td>
     </tr>
     <tr>
 
@@ -104,6 +120,22 @@
       <td></td>
       <td></td>
       <td>-119d 23h 18m</td>
+      <td>
+        <div class="action">
+          <span
+            class="material-symbols-outlined"
+            (click)="showDialog(dialogAddCase, 'auto')"
+            style="cursor: pointer"
+            >edit</span
+          >
+          <span
+            class="material-symbols-outlined"
+
+            style="cursor: pointer"
+            >delete</span
+          >
+        </div>
+      </td>
     </tr>
 
     <tr>
@@ -128,7 +160,23 @@
       <td></td>
       <td></td>
       <td>-119d 23h 18m</td>
-    </tr> -->
+      <td>
+        <div class="action">
+          <span
+            class="material-symbols-outlined"
+            (click)="showDialog(dialogAddCase, 'auto')"
+            style="cursor: pointer"
+            >edit</span
+          >
+          <span
+            class="material-symbols-outlined"
+
+            style="cursor: pointer"
+            >delete</span
+          >
+        </div>
+      </td>
+    </tr>
   </table>
 </div>
 

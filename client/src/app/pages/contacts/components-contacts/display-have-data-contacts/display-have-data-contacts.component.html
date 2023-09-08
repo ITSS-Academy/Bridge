@@ -168,13 +168,15 @@
                 </tui-combo-box>
               </div>
             </div>
+            
+            <div class="cancel-save">
+              <button class="button-cancel" type="submit">Cancel</button>
+              <button class="button-add" (click)="updateContact(contact)">Update</button>
+            </div>
           </form>
 
           <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
-          <div class="cancel-save">
-            <button class="button-cancel" type="submit">Cancel</button>
-            <button class="button-add" (click)="updateContact(contact)">Update</button>
-          </div>
+         
         </div>
       </ng-template>
 

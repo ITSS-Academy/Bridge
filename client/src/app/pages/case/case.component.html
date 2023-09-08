@@ -13,14 +13,13 @@
   ></app-third-navbar>
   <div class="body" style="position: relative; z-index: 1">
     <!-- NỘI DUNG TRANG RỖNG-->
-    <app-page-empty
+    <!-- <app-page-empty
       *ngIf="(this.cases | async)?.length == 0"
       [title]="title"
     ></app-page-empty>
-    <!-- TRANG CÓ NỘI DUNG -->
+    TRANG CÓ NỘI DUNG -->
     <app-page-w-content
-      *ngIf="(this.cases | async)?.length != 0"
-      [cases]="this.cases"
+
     ></app-page-w-content>
   </div>
 </div>

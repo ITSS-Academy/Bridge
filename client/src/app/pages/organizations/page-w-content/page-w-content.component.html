@@ -39,7 +39,7 @@
             <td><div *ngIf="organization.data.attributes.phone_office">{{organization.data.attributes.phone_office!}}</div></td>
             <td></td>
             <td></td>
-            <td><div *ngIf="organization.data.attributes.assigned_to_name_c != 'undefined'">organization.data.attributes.assigned_to_name_c!</div></td>
+            <td><div *ngIf="organization.data.attributes.assigned_to_name_c != 'undefined'">{{organization.data.attributes.assigned_to_name_c!}}</div></td>
             <td>
               <div class="action">
                 <span class="material-symbols-outlined" (click)="showDialog(dialogAddOrg, 'auto', organization)" style="cursor: pointer;">edit</span>

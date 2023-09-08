@@ -58,7 +58,6 @@ export class ThirdNavbarComponent implements OnInit {
     this.exampleForm.addControl('Location', this.Location);
     this.exampleForm.addControl('Tasktype', this.Tasktype);
     this.exampleForm.addControl('Description', this.Description);
-
   }
   addTask() {
     let task: any = {
@@ -66,7 +65,9 @@ export class ThirdNavbarComponent implements OnInit {
         type: 'Tasks',
         attributes: {
           name: this.exampleForm.controls['Name'].value,
-          assigned_to_c: this.stringifyAssignment(this.controlAssignments.value),
+          assigned_to_c: this.stringifyAssignment(
+            this.controlAssignments.value
+          ),
           // date_start: this.exampleForm.controls['Estimatetime'].value,
           // date_due: this.exampleForm.controls['DuedateTime'].value,
           status: this.stringifyStage(this.controlStages.value),
@@ -74,27 +75,24 @@ export class ThirdNavbarComponent implements OnInit {
           location_c: this.exampleForm.controls['Location'].value,
           task_type_c: this.stringifyTask(this.controlTasks.value),
           description: this.exampleForm.controls['Description'].value,
-        }
-      }
-
-    }
+        },
+      },
+    };
     this.store.dispatch(TaskAction.addTask({ task: task }));
-    let subscription:any = this.task$.subscribe({
+    let subscription: any = this.task$.subscribe({
       next: (data) => {
         console.log(data);
       },
-      complete: () => subscription.unsubscribe()
-    })
+      complete: () => subscription.unsubscribe(),
+    });
     console.log(this.test?.toLocalNativeDate().getDate());
   }
 
   readonly testForm = new FormGroup({
-    testValue: new FormControl()
-
+    testValue: new FormControl(),
   });
 
-
-  exampleForm:FormGroup = new FormGroup({});
+  exampleForm: FormGroup = new FormGroup({});
 
   Name: FormControl = new FormControl('');
   Assignedto: FormControl = new FormControl('');
@@ -108,8 +106,8 @@ export class ThirdNavbarComponent implements OnInit {
 
   ngOnInit() {}
 
-  showDate(){
-    console.log(this.testForm.value.testValue)
+  showDate() {
+    console.log(this.testForm.value.testValue);
   }
 
   onModelChangeName(name: string): void {
@@ -204,5 +202,4 @@ export class ThirdNavbarComponent implements OnInit {
         complete: () => {},
       });
   }
-
 }
