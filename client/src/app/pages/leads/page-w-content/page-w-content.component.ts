@@ -257,6 +257,7 @@ export class PageWContentComponent {
     { assign: 'Khoa Bùi' },
     { assign: 'Dương Thùy' },
     { assign: 'Trí Nguyễn' },
+    { assign: 'Văn Việt' },
   ];
 
   readonly stringifyAssignment = (item: { assign: string }): string =>

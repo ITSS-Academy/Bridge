@@ -85,18 +85,18 @@ export class DisplayHaveDataContactsComponent {
           last_name: this.contactsForm.controls['lastName'].value,
           email_c: this.contactsForm.controls['email'].value,
           phone_mobile: this.contactsForm.controls['phone'].value,
-          // title: this.contactsForm.controls['title'].value,
+          title: this.stringifyTitle(this.controlTitle.value ?? ''),
           department: this.contactsForm.controls['organizationName'].value,
           assigned_to_name_c: this.stringifyAssignment(this.controlAssignments.value ?? ''),
           status_c: this.stringifyStatus(this.controlStatus.value ?? ''),
           stage_c: this.stringifyLife(this.controlLife.value ?? '')
         }
       }};
-      if(this.contactsForm.controls['firstName'].value == '' || this.contactsForm.controls['lastName'].value == '' || this.contactsForm.controls['email'].value == '' || this.contactsForm.controls['phone'].value == '' || this.contactsForm.controls['organizationName'].value == '' || this.stringifyAssignment(this.controlAssignments.value) == '' || this.stringifyStatus(this.controlStatus.value) == '' || this.stringifyLife(this.controlLife.value) == '' || this.stringifyTitle(this.controlTitle.value) == '' ) {
+      if(this.contactsForm.controls['firstName'].value == '' || this.contactsForm.controls['lastName'].value == '' || this.contactsForm.controls['email'].value == '' || this.contactsForm.controls['phone'].value == '' || this.contactsForm.controls['organizationName'].value == '' || newContact.data.attributes.assigned_to_name_c == '' || newContact.data.attributes.stage_c == '' || newContact.data.attributes.status_c == '' || newContact.data.attributes.title == '') {
         this.content = 'Please fill all required fields';
         this.nocationService.showWarning(this.warning);
         return;
-      }else if(newContact.data.attributes.first_name != '' && newContact.data.attributes.last_name != '' && newContact.data.attributes.email_c != '' && newContact.data.attributes.phone_mobile != '' && newContact.data.attributes.department != '' && newContact.data.attributes.assigned_to_name_c != '' && newContact.data.attributes.status_c != '' && newContact.data.attributes.stage_c != '' && newContact.data.attributes.title != '') {
+      }else if(this.contactsForm.controls['firstName'].value != '' && this.contactsForm.controls['lastName'].value != '' && this.contactsForm.controls['email'].value != '' && this.contactsForm.controls['phone'].value != '' && this.contactsForm.controls['organizationName'].value != '' && newContact.data.attributes.assigned_to_name_c != '' && newContact.data.attributes.status_c != '' && newContact.data.attributes.stage_c != '' && newContact.data.attributes.title != '') {
         this.store.dispatch(ContactAction.updateContact({ contact: newContact }));
         this.content = 'Update contact successfully';
         this.nocationService.showSuccess(this.success);
@@ -172,7 +172,8 @@ allLife = [
     { name: 'Anonymus' },
   ];
 
-  stringifyLife = (life: { name: string }): string => `${life.name} `;
+  stringifyLife = (life: { name: string }): string => 
+    `${life.name} `;
   //
 
   //control assignment selection
@@ -180,8 +181,9 @@ allLife = [
 
   assignments = [
     { assign: 'Khoa Bùi' },
-    { assign: 'Dương Thùy' },
     { assign: 'Trí Nguyễn' },
+    { assign: 'Dương Thùy' },
+    { assign: 'Văn Việt' },
     { assign: 'Team Selling' },
     { assign: 'Marketing Group' },
     { assign: 'Support Group' },
@@ -193,6 +195,7 @@ allLife = [
 
   //Open Dialog
   showDialog(content: PolymorpheusContent, size: TuiDialogSize, contacts: any): void {
+    console.log(contacts);
     this.firstName.setValue(contacts.data.attributes.first_name);
     this.lastName.setValue(contacts.data.attributes.last_name);
     this.email.setValue(contacts.data.attributes.email_c);

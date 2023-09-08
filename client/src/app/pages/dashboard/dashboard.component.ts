@@ -13,6 +13,9 @@ interface style{
 
 
 
+
+
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -20,8 +23,12 @@ interface style{
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent {
+
+  currentUser: any;
   title = 'Dashboard';
-  constructor(public route: Router) {}
+  constructor(public route: Router) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
+  }
 
   navTo(path: any) {
     this.route.navigate([`/${path}`]);

@@ -63,10 +63,10 @@
           {{ contact.data.attributes.department! }}
         </div>
       </td>
-      <td><div *ngIf="contact.data.attributes.title != 'undefined'">{{ contact.data.attributes.title }}</div></td>
-      <td><div *ngIf="contact.data.attributes.stage_c != 'undefined' || contact.data.attributes.stage_c != ''">{{ contact.data.attributes.stage_c }}</div></td>
-      <td><div *ngIf="contact.data.attributes.status_c != 'undefined'">{{ contact.data.attributes.status_c }}</div></td>
-      <td><div *ngIf="contact.data.attributes.assigned_to_name_c != 'undefined'">{{ contact.data.attributes.assigned_to_name_c }}</div></td>
+      <td><div *ngIf="contact.data.attributes.title != 'undefined ' ">{{ contact.data.attributes.title ?? '' }}</div></td>
+      <td><div *ngIf="contact.data.attributes.stage_c != 'undefined ' ?? '' ">{{ contact.data.attributes.stage_c}}</div></td>
+      <td><div *ngIf="contact.data.attributes.status_c != 'undefined ' ">{{ contact.data.attributes.status_c ?? '' }}</div></td>
+      <td><div *ngIf="contact.data.attributes.assigned_to_name_c != 'undefined' ">{{ contact.data.attributes.assigned_to_name_c ?? '' }}</div></td>
       <td>
         <div class="action">
           <span class="material-symbols-outlined" (click)="showDialog(content, 'auto', contact)"

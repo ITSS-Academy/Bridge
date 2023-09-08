@@ -38,7 +38,6 @@ export class NavbarContactsComponent {
   currentUser!: any;
   contact$!: Observable<ContactState>;
 
-
   content = '';
   @ViewChild('success') success: any;
   @ViewChild('warning') warning: any;
@@ -56,7 +55,7 @@ export class NavbarContactsComponent {
     private contactService: ContactsService,
     public authService: AuthService,
     private store: Store<{ contact: ContactState }>,
-    private notificationService: NotificationService,
+    private notificationService: NotificationService
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
     this.contact$ = store.select('contact');
@@ -77,7 +76,6 @@ export class NavbarContactsComponent {
   email: FormControl = new FormControl('');
   phone: FormControl = new FormControl('');
   organizationName: FormControl = new FormControl('');
-
 
   async addContact() {
     let subContact: any = {
@@ -212,28 +210,45 @@ export class NavbarContactsComponent {
         this.contactsForm.controls['phone'].value),
       (contact.data.attributes.department =
         this.contactsForm.controls['organizationName'].value),
-      (contact.data.attributes.title = this.stringifyTitle(
-        this.controlTitle.value
-      )),
-      (contact.data.attributes.status_c = this.stringifyStatus(
-        this.controlStatus.value
-      )),
-      (contact.data.attributes.stage_c = this.stringifyLife(
-        this.controlLife.value
-      )),
-      contact.data.attributes.assigned_to_name_c= this.stringifyAssignment(
-        this.controlAssignments.value);
+      (contact.data.attributes.title =
+        this.stringifyTitle(this.controlTitle.value ?? '') ?? ''),
+      (contact.data.attributes.status_c =
+        this.stringifyStatus(this.controlStatus.value ?? '') ?? ''),
+      (contact.data.attributes.stage_c =
+        this.stringifyLife(this.controlLife.value ?? '') ?? ''),
+      (contact.data.attributes.assigned_to_name_c =
+        this.stringifyAssignment(this.controlAssignments.value ?? '') ?? '');
 
-    if(contact.data.attributes.first_name == '' || contact.data.attributes.last_name == '' || contact.data.attributes.email_c == '' || contact.data.attributes.phone_mobile == '' || contact.data.attributes.department == '' || contact.data.attributes.title == '' || contact.data.attributes.status_c == '' || contact.data.attributes.stage_c == '' || contact.data.attributes.assigned_to_name_c == '') {
+    if (
+      contact.data.attributes.first_name == '' ||
+      contact.data.attributes.last_name == '' ||
+      contact.data.attributes.email_c == '' ||
+      contact.data.attributes.phone_mobile == '' ||
+      contact.data.attributes.department == '' ||
+      contact.data.attributes.title == '' ||
+      contact.data.attributes.status_c == '' ||
+      contact.data.attributes.stage_c == '' ||
+      contact.data.attributes.assigned_to_name_c == ''
+    ) {
       this.content = 'Please fill all the required fields';
       this.notificationService.showWarning(this.warning);
       return;
-    }else if(contact.data.attributes.first_name != '' && contact.data.attributes.last_name != '' && contact.data.attributes.email_c != '' && contact.data.attributes.phone_mobile != '' && contact.data.attributes.department != '' && contact.data.attributes.title != '' && contact.data.attributes.status_c != '' && contact.data.attributes.stage_c != '' && contact.data.attributes.assigned_to_name_c != '') {
-      this.store.dispatch(ContactAction.addContact({ contact: contact }));  
+    } else if (
+      contact.data.attributes.first_name != '' &&
+      contact.data.attributes.last_name != '' &&
+      contact.data.attributes.email_c != '' &&
+      contact.data.attributes.phone_mobile != '' &&
+      contact.data.attributes.department != '' &&
+      contact.data.attributes.title != '' &&
+      contact.data.attributes.status_c != '' &&
+      contact.data.attributes.stage_c != '' &&
+      contact.data.attributes.assigned_to_name_c != ''
+    ) {
+      this.store.dispatch(ContactAction.addContact({ contact: contact }));
       this.content = 'Contact created successfully';
       this.notificationService.showSuccess(this.success);
       return;
-    }else{
+    } else {
       this.content = 'Something went wrong';
       this.notificationService.showError(this.error);
       return;
@@ -285,6 +300,7 @@ export class NavbarContactsComponent {
     { assign: 'Khoa Bùi' },
     { assign: 'Dương Thùy' },
     { assign: 'Trí Nguyễn' },
+    { assign: 'Văn Việt' },
     { assign: 'Team Selling' },
     { assign: 'Marketing Group' },
     { assign: 'Support Group' },
@@ -293,7 +309,6 @@ export class NavbarContactsComponent {
   readonly stringifyAssignment = (item: { assign: string }): string =>
     `${item.assign}`;
   //
-
 
   //title
   controlTitle = new FormControl();
@@ -309,8 +324,7 @@ export class NavbarContactsComponent {
     { name: 'Procurment Manager' },
   ];
 
-  stringifyTitle = (title: { name: string }): string =>
-    `${title.name} `;
+  stringifyTitle = (title: { name: string }): string => `${title.name} `;
 
   //Open Dialog
   showDialog(content: PolymorpheusContent, size: TuiDialogSize): void {
