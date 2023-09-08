@@ -1,181 +1,147 @@
 <ng-template #success>
-  <app-success id="login" [cont]="content" ></app-success>
+  <app-success id="login" [cont]="content"></app-success>
 </ng-template>
 <ng-template #warning>
-<app-warning id="login" [cont]="content" ></app-warning>
+  <app-warning id="login" [cont]="content"></app-warning>
 </ng-template>
 <ng-template #error>
-<app-error id="login" [cont]="content" ></app-error>
+  <app-error id="login" [cont]="content"></app-error>
 </ng-template>
 <div class="contentPage">
-    <table>
-        <tr *ngIf="(this.organization$ | async)">
-            <!-- CHECKBOX -->
-            <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-              </label></th>
+  <table>
+    <tr *ngIf="this.organization$ | async">
+      <!-- CHECKBOX -->
+      <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
+        <label class="container">
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+      </th>
 
-            <th style="width: max-content; padding: 0.5rem;"><span class="material-symbols-outlined">edit_document</span></th>
-            
-            <th><b>ORG NAME</b></th>
-            <th><b>WEBSITE</b></th>
-            <th><b>PHONE NUMBER</b></th>
-            <th><b>COUNTRY</b></th>
-            <th><b>CITY</b></th>
-            <th><b>ASSIGNED TO</b></th>
-            <th><b>ACTION</b></th>
-          </tr>
+      <th style="width: max-content; padding: 0.5rem">
+        <span class="material-symbols-outlined">edit_document</span>
+      </th>
+      <th><b>ORG NAME</b></th>
+      <th><b>WEBSITE</b></th>
+      <th><b>PHONE NUMBER</b></th>
+      <th><b>COUNTRY</b></th>
+      <th><b>CITY</b></th>
+      <th><b>ASSIGNED TO</b></th>
+      <th><b>ACTION</b></th>
+    </tr>
+    <tr class="visible-data" *ngFor="let organization of (this.organization$ | async)?.organizations">
+      <!-- CHECKBOX -->
+      <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
+          <input type="checkbox">
+          <span class="checkmark"></span>
+        </label></th>
+      <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
+      <td>{{organization.data.attributes.name!}}</td>
+      <td class="lead-mail">
+        <div *ngIf="organization.data.attributes.website">{{organization.data.attributes.website!}}</div>
+      </td>
+      <td class="lead-phone">
+        <div *ngIf="organization.data.attributes.phone_office">{{organization.data.attributes.phone_office!}}</div>
+      </td>
+      <td></td>
+      <td></td>
+      <td>
+        <div *ngIf="organization.data.attributes.assigned_to_name_c != 'undefined'">
+          {{organization.data.attributes.assigned_to_name_c!}}</div>
+      </td>
+      <td>
+        <div class="action">
+          <span class="material-symbols-outlined" (click)="showDialog(dialogAddOrg, 'auto', organization)">edit</span>
+          <span class="material-symbols-outlined" (click)="deleteOrganization(organization.data.id)">delete</span>
+        </div>
+      </td>
 
-          <tr class="visible-data" *ngFor="let organization of (this.organization$ | async)?.organizations">
-            <!-- CHECKBOX -->
-            <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;"><label class="container">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-              </label></th>
-            <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
-            <td >{{organization.data.attributes.name!}}</td>
-            <td class="lead-mail"><div *ngIf="organization.data.attributes.website">{{organization.data.attributes.website!}}</div></td>
-            <td class="lead-phone"><div *ngIf="organization.data.attributes.phone_office">{{organization.data.attributes.phone_office!}}</div></td>
-            <td></td>
-            <td></td>
-            <td><div *ngIf="organization.data.attributes.assigned_to_name_c != 'undefined'">{{organization.data.attributes.assigned_to_name_c!}}</div></td>
-            <td>
-              <div class="action">
-                <span class="material-symbols-outlined" (click)="showDialog(dialogAddOrg, 'auto', organization)">edit</span>
-              <span class="material-symbols-outlined" (click)="deleteOrganization(organization.data.id)">delete</span>
-              </div>
-            </td>
+      <!-- DIALOG -->
+      <ng-template id="dialogAddOrg" #dialogAddOrg let-observer>
+        <!--FORM CHỨA NỘI DUNG HIỂN THỊ DIALOG-->
+        <form id="form-container" [formGroup]="exampleForm" (ngSubmit)="observer.complete()">
+          <!--TỰA ĐỀ BỰ ORGANIZATION-->
+          <p id="header-dialog">Add Organization</p>
 
-<!-- DIALOG -->
-<ng-template id="dialogAddOrg" #dialogAddOrg let-observer>
-  <!--FORM CHỨA NỘI DUNG HIỂN THỊ DIALOG-->
-  <form
-    id="form-container"
-    [formGroup]="exampleForm"
-    (ngSubmit)="observer.complete()"
-  >
-    <!--TỰA ĐỀ BỰ ORGANIZATION-->
-    <p id="header-dialog">Add Organization</p>
+          <!--DIV CHỨA NỘI DUNG CHÍNH CỦA DIALOG-->
+          <div class="contents-dialog-org">
+            <!--ORGANIZATION NAME-->
+            <div class="container-dialog">
+              <p class="title-dialog">Organization name</p>
+              <tui-input style="outline: none !important" class="input-dialog" tuiTextfieldSize="s"
+                [formControl]="organizationName">
+                Type here
+              </tui-input>
+            </div>
 
-    <!--DIV CHỨA NỘI DUNG CHÍNH CỦA DIALOG-->
-    <div class="contents-dialog-org">
-      <!--ORGANIZATION NAME-->
-      <div class="container-dialog">
-        <p class="title-dialog">Organization name</p>
-        <tui-input
-          style="outline: none !important"
-          class="input-dialog"
-          tuiTextfieldSize="s"
-          [formControl]="organizationName"
-        >
-          Type here
-        </tui-input>
-      </div>
+            <!--TITLE-->
+            <div class="container-dialog">
+              <p class="title-dialog">Website</p>
+              <tui-input class="input-dialog" tuiTextfieldSize="s" [formControl]="website">
+                Type here (optional)
+              </tui-input>
+            </div>
 
-      <!--TITLE-->
-      <div class="container-dialog">
-        <p class="title-dialog">Website</p>
-        <tui-input
-          class="input-dialog"
-          tuiTextfieldSize="s"
-          [formControl]="website"
-        >
-          Type here (optional)
-        </tui-input>
-      </div>
+            <!--PHONE-->
+            <div class="container-dialog">
+              <p class="title-dialog">Phone</p>
+              <tui-input-phone-international class="input-dialog"
+                [countries]="(phones | tuiSortCountries | async) || []" [(countryIsoCode)]="countryIsoCode"
+                [tuiTextfieldLabelOutside]="true" tuiTextfieldSize="m" [formControl]="phone">
+                Type here (optional)
+              </tui-input-phone-international>
+            </div>
 
-      <!--PHONE-->
-      <div class="container-dialog">
-        <p class="title-dialog">Phone</p>
-        <tui-input-phone-international
-          class="input-dialog"
-          [countries]="(phones | tuiSortCountries | async) || []"
-          [(countryIsoCode)]="countryIsoCode"
-          [tuiTextfieldLabelOutside]="true"
-          tuiTextfieldSize="m"
-          [formControl]="phone"
-        >
-          Type here (optional)
-        </tui-input-phone-international>
-      </div>
+            <!--TYPE-->
+            <div class="container-dialog">
+              <p class="title-dialog">Type</p>
 
-      <!--TYPE-->
-      <div class="container-dialog">
-        <p class="title-dialog">Type</p>
+              <tui-combo-box class="input-dialog" [formControl]="controlTypes" [stringify]="stringifyType"
+                tuiTextfieldSize="s">
+                Choose/Type here
 
-        <tui-combo-box
-          class="input-dialog"
-          [formControl]="controlTypes"
-          [stringify]="stringifyType"
-          tuiTextfieldSize="s"
-          
-        >
-          Choose/Type here
+                <tui-data-list-wrapper *tuiDataList [items]="types | tuiFilterByInputWith : stringifyType"
+                  [itemContent]="stringifyType | tuiStringifyContent"></tui-data-list-wrapper>
+              </tui-combo-box>
+            </div>
 
-          <tui-data-list-wrapper
-            *tuiDataList
-            [items]="types | tuiFilterByInputWith : stringifyType"
-            [itemContent]="stringifyType | tuiStringifyContent"
-          ></tui-data-list-wrapper>
-        </tui-combo-box>
-      </div>
+            <!--ASSIGNED TO-->
+            <div class="container-dialog">
+              <p class="title-dialog">Assigned to</p>
 
-      <!--ASSIGNED TO-->
-      <div class="container-dialog">
-        <p class="title-dialog">Assigned to</p>
+              <tui-combo-box class="input-dialog" [formControl]="controlAssignments" [stringify]="stringifyAssignment"
+                tuiTextfieldSize="s">
+                Choose/Type here
 
-        <tui-combo-box
-          class="input-dialog"
-          [formControl]="controlAssignments"
-          [stringify]="stringifyAssignment"
-          tuiTextfieldSize="s"
-        >
-          Choose/Type here
+                <tui-data-list-wrapper *tuiDataList [items]="
+                    assignments | tuiFilterByInputWith : stringifyAssignment
+                  " [itemContent]="stringifyAssignment | tuiStringifyContent"></tui-data-list-wrapper>
+              </tui-combo-box>
+            </div>
 
-          <tui-data-list-wrapper
-            *tuiDataList
-            [items]="assignments | tuiFilterByInputWith : stringifyAssignment"
-            [itemContent]="stringifyAssignment | tuiStringifyContent"
-          ></tui-data-list-wrapper>
-        </tui-combo-box>
-      </div>
+            <!--STATUS-->
+            <div class="container-dialog">
+              <p class="title-dialog">Organization status</p>
 
-      <!--STATUS-->
-      <div class="container-dialog">
-        <p class="title-dialog">Organization status</p>
+              <tui-combo-box class="input-dialog" [formControl]="controlStatuses" [stringify]="stringifyStatus"
+                tuiTextfieldSize="s">
+                Choose/Type here
 
-        <tui-combo-box
-          class="input-dialog"
-          [formControl]="controlStatuses"
-          [stringify]="stringifyStatus"
-          tuiTextfieldSize="s"
-        >
-          Choose/Type here
+                <tui-data-list-wrapper *tuiDataList [items]="statuses | tuiFilterByInputWith : stringifyStatus"
+                  [itemContent]="stringifyStatus | tuiStringifyContent"></tui-data-list-wrapper>
+              </tui-combo-box>
+            </div>
+          </div>
 
-          <tui-data-list-wrapper
-            *tuiDataList
-            [items]="statuses | tuiFilterByInputWith : stringifyStatus"
-            [itemContent]="stringifyStatus | tuiStringifyContent"
-          ></tui-data-list-wrapper>
-        </tui-combo-box>
-      </div>
-    </div>
-
-    <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
-    <div class="cancel-save">
-      <button class="button-cancel" type="submit">Cancel</button>
-      <button class="button-add" (click)="updateOrganization(organization)">Update</button>
-    </div>
-  </form>
-</ng-template>
-
-
-          </tr>
-    </table>
-  </div>
-
-  
-
-
-
+          <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
+          <div class="cancel-save">
+            <button class="button-cancel" type="submit">Cancel</button>
+            <button class="button-add" (click)="updateOrganization(organization)">
+              Update
+            </button>
+          </div>
+        </form>
+      </ng-template>
+    </tr>
+  </table>
+</div>

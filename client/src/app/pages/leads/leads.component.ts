@@ -30,4 +30,6 @@ export class LeadsComponent implements OnInit {
     this.leads$ = this.store.select('lead');
     this.store.dispatch(LeadAction.getLeads());
   }
+
+  
 }

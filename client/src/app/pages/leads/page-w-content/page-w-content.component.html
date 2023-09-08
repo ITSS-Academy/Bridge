@@ -1,25 +1,25 @@
 <ng-template #success>
-  <app-success id="login" [cont]="content" ></app-success>
+  <app-success id="login" [cont]="content"></app-success>
 </ng-template>
 <ng-template #warning>
-<app-warning id="login" [cont]="content" ></app-warning>
+  <app-warning id="login" [cont]="content"></app-warning>
 </ng-template>
 <ng-template #error>
-<app-error id="login" [cont]="content" ></app-error>
+  <app-error id="login" [cont]="content"></app-error>
 </ng-template>
 
 <div class="contentPage">
   <table>
-    <tr *ngIf="(this.lead$ | async)">
+    <tr *ngIf="this.lead$ | async">
       <!-- CHECKBOX -->
-      <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;">
+      <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
         <label class="container">
-          <input type="checkbox">
+          <input type="checkbox" />
           <span class="checkmark"></span>
         </label>
       </th>
 
-      <th style="width: max-content; padding: 0.5rem;">
+      <th style="width: max-content; padding: 0.5rem">
         <span class="material-symbols-outlined">edit_document</span>
       </th>
       <th><b>NAME</b></th>
@@ -32,31 +32,53 @@
       <th><b>COUNTRY</b></th>
       <th>ACTION</th>
     </tr>
-    
-    <tr class="visible-data" *ngFor="let lead of (this.lead$ | async)?.leads">
+    <tr
+      class="visible-data"
+      *ngFor="let lead of (this.lead$ | async)?.leads"
+      (click)="showDialog(dialogDetails, 'auto', lead)"
+    >
       <!-- CHECKBOX -->
       <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
         <label class="container">
           <input type="checkbox" />
           <span class="checkmark"></span>
-        </label></th>
-      <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
-      <td>{{lead.data.attributes.full_name!}}</td>
+        </label>
+      </th>
+      <td style="width: 1rem; padding: 0.5rem">
+        <span class="material-symbols-outlined">star</span>
+      </td>
+      <td>{{ lead.data.attributes.full_name! }}</td>
       <td class="lead-mail">
-        <div *ngIf="lead.data.attributes.email_c">{{lead.data.attributes.email_c!}}</div>
+        <div *ngIf="lead.data.attributes.email_c">
+          {{ lead.data.attributes.email_c! }}
+        </div>
       </td>
       <td class="lead-phone">
-        <div *ngIf="lead.data.attributes.phone_mobile">{{lead.data.attributes.phone_mobile!}}</div>
+        <div *ngIf="lead.data.attributes.phone_mobile">
+          {{ lead.data.attributes.phone_mobile! }}
+        </div>
       </td>
-      <td>{{lead.data.attributes.department!}}</td>
-      <td>{{lead.data.attributes.website}}</td>
-      <td><div *ngIf="lead.data.attributes.assigned_to_name_c != 'undefined' " >{{lead.data.attributes.assigned_to_name_c}}</div></td>
+      <td>{{ lead.data.attributes.department! }}</td>
+      <td>{{ lead.data.attributes.website }}</td>
+      <td>
+        <div *ngIf="lead.data.attributes.assigned_to_name_c != 'undefined'">
+          {{ lead.data.attributes.assigned_to_name_c }}
+        </div>
+      </td>
       <td></td>
       <td></td>
       <td>
         <div class="action">
-          <span class="material-symbols-outlined" (click)="showDialog(dialogAddLeads, 'auto', lead)">edit</span>
-          <span class="material-symbols-outlined" (click)="deleteLead(lead.data.id)">delete</span>
+          <span
+            class="material-symbols-outlined"
+            (click)="showDialog(dialogAddLeads, 'auto', lead)"
+            >edit</span
+          >
+          <span
+            class="material-symbols-outlined"
+            (click)="deleteLead(lead.data.id)"
+            >delete</span
+          >
         </div>
       </td>
 
@@ -176,3 +198,88 @@
     </tr>
   </table>
 </div>
+
+<!-- DETAIL DIALOG -->
+<ng-template id="dialogDetails" #dialogDetails let-observer>
+  <!--FORM CHỨA NỘI DUNG DIALOG-->
+  <form id="form-container" (ngSubmit)="observer.complete()">
+    <!--CHỮ TỰA ĐỀ CỦA DIALOG-->
+    <p id="header-dialog">Details</p>
+    <div class="contentContainer center">
+      <div class="mainContent">
+        <div class="detailDiv lineLayout standard">
+          <div class="detailDivCard">
+            <p>Assigned To</p>
+            <span>Gideon Tran</span>
+          </div>
+          <div class="detailDivCard">
+            <p>Previous Task</p>
+            <span class="gray">Not Set</span>
+          </div>
+          <div class="detailDivCard">
+            <p>Parent Task</p>
+            <span class="gray">Not Set</span>
+          </div>
+          <div class="detailDivCard">
+            <p>Start Date & Time</p>
+            <span class="gray">Not Set</span>
+          </div>
+          <div class="detailDivCard">
+            <p>Due Date & Time</p>
+            <span class="gray">Not Set</span>
+          </div>
+          <div class="detailDivCard">
+            <p>Related To</p>
+            <span class="gray">Not Set</span>
+          </div>
+          <div class="detailDivCard">
+            <p>Created By</p>
+            <span>Gideon Tran</span>
+          </div>
+          <div class="detailDivCard">
+            <p>Resolution Due</p>
+            <span class="gray">Not Set</span>
+          </div>
+        </div>
+
+        <p style="margin-left: 1rem;">Description</p>
+        <div class="descriptionDiv standard center">
+          <input type="text" placeholder="Description" class="discriptionInput">
+        </div>
+
+        <div class="center" style="justify-content: space-between;"><p style="margin-left: 1rem;">Subtasks</p><button class="standard center standardButton">Add Subtasks</button></div>
+        <div class="descriptionDiv standard center" style="min-height: 20rem;">
+          <input type="text" placeholder="Add Subtasks" class="discriptionInput" >
+        </div>
+
+      </div>
+      <div class="sideContent">
+        <p style="margin-left: 1rem;">One View</p>
+        <div class="oneViewDiv">
+          
+          <div class="oneViewCard standard" style="border-radius: 8px 0 0 0;">
+            <p>Running Status</p>
+            <span class="gray">In Progress</span>
+          </div>
+
+          <div class="oneViewCard standard" style="border-radius: 0 8px 0 0;">
+            <p>Estimate</p>
+            <span class="gray">Set Estimate</span>
+          </div>
+          <div class="oneViewCard standard" style="border-radius: 0 0 0 8px;">
+            <p>Due Date & Time</p>
+            <span class="gray">Set Due Date</span>
+          </div>
+          <div class="oneViewCard standard" style="border-radius: 0 0 8px 0;">
+            <p>Timelog</p>
+            <span class="gray">Add Timelog</span>
+          </div>
+        </div>
+
+        <p style="margin-left: 1rem;">Relation</p>
+        <div class="relationDiv standard center"><p class="gray">This task does not have relation</p></div>
+      </div>
+
+    </div>
+  </form>
+</ng-template>
