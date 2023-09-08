@@ -21,6 +21,30 @@ $LightGray:#F2F2F2;
     background-color:$Blue ;
     color: #fff;
 }
+.visible-data:hover {
+  // transition: 0.5s;
+  cursor: pointer;
+  background-color: lighten($Blue, 40);
+
+  td {
+    // transition: 0.5s;
+
+    color: $Blue;
+  }
+
+  th {
+    // transition: 0.5s;
+
+    color: $Blue;
+  }
+
+  th > label > span {
+    // transition: 0.5s;
+
+    border: $Blue2 0.001rem solid;
+  }
+}
+
 
 //CSS CỦA TRANG CÓ NỘI DUNG
 table {
@@ -46,6 +70,7 @@ td {
   width: 10rem;
   justify-content: center;
   text-align: center;
+  cursor: pointer;
 }
 
 //CSS CỦA CHECKBOX - COPY TRÊN MẠNG TỐT NHẤT ĐỪNG ĐỤNG VÀO
@@ -213,4 +238,400 @@ form {
   border: 1px solid #58C2CE;
   color: #58C2CE;
   cursor: pointer;
+}
+
+
+
+/*STYLE DIALOG*/
+//DIALOG CHÍNH DEAL
+//FORM CHỨA NỘI DUNG HIỂN THỊ BÊN TRONG DIALOG
+#form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+//TỰA ĐỀ BỰ CỦA DIALOG STYLE
+.header-dialog {
+  margin: 0;
+  padding-bottom: 10px;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #58c2ce;
+  color: #2c698d;
+  font-weight: 600;
+}
+
+//DIV CHỨA NỘI DUNG CHÍNH CỦA DIALOG STYLE
+.content-dialog-main {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  padding-left: 1rem;
+
+  //DIV CHỨA TỪNG DÒNG NỘI DUNG CHÍNH STYLE
+  .container-dialog {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    //TIÊU ĐỀ CỦA TỪNG DÒNG NỘI DUNG CHÍNH STYLE
+    .title-dialog {
+      width: 10rem;
+      font-size: 1rem;
+      color: #2c698d;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    //BOX INPUT CỦA TỪNG DÒNG NỘI DUNG STYLE
+    .input-dialog {
+      width: 16rem;
+      border-radius: 8px;
+      box-shadow: none;
+      border: 1px solid #58c2ce;
+    }
+  }
+}
+
+//DIV CHỨA NÚT CANCEL VÀ SAVE
+.cancel-save {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+
+  .button-cancel {
+    width: 5rem;
+    height: 1.875r;
+    border-radius: 8px;
+    background-color: #ffffff;
+    border: 2px solid #58c2ce;
+    color: #58c2ce;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($color: white, $amount: 3);
+    }
+  }
+
+  .button-add {
+    width: 5rem;
+    height: 1.875rem;
+    border-radius: 8px;
+    background-color: #58c2ce;
+    color: #ffffff;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($color: #58c2ce, $amount: 10);
+      color: darken($color: white, $amount: 3);
+    }
+  }
+}
+
+//NÚT THÊM ( + ) BÊN TRONG NỘI DUNG DIALOG
+.dialog-button {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border: none;
+  background-color: #58c2ce;
+  color: white;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($color: #58c2ce, $amount: 10);
+    color: darken($color: white, $amount: 3);
+  }
+}
+
+//CUSTOM INPUT CONTACT
+#input-dialog-contact {
+  width: 13.8rem;
+  // border-top-left-radius: 8px;
+  // border-bottom-left-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//DIALOG CONTACT SUB CSS
+//BẮT ĐẦU
+.form-contacts {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+//STYLE DIV HIỂN THỊ TOÀN BỘ TIÊU ĐỀ
+.all-label {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.all-label label {
+  width: 10rem;
+  font-size: 1rem;
+  color: #2c698d;
+  font-weight: 400;
+  margin: 0;
+}
+
+//STYLE DIV CHỨA TOÀN BỘ BOX INPUT
+.all-input {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+//FIRST NAME
+#fname {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//LAST NAME
+#lname {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//EMAIL
+#email {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//PHONE
+#phone {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//ORG NAME
+#orgName {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//ASSIGNED TO
+#assignTo {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//STAGES
+#lifeCycleStage {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+//STATUS
+#status {
+  width: 16rem;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #58c2ce;
+}
+
+.visible-data:hover {
+  // transition: 0.5s;
+  cursor: pointer;
+  background-color: lighten($Blue, 40);
+
+  td {
+    // transition: 0.5s;
+
+    color: $Blue;
+  }
+
+  th {
+    // transition: 0.5s;
+
+    color: $Blue;
+  }
+
+  th > label > span {
+    // transition: 0.5s;
+
+    border: $Blue2 0.001rem solid;
+  }
+}
+
+//CSS CỦA DETAIL DIALOG
+.standard {
+  border-radius: 8px;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.contentContainer {
+  width: 70vw;
+  background-color: #f2f2f2;
+  padding: 1rem;
+}
+
+.mainContent {
+  overflow-y: scroll;
+  width: 70%;
+  height: 100%;
+}
+
+.detailDiv {
+  border-radius: 8px;
+  width: 100%;
+  height: max-content;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+//SHOW 1st DETAILS VIEW
+.detailDivCard {
+  width: 12.5rem;
+  height: 6rem;
+  border-right: 2px solid $LightGray;
+  border-left: 2px solid $LightGray;
+  margin-bottom: 0.5rem;
+  padding: 0 2rem;
+  box-sizing: border-box;
+  p {
+    font-weight: 600;
+    color: $Blue2;
+    font-size: 1rem;
+  }
+  span {
+    color: $Blue;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .gray {
+    color: #bfbfbf;
+  }
+}
+
+//DESCRIPTION
+.descriptionDiv {
+  width: 100%;
+  // min-height: 4rem;
+  margin-bottom: 1rem;
+}
+
+.discriptionInput {
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem 0.5rem;
+  border: none;
+
+  &:focus-visible {
+    border: none;
+  }
+}
+
+.sideContent {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 30%;
+  height: 100%;
+  padding: 0 0 0 2rem;
+  box-sizing: border-box;
+}
+.sideContent::-webkit-scrollbar {
+  display: none;
+}
+.mainContent::-webkit-scrollbar {
+  display: none;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lineLayout {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+}
+
+.standardButton {
+  padding: 0.5rem 2rem;
+  background-color: $Blue;
+  color: white;
+  border: none;
+}
+
+//ONE VIEW CONTAINER
+.oneViewDiv {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+}
+
+.oneViewCard {
+  width: 10rem;
+  height: 5rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 0.2rem;
+  p {
+    font-weight: normal;
+    color: $Blue2;
+    font-size: 14px;
+    margin: 0;
+  }
+  span {
+    color: $Blue;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .gray {
+    color: #bfbfbf;
+  }
+}
+
+//RELATION BOX
+.relationDiv {
+  width: 100%;
+  min-height: 15rem;
+  p {
+    font-weight: normal;
+    color: $Blue2;
+    font-size: 14px;
+    margin: 0;
+  }
+  span {
+    color: $Blue;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .gray {
+    color: #bfbfbf;
+  }
+}
+
+p {
+  font-weight: 500;
 }

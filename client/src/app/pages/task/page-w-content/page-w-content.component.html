@@ -31,7 +31,7 @@
       <th><b>PRIORITY</b></th>
       <th><b>ACTION</b></th>
     </tr>
-    <tr class="visible-data" *ngFor="let task of (this.tasks$ | async)?.tasks" (click)="showDialog(dialogDetails,'auto',task)">
+    <tr class="visible-data" *ngFor="let task of (this.tasks$ | async)?.tasks">
       <!-- CHECKBOX -->
       <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
         <label class="container">
@@ -42,8 +42,8 @@
       <td style="width: 1rem; padding: 0.5rem">
         <span class="material-symbols-outlined">star</span>
       </td>
-      <td class="lead-mail">
-        <div>{{task.data.attributes.name}}</div>
+      <td  class="lead-mail">
+        <div (click)="showDialog(dialogDetails,'auto',task)" >{{task.data.attributes.name}}</div>
       </td>
       <td class="lead-phone">
         <div>{{task.data.attributes.assigned_to_c}}</div>
@@ -243,11 +243,7 @@
         </form>
       </ng-template>
 
-    </tr>
-
-  </table>
-
-  <!-- DETAIL DIALOG -->
+      <!-- DETAIL DIALOG -->
   <ng-template id="dialogDetails" #dialogDetails let-observer>
     <!--FORM CHỨA NỘI DUNG DIALOG-->
     <form id="form-container" (ngSubmit)="observer.complete()">
@@ -272,11 +268,11 @@
             </div>
             <div class="detailDivCard">
               <p>Start Date & Time</p>
-              <span class="gray">Not Set</span>
+              <span class="gray">{{task.data.attributes.from_date_c}}</span>
             </div>
             <div class="detailDivCard">
               <p>Due Date & Time</p>
-              <span class="gray">Not Set</span>
+              <span class="gray">{{task.data.attributes.to_date_c}}</span>
             </div>
             <div class="detailDivCard">
               <p>Related To</p>
@@ -301,7 +297,7 @@
               tuiTextfieldSize="l"
               [tuiTextfieldLabelOutside]="true"
             >
-              Description
+            {{task.data.attributes.description}}
             </tui-input>
           </div>
 
@@ -337,7 +333,7 @@
           <div class="oneViewDiv">
             <div class="oneViewCard standard" style="border-radius: 8px 0 0 0">
               <p>Running Status</p>
-              <span class="gray">In Progress</span>
+              <span class="gray">{{task.data.attributes.status}}</span>
             </div>
 
             <div class="oneViewCard standard" style="border-radius: 0 8px 0 0">
@@ -346,7 +342,7 @@
             </div>
             <div class="oneViewCard standard" style="border-radius: 0 0 0 8px">
               <p>Due Date & Time</p>
-              <span class="gray">Set Due Date</span>
+              <span class="gray">{{task.data.attributes.to_date_c}}</span>
             </div>
             <div class="oneViewCard standard" style="border-radius: 0 0 8px 0">
               <p>Timelog</p>
@@ -372,4 +368,8 @@
       </div>
     </form>
   </ng-template>
+
+    </tr>
+
+  </table>
 </div>

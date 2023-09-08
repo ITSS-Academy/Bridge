@@ -34,7 +34,7 @@
       <th><b>ASSIGNED TO</b></th>
       <th><b>ACTION</b></th>
     </tr>
-    <tr *ngFor="let deal of (this.deals$ | async )?.deals">
+    <tr class="visible-data" *ngFor="let deal of (this.deals$ | async )?.deals">
       <!-- CHECKBOX -->
       <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
         <label class="container">

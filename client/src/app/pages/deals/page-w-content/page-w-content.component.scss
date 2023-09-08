@@ -45,6 +45,31 @@ td{
     color: $Blue2;
     text-align: center;
     align-items: center;
+    cursor: pointer;
+}
+
+.visible-data:hover {
+  // transition: 0.5s;
+  cursor: pointer;
+  background-color: lighten($Blue, 40);
+
+  td {
+    // transition: 0.5s;
+
+    color: $Blue;
+  }
+
+  th {
+    // transition: 0.5s;
+
+    color: $Blue;
+  }
+
+  th > label > span {
+    // transition: 0.5s;
+
+    border: $Blue2 0.001rem solid;
+  }
 }
 
 .stage{

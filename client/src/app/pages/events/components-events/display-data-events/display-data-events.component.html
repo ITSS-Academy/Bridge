@@ -27,14 +27,14 @@
           <th><b>ALL DAY</b></th>
           <th><b>ACTION</b></th>
         </tr>
-        <tr *ngFor="let event of (this.event$ | async)?.events">
+        <tr class="visible-data" *ngFor="let event of (this.event$ | async)?.events">
           <!-- CHECKBOX -->
           <th style="width: 2rem; padding: 0 1rem 1rem 2rem;"><label class="container">
               <input type="checkbox">
               <span class="checkmark"></span>
             </label></th>
           <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
-          <td>{{event.data.attributes.name!}}</td>
+          <td (click)="onClick(dialogDetails,'auto',event)">{{event.data.attributes.name!}}</td>
           <td>{{event.data.attributes.start_c}}</td>
           <td>{{event.data.attributes.end_event_c}}</td>
           <td>Planned</td>
@@ -119,6 +119,128 @@
     </form>
   </div>
 </ng-template>
+
+
+
+
+<!-- DETAIL DIALOG -->
+<ng-template id="dialogDetails" #dialogDetails let-observer>
+  <!--FORM CHỨA NỘI DUNG DIALOG-->
+  <form id="form-container" (ngSubmit)="observer.complete()">
+    <!--CHỮ TỰA ĐỀ CỦA DIALOG-->
+    <p class="header-dialog">Events Details</p>
+    <div class="contentContainer center">
+      <div class="mainContent">
+        <div class="detailDiv lineLayout standard">
+          <div class="detailDivCard">
+            <p>event Title</p>
+            <span class="gray">{{event.data.attributes.name}}</span>
+          </div>
+          <div class="detailDivCard">
+            <p>Assigned To</p>
+            <span>{{event.data.attributes.assigned_to_name_c}}</span>
+          </div>
+          <div class="detailDivCard">
+            <p>Contact Name</p>
+            <span class="gray">{{event.data.attributes.contact_c}}</span>
+          </div>
+          <div class="detailDivCard">
+            <p>Priority</p>
+            <span class="gray">{{event.data.attributes.priority_event_c}}</span>
+          </div>
+          <div class="detailDivCard">
+            <p>Group</p>
+            <span class="gray">{{event.data.attributes.group_event_c}}</span>
+          </div>
+          <div class="detailDivCard">
+            <p>Resolution Due</p>
+            <span class="gray">{{event.data.attributes.resolute_date_c}}</span>
+          </div>
+        </div>
+
+        <p style="margin-left: 1rem; color: #2c698d; font-weight: 600">
+          Description
+        </p>
+        <div class="descriptionDiv standard center">
+          <tui-input
+            class="discriptionInput"
+            tuiTextfieldSize="l"
+            [tuiTextfieldLabelOutside]="true"
+          >
+            Description
+          </tui-input>
+        </div>
+
+        <div class="center" style="justify-content: space-between">
+          <p style="margin-left: 1rem; color: #2c698d; font-weight: 600">
+            Subtasks
+          </p>
+          <button class="standard center standardButton">Add Subtasks</button>
+        </div>
+        <div class="descriptionDiv standard center">
+          <tui-input
+            class="discriptionInput"
+            tuiTextfieldSize="l"
+            [tuiTextfieldLabelOutside]="true"
+          >
+            Add Subtasks
+          </tui-input>
+        </div>
+      </div>
+      <div class="sideContent">
+        <p
+          style="
+            margin-left: 1rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: #2c698d;
+            font-weight: 600;
+            font-size: 1.5rem;
+          "
+        >
+          One View
+        </p>
+        <div class="oneViewDiv">
+          <div class="oneViewCard standard" style="border-radius: 8px 0 0 0">
+            <p>Running Status</p>
+            <span class="gray">{{event.data.attributes.status_event_c}}</span>
+          </div>
+
+          <div class="oneViewCard standard" style="border-radius: 0 8px 0 0">
+            <p>Due Date & Time</p>
+            <span class="gray">{{event.data.attributes.resolute_date_c}}</span>
+          </div>
+          <div class="oneViewCard standard" style="border-radius: 0 0 0 8px">
+            <p>Organize Name</p>
+            <span class="gray">{{event.data.attributes.org_name_c}}</span>
+          </div>
+          <div class="oneViewCard standard" style="border-radius: 0 0 8px 0">
+            <p>Timelog</p>
+            <span class="gray">Add Timelog</span>
+          </div>
+        </div>
+
+        <p
+          style="
+            margin-left: 1rem;
+            margin-bottom: 1rem;
+            color: #2c698d;
+            font-weight: 600;
+            font-size: 1.5rem;
+          "
+        >
+          Relation
+        </p>
+        <div class="relationDiv standard center">
+          <p class="gray">This task does not have relation</p>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-template>
+
+
+
         </tr>
   </table>
 </div>

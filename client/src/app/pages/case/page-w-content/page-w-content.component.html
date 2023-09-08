@@ -41,9 +41,9 @@
         </label>
       </td>
       <td style="width: 1rem; padding: 0.5rem">
-        <span class="material-symbols-outlined" (click)="showDialog(dialogDetails,'auto',case)">star</span>
+        <span class="material-symbols-outlined">star</span>
       </td>
-      <td>{{ case.data.attributes.name }}</td>
+      <td (click)="showDialog(dialogDetails,'auto',case)">{{ case.data.attributes.name }}</td>
       <td>
         <div class="status waitForCustomer">{{case.data.attributes.status_case_c}}</div>
       </td>
@@ -65,10 +65,11 @@
             style="cursor: pointer">delete</span>
         </div>
       </td>
-    </tr>
-  </table>
-</div>
 
+
+
+
+      
 <!-- DIALOG MAIN CASE -->
 <ng-template id="dialogAddCase" #dialogAddCase let-observer >
   <!--FORM CHỨA NỘI DUNG DIALOG-->
@@ -130,7 +131,7 @@
               [itemContent]="stringifyContact | tuiStringifyContent"></tui-data-list-wrapper>
           </tui-combo-box>
 
-          <button class="dialog-button" (click)="showDialog(content, 'auto', case$)">
+          <button class="dialog-button" (click)="showDialog(content, 'auto', case)">
             <span class="material-symbols-outlined"> add </span>
           </button>
         </div>
@@ -189,7 +190,7 @@
     <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
     <div class="cancel-save">
       <button class="button-cancel" type="submit">Cancel</button>
-      <button class="button-add" (click)="updateCase(case$)" type="submit">Update</button>
+      <button class="button-add" (click)="updateCase(case)" type="submit">Update</button>
     </div>
   </form>
 </ng-template>
@@ -290,27 +291,27 @@
         <div class="detailDiv lineLayout standard">
           <div class="detailDivCard">
             <p>Case Title</p>
-            <span class="gray">Not Set</span>
+            <span class="gray">{{case.data.attributes.name}}</span>
           </div>
           <div class="detailDivCard">
             <p>Assigned To</p>
-            <span>Gideon Tran</span>
+            <span>{{case.data.attributes.assigned_to_name_c}}</span>
           </div>
           <div class="detailDivCard">
             <p>Contact Name</p>
-            <span class="gray">Not Set</span>
+            <span class="gray">{{case.data.attributes.contact_c}}</span>
           </div>
           <div class="detailDivCard">
             <p>Priority</p>
-            <span class="gray">Not Set</span>
+            <span class="gray">{{case.data.attributes.priority_case_c}}</span>
           </div>
           <div class="detailDivCard">
             <p>Group</p>
-            <span class="gray">Not Set</span>
+            <span class="gray">{{case.data.attributes.group_case_c}}</span>
           </div>
           <div class="detailDivCard">
             <p>Resolution Due</p>
-            <span class="gray">Not Set</span>
+            <span class="gray">{{case.data.attributes.resolute_date_c}}</span>
           </div>
         </div>
 
@@ -359,16 +360,16 @@
         <div class="oneViewDiv">
           <div class="oneViewCard standard" style="border-radius: 8px 0 0 0">
             <p>Running Status</p>
-            <span class="gray">In Progress</span>
+            <span class="gray">{{case.data.attributes.status_case_c}}</span>
           </div>
 
           <div class="oneViewCard standard" style="border-radius: 0 8px 0 0">
             <p>Due Date & Time</p>
-            <span class="gray">Set Due Date</span>
+            <span class="gray">{{case.data.attributes.resolute_date_c}}</span>
           </div>
           <div class="oneViewCard standard" style="border-radius: 0 0 0 8px">
             <p>Organize Name</p>
-            <span class="gray">Set Name</span>
+            <span class="gray">{{case.data.attributes.org_name_c}}</span>
           </div>
           <div class="oneViewCard standard" style="border-radius: 0 0 8px 0">
             <p>Timelog</p>
@@ -394,3 +395,7 @@
     </div>
   </form>
 </ng-template>
+    </tr>
+  </table>
+</div>
+
