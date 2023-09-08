@@ -260,7 +260,7 @@ export class ThirdNavbarComponent implements OnInit {
     });
 
     this.dialogs
-      .open(content, { closeable, dismissible: closeable, size:size })
+      .open(content, { closeable, dismissible: closeable, size })
       .subscribe({
         complete: () => {
           this;

@@ -49,6 +49,6 @@ export class SecondNavbarAvatarComponent {
     this.route.navigate(['/login']);
     setTimeout(() => {
       this.authService.logout();
-    }, 1000);
+    }, 1500);
   }
 }

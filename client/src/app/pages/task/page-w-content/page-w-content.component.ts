@@ -16,6 +16,7 @@ import { Lead } from 'src/app/models/lead.model';
   selector: 'app-page-w-content',
   templateUrl: './page-w-content.component.html',
   styleUrls: ['./page-w-content.component.scss'],
+  providers: [TuiDialogFormService],
 })
 export class PageWContentComponent {
   @Input()
