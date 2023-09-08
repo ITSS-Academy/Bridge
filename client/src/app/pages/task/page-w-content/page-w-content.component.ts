@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject, Input, ViewChild } from '@angular/core';
 import { TaskState } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { TaskAction } from '../ngrx/action/task.action';
@@ -10,6 +10,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { TuiCountryIsoCode } from '@taiga-ui/i18n';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import { Lead } from 'src/app/models/lead.model';
+import { NotificationService } from 'src/app/services/notification.service';
 // import { Task } from 'src/app/models/task.model';
 
 @Component({
@@ -22,15 +23,22 @@ export class PageWContentComponent {
   @Input()
   tasks!: Observable<any>;
 
+  content = '';
+  @ViewChild('success') success: any;
+  @ViewChild('warning') warning: any;
+  @ViewChild('error') error: any;
+
 
   currentUser!: any;
+  task$: any;
 
   constructor(
     public taskService: TaskService,
     private store: Store<{ task: TaskState }>,
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
     @Inject(TuiDialogFormService)
-    private readonly dialogForm: TuiDialogFormService
+    private readonly dialogForm: TuiDialogFormService,
+    private notificationService: NotificationService,
   ) {
     this.tasks = store.select('task');
     this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
@@ -227,6 +235,18 @@ export class PageWContentComponent {
   email = '';
   reportTo = '';
   phone = '';
+
+  // deleteTask(id: string) {
+  //   this.store.dispatch(TaskAction.deleteTask({ id: id }));
+  //   this.task$.subscribe((data) => {
+  //     if (data.status == 'Delete lead success') {
+  //       this.content = 'Delete lead success';
+  //       this.notificationService.showSuccess(this.success);
+  //     }
+  //   });
+  // }
+
+  
 
   showDialog(content: PolymorpheusContent, size: TuiDialogSize, task: any): void {
     console.log(task);

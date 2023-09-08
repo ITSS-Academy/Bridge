@@ -50,6 +50,7 @@ export class ThirdNavbarComponent implements OnInit {
   contactsForm: FormGroup = new FormGroup({});
   caseTitle: FormControl = new FormControl('');
   orgName: FormControl = new FormControl('');
+  date: FormControl = new FormControl('');
 
 
   async addCase() {
@@ -111,9 +112,9 @@ export class ThirdNavbarComponent implements OnInit {
     };
     (caseToAdd.data.type = 'Cases'),
       (caseToAdd.data.attributes.name =
-        this.contactsForm.controls['caseTitle'].value),
+        this.casesForm.controls['caseTitle'].value),
       (caseToAdd.data.attributes.account_name =
-        this.contactsForm.controls['orgName'].value),
+        this.casesForm.controls['orgName'].value),
       (caseToAdd.data.attributes.status = this.stringifyStatus(
         this.controlStatuses.value
       )),
@@ -123,7 +124,7 @@ export class ThirdNavbarComponent implements OnInit {
       (caseToAdd.data.attributes.contacts = this.stringifyContact(
         this.controlContacts.value
       )),
-      (caseToAdd.data.attributes.internal = this.stringifyContact(
+      (caseToAdd.data.attributes.internal = this.stringifyGroup(
         this.controlGroups.value
       )),
       (caseToAdd.data.attributes.assigned_user_name = this.stringifyAssignment(

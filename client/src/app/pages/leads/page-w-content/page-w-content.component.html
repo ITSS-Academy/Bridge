@@ -1,25 +1,25 @@
 <ng-template #success>
-  <app-success id="login" [cont]="content" ></app-success>
+  <app-success id="login" [cont]="content"></app-success>
 </ng-template>
 <ng-template #warning>
-<app-warning id="login" [cont]="content" ></app-warning>
+  <app-warning id="login" [cont]="content"></app-warning>
 </ng-template>
 <ng-template #error>
-<app-error id="login" [cont]="content" ></app-error>
+  <app-error id="login" [cont]="content"></app-error>
 </ng-template>
 
 <div class="contentPage">
   <table>
-    <tr *ngIf="(this.lead$ | async)">
+    <tr *ngIf="this.lead$ | async">
       <!-- CHECKBOX -->
-      <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem;">
+      <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
         <label class="container">
-          <input type="checkbox">
+          <input type="checkbox" />
           <span class="checkmark"></span>
         </label>
       </th>
 
-      <th style="width: max-content; padding: 0.5rem;">
+      <th style="width: max-content; padding: 0.5rem">
         <span class="material-symbols-outlined">edit_document</span>
       </th>
       <th><b>NAME</b></th>
@@ -38,24 +38,43 @@
         <label class="container">
           <input type="checkbox" />
           <span class="checkmark"></span>
-        </label></th>
-      <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
-      <td>{{lead.data.attributes.full_name!}}</td>
+        </label>
+      </th>
+      <td style="width: 1rem; padding: 0.5rem">
+        <span class="material-symbols-outlined">star</span>
+      </td>
+      <td>{{ lead.data.attributes.full_name! }}</td>
       <td class="lead-mail">
-        <div *ngIf="lead.data.attributes.email_c">{{lead.data.attributes.email_c!}}</div>
+        <div *ngIf="lead.data.attributes.email_c">
+          {{ lead.data.attributes.email_c! }}
+        </div>
       </td>
       <td class="lead-phone">
-        <div *ngIf="lead.data.attributes.phone_mobile">{{lead.data.attributes.phone_mobile!}}</div>
+        <div *ngIf="lead.data.attributes.phone_mobile">
+          {{ lead.data.attributes.phone_mobile! }}
+        </div>
       </td>
-      <td>{{lead.data.attributes.department!}}</td>
-      <td>{{lead.data.attributes.website}}</td>
-      <td><div *ngIf="lead.data.attributes.assigned_to_name_c != 'undefined' " >{{lead.data.attributes.assigned_to_name_c}}</div></td>
+      <td>{{ lead.data.attributes.department! }}</td>
+      <td>{{ lead.data.attributes.website }}</td>
+      <td>
+        <div *ngIf="lead.data.attributes.assigned_to_name_c != 'undefined'">
+          {{ lead.data.attributes.assigned_to_name_c }}
+        </div>
+      </td>
       <td></td>
       <td></td>
       <td>
         <div class="action">
-          <span class="material-symbols-outlined" (click)="showDialog(dialogAddLeads, 'auto', lead)">edit</span>
-          <span class="material-symbols-outlined" (click)="deleteLead(lead.data.id)">delete</span>
+          <span
+            class="material-symbols-outlined"
+            (click)="showDialog(dialogAddLeads, 'auto', lead)"
+            >edit</span
+          >
+          <span
+            class="material-symbols-outlined"
+            (click)="deleteLead(lead.data.id)"
+            >delete</span
+          >
         </div>
       </td>
 

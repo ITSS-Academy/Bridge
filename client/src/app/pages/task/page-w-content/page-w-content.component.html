@@ -19,12 +19,12 @@
       <th><b>STAGE</b></th>
       <th><b>LOCATION</b></th>
       <th><b>PRIORITY</b></th>
+      <th><b>ACTION</b></th>
     </tr>
-
     <tr
       class="visible-data"
       *ngFor="let task of this.tasks | async"
-      (click)="showDialog(dialogDetails,'auto',task)"
+      (click)="showDialog(dialogDetails, 'auto', task)"
     >
       <!-- CHECKBOX -->
       <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
@@ -43,24 +43,139 @@
       <td>{{ task.data.attributes.status }}</td>
       <td>{{ task.data.attributes.location_c }}</td>
       <td>{{ task.data.attributes.priority }}</td>
+      <td>
+        <div class="action">
+          <span class="material-symbols-outlined" (click)="showDialog(content, 'auto',task)"
+            style="cursor: pointer">edit</span>
+          <span class="material-symbols-outlined" 
+            style="cursor: pointer">delete</span>
+        </div>
     </tr>
   </table>
+
+  <!-- DETAIL DIALOG -->
+  <ng-template id="dialogDetails" #dialogDetails let-observer>
+    <!--FORM CHỨA NỘI DUNG DIALOG-->
+    <form id="form-container" (ngSubmit)="observer.complete()">
+      <!--CHỮ TỰA ĐỀ CỦA DIALOG-->
+      <p id="header-dialog">Task Details</p>
+      <div class="contentContainer center">
+        <div class="mainContent">
+          <div class="detailDiv lineLayout standard">
+            <div class="detailDivCard">
+              <p>Assigned To</p>
+              <span *ngFor="let task of this.tasks | async">{{
+                task.data.attributes.assigned_to_c
+              }}</span>
+            </div>
+            <div class="detailDivCard">
+              <p>Previous Task</p>
+              <span class="gray">Not Set</span>
+            </div>
+            <div class="detailDivCard">
+              <p>Parent Task</p>
+              <span class="gray">Not Set</span>
+            </div>
+            <div class="detailDivCard">
+              <p>Start Date & Time</p>
+              <span class="gray">Not Set</span>
+            </div>
+            <div class="detailDivCard">
+              <p>Due Date & Time</p>
+              <span class="gray">Not Set</span>
+            </div>
+            <div class="detailDivCard">
+              <p>Related To</p>
+              <span class="gray">Not Set</span>
+            </div>
+            <div class="detailDivCard">
+              <p>Created By</p>
+              <span>Gideon Tran</span>
+            </div>
+            <div class="detailDivCard">
+              <p>Resolution Due</p>
+              <span class="gray">Not Set</span>
+            </div>
+          </div>
+
+          <p style="margin-left: 1rem; color: #2c698d; font-weight: 600">
+            Description
+          </p>
+          <div class="descriptionDiv standard center">
+            <tui-input
+              class="discriptionInput"
+              tuiTextfieldSize="l"
+              [tuiTextfieldLabelOutside]="true"
+            >
+              Description
+            </tui-input>
+          </div>
+
+          <div class="center" style="justify-content: space-between">
+            <p style="margin-left: 1rem; color: #2c698d; font-weight: 600">
+              Subtasks
+            </p>
+            <button class="standard center standardButton">Add Subtasks</button>
+          </div>
+          <div class="descriptionDiv standard center">
+            <tui-input
+              class="discriptionInput"
+              tuiTextfieldSize="l"
+              [tuiTextfieldLabelOutside]="true"
+            >
+              Add Subtasks
+            </tui-input>
+          </div>
+        </div>
+        <div class="sideContent">
+          <p
+            style="
+              margin-left: 1rem;
+              margin-top: 0;
+              margin-bottom: 1rem;
+              color: #2c698d;
+              font-weight: 600;
+              font-size: 1.5rem;
+            "
+          >
+            One View
+          </p>
+          <div class="oneViewDiv">
+            <div class="oneViewCard standard" style="border-radius: 8px 0 0 0">
+              <p>Running Status</p>
+              <span class="gray">In Progress</span>
+            </div>
+
+            <div class="oneViewCard standard" style="border-radius: 0 8px 0 0">
+              <p>Estimate</p>
+              <span class="gray">Set Estimate</span>
+            </div>
+            <div class="oneViewCard standard" style="border-radius: 0 0 0 8px">
+              <p>Due Date & Time</p>
+              <span class="gray">Set Due Date</span>
+            </div>
+            <div class="oneViewCard standard" style="border-radius: 0 0 8px 0">
+              <p>Timelog</p>
+              <span class="gray">Add Timelog</span>
+            </div>
+          </div>
+
+          <p
+            style="
+              margin-left: 1rem;
+              margin-bottom: 1rem;
+              color: #2c698d;
+              font-weight: 600;
+              font-size: 1.5rem;
+            "
+          >
+            Relation
+          </p>
+          <div class="relationDiv standard center">
+            <p class="gray">This task does not have relation</p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </ng-template>
 </div>
-
-<!-- DIALOG MAIN -->
-<ng-template id="dialogDetails" #dialogDetails let-observer>
-  <!--FORM CHỨA NỘI DUNG HIÊN THỊ CỦA DIALOG-->
-  <form
-    id="form-container-details"
-    [formGroup]="exampleForm"
-    (ngSubmit)="observer.complete()"
-  >
-    <!--TỰA ĐỀ BỰ CỦA DIALOG-->
-    <p id="header-dialog-details">Task Details</p>
-
-    <div class="content-dialog-details">
-
-    </div>
-
-  </form>
-</ng-template>

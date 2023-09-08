@@ -8,7 +8,7 @@
 
     <button
       class="button buttonMainAction"
-      (click)="showDialog(dialogAddCase,'auto')"
+      (click)="showDialog(dialogAddCase, 'auto')"
     >
       <span class="material-symbols-outlined"> add </span>
       <span style="margin: 0 1rem">Add {{ title }}</span>
@@ -49,7 +49,7 @@
           style="outline: none !important"
           class="input-dialog"
           tuiTextfieldSize="s"
-          [(ngModel)]="caseTitle"
+          [formControl]="caseTitle"
         >
           Type here
         </tui-input>
@@ -173,7 +173,7 @@
           style="outline: none !important"
           class="input-dialog"
           tuiTextfieldSize="s"
-          [(ngModel)]="orgName"
+          [formControl]="orgName"
         >
           Type here
         </tui-input>
@@ -183,11 +183,7 @@
       <div class="container-dialog">
         <p class="title-dialog">Resolute due</p>
 
-        <tui-input-date
-          class="input-dialog"
-          formControlName="testValue"
-          tuiTextfieldSize="s"
-        >
+        <tui-input-date class="input-dialog" tuiTextfieldSize="s" [formControl]="date">
           Choose a date
         </tui-input-date>
       </div>
