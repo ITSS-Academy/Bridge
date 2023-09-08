@@ -118,7 +118,6 @@ td {
 }
 
 .visible-data:hover {
-
   // transition: 0.5s;
   cursor: pointer;
   background-color: lighten($Blue, 40);
@@ -135,20 +134,226 @@ td {
     color: $Blue;
   }
 
-  th>label>span {
+  th > label > span {
+    // transition: 0.5s;
+
+    border: $Blue2 0.001rem solid;
+  }
+}
+
+//CUSTOM DIALOG
+//FORM CHỨA DIALOG
+#form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+//TỰA ĐỀ BỰ CỦA DIALOG
+#header-dialog {
+  margin: 0;
+  padding-bottom: 10px;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #58c2ce;
+  color: #2c698d;
+  font-weight: 600;
+}
+
+//DIV NOI DUNG DIALOG
+.content-dialog {
+  height: fit-content;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  align-items: center;
+}
+
+//CSS CỦA DETAIL DIALOG
+.standard {
+  border-radius: 8px;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.contentContainer {
+  width: 70vw;
+  background-color: #f2f2f2;
+  padding: 1rem;
+}
+
+.mainContent {
+  overflow-y: scroll;
+  width: 70%;
+  height: 100%;
+}
+
+.detailDiv {
+  border-radius: 8px;
+  width: 100%;
+  height: max-content;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+//SHOW 1st DETAILS VIEW
+.detailDivCard {
+  width: 12.5rem;
+  height: 6rem;
+  border-right: 2px solid $LightGray;
+  border-left: 2px solid $LightGray;
+  margin-bottom: 0.5rem;
+  padding: 0 2rem;
+  box-sizing: border-box;
+  p {
+    font-weight: 600;
+    color: $Blue2;
+    font-size: 1rem;
+  }
+  span {
+    color: $Blue;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .gray {
+    color: #bfbfbf;
+  }
+}
+
+//DESCRIPTION
+.descriptionDiv {
+  width: 100%;
+  // min-height: 4rem;
+  margin-bottom: 1rem;
+}
+
+.discriptionInput {
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem 0.5rem;
+  border: none;
+
+  &:focus-visible {
+    border: none;
+  }
+}
+
+.sideContent {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 30%;
+  height: 100%;
+  padding: 0 0 0 2rem;
+  box-sizing: border-box;
+}
+.sideContent::-webkit-scrollbar {
+  display: none;
+}
+.mainContent::-webkit-scrollbar {
+  display: none;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lineLayout {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+}
+
+.standardButton {
+  padding: 0.5rem 2rem;
+  background-color: $Blue;
+  color: white;
+  border: none;
+}
+
+//ONE VIEW CONTAINER
+.oneViewDiv {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+}
+
+.oneViewCard {
+  width: 10rem;
+  height: 5rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 0.2rem;
+  p {
+    font-weight: normal;
+    color: $Blue2;
+    font-size: 14px;
+    margin: 0;
+  }
+  span {
+    color: $Blue;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .gray {
+    color: #bfbfbf;
+  }
+}
+
+//RELATION BOX
+.relationDiv {
+  width: 100%;
+  min-height: 15rem;
+  p {
+    font-weight: normal;
+    color: $Blue2;
+    font-size: 14px;
+    margin: 0;
+  }
+  span {
+    color: $Blue;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .gray {
+    color: #bfbfbf;
+  }
+}
+
+p {
+  font-weight: 500;
+}
+
+.visible-data:hover {
+  // transition: 0.5s;
+  cursor: pointer;
+  background-color: lighten($Blue, 40);
+
+  td {
+    // transition: 0.5s;
+
+    color: $Blue;
+  }
+
+  th {
+    // transition: 0.5s;
+
+    color: $Blue;
+  }
+
+  th > label > span {
     // transition: 0.5s;
 
     border: $Blue2 0.001rem solid;
   }
 
   .lead-phone:hover {
-
     div {
       // transition: 0.5s;
       background-color: $Blue;
       color: #fff;
     }
-
   }
 
   .lead-mail:hover {

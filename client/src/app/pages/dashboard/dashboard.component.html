@@ -10,7 +10,7 @@
         <div class="sidebarSectionButton">TIMELINE</div>
         <div class="sidebarSectionButton">MESSAGES</div>
         <div class="sidebarSectionButton">PREFERENCES</div>
-        <div class="sidebarSectionButton">LOG OUT</div>
+        <div class="sidebarSectionButton">LOG O UT</div>
       </div>
     </div>
     <div class="content">
@@ -20,7 +20,7 @@
           class="headerImage"
         />
         <div class="headerText">
-          <p style="font-size: 30px">Welcome, <b>Spinnging Axe</b> !</p>
+          <p style="font-size: 30px">Welcome, <b>{{this.currentUser.data.attributes.full_name}}</b> !</p>
           <br />
           <p>You have <b>3</b> new Tasks today</p>
         </div>
@@ -52,7 +52,7 @@
         <tr>
           <td>MAKE THE CRM</td>
           <td>7/9/2023</td>
-          <td class="priorityTd {{priority.color}}"><span class="material-symbols-outlined">flag</span>{{priority.name}}</td>
+          <td><div class="priorityTd {{priority.color}}" style="margin: 0"><span class="material-symbols-outlined">flag</span>{{priority.name}}</div></td>
           <td><div class="tdDiv {{progress.color}}">{{progress.name}}</div></td>
         </tr>
 
@@ -109,7 +109,7 @@
           <tr>
             <td>MAKE THE CRM</td>
             <td><div class="tdDiv {{status.color}}">{{status.name}}</div></td>
-            <td class="priorityTd {{priority.color}}"><span class="material-symbols-outlined">flag</span>{{priority.name}}</td>
+            <td><div class="priorityTd {{priority.color}}" style="margin: 0"><span class="material-symbols-outlined">flag</span>{{priority.name}}</div></td>
             <td><div class="tdDiv {{progress.color}}">{{progress.name}}</div></td>
           </tr>
 

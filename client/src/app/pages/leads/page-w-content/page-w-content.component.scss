@@ -1,8 +1,8 @@
-$Blue : #58c2ce;
-$Blue2: #2C698D;
+$Blue: #58c2ce;
+$Blue2: #2c698d;
 $Blue3: #272643;
-$Blue0: #BAE8E8;
-$LightGray: #F2F2F2;
+$Blue0: #bae8e8;
+$LightGray: #f2f2f2;
 
 .button {
   background-color: #fff;
@@ -18,7 +18,7 @@ $LightGray: #F2F2F2;
 }
 
 .buttonMainAction {
-  background-color: $Blue ;
+  background-color: $Blue;
   color: #fff;
 }
 
@@ -26,7 +26,6 @@ $LightGray: #F2F2F2;
 table {
   background-color: #fff;
   width: 100vw;
-
 }
 
 tr {
@@ -37,7 +36,6 @@ tr {
   border-bottom: 1px solid $LightGray;
 }
 
-
 th {
   // padding: 0.5rem 1rem;
   text-align: center;
@@ -45,9 +43,6 @@ th {
   // width: 10rem;
   align-items: center;
   overflow: hidden;
-
-
-
 }
 
 td {
@@ -109,12 +104,12 @@ td {
 }
 
 /* On mouse-over, add a grey background color */
-.container:hover input~.checkmark {
+.container:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked~.checkmark {
+.container input:checked ~ .checkmark {
   background-color: $Blue;
 }
 
@@ -126,7 +121,7 @@ td {
 }
 
 /* Show the checkmark when checked */
-.container input:checked~.checkmark:after {
+.container input:checked ~ .checkmark:after {
   display: block;
 }
 
@@ -150,7 +145,6 @@ td {
 // }
 
 .visible-data:hover {
-
   // transition: 0.5s;
   cursor: pointer;
   background-color: lighten($Blue, 40);
@@ -167,20 +161,18 @@ td {
     color: $Blue;
   }
 
-  th>label>span {
+  th > label > span {
     // transition: 0.5s;
 
     border: $Blue2 0.001rem solid;
   }
 
   .lead-phone:hover {
-
     div {
       // transition: 0.5s;
       background-color: $Blue;
       color: #fff;
     }
-
   }
 
   .lead-mail:hover {
@@ -200,7 +192,6 @@ td {
   justify-content: center;
   align-items: center;
   margin: auto 0;
-
 }
 
 .lead-phone div {
@@ -220,7 +211,7 @@ td {
   flex-direction: column;
 }
 
-//Style tựa đề dialog 
+//Style tựa đề dialog
 #header-dialog {
   margin: 0;
   padding-bottom: 10px;
@@ -238,7 +229,6 @@ td {
   flex-direction: column;
   gap: 1rem;
   padding-top: 2rem;
-  padding-bottom: 4rem;
   align-items: center;
 
   //Style div nội dung từng dòng hiển thị và nhập dữ liệu
@@ -272,6 +262,7 @@ td {
   flex-direction: row;
   gap: 1rem;
   justify-content: center;
+  margin-top: 3rem;
 
   //Style nút cancel
   .button-cancel {
@@ -305,155 +296,4 @@ td {
       color: darken($color: white, $amount: 3);
     }
   }
-}
-
-//CSS CỦA DETAIL DIALOG
-.standard{
-  border-radius: 8px;
-  background-color: white;
-  box-sizing: border-box;
-}
-
-.contentContainer{
-  width: 80vw;
-  height: 70vh;
-  background-color: #F2F2F2;
-  padding: 1rem;
-}
-
-.mainContent{
-  overflow-y: scroll;
-  width: 70%;
-  height: 100%;
-}
-
-.detailDiv{
-  border-radius: 8px;
-  width: 100%;
-  height: max-content;
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
-
-.detailDivCard{
-  width: 12.5rem;
-  height: 6rem;
-  border-right: 2px solid $LightGray;
-  border-left: 2px solid $LightGray;
-  margin-bottom: 0.5rem;
-  padding: 0 2rem;
-  box-sizing: border-box;
-  p {
-    font-weight: normal;
-    color: $Blue3;
-    font-size: 16px;
-  }
-  span {
-
-    color: $Blue;
-    font-size: 20px;
-    font-weight: 500;
-  }
-  .gray{
-    color: #bfbfbf;
-  }
-}
-
-.descriptionDiv{
-  width: 100%;
-  min-height: 4rem;
-  
-  margin-bottom: 1rem;
-}
-
-.discriptionInput{
-  width: 100%;
-  height: 100%;
-  padding: 1rem 2rem;
-  border: none;
-}
-
-.sideContent{
-  overflow-y: scroll;
-  overflow-x: hidden;
-  width: 30%;
-  height: 100%;
-  padding: 0 0 0 2rem;
-  box-sizing: border-box;
-}
-.sideContent::-webkit-scrollbar {
-  display: none;
-}
-.mainContent::-webkit-scrollbar {
-  display: none;
-}
-.center{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.lineLayout{
-  display: grid;
-  grid-gap: 0;
-  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
-}
-
-.standardButton{
-  padding: 0.5rem 2rem;
-  background-color: $Blue;
-  color: white;
-  border: none;
-}
-
-.oneViewDiv{
-  display: grid;
-  grid-gap: 0;
-  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
-}
-
-.oneViewCard{
-  width: 10rem;
-  height: 5rem;
-  padding: 1rem 1.5rem;
-  margin-bottom: 0.2rem;
-  p {
-    font-weight: normal;
-    color: $Blue3;
-    font-size: 14px;
-    margin: 0;
-  }
-  span {
-
-    color: $Blue;
-    font-size: 16px;
-    font-weight: 500;
-  }
-  .gray{
-    color: #bfbfbf;
-  }
-}
-
-.relationDiv{
-  width: 100%;
-  min-height: 20rem;
-  p {
-    font-weight: normal;
-    color: $Blue3;
-    font-size: 14px;
-    margin: 0;
-  }
-  span {
-
-    color: $Blue;
-    font-size: 16px;
-    font-weight: 500;
-  }
-  .gray{
-    color: #bfbfbf;
-  }
-}
-
-p{
-  font-weight: 500;
 }

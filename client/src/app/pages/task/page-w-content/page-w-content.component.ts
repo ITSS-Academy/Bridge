@@ -24,13 +24,13 @@ export class PageWContentComponent {
   @Input()
   tasks$!: Observable<TaskState>;
 
-
   content = '';
   @ViewChild('success') success: any;
   @ViewChild('warning') warning: any;
   @ViewChild('error') error: any;
 
   currentUser!: any;
+  task$: any;
 
   constructor(
     public taskService: TaskService,
@@ -38,7 +38,7 @@ export class PageWContentComponent {
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
     @Inject(TuiDialogFormService)
     private readonly dialogForm: TuiDialogFormService,
-    private notificationService: NotificationService,
+    private notificationService: NotificationService
   ) {
     this.tasks$ = store.select('task');
 
@@ -60,38 +60,39 @@ export class PageWContentComponent {
   }
 
   updateTask(task: any) {
-    let taskToUpdate: any = {...task, data: {
-      id: task.data.id,
-      type: 'Tasks',
-      attributes: {
-        name: this.exampleForm.controls['Name'].value,
-        assigned_to_c: this.stringifyAssignment(this.controlAssignments.value),
-        from_date_c: this.from?.toString(),
-        to_date_c: this.to?.toString(),
-        status: this.stringifyStage(this.controlStages.value),
-        priority: this.stringifyPriority(this.controlPriorities.value),
-        location_c: this.exampleForm.controls['Location'].value,
-        task_type_c: this.stringifyTask(this.controlTasks.value),
-        description: this.exampleForm.controls['Description'].value,
-      }
-    }}
+    let taskToUpdate: any = {
+      ...task,
+      data: {
+        id: task.data.id,
+        type: 'Tasks',
+        attributes: {
+          name: this.exampleForm.controls['Name'].value,
+          assigned_to_c: this.stringifyAssignment(
+            this.controlAssignments.value
+          ),
+          from_date_c: this.from?.toString(),
+          to_date_c: this.to?.toString(),
+          status: this.stringifyStage(this.controlStages.value),
+          priority: this.stringifyPriority(this.controlPriorities.value),
+          location_c: this.exampleForm.controls['Location'].value,
+          task_type_c: this.stringifyTask(this.controlTasks.value),
+          description: this.exampleForm.controls['Description'].value,
+        },
+      },
+    };
     this.store.dispatch(TaskAction.updateTask({ task: taskToUpdate }));
     this.content = 'Update task successfully!';
     this.notificationService.showSuccess(this.success);
   }
 
-
-  
-
   readonly testForm = new FormGroup({
-    testValue: new FormControl()
+    testValue: new FormControl(),
   });
   readonly testForm2 = new FormGroup({
-    testValue: new FormControl()
-  });  
+    testValue: new FormControl(),
+  });
 
-
-  exampleForm:FormGroup = new FormGroup({});
+  exampleForm: FormGroup = new FormGroup({});
 
   Name: FormControl = new FormControl('');
   Assignedto: FormControl = new FormControl('');
@@ -105,8 +106,8 @@ export class PageWContentComponent {
 
   ngOnInit() {}
 
-  showDate(){
-    console.log(this.testForm.value.testValue)
+  showDate() {
+    console.log(this.testForm.value.testValue);
   }
 
   name = '';
@@ -193,10 +194,13 @@ export class PageWContentComponent {
   readonly stringifyTask = (item: { task: string }): string => `${item.task}`;
   //
 
-  showDialog(content: PolymorpheusContent, size: TuiDialogSize, task:any): void {
+  showDialog(
+    content: PolymorpheusContent,
+    size: TuiDialogSize,
+    task: any
+  ): void {
     this.exampleForm.controls['Name'].setValue(task.data.attributes.name);
 
-    
     const closeable = this.dialogForm.withPrompt({
       label: 'Are you sure?',
       data: {
@@ -211,5 +215,3 @@ export class PageWContentComponent {
       });
   }
 }
-  
-
