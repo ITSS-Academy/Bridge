@@ -19,7 +19,7 @@
           <th><b>ALL DAY</b></th>
           <th><b>ACTION</b></th>
         </tr>
-        <tr *ngFor="let event of (this.events | async)">
+        <tr *ngFor="let event of (this.event$ | async)?.events">
           <!-- CHECKBOX -->
           <th style="width: 2rem; padding: 0 1rem 1rem 2rem;"><label class="container">
               <input type="checkbox">

@@ -1,3 +1,12 @@
+<ng-template #success>
+  <app-success id="login" [cont]="content" ></app-success>
+</ng-template>
+<ng-template #warning>
+<app-warning id="login" [cont]="content" ></app-warning>
+</ng-template>
+<ng-template #error>
+<app-error id="login" [cont]="content" ></app-error>
+</ng-template>
 <div class="thirdNavbar">
   <div class="leftNavContent">
     <button class="button">
@@ -76,30 +85,15 @@
         </tui-combo-box>
       </div>
 
-      <!--TIME-->
-      <div class="container-dialog">
-        <p class="title-dialog">Estimate time</p>
-        <tui-input
-          style="outline: none !important"
-          class="input-dialog"
-
-          tuiTextfieldSize="s"
-          [formControl]="Estimatetime"
-          [(ngModel)]="time"
-          (ngModelChange)="onModelChangeTime($event)"
-        >
-          Type here
-        </tui-input>
-      </div>
-
-      <!--DUE DATE-->
+      
+      <!--START DATE-->
       <form [formGroup]="testForm">
         <div  class="container-dialog">
-          <p class="title-dialog">Due date & Time</p>
+          <p class="title-dialog">Start date</p>
   
           <tui-input-date
             formControlName="testValue"
-            [(ngModel)]="test"
+            [(ngModel)]="from"
             class="input-dialog"
             tuiTextfieldSize="s"
           >
@@ -107,6 +101,24 @@
           </tui-input-date>
         </div>
       </form>
+
+
+      <!--DUE DATE-->
+      <form [formGroup]="testForm2">
+        <div  class="container-dialog">
+          <p class="title-dialog">Start date</p>
+  
+          <tui-input-date
+            formControlName="testValue"
+            [(ngModel)]="to"
+            class="input-dialog"
+            tuiTextfieldSize="s"
+          >
+            Choose a date
+          </tui-input-date>
+        </div>
+      </form>
+
 
       <!--STAGE-->
       <div class="container-dialog">

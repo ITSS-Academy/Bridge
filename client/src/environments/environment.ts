@@ -8,5 +8,6 @@ export const environment = {
     appId: '1:635325645149:web:238b9a9d38fc967ba728b4',
   },
 
-  API_URL: 'http://localhost:3000',
+  // API_URL: 'http://localhost:3000',
+  API_URL: 'https://service-bridge-54ojkedria-as.a.run.app'
 };

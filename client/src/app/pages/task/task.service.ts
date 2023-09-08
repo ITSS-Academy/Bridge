@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {  collectionSnapshots, Firestore } from '@angular/fire/firestore';
 import { collection } from 'firebase/firestore';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -21,6 +21,19 @@ export class TaskService {
   async getAllTask() {
     return collectionSnapshots(this.collection);
   }
+
+  getAllTasksNgRx() {
+    return collectionSnapshots(this.collection).pipe(
+      map((result: any) =>
+        result.map((item: any) => {
+          return item.data();
+        })
+      )
+    );
+  }
+
+
+
   getTaskById(id: string) {
     return this.http.get(
       `${environment.API_URL}/tasks/${id}`

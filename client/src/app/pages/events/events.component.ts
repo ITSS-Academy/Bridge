@@ -3,6 +3,7 @@ import { EventsService } from './events.service';
 import { Observable, map } from 'rxjs';
 import { EventState } from './ngrx/state/event.state';
 import { Store } from '@ngrx/store';
+import { EventAction } from './ngrx/action/event.action';
 
 @Component({
   selector: 'app-events',
@@ -13,7 +14,6 @@ export class EventsComponent implements OnInit{
   title = 'Events';
   pageEmpty = true;
 
-  events!: Observable<any>;
   event$!: Observable<EventState>
   subEvents: any[] = [];
 
@@ -25,14 +25,8 @@ export class EventsComponent implements OnInit{
     this.getAllEvents();
   }
 
-  async getAllEvents() {
-    this.events = (await this.eventService.getAllEvents()).pipe(
-      map((result: any) =>
-        result.map((item: any) => {
-          return item.data();
-        })
-      )
-    );
+  getAllEvents() {
+    this.store.dispatch(EventAction.getEvents());
   }
 
 

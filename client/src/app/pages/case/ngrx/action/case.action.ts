@@ -15,14 +15,14 @@ export const CaseAction = {
   getCases: createAction('[Case] Get Cases'),
   getCasesSuccess: createAction(
     '[Case] Get Cases Success',
-    props<{ cases: any[] }>()
+    props<{ Cases: any[] }>()
   ),
   getCasesFailure: createAction(
     '[Case] Get Cases Failure',
     props<{ error: any }>()
   ),
 
-  updateCase: createAction('[Case] Update Case', props<{ case: any }>()),
+  updateCase: createAction('[Case] Update Case', props<{Case: any }>()),
   updateCaseSuccess: createAction('[Case] Update Case Success'),
   updateCaseFailure: createAction(
     '[Case] Update Case Failure',

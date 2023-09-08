@@ -3,6 +3,7 @@ import {
   Component,
   Inject,
   Input,
+  ViewChild,
 } from '@angular/core';
 import {
   TuiDialogContext,
@@ -20,6 +21,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Deal } from 'src/app/models/deal.model';
 import { DealAction } from '../ngrx/action/deal.action';
+import { TuiDay } from '@taiga-ui/cdk';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-third-navbar',
@@ -40,13 +43,14 @@ export class ThirdNavbarComponent {
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
     private dealService: DealsService,
     public authService: AuthService,
-    private store: Store<{ deal: DealState }>
+    private store: Store<{ deal: DealState }>,
+    private notificationService: NotificationService
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
     this.deal$ = store.select('deal');
     this.exampleForm.addControl('dealName', this.dealName);
     this.exampleForm.addControl('amount2', this.amount2);
-    this.exampleForm.addControl('probability ', this.probability2);
+    this.exampleForm.addControl('probability2', this.probability2);
 
     console.log(this.currentUser);
   }
@@ -65,20 +69,23 @@ export class ThirdNavbarComponent {
   dealName: FormControl = new FormControl('');
   amount2: FormControl = new FormControl('');
   probability2: FormControl = new FormControl('');
-
+  date: TuiDay | null = null;
   exampleFormSub = new FormGroup({});
 
-  async addDeal() {
-    let subDeal: any = {
-      data: {
-        type: 'Opportunity',
-      },
-    };
+  addDeal() {
     let deal: Deal = {
       data: {
-        type: 'Opportunities',
+        type: 'Opportunity',
         attributes: {
-          name: '',
+          name: this.exampleForm.controls['dealName'].value,
+          amount_deal_c: this.exampleForm.controls['amount2'].value,
+          assigned_to_name_c: this.stringifyAssignment(this.controlAssignments.value),
+          close_date_c: this.date!.toString(),
+          lead_src_c: this.stringifySource(this.controlSources.value),
+          org_name_c: this.stringifyOrg(this.controlOrgs.value),
+          pipe_line_c: this.stringifyPipeLine(this.controlPipeLines.value),
+          probability_deal_c: this.exampleForm.controls['probability2'].value, 
+          stage_c: this.stringifyStage(this.controlStages.value),
           modified_user_id: '',
           modified_by_name: '',
           created_by: '',
@@ -125,37 +132,21 @@ export class ThirdNavbarComponent {
         },
       },
     };
-    (deal.data.type = 'Opportunities'),
-      (deal.data.attributes.name = this.dealsForm.controls['dealName'].value),
-      (deal.data.attributes.amount = this.dealsForm.controls['amount2'].value),
-      (deal.data.attributes.probability =
-        this.dealsForm.controls['probablity2'].value),
-      (deal.data.attributes.campaign_name = this.stringifyOrg(
-        this.controlOrgs.value
-      )),
-      (deal.data.attributes.campaign_link = this.stringifyPipeLine(
-        this.controlPipeLines.value
-      )),
-      (deal.data.attributes.sales_stage = this.stringifyStage(
-        this.controlStages.value
-      )),
-      (deal.data.attributes.assigned_user_name = this.stringifyAssignment(
-        this.controlAssignments.value
-      )),
-      (deal.data.attributes.lead_source = this.stringifySource(
-        this.controlSources.value
-      )),
-      (deal.data.attributes.assigned_user_id = this.currentUser.data.id);
-    deal.data.attributes.modified_user_id = this.currentUser.data.id;
-    deal.data.attributes.modified_by_name =
-      this.currentUser.data.attributes.full_name;
-    // lead.data.attributes.created_by_name = this.currentUser.data.attributes.full_name;
-    console.log(deal);
-    this.store.dispatch(DealAction.addDeal({ deal: deal }));
-    this.deal$.subscribe((data) => {
-      console.log(data);
-    });
+      this.store.dispatch(DealAction.addDeal({ deal: deal }));
+      this.cont = 'Add deal successfully!';
+      this.notificationService.showSuccess(this.success);
+      return;
   }
+
+
+  readonly testForm = new FormGroup({
+    testValue: new FormControl()
+  });
+
+  cont = '';
+  @ViewChild('success') success: any;
+  @ViewChild('warning') warning: any;
+  @ViewChild('error') error: any;
 
   onModelChangeName(name: string): void {
     this.name = name;
@@ -172,14 +163,11 @@ export class ThirdNavbarComponent {
     this.dialogForm.markAsDirty();
   }
 
-  readonly testForm = new FormGroup({
-    testValue: new FormControl(),
-  });
 
   //control pipe line selection
   readonly controlPipeLines = new FormControl();
 
-  readonly pipeLines = [{ pipeLine: 'Khoa Bùi' }];
+  readonly pipeLines = [{ pipeLine: 'Standard' }];
 
   readonly stringifyPipeLine = (item: { pipeLine: string }): string =>
     `${item.pipeLine}`;
@@ -190,11 +178,11 @@ export class ThirdNavbarComponent {
 
   readonly stages = [
     { stage: 'New' },
-    { stage: 'Qualìying' },
+    { stage: 'Qualifying' },
     { stage: 'Requirements Gathering' },
     { stage: 'Value Proposition' },
     { stage: 'Negotiation' },
-    { stage: 'Ready To CLose' },
+    { stage: 'Ready To cLose' },
     { stage: 'Closed Won' },
     { stage: 'Closed Lost' },
     { stage: 'Dormant' },

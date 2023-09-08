@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   Inject,
   Input,
+  ViewChild,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TuiDialogService, TuiDialogSize } from '@taiga-ui/core';
@@ -17,6 +18,8 @@ import { Store } from '@ngrx/store';
 import { Case } from 'src/app/models/case.model';
 import { CaseAction } from '../ngrx/action/case.action';
 import { CaseState } from '../ngrx/state/case.state';
+import { TuiDay } from '@taiga-ui/cdk';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-third-navbar',
@@ -30,16 +33,27 @@ export class ThirdNavbarComponent implements OnInit {
   currentUser!: any;
   case$!: Observable<CaseState>;
 
+
+  cont = '';
+  @ViewChild('success') success: any;
+  @ViewChild('warning') warning: any;
+  @ViewChild('error') error: any;
+
+
   constructor(
     @Inject(TuiDialogFormService)
     private readonly dialogForm: TuiDialogFormService,
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
     private caseService: CasesService,
     public authService: AuthService,
-    private store: Store<{ case: CaseState }>
+    private store: Store<{ case: CaseState }>,
+    private notificationService: NotificationService
+
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
+
     this.case$ = store.select('case');
+    
     this.casesForm.addControl('caseTitle', this.caseTitle);
     this.casesForm.addControl('organizationName', this.orgName);
 
@@ -50,19 +64,22 @@ export class ThirdNavbarComponent implements OnInit {
   contactsForm: FormGroup = new FormGroup({});
   caseTitle: FormControl = new FormControl('');
   orgName: FormControl = new FormControl('');
+  date: TuiDay | null = null;
 
 
   async addCase() {
-    let subCase: any = {
-      data: {
-        type: 'Case',
-      },
-    };
     let caseToAdd: Case = {
       data: {
         type: 'Cases',
         attributes: {
-          name: '',
+          assigned_to_name_c: this.stringifyAssignment(this.controlAssignments.value),
+          contact_c: this.stringifyContact(this.controlContacts.value),
+          resolute_date_c: this.date!.toString(),
+          group_case_c: this.stringifyGroup(this.controlGroups.value),
+          status_case_c: this.stringifyStatus(this.controlStatuses.value),
+          priority_case_c: this.stringifyPriority(this.controlPriorities.value),
+          org_name_c: this.casesForm.controls['organizationName'].value,
+          name: this.casesForm.controls['caseTitle'].value,
           modified_user_id: '',
           modified_by_name: '',
           created_by: '',
@@ -109,37 +126,15 @@ export class ThirdNavbarComponent implements OnInit {
         },
       },
     };
-    (caseToAdd.data.type = 'Cases'),
-      (caseToAdd.data.attributes.name =
-        this.contactsForm.controls['caseTitle'].value),
-      (caseToAdd.data.attributes.account_name =
-        this.contactsForm.controls['orgName'].value),
-      (caseToAdd.data.attributes.status = this.stringifyStatus(
-        this.controlStatuses.value
-      )),
-      (caseToAdd.data.attributes.priority = this.stringifyPriority(
-        this.controlPriorities.value
-      )),
-      (caseToAdd.data.attributes.contacts = this.stringifyContact(
-        this.controlContacts.value
-      )),
-      (caseToAdd.data.attributes.internal = this.stringifyContact(
-        this.controlGroups.value
-      )),
-      (caseToAdd.data.attributes.assigned_user_name = this.stringifyAssignment(
-        this.controlAssignments.value
-      )),
-      (caseToAdd.data.attributes.assigned_user_id = this.currentUser.data.id);
-    caseToAdd.data.attributes.modified_user_id = this.currentUser.data.id;
-    caseToAdd.data.attributes.modified_by_name =
-      this.currentUser.data.attributes.full_name;
-    // lead.data.attributes.created_by_name = this.currentUser.data.attributes.full_name;
-    console.log(caseToAdd);
     this.store.dispatch(CaseAction.addCase({ case: caseToAdd }));
-    this.case$.subscribe((data) => {
-      console.log(data);
-    });
+    this.cont = 'Add case successfully!';
+    this.notificationService.showSuccess(this.success);
+    return;
   }
+
+  readonly testForm = new FormGroup({
+    testValue: new FormControl()
+  });
 
   //control status selection
   readonly controlStatuses = new FormControl();

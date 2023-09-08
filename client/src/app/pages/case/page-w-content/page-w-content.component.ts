@@ -3,6 +3,7 @@ import {
   Component,
   Inject,
   Input,
+  ViewChild,
 } from '@angular/core';
 import {
   TuiDialogContext,
@@ -20,6 +21,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Case } from 'src/app/models/case.model';
 import { CaseAction } from '../ngrx/action/case.action';
+import { TuiDay } from '@taiga-ui/cdk';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-page-w-content',
@@ -30,7 +33,6 @@ import { CaseAction } from '../ngrx/action/case.action';
 })
 export class PageWContentComponent {
   @Input()
-  cases!: Observable<any>;
   case$!: Observable<CaseState>;
   currentUser!: any;
 
@@ -40,12 +42,13 @@ export class PageWContentComponent {
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
     private caseService: CasesService,
     public authService: AuthService,
-    private store: Store<{ case: CaseState }>
+    private store: Store<{ case: CaseState }>,
+    private notificationService: NotificationService
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
     this.case$ = store.select('case');
     this.casesForm.addControl('caseTitle', this.caseTitle);
-    this.casesForm.addControl('organizationName', this.orgName);
+    this.casesForm.addControl('orgName', this.orgName);
 
     console.log(this.currentUser);
   }
@@ -57,6 +60,7 @@ export class PageWContentComponent {
   contactsForm: FormGroup = new FormGroup({});
   caseTitle: FormControl = new FormControl('');
   orgName: FormControl = new FormControl('');
+  date: TuiDay | null = null;
 
   onModelChangeCaseTitle(caseTitle: string): void {
     this.caseTitle2 = caseTitle;
@@ -67,6 +71,74 @@ export class PageWContentComponent {
     this.store.dispatch(CaseAction.deleteCase({ id: id }));
   }
 
+  updateCase(Case: any){
+    let CaseToUpdate: any = {...Case, data: {
+      id: Case.data.id,
+      type: 'Cases',
+      attributes: {
+          assigned_to_name_c: this.stringifyAssignment(this.controlAssignments.value),
+          contact_c: this.stringifyContact(this.controlContacts.value),
+          resolute_date_c: this.date!.toString(),
+          group_case_c: this.stringifyGroup(this.controlGroups.value),
+          status_case_c: this.stringifyStatus(this.controlStatuses.value),
+          priority_case_c: this.stringifyPriority(this.controlPriorities.value),
+          org_name_c: this.casesForm.controls['orgName'].value,
+          name: this.casesForm.controls['caseTitle'].value,
+          modified_user_id: '',
+          modified_by_name: '',
+          created_by: '',
+          created_by_name: '',
+          description: '',
+          deleted: '',
+          created_by_link: '',
+          modified_user_link: '',
+          assigned_user_id: '',
+          assigned_user_name: '',
+          assigned_user_link: '',
+          SecurityGroups: '',
+          case_number: '',
+          type: '',
+          status: '',
+          priority: '',
+          resolution: '',
+          work_log: '',
+          suggestion_box: '',
+          account_name: '',
+          account_name1: '',
+          account_id: '',
+          state: '',
+          case_attachments_display: '',
+          case_update_form: '',
+          contact_created_by: '',
+          contact_created_by_name: '',
+          contact_created_by_id: '',
+          tasks: '',
+          notes: '',
+          meetings: '',
+          emails: '',
+          documents: '',
+          calls: '',
+          bugs: '',
+          contacts: '',
+          accounts: '',
+          project: '',
+          update_text: '',
+          internal: '',
+          aop_case_updates_threaded: '',
+          aop_case_updates: '',
+          aop_case_events: '',
+      }
+    }}
+    this.store.dispatch(CaseAction.updateCase({Case: CaseToUpdate}));
+    this.cont = 'Update case successfully!';
+    this.notificationService.showSuccess(this.success);
+  }
+
+
+  cont = '';
+  @ViewChild('success') success: any;
+  @ViewChild('warning') warning: any;
+  @ViewChild('error') error: any;
   //control status selection
   readonly controlStatuses = new FormControl();
 
@@ -83,6 +155,10 @@ export class PageWContentComponent {
   readonly stringifyStatus = (item: { status: string }): string =>
     `${item.status}`;
   //
+
+  readonly testForm = new FormGroup({
+    testValue: new FormControl()
+  });
 
   //control priority selection
   readonly controlPriorities = new FormControl();
@@ -175,7 +251,10 @@ export class PageWContentComponent {
   //
 
   //Hiển thị Dialog
-  showDialog(content: PolymorpheusContent, size: TuiDialogSize): void {
+  showDialog(content: PolymorpheusContent, size: TuiDialogSize, Case:any): void {
+    console.log(Case);
+    this.caseTitle.setValue(Case.data.attributes.name);
+    this.orgName.setValue(Case.data.attributes.org_name_c);
     const closeable = this.dialogForm.withPrompt({
       label: 'Are you sure?',
       data: {

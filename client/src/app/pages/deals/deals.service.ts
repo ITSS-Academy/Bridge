@@ -21,12 +21,23 @@ export class DealsService {
     return collectionSnapshots(this.collection);
   }
 
+  getAllDealsNgRx() {
+    return collectionSnapshots(this.collection).pipe(
+      map((result: any) =>
+        result.map((item: any) => {
+          return item.data();
+        })
+      )
+    );
+  }
+
+
   getDealById(id: string) {
     return this.http.get(`${environment.API_URL}/deals/${id}`) as Observable<any>;
   }
 
-  updateDeal(id: string, body: any) {
-    return this.http.patch(`${environment.API_URL}/deals/${id}`, body) as Observable<any>;
+  updateDeal(body: any) {
+    return this.http.patch(`${environment.API_URL}/deals/update`, body) as Observable<any>;
   }
 
   deleteDeal(id: string) {

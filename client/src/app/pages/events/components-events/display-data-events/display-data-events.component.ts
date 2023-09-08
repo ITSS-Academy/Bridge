@@ -16,7 +16,6 @@ import { Event } from 'src/app/models/event.model';
 })
 export class DisplayDataEventsComponent {
   @Input()
-  events!: Observable<any>;
   event$!: Observable<EventState>;
   currentUser!: any;
   constructor(

@@ -18,6 +18,17 @@ export class OrganizationsService {
     return this.http.post(`${environment.API_URL}/organizations/createOrganization`, body) as Observable<any>;
   }
 
+
+  getAllOrganizationsNgRx() {
+    return collectionSnapshots(this.collection).pipe(
+      map((result: any) =>
+        result.map((item: any) => {
+          return item.data();
+        })
+      )
+    );
+  }
+
   async getAllOrganizations() {
     return collectionSnapshots(this.collection);
   }

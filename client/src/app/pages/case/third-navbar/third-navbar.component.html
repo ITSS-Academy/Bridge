@@ -1,3 +1,14 @@
+
+<ng-template #success>
+  <app-success id="login" [cont]="cont" ></app-success>
+</ng-template>
+<ng-template #warning>
+<app-warning id="login" [cont]="cont" ></app-warning>
+</ng-template>
+<ng-template #error>
+<app-error id="login" [cont]="cont" ></app-error>
+</ng-template>
+
 <div class="thirdNavbar">
   <div class="leftNavContent">
     <button class="button">
@@ -49,7 +60,7 @@
           style="outline: none !important"
           class="input-dialog"
           tuiTextfieldSize="s"
-          [(ngModel)]="caseTitle"
+          [formControl]="caseTitle"
         >
           Type here
         </tui-input>
@@ -173,24 +184,27 @@
           style="outline: none !important"
           class="input-dialog"
           tuiTextfieldSize="s"
-          [(ngModel)]="orgName"
+          [formControl]="orgName"
         >
           Type here
         </tui-input>
       </div>
 
       <!--DUE DATE-->
-      <div class="container-dialog">
-        <p class="title-dialog">Resolute due</p>
-
-        <tui-input-date
-          class="input-dialog"
-          formControlName="testValue"
-          tuiTextfieldSize="s"
-        >
-          Choose a date
-        </tui-input-date>
-      </div>
+      <form [formGroup]="testForm">
+        <div class="container-dialog">
+          <p class="title-dialog">Resolute due</p>
+  
+          <tui-input-date
+            class="input-dialog"
+            formControlName="testValue"
+            tuiTextfieldSize="s"
+            [(ngModel)]="date"
+          >
+            Choose a date
+          </tui-input-date>
+        </div>
+      </form>
     </div>
 
     <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->

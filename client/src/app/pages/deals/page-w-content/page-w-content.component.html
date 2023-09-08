@@ -1,6 +1,17 @@
+
+<ng-template #success>
+  <app-success id="login" [cont]="cont" ></app-success>
+</ng-template>
+<ng-template #warning>
+<app-warning id="login" [cont]="cont" ></app-warning>
+</ng-template>
+<ng-template #error>
+<app-error id="login" [cont]="cont" ></app-error>
+</ng-template>
+
 <div class="contentPage">
   <table>
-    <tr>
+    <tr *ngIf="(this.deals$ | async)">
       <!-- CHECKBOX -->
       <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
         <label class="container">
@@ -13,13 +24,17 @@
       </th>
 
       <th><b>DEAL NAME</b></th>
-      <th><b>AMOUNT</b></th>
+      <th><b>AMOUNT (VNĐ)</b></th>
       <th><b>ORGANIZATION</b></th>
-      <th style="width: 15rem"><b>EXPECTED CLOSED DATE</b></th>
-      <th style="padding-left: 4rem"><b>SALES STAGE</b></th>
+      <th><b>SALES STAGE</b></th>
+      <th><b>LEAD SOURCE</b></th>
+      <th><b>PIPELINE</b></th>
+      <th><b>PROBABILITY (%)</b></th>
+      <th><b>CLOSED DATE</b></th>
       <th><b>ASSIGNED TO</b></th>
+      <th><b>ACTION</b></th>
     </tr>
-    <tr>
+    <tr *ngFor="let deal of (this.deals$ | async )?.deals">
       <!-- CHECKBOX -->
       <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
         <label class="container">
@@ -31,12 +46,360 @@
         <span class="material-symbols-outlined">star</span>
       </td>
 
-      <td>acme small deal</td>
-      <td>100$</td>
-      <td>Acme</td>
-      <td>14-08-2023</td>
-      <td><div class="highlight closedWon">Closed Won</div></td>
-      <td>Vo Van Viet</td>
+      <td>{{deal.data.attributes.name}}</td>
+      <td>{{deal.data.attributes.amount_deal_c}}</td>
+      <td>{{deal.data.attributes.org_name_c}}</td>
+      <td class="stage"><div class="highlight closedWon">{{deal.data.attributes.stage_c}}</div></td>
+      <td>{{deal.data.attributes.lead_src_c}}</td>
+      <td>{{deal.data.attributes.pipe_line_c}}</td>
+      <td>{{deal.data.attributes.probability_deal_c}}</td>
+      <td>{{deal.data.attributes.close_date_c}}</td>
+      <td>{{deal.data.attributes.assigned_to_name_c}}</td>
+      <td>
+        <div class="action">
+          <span class="material-symbols-outlined" (click)="showDialog(dialogAddDeal, 'auto', deal)">edit</span>
+          <span class="material-symbols-outlined" (click)="deleteDeal(deal.data.id)">delete</span>
+        </div>
+      </td>
+
+
+
+      <!-- DIALOG MAIN DEAL -->
+<ng-template id="dialogAddDeal" #dialogAddDeal let-observer>
+  <!--FORM CHỨA NỘI DUNG DIALOG-->
+  <form
+    id="form-container"
+    [formGroup]="exampleForm"
+    (ngSubmit)="observer.complete()"
+  >
+    <!--TỰA ĐỀ BỰ CỦA DIALOG DEAL-->
+    <p id="header-dialog">Add Deal</p>
+
+    <!--DIV CHỨA NỘI DUNG HIỂN THỊ VÀ NHẬP CHÍNH CỦA DIALOG-->
+    <div class="contents-dialog">
+      <!--DEAL NAME-->
+      <div class="container-dialog">
+        <p class="title-dialog">Deal name</p>
+        <tui-input
+          [formControl]="dealName"
+          style="outline: none !important"
+          class="input-dialog"
+          tuiTextfieldSize="s"
+        >
+          Type here
+        </tui-input>
+      </div>
+
+      <!--AMOUNT-->
+      <div class="container-dialog">
+        <p class="title-dialog">Amount</p>
+
+        <div style="display: flex">
+          <tui-input
+            [formControl]="amount2"
+            id="input-dialog-amount"
+            tuiTextfieldSize="s"
+          >
+            Type here
+          </tui-input>
+          <tui-combo-box
+            class="input-dialog-choose"
+            [formControl]="controlAmounts"
+            [stringify]="stringifyAmount"
+            tuiTextfieldSize="s"
+            style="
+              border-top-right-radius: 8px;
+              border-bottom-right-radius: 8px;
+              border-top-left-radius: 0;
+              border-bottom-left-radius: 0;
+            "
+          >
+            VND-đ
+
+            <tui-data-list-wrapper
+              *tuiDataList
+              [items]="amounts | tuiFilterByInputWith : stringifyAmount"
+              [itemContent]="stringifyAmount | tuiStringifyContent"
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+        </div>
+      </div>
+
+      <!--ORGANIZATION NAME-->
+      <div class="container-dialog">
+        <p class="title-dialog">Organization name</p>
+
+        <div style="display: flex">
+          <tui-combo-box
+            id="input-dialog-org"
+            [formControl]="controlOrgs"
+            [stringify]="stringifyOrg"
+            tuiTextfieldSize="s"
+          >
+            Choose/Type here
+
+            <tui-data-list-wrapper
+              *tuiDataList
+              [items]="orgs | tuiFilterByInputWith : stringifyOrg"
+              [itemContent]="stringifyOrg | tuiStringifyContent"
+            ></tui-data-list-wrapper>
+          </tui-combo-box>
+          <button
+            class="dialog-button"
+            (click)="showDialog(dialogAddOrg, 'auto',deal)"
+          >
+            <span
+              class="material-symbols-outlined"
+              style="
+                height: 1.8rem;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+              "
+            >
+              add
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!--COLSED DATE-->
+      <form [formGroup]="testForm">
+        <div class="container-dialog">
+          <p class="title-dialog">Expected close date</p>
+  
+          <tui-input-date
+            class="input-dialog"
+            formControlName="testValue"
+            tuiTextfieldSize="s"
+            [(ngModel)]="date"
+          >
+            Choose a date
+          </tui-input-date>
+        </div>
+      </form>
+
+      <!--PIPELINE-->
+      <div class="container-dialog">
+        <p class="title-dialog">Pipeline</p>
+
+        <tui-combo-box
+          class="input-dialog"
+          [formControl]="controlPipeLines"
+          [stringify]="stringifyPipeLine"
+          tuiTextfieldSize="s"
+        >
+          Standard
+
+          <tui-data-list-wrapper
+            *tuiDataList
+            [items]="pipeLines | tuiFilterByInputWith : stringifyPipeLine"
+            [itemContent]="stringifyPipeLine | tuiStringifyContent"
+          ></tui-data-list-wrapper>
+        </tui-combo-box>
+      </div>
+
+      <!--STAGES-->
+      <div class="container-dialog">
+        <p class="title-dialog">Sales stage</p>
+
+        <tui-combo-box
+          class="input-dialog"
+          [formControl]="controlStages"
+          [stringify]="stringifyStage"
+          tuiTextfieldSize="s"
+        >
+          Choose/Type here
+
+          <tui-data-list-wrapper
+            *tuiDataList
+            [items]="stages | tuiFilterByInputWith : stringifyStage"
+            [itemContent]="stringifyStage | tuiStringifyContent"
+          ></tui-data-list-wrapper>
+        </tui-combo-box>
+      </div>
+
+      <!--ASSIGNED TO-->
+      <div class="container-dialog">
+        <p class="title-dialog">Assigned to</p>
+
+        <tui-combo-box
+          class="input-dialog"
+          [formControl]="controlAssignments"
+          [stringify]="stringifyAssignment"
+          tuiTextfieldSize="s"
+        >
+          Choose/Type here
+
+          <tui-data-list-wrapper
+            *tuiDataList
+            [items]="assignments | tuiFilterByInputWith : stringifyAssignment"
+            [itemContent]="stringifyAssignment | tuiStringifyContent"
+          ></tui-data-list-wrapper>
+        </tui-combo-box>
+      </div>
+
+      <!--LEAD SOURCE-->
+      <div class="container-dialog">
+        <p class="title-dialog">Lead source</p>
+
+        <tui-combo-box
+          class="input-dialog"
+          [formControl]="controlSources"
+          [stringify]="stringifySource"
+          tuiTextfieldSize="s"
+        >
+          Choose/Type here
+
+          <tui-data-list-wrapper
+            *tuiDataList
+            [items]="sources | tuiFilterByInputWith : stringifySource"
+            [itemContent]="stringifySource | tuiStringifyContent"
+          ></tui-data-list-wrapper>
+        </tui-combo-box>
+      </div>
+
+      <!--PROBABILITY-->
+      <div class="container-dialog">
+        <p class="title-dialog">Probability</p>
+
+        <div style="display: flex">
+          <tui-input
+            [formControl]="probability2"
+            style="outline: none !important"
+            id="input-dialog-probability"
+            tuiTextfieldSize="s"
+          >
+            Type here
+          </tui-input>
+          <div class="percentage">%</div>
+        </div>
+      </div>
+    </div>
+
+    <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
+    <div class="cancel-save">
+      <button class="button-cancel" type="submit">Cancel</button>
+      <button class="button-add" type="submit" (click)="updateDeal(deal)">Add</button>
+    </div>
+  </form>
+</ng-template>
+
+<!-- DIALOG SUB PHẦN ORGANIZATION-->
+<ng-template id="dialogAddOrg" #dialogAddOrg let-observer>
+  <form
+    id="form-container"
+    [formGroup]="exampleFormSub"
+    (ngSubmit)="observer.complete()"
+  >
+    <p id="header-dialog">Add Organization</p>
+
+    <div class="contents-dialog-org">
+      <div class="container-dialog">
+        <p class="title-dialog">Organization name</p>
+        <tui-input
+          style="outline: none !important"
+          class="input-dialog"
+          tuiTextfieldSize="s"
+          [(ngModel)]="nameOrg"
+          (ngModelChange)="onModelChangeOrgName($event)"
+        >
+          Type here
+        </tui-input>
+      </div>
+
+      <div class="container-dialog">
+        <p class="title-dialog">Website</p>
+        <tui-input
+          class="input-dialog"
+          tuiTextfieldSize="s"
+          [(ngModel)]="website"
+        >
+          Type here (optional)
+        </tui-input>
+      </div>
+
+      <div class="container-dialog">
+        <p class="title-dialog">Phone</p>
+        <tui-input-phone-international
+          class="input-dialog"
+          [countries]="(phones | tuiSortCountries | async) || []"
+          [(countryIsoCode)]="countryIsoCode"
+          [tuiTextfieldLabelOutside]="true"
+          tuiTextfieldSize="m"
+        >
+          Type here (optional)
+        </tui-input-phone-international>
+      </div>
+
+      <div class="container-dialog">
+        <p class="title-dialog">Type</p>
+
+        <tui-combo-box
+          class="input-dialog"
+          [formControl]="controlTypes"
+          [stringify]="stringifyType"
+          tuiTextfieldSize="s"
+        >
+          Choose/Type here
+
+          <tui-data-list-wrapper
+            *tuiDataList
+            [items]="types | tuiFilterByInputWith : stringifyType"
+            [itemContent]="stringifyType | tuiStringifyContent"
+          ></tui-data-list-wrapper>
+        </tui-combo-box>
+      </div>
+
+      <div class="container-dialog">
+        <p class="title-dialog">Assigned to</p>
+
+        <tui-combo-box
+          class="input-dialog"
+          [formControl]="controlAssignments"
+          [stringify]="stringifyAssignment"
+          tuiTextfieldSize="s"
+        >
+          Choose/Type here
+
+          <tui-data-list-wrapper
+            *tuiDataList
+            [items]="assignments | tuiFilterByInputWith : stringifyAssignment"
+            [itemContent]="stringifyAssignment | tuiStringifyContent"
+          ></tui-data-list-wrapper>
+        </tui-combo-box>
+      </div>
+
+      <div class="container-dialog">
+        <p class="title-dialog">Organization status</p>
+
+        <tui-combo-box
+          class="input-dialog"
+          [formControl]="controlStatuses"
+          [stringify]="stringifyStatus"
+          tuiTextfieldSize="s"
+        >
+          Choose/Type here
+
+          <tui-data-list-wrapper
+            *tuiDataList
+            [items]="statuses | tuiFilterByInputWith : stringifyStatus"
+            [itemContent]="stringifyStatus | tuiStringifyContent"
+          ></tui-data-list-wrapper>
+        </tui-combo-box>
+      </div>
+    </div>
+
+    <div class="cancel-save">
+      <button class="button-cancel" type="submit">Cancel</button>
+      <button class="button-add" type="submit">Add</button>
+    </div>
+  </form>
+</ng-template>
+
+
+
+
     </tr>
   </table>
 </div>

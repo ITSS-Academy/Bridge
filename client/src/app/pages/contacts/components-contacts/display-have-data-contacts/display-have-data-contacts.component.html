@@ -7,10 +7,6 @@
 <ng-template #error>
 <app-error id="login" [cont]="content" ></app-error>
 </ng-template>
-
-<ng-template [tuiAlertOptions]="{status: status, autoClose: true}" [(tuiAlert)]="show">
-  {{this.notification}}
-</ng-template>
 <div class="contentPage">
   <table>
     <tr *ngIf="(this.contact$ | async)">

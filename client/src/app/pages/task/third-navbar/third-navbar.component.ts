@@ -7,6 +7,7 @@ import {
   Inject,
   ViewEncapsulation,
   Input,
+  ViewChild,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TuiDialogService, TuiDialogSize } from '@taiga-ui/core';
@@ -18,6 +19,7 @@ import { Observable } from 'rxjs';
 import { TaskState } from '../ngrx/state/task.state';
 import { Store } from '@ngrx/store';
 import { TaskAction } from '../ngrx/action/task.action';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-third-navbar',
@@ -38,13 +40,22 @@ export class ThirdNavbarComponent implements OnInit {
   name = '';
   time = '';
   location = '';
-  test: TuiDay | null = null;
+  from: TuiDay | null = null;
+  to: TuiDay | null = null;
+
+
+  
+  content = '';
+  @ViewChild('success') success: any;
+  @ViewChild('warning') warning: any;
+  @ViewChild('error') error: any;
 
   constructor(
     @Inject(TuiDialogFormService)
     private readonly dialogForm: TuiDialogFormService,
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
-    private store: Store<{ task: TaskState }>
+    private store: Store<{ task: TaskState }>,
+    private notificationService: NotificationService,
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
     this.task$ = this.store.select('task');
@@ -67,8 +78,8 @@ export class ThirdNavbarComponent implements OnInit {
         attributes: {
           name: this.exampleForm.controls['Name'].value,
           assigned_to_c: this.stringifyAssignment(this.controlAssignments.value),
-          // date_start: this.exampleForm.controls['Estimatetime'].value,
-          // date_due: this.exampleForm.controls['DuedateTime'].value,
+          from_date_c: this.from?.toString(),
+          to_date_c: this.to?.toString(),
           status: this.stringifyStage(this.controlStages.value),
           priority: this.stringifyPriority(this.controlPriorities.value),
           location_c: this.exampleForm.controls['Location'].value,
@@ -78,20 +89,18 @@ export class ThirdNavbarComponent implements OnInit {
       }
 
     }
+    this.content = 'Add task successfully!';
     this.store.dispatch(TaskAction.addTask({ task: task }));
-    let subscription:any = this.task$.subscribe({
-      next: (data) => {
-        console.log(data);
-      },
-      complete: () => subscription.unsubscribe()
-    })
-    console.log(this.test?.toLocalNativeDate().getDate());
+    this.notificationService.showSuccess(this.success);
+
   }
 
   readonly testForm = new FormGroup({
     testValue: new FormControl()
-
   });
+  readonly testForm2 = new FormGroup({
+    testValue: new FormControl()
+  });  
 
 
   exampleForm:FormGroup = new FormGroup({});

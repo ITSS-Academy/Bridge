@@ -34,6 +34,19 @@ export class TaskEffect {
         )
     )
 
+    getAllTask$ = createEffect(() =>
+        this.action$.pipe(
+            ofType(TaskAction.getTasks),
+            switchMap(() => this.taskService.getAllTasksNgRx()),
+            map((tasks: any) => {
+                return TaskAction.getTasksSuccess({ tasks: tasks });
+            }),
+            catchError((error) => {
+                return of(TaskAction.getTasksFailure({ error: error }));
+            })
+        ))
+
+
     updateTask$ = createEffect(() => 
         this.action$.pipe(
             ofType(TaskAction.updateTask),
