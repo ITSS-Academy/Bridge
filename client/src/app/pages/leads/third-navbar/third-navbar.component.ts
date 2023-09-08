@@ -257,6 +257,7 @@ export class ThirdNavbarComponent implements OnInit {
     { assign: 'Khoa Bùi' },
     { assign: 'Dương Thùy' },
     { assign: 'Trí Nguyễn' },
+    { assign: 'Văn Việt' },
   ];
 
    stringifyAssignment:any = (item: { assign: string }): string =>

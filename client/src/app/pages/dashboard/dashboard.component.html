@@ -119,11 +119,12 @@
     </div>
     <div class="sidebarRight">
       <div class="profile">
-        <img src="./assets/Spinning Axe.png" class="profileImage" />
-        <b>Spinning Axe</b>
-        <span>SpinningAxe123@gmail.com</span>
-        <span>Role: IT Consultant</span>
-        <span>Report To: Tran Minh Quan</span>
+        <img *ngIf="this.currentUser.data.attributes.photo != '' " src="{{this.currentUser.data.attributes.photo}}" class="profileImage" />
+        <img *ngIf="!this.currentUser.data.attributes.photo" src="../../../assets//Spinning Axe.png" class="profileImage" />
+        <b>{{this.currentUser.data.attributes.full_name}}</b>
+        <span>{{this.currentUser.data.attributes.email1}}</span>
+        <span>Role: <span>{{this.currentUser.data.attributes.title}}</span></span>
+        <span *ngIf="this.currentUser.data.attributes.title != 'CEO' ">Report To: <span>{{this.currentUser.data.attributes.reports_to_name}}</span></span>
       </div>
       <div class="calender">
         <b class="center">Calender <span class="material-symbols-outlined" style="margin: 0 0 0 5px;">calendar_month</span></b>
