@@ -3,7 +3,7 @@ import { Event } from "src/app/models/event.model";
 
 export const EventAction = {
   addEvent: createAction('[Event] Add Event', props<{ event: Event}>()),
-  addEventSuccess: createAction('[Event] Add Event Success', props<{ event: Event}>()),
+  addEventSuccess: createAction('[Event] Add Event Success', props<{ event: any}>()),
   addEventFailure: createAction('[Event] Add Event Failure', props<{ error: any }>()),
 
   getEvents: createAction('[Event] Get Events'),

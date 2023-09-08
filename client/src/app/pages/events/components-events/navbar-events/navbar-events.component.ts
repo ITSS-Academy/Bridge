@@ -27,7 +27,6 @@ import { NotificationService } from 'src/app/services/notification.service';
 export class NavbarEventsComponent {
   event$!: Observable<EventState>;
   currentUser!: any;
-  eventName: string = '';
   constructor(
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
     private eventService: EventsService,
@@ -39,13 +38,11 @@ export class NavbarEventsComponent {
     this.event$ = this.store.select('event');
 
     this.eventForm.addControl('eventName', new FormControl(''));
-    this.eventForm.addControl('agenda', new FormControl(''));
-    this.eventForm.addControl('part', new FormControl(''));
     console.log(this.currentUser);
   }
 
-  start: TuiTime | null = null;
-  end: TuiTime | null = null;
+  start: TuiDay | null = null;
+  end: TuiDay | null = null;
 
   onClick(
     content: PolymorpheusContent<TuiDialogContext>,
@@ -58,21 +55,15 @@ export class NavbarEventsComponent {
       .subscribe();
   }
 
-  eventForm = new FormGroup({
-    eventName: new FormControl(''),
-    agenda: new FormControl(),
-    part: new FormControl(''),
+  eventForm: FormGroup = new FormGroup({});
+  eventName: FormControl = new FormControl('');
+
+  readonly testForm = new FormGroup({
+    testValue: new FormControl()
   });
-
-  // eventForm: FormGroup = new FormGroup({});
-  // eventName: FormControl= new FormControl('');
-  // startTime  = new FormControl('');
-  // endTime = new FormControl('');
-  // actType = new FormControl()
-  // agenda: FormControl = new FormControl('');
-  // part = new FormControl();
-
-  // seclect actType
+  readonly testForm2 = new FormGroup({
+    testValue: new FormControl()
+  });  
 
   addEvent() {
     let event: any = {
@@ -81,16 +72,18 @@ export class NavbarEventsComponent {
         attributes: {
           name: this.eventForm.controls['eventName'].value,
           start_c: this.start!.toString(),
-          end_c: this.end!.toString(),
+          end_event_c: this.end!.toString(),
           all_day_c: this.stringifyDay(this.controlDay.value),
           act_type_c: this.stringify(this.controlActType.value),
-          participant_c: this.stringify(this.controlPart.value),
+          participant_c: this.stringifyPart(this.controlPart.value),
         },
       },
     };
+    console.log(event);
     this.store.dispatch(EventAction.addEvent({ event: event }));
     this.cont = 'Add event successfully!';
     this.notificationService.showSuccess(this.success);
+    return;
   }
   
   

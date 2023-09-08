@@ -33,6 +33,8 @@ import { caseReducer } from './pages/case/ngrx/reducer/case.reducer';
 import { CaseEffect } from './pages/case/ngrx/effect/case.effect';
 import { dealReducer } from './pages/deals/ngrx/reducer/deal.reducer';
 import { DealEffect } from './pages/deals/ngrx/effect/deal.effect';
+import { eventReducer } from './pages/events/ngrx/reducer/event.reducer';
+import { EventEffect } from './pages/events/ngrx/effect/event.effect';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { DealEffect } from './pages/deals/ngrx/effect/deal.effect';
       task: taskReducer,
       case: caseReducer,
       deal: dealReducer,
+      event: eventReducer
     }, {}),
     EffectsModule.forRoot([
       SignUpEffect,
@@ -66,6 +69,7 @@ import { DealEffect } from './pages/deals/ngrx/effect/deal.effect';
       TaskEffect,
       CaseEffect,
       DealEffect,
+      EventEffect,
     ]),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

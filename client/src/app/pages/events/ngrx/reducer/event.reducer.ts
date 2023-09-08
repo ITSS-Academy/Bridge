@@ -96,7 +96,7 @@ export const eventReducer = createReducer(
   }),
 
   // Delete Event
-  on(EventAction.getEvent, (state, action) => {
+  on(EventAction.deleteEvent, (state, action) => {
         // state.loading = false;
       return {
           ...state,

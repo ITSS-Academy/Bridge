@@ -1,3 +1,13 @@
+<ng-template #success>
+  <app-success id="login" [cont]="cont" ></app-success>
+</ng-template>
+<ng-template #warning>
+<app-warning id="login" [cont]="cont" ></app-warning>
+</ng-template>
+<ng-template #error>
+<app-error id="login" [cont]="cont" ></app-error>
+</ng-template>
+
 <div class="contentPage">
   <table>
       <tr>
@@ -9,13 +19,11 @@
 
           <th style="width: max-content; padding: 0.5rem 2rem 0.5rem 0.5rem;"><span class="material-symbols-outlined">edit_document</span></th>
           <th><b>NAME</b></th>
-          <th><b>ASSIGNED TO</b></th>
           <th><b>START DATE & TIME</b></th>
-          <th><b>TIME START</b></th>
           <th><b>END DATE & TIME</b></th>
-          <th><b>END TIME</b></th>
           <th><b>STATUS</b></th>       
           <th><b>ACTIVITY TYPE</b></th>
+          <th><b>PARTICIPANT</b></th>
           <th><b>ALL DAY</b></th>
           <th><b>ACTION</b></th>
         </tr>
@@ -27,88 +35,89 @@
             </label></th>
           <td style="width: 1rem; padding: 0.5rem;"><span class="material-symbols-outlined">star</span></td>
           <td>{{event.data.attributes.name!}}</td>
-          <td>{{event.data.attributes.assigned_user_name}}</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>{{event.data.attributes.activity_status_type }}</td>
-          <td></td>
+          <td>{{event.data.attributes.start_c}}</td>
+          <td>{{event.data.attributes.end_event_c}}</td>
+          <td>Planned</td>
+          <td>{{event.data.attributes.act_type_c}}</td>
+          <td>{{event.data.attributes.participant_c}}</td>
+          <td>{{event.data.attributes.all_day_c}}</td>
           <td>          
-              <span class="material-symbols-outlined edit" (click)="onClick(dialogAddEvent, 'auto', event)">edit</span>
+              <span class="material-symbols-outlined edit" (click)="onClick(content, 'auto', event)">edit</span>
             <span class="material-symbols-outlined delete" (click)="deleteEvent(event.data.id)">delete</span>      
           </td>
 
           <!-- dialog -->
-<ng-template #dialogAddEvent let-observer>
-  <h2 class="title-dialog">Add Events</h2>
-    <div class="box-form">
+<!-- dialog -->
+<ng-template #content let-observer>
+  <h2 class="title-dialog">Update Event</h2>
+  <div class="box-form">
     <form [formGroup]="eventForm" (ngSubmit)="observer.complete()">
-      <div class="form-event">   
+      <div class="form-event">
         <div class="all-label">
           <label for="name">Name</label>
-          <label for="start-time">Start Date & Time</label>
-          <label for="end-time">End Date & Time</label>
+          <label for="start-time">Start Date</label>
+          <label for="end-time">End Date</label>
           <label for="act-type">Activity Type</label>
-          <label for="agenda">Agenda</label>
+          <label for="agenda">All Day</label>
           <label for="part">Participants</label>
-        </div>    
+        </div>
         <div class="all-input">
-          <tui-input formControlName = "eventName" class="tui-input" type="text" id="name" name="firstname" tuiTextfieldSize="s">Event name </tui-input>
-          
-          <tui-input-date-time formControlName = "startTime"  class="tui-input" id="start-time" [tuiTextfieldCleaner]="true" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true">
-          Choose date and time
-          <input
-            placeholder="10.10.1998 01:22"
-            tuiTextfield
-            />
-           </tui-input-date-time>
-           
-           <tui-input-date-time formControlName = "endTime" id="end-time" class="tui-input" [tuiTextfieldCleaner]="true" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true">
-            Choose date and time
-            <input
-              placeholder="10.10.1998 01:22"
-              tuiTextfield
-              />
-             </tui-input-date-time>
-             
-             <tui-combo-box
-             tuiTextfieldSize="s"
-             formControlName="actType"
-             class="tui-input"
-             [stringify]="stringify"
-             [tuiTextfieldLabelOutside]="true"
-         >
-             Type
-          
-             <tui-data-list-wrapper *tuiDataList [itemContent]="stringify | tuiStringifyContent" [items]="allActType | tuiFilterByInputWith: stringify" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true"
-             ></tui-data-list-wrapper>
-            </tui-combo-box>
+          <tui-input [formControl]="this.eventName" class="tui-input" type="text" id="name" name="firstname"
+            tuiTextfieldSize="s">Event name </tui-input>
 
-            <tui-input
-            tuiTextfieldSize="s"
-            formControlName="agenda"
-            class="tui-input"
-            [tuiTextfieldLabelOutside]="true"
-            >Note for event</tui-input>
+          <form [formGroup]="testForm">
+            <tui-input-date-time  [(ngModel)]="start" formControlName="testValue" class="tui-input" id="start-time"
+            [tuiTextfieldCleaner]="true" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true">
+            Choose start date
+            <input placeholder="10.10.1998 01:22" tuiTextfield />
+          </tui-input-date-time>
+          </form>
 
-        <tui-input formControlName="part" class="tui-input" id="part" name="part" tuiTextfieldSize="s"  [tuiTextfieldLabelOutside]="true">
-          user or group
-          <tui-data-list-wrapper
-              *tuiDataList
-              [items]="allPart"
-              [labels]="labels"
-          ></tui-data-list-wrapper>
-      </tui-input>
+          <form [formGroup]="testForm2">
+            <tui-input-date-time  [(ngModel)]="end" formControlName="testValue" class="tui-input" id="start-time"
+            [tuiTextfieldCleaner]="true" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true">
+            Choose end date
+            <input placeholder="10.10.1998 01:22" tuiTextfield />
+          </tui-input-date-time>
+          </form>
+
+          <tui-combo-box [formControl]="controlActType" tuiTextfieldSize="s"  class="tui-input" [stringify]="stringify"
+            [tuiTextfieldLabelOutside]="true">
+            Type
+
+            <tui-data-list-wrapper *tuiDataList [itemContent]="stringify | tuiStringifyContent"
+              [items]="allActType | tuiFilterByInputWith: stringify" tuiTextfieldSize="s"
+              [tuiTextfieldLabelOutside]="true"></tui-data-list-wrapper>
+          </tui-combo-box>
+
+          <tui-combo-box [formControl]="controlDay" tuiTextfieldSize="s"  class="tui-input" [stringify]="stringifyDay"
+            [tuiTextfieldLabelOutside]="true">
+            Yes
+
+            <tui-data-list-wrapper *tuiDataList [itemContent]="stringifyDay | tuiStringifyContent"
+              [items]=" days | tuiFilterByInputWith: stringifyDay" tuiTextfieldSize="s"
+              [tuiTextfieldLabelOutside]="true"></tui-data-list-wrapper>
+          </tui-combo-box>
+
+
+          <tui-combo-box [formControl]="controlPart" tuiTextfieldSize="s"  class="tui-input" [stringify]="stringifyPart"
+            [tuiTextfieldLabelOutside]="true">
+            Participants
+
+            <tui-data-list-wrapper *tuiDataList [itemContent]="stringifyPart | tuiStringifyContent"
+              [items]=" part | tuiFilterByInputWith: stringifyPart" 
+              tuiTextfieldSize="s"
+              [tuiTextfieldLabelOutside]="true"></tui-data-list-wrapper>
+          </tui-combo-box>
+
         </div>
-        </div>
-        <div class="cancel-save">
-          <button class="btn-cancel" type="submit">Cancel</button>  
-          <button class="btn-save" (click)="updateEvent(event)">Save</button>
-        </div>
+      </div>
+      <div class="cancel-save">
+        <button class="btn-cancel" type="submit">Cancel</button>
+        <button class="btn-save" (click)="updateEvent(event)">Save</button>
+      </div>
     </form>
-    </div>
+  </div>
 </ng-template>
         </tr>
   </table>

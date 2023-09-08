@@ -66,19 +66,23 @@
           <tui-input formControlName="eventName" class="tui-input" type="text" id="name" name="firstname"
             tuiTextfieldSize="s">Event name </tui-input>
 
-          <tui-input-date-time formControlName="startTime" class="tui-input" id="start-time"
+          <form [formGroup]="testForm">
+            <tui-input-date-time  [(ngModel)]="start" formControlName="testValue" class="tui-input" id="start-time"
             [tuiTextfieldCleaner]="true" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true">
             Choose start date
             <input placeholder="10.10.1998 01:22" tuiTextfield />
           </tui-input-date-time>
+          </form>
 
-          <tui-input-date-time formControlName="endTime" id="end-time" class="tui-input" [tuiTextfieldCleaner]="true"
-            tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true">
+          <form [formGroup]="testForm2">
+            <tui-input-date-time  [(ngModel)]="end" formControlName="testValue" class="tui-input" id="start-time"
+            [tuiTextfieldCleaner]="true" tuiTextfieldSize="s" [tuiTextfieldLabelOutside]="true">
             Choose end date
             <input placeholder="10.10.1998 01:22" tuiTextfield />
           </tui-input-date-time>
+          </form>
 
-          <tui-combo-box tuiTextfieldSize="s" formControlName="actType" class="tui-input" [stringify]="stringify"
+          <tui-combo-box [formControl]="controlActType" tuiTextfieldSize="s"  class="tui-input" [stringify]="stringify"
             [tuiTextfieldLabelOutside]="true">
             Type
 
@@ -87,7 +91,7 @@
               [tuiTextfieldLabelOutside]="true"></tui-data-list-wrapper>
           </tui-combo-box>
 
-          <tui-combo-box tuiTextfieldSize="s" formControlName="actType" class="tui-input" [stringify]="stringifyDay"
+          <tui-combo-box [formControl]="controlDay" tuiTextfieldSize="s"  class="tui-input" [stringify]="stringifyDay"
             [tuiTextfieldLabelOutside]="true">
             Yes
 
@@ -97,7 +101,7 @@
           </tui-combo-box>
 
 
-          <tui-combo-box tuiTextfieldSize="s" formControlName="actType" class="tui-input" [stringify]="stringifyPart"
+          <tui-combo-box [formControl]="controlPart" tuiTextfieldSize="s"  class="tui-input" [stringify]="stringifyPart"
             [tuiTextfieldLabelOutside]="true">
             Participants
 
@@ -106,10 +110,6 @@
               tuiTextfieldSize="s"
               [tuiTextfieldLabelOutside]="true"></tui-data-list-wrapper>
           </tui-combo-box>
-
-
-
-
 
         </div>
       </div>

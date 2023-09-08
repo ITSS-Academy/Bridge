@@ -23,26 +23,29 @@ $LightGray:#F2F2F2;
 }
 
 //CSS CỦA TRANG CÓ NỘI DUNG
-table{
-    background-color: #fff;
-    width: 100vw
+table {
+  background-color: #fff;
+  width: 100vw;
 }
-tr{
-    padding: 0.5rem 3rem;
-    align-items: center;
-    border-bottom: 1px solid $LightGray;
+tr {
+  padding: 0.5rem 0.5rem;
+  align-content: center;
+  border-bottom: 1px solid $LightGray;
+  align-items: center;
 }
-th{
-    text-align: left;
-    color: $Blue2;
-    width: 10rem;
-    align-items: center;
-
+th {
+  padding: 0.5rem 0.5rem;
+  text-align: center;
+  color: $Blue2;
+  width: 15rem;
+  align-items: center;
 }
-td{
-    color: $Blue2;
-    width: 10rem;
-    align-items: center;
+td {
+  padding: 0.5rem 2rem;
+  color: $Blue2;
+  width: 10rem;
+  justify-content: center;
+  text-align: center;
 }
 
 //CSS CỦA CHECKBOX - COPY TRÊN MẠNG TỐT NHẤT ĐỪNG ĐỤNG VÀO
