@@ -92,7 +92,7 @@ export class DisplayHaveDataContactsComponent {
           stage_c: this.stringifyLife(this.controlLife.value ?? '')
         }
       }};
-      if(!newContact.data.attributes.first_name || !newContact.data.attributes.last_name  || !newContact.data.attributes.email_c || !newContact.data.attributes.phone_mobile || !newContact.data.attributes.department || !newContact.data.attributes.assigned_to_name_c || !newContact.data.attributes.status_c || !newContact.data.attributes.stage_c || !newContact.data.attributes.title) {
+      if(this.contactsForm.controls['firstName'].value == '' || this.contactsForm.controls['lastName'].value == '' || this.contactsForm.controls['email'].value == '' || this.contactsForm.controls['phone'].value == '' || this.contactsForm.controls['organizationName'].value == '' || this.stringifyAssignment(this.controlAssignments.value) == '' || this.stringifyStatus(this.controlStatus.value) == '' || this.stringifyLife(this.controlLife.value) == '' || this.stringifyTitle(this.controlTitle.value) == '' ) {
         this.content = 'Please fill all required fields';
         this.nocationService.showWarning(this.warning);
         return;

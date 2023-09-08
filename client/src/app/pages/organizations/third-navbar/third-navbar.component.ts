@@ -186,13 +186,13 @@ export class ThirdNavbarComponent {
       organization.data.attributes.status_c = this.stringifyStatus(
         this.controlStatuses.value ?? ''
       )
-      console.log(organization);
 
-      if(organization.data.attributes.name == '' || organization.data.attributes.website == '' || organization.data.attributes.phone_office == '' || organization.data.attributes.account_type == '' || organization.data.attributes.assigned_to_name_c == '' || organization.data.attributes.status_c == ''){
+    if(this.exampleForm.controls['organizationName'].value == '' || this.exampleForm.controls['website'].value == '' || this.exampleForm.controls['phone'].value == '' || this.controlAssignments.value == '' || this.controlStatuses.value == '' || this.controlTypes.value == ''){
+      
         this.content = 'Please fill all the fields!';
         this.notificationService.showWarning(this.warning);
         return;
-      }else if(organization.data.attributes.name != '' && organization.data.attributes.website != '' && organization.data.attributes.phone_office != '' && organization.data.attributes.account_type != '' && organization.data.attributes.assigned_to_name_c != '' && organization.data.attributes.status_c != ''){
+      }else if(this.exampleForm.controls['organizationName'].value != '' && this.exampleForm.controls['website'].value != '' && this.exampleForm.controls['phone'].value != '' && this.controlAssignments.value != '' && this.controlStatuses.value != '' && this.controlTypes.value != ''){
         this.content = 'Organization added successfully!';
         this.notificationService.showSuccess(this.success);
         this.store.dispatch(OrganizationAction.addOrganization({ organization: organization }));
