@@ -80,11 +80,6 @@ export class ThirdNavbarComponent implements OnInit {
   phone2: FormControl = new FormControl('');
 
   async addLead() {
-    let subLead: any = {
-      data: {
-        type: 'Lead',
-      },
-    };
     let lead: any = {
       data: {
         type: 'Leads',
@@ -204,19 +199,15 @@ export class ThirdNavbarComponent implements OnInit {
       (lead.data.attributes.email_c = this.exampleForm.controls['email2'].value),
       (lead.data.attributes.phone_mobile =
         this.exampleForm.controls['phone2'].value),
-      (lead.data.attributes.assigned_to_name_c = this.stringifyAssignment(
+      lead.data.attributes.assigned_to_name_c = this.stringifyAssignment(
         this.controlAssignments.value ?? ''
-      )),
-      (lead.data.attributes.assigned_user_id = this.currentUser.data.id);
-      lead.data.attributes.modified_user_id = this.currentUser.data.id;
-      lead.data.attributes.modified_by_name = this.currentUser.data.attributes.full_name;
-      // lead.data.attributes.created_by_name = this.currentUser.data.attributes.full_name;
+      );
     console.log(lead);
-    if(this.exampleForm.controls['firstName'].value == '' || this.exampleForm.controls['lastName2'].value == '' || this.exampleForm.controls['company2'].value == '' || this.exampleForm.controls['email2'].value == '' || this.exampleForm.controls['phone2'].value == '' || this.controlAssignments.value == ''){
+    if(this.exampleForm.controls['firstName'].value == '' || this.exampleForm.controls['lastName2'].value == '' || this.exampleForm.controls['company2'].value == '' || this.exampleForm.controls['email2'].value == '' || this.exampleForm.controls['phone2'].value == '' || lead.data.attributes.assigned_to_name_c == ''){
       this.content = 'Please fill all the fields';
       this.notificationService.showWarning(this.warning)
       return;
-    }else if(this.exampleForm.controls['firstName'].value != '' && this.exampleForm.controls['lastName2'].value != '' && this.exampleForm.controls['company2'].value != '' && this.exampleForm.controls['email2'].value != '' && this.exampleForm.controls['phone2'].value != '' && this.controlAssignments.value != ''){
+    }else if(this.exampleForm.controls['firstName'].value != '' && this.exampleForm.controls['lastName2'].value != '' && this.exampleForm.controls['company2'].value != '' && this.exampleForm.controls['email2'].value != '' && this.exampleForm.controls['phone2'].value != '' && lead.data.attributes.assigned_to_name_c != ''){
       this.store.dispatch(LeadAction.addLead({ lead: lead }));
       this.content = 'Add lead successfully';
       this.notificationService.showSuccess(this.success)

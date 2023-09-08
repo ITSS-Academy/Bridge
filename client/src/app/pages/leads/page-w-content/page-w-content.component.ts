@@ -280,12 +280,18 @@ export class PageWContentComponent {
     size: TuiDialogSize,
     lead: any
   ): void {
+    console.log(lead);
     this.firstName.setValue(lead.data.attributes.first_name);
     this.lastName2.setValue(lead.data.attributes.last_name);
     this.email2.setValue(lead.data.attributes.email1);
     this.phone2.setValue(lead.data.attributes.phone_mobile);
     this.company2.setValue(lead.data.attributes.department);
-    this.controlAssignments.setValue(lead.data.attributes.assigned_to_name_c ?? '');
+    this.controlAssignments.setValue(lead.data.attributes.assigned_user_name)
+    // if(lead.data.attributes.assigned_to_name_c === 'undefined'){
+    //   this.controlAssignments.setValue('');
+    // }else{
+    //   this.controlAssignments.setValue({ assign: lead.data.attributes.assigned_to_name_c });
+    // }
       const closeable = this.dialogForm.withPrompt({
       label: 'Are you sure?',
       data: {
