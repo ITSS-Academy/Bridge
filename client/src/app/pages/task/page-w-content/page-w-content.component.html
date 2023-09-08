@@ -20,7 +20,7 @@
       <th><b>LOCATION</b></th>
       <th><b>PRIORITY</b></th>
     </tr>
-    <tr *ngFor="let task of (this.tasks | async)">
+    <tr *ngFor="let task of (this.tasks | async)" (click)="showDialog(dialogDetails,'auto',task)">
       <!-- CHECKBOX -->
       <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
         <label class="container">
@@ -42,3 +42,14 @@
     
   </table>
 </div>
+
+<!-- DIALOG -->
+<ng-template id="dialogDetails" #dialogDetails let-observer>
+  <!--FORM CHỨA NỘI DUNG HIỂN THỊ DIALOG-->
+  <form
+    id="form-container"
+    [formGroup]="exampleForm"
+    (ngSubmit)="observer.complete()"
+  >
+  </form>
+</ng-template>
