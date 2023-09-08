@@ -1,6 +1,19 @@
+<ng-template #success>
+  <app-success id="login" [cont]="content" ></app-success>
+</ng-template>
+<ng-template #warning>
+<app-warning id="login" [cont]="content" ></app-warning>
+</ng-template>
+<ng-template #error>
+<app-error id="login" [cont]="content" ></app-error>
+</ng-template>
+
+<ng-template [tuiAlertOptions]="{status: status, autoClose: true}" [(tuiAlert)]="show">
+  {{this.notification}}
+</ng-template>
 <div class="contentPage">
   <table>
-    <tr *ngIf="(this.contacts | async)">
+    <tr *ngIf="(this.contact$ | async)">
       <!-- CHECKBOX -->
       <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
         <label class="container">
@@ -12,15 +25,18 @@
       <th style="width: max-content; padding: 0.5rem">
         <span class="material-symbols-outlined">edit_document</span>
       </th>
-      <th><b>FIRST NAME</b></th>
-      <th><b>LAST NAME</b></th>
+      <th><b>NAME</b></th>
       <th><b>EMAIL</b></th>
       <th><b>PHONE</b></th>
       <th><b>ORGANIZATION</b></th>
       <th><b>TITLE</b></th>
+      <th><b>STAGE</b></th>
+      <th><b>STATUS</b></th>
       <th><b>ASSIGNED TO</b></th>
+      <th><b>ACTION</b></th>
+
     </tr>
-    <tr class="visible-data" *ngFor="let contact of this.contacts | async">
+    <tr class="visible-data" *ngFor="let contact of (this.contact$ | async)?.contacts">
       <!-- CHECKBOX -->
       <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
         <label class="container">
@@ -31,183 +47,137 @@
       <td style="width: 1rem; padding: 0.5rem">
         <span class="material-symbols-outlined">star</span>
       </td>
-      <td>{{ contact.attributes.first_name }}</td>
-      <td>{{ contact.attributes.last_name }}</td>
+      <td>{{ contact.data.attributes.name }}</td>
       <td class="lead-mail">
-        <div *ngIf="contact.attributes.email1">
-          {{ contact.attributes.email1! }}
+        <div *ngIf="contact.data.attributes.email_c">
+          {{ contact.data.attributes.email_c! }}
         </div>
       </td>
       <td class="lead-phone">
-        <div *ngIf="contact.attributes.phone_mobile">
-          {{ contact.attributes.phone_mobile! }}
+        <div *ngIf="contact.data.attributes.phone_mobile">
+          {{ contact.data.attributes.phone_mobile! }}
         </div>
       </td>
       <td>
-        <div *ngIf="contact.attributes.department">
-          {{ contact.attributes.department! }}
+        <div *ngIf="contact.data.attributes.department">
+          {{ contact.data.attributes.department! }}
         </div>
       </td>
-      <td>{{ contact.attributes.title }}</td>
-      <td>{{ contact.attributes.assigned_user_name }}</td>
+      <td><div *ngIf="contact.data.attributes.title != 'undefined'">{{ contact.data.attributes.title }}</div></td>
+      <td><div *ngIf="contact.data.attributes.stage_c != 'undefined' || contact.data.attributes.stage_c != ''">{{ contact.data.attributes.stage_c }}</div></td>
+      <td><div *ngIf="contact.data.attributes.status_c != 'undefined'">{{ contact.data.attributes.status_c }}</div></td>
+      <td><div *ngIf="contact.data.attributes.assigned_to_name_c != 'undefined'">{{ contact.data.attributes.assigned_to_name_c }}</div></td>
       <td>
         <div class="action">
-          <span
-            class="material-symbols-outlined"
-            (click)="showDialog(content, 'auto')"
-            style="cursor: pointer"
-            >edit</span
-          >
-          <span
-            class="material-symbols-outlined"
-            (click)="deleteContact(contact.id)"
-            style="cursor: pointer"
-            >delete</span
-          >
+          <span class="material-symbols-outlined" (click)="showDialog(content, 'auto', contact)"
+            style="cursor: pointer">edit</span>
+          <span class="material-symbols-outlined" (click)="deleteContact(contact.data.id)"
+            style="cursor: pointer">delete</span>
         </div>
       </td>
+
+
+
+      <!--DIALOG CONTACT-->
+      <ng-template #content let-observer>
+        <!--DIV BỰ BAO QUANH CHỨA NỘI DUNG HIỂN THỊ DIALOG-->
+        <div class="box-form">
+          <!--FORM CHỨA NỘI DUNG HIỂN THỊ NỘI DUNG VÀ CHỈNH SỬA CHIỀU RỘNG CỦA DIALOG-->
+          <form [formGroup]="contactsForm" (ngSubmit)="observer.complete()">
+            <!--TỰA ĐỂ CHÍNH BỰ CỦA DIALOG CONTACT-->
+            <h2 class="title-dialog">Update Contact</h2>
+
+            <!--DIV CHỨA NỘI DUNG CHÍNH CỦA DIALOG-->
+            <div class="form-contacts">
+              <!--DIV BÊN TRÁI HIỂN THỊ TOÀN BỘ TIÊU ĐỀ THEO DẠNG COLUMN-->
+              <div class="all-label">
+                <label for="fname">First Name</label>
+                <label for="lname">Last Name</label>
+                <label for="email">Email</label>
+                <label for="phone">Phone</label>
+                <label for="orgName">Organization Name</label>
+                <label for="assignTo">Assign To</label>
+                <label for="lifeCycleStage">Stage</label>
+                <label for="status">Status</label>
+                <label for="title">Title</label>
+              </div>
+
+              <!--DIV BÊN PHẢI HIỂN THỊ TOÀN BỘ BOX NHẬP THEO DẠNG COLUMN-->
+              <div class="all-input">
+                <!--FIRSTNAME-->
+                <tui-input [formControl]="firstName" type="text" id="fname" name="firstname" tuiTextfieldSize="s"
+                  [tuiTextfieldLabelOutside]="true">Type here</tui-input>
+
+                <!--LASTNAME-->
+                <tui-input [formControl]="lastName" type="text" id="lname" name="lastname" tuiTextfieldSize="s"
+                  [tuiTextfieldLabelOutside]="true">Type here</tui-input>
+
+                <!--EMAIL-->
+                <tui-input [formControl]="email" type="text" id="email" name="email" tuiTextfieldSize="s"
+                  [tuiTextfieldLabelOutside]="true">Type here</tui-input>
+
+                <!--PHONE-->
+                <tui-input-phone-international [formControl]="phone" type="text" id="phone" name="phone"
+                  tuiTextfieldSize="m" [tuiTextfieldLabelOutside]="true"
+                  [countries]="(countries | tuiSortCountries | async) || []" [(countryIsoCode)]="countryIsoCode">
+                  Input here
+                </tui-input-phone-international>
+
+                <!--ORGANIZATION-->
+                <tui-input [formControl]="organizationName" type="text" id="orgName" name="orgName" tuiTextfieldSize="s"
+                  [tuiTextfieldLabelOutside]="true">Type here</tui-input>
+
+                <!--ASSIGNED TO-->
+                <tui-combo-box id="assignTo" [formControl]="controlAssignments" [stringify]="stringifyAssignment"
+                  tuiTextfieldSize="s">
+                  Choose/Type here
+                  <tui-data-list-wrapper *tuiDataList [items]="
+                    assignments | tuiFilterByInputWith : stringifyAssignment
+                  " [itemContent]="stringifyAssignment | tuiStringifyContent"></tui-data-list-wrapper>
+                </tui-combo-box>
+
+
+
+
+                <!--STAGES-->
+                <tui-combo-box class="input-dialog" id="lifeCycleStage" [formControl]="controlLife"
+                  [stringify]="stringifyLife" tuiTextfieldSize="s">
+                  Choose/Type here
+
+                  <tui-data-list-wrapper *tuiDataList [items]="allLife | tuiFilterByInputWith : stringifyLife"
+                    [itemContent]="stringifyLife | tuiStringifyContent"></tui-data-list-wrapper>
+                </tui-combo-box>
+
+                <!--STATUS-->
+                <tui-combo-box class="input-dialog" id="status" [formControl]="controlStatus"
+                  [stringify]="stringifyStatus" tuiTextfieldSize="s">
+                  Choose/Type here
+
+                  <tui-data-list-wrapper *tuiDataList [items]="allStatus | tuiFilterByInputWith : stringifyStatus"
+                    [itemContent]="stringifyStatus | tuiStringifyContent"></tui-data-list-wrapper>
+                </tui-combo-box>
+
+
+                <!--TITLE-->
+                <tui-combo-box id="title" [formControl]="controlTitle" [stringify]="stringifyTitle"
+                  tuiTextfieldSize="s">
+                  Choose/Type here
+                  <tui-data-list-wrapper *tuiDataList [items]="
+                            allTitle | tuiFilterByInputWith : stringifyTitle
+                          " [itemContent]="stringifyTitle | tuiStringifyContent"></tui-data-list-wrapper>
+                </tui-combo-box>
+              </div>
+            </div>
+          </form>
+
+          <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
+          <div class="cancel-save">
+            <button class="button-cancel" type="submit">Cancel</button>
+            <button class="button-add" (click)="updateContact(contact)">Update</button>
+          </div>
+        </div>
+      </ng-template>
+
     </tr>
   </table>
 </div>
-
-<!--DIALOG CONTACT-->
-<ng-template #content let-observer>
-  <!--DIV BỰ BAO QUANH CHỨA NỘI DUNG HIỂN THỊ DIALOG-->
-  <div class="box-form">
-    <!--FORM CHỨA NỘI DUNG HIỂN THỊ NỘI DUNG VÀ CHỈNH SỬA CHIỀU RỘNG CỦA DIALOG-->
-    <form [formGroup]="contactsForm" (ngSubmit)="observer.complete()">
-      <!--TỰA ĐỂ CHÍNH BỰ CỦA DIALOG CONTACT-->
-      <h2 class="title-dialog">Add Contact</h2>
-
-      <!--DIV CHỨA NỘI DUNG CHÍNH CỦA DIALOG-->
-      <div class="form-contacts">
-        <!--DIV BÊN TRÁI HIỂN THỊ TOÀN BỘ TIÊU ĐỀ THEO DẠNG COLUMN-->
-        <div class="all-label">
-          <label for="fname">First Name</label>
-          <label for="lname">Last Name</label>
-          <label for="email">Email</label>
-          <label for="phone">Phone</label>
-          <label for="orgName">Organization Name</label>
-          <label for="assignTo">Assign To</label>
-          <label for="lifeCycleStage">LifeycleStage</label>
-          <label for="lifeCycleStage">Status</label>
-        </div>
-
-        <!--DIV BÊN PHẢI HIỂN THỊ TOÀN BỘ BOX NHẬP THEO DẠNG COLUMN-->
-        <div class="all-input">
-          <!--FIRSTNAME-->
-          <tui-input
-            formControlName="firstName"
-            type="text"
-            id="fname"
-            name="firstname"
-            tuiTextfieldSize="s"
-            [tuiTextfieldLabelOutside]="true"
-            >Type here</tui-input
-          >
-
-          <!--LASTNAME-->
-          <tui-input
-            formControlName="lastName"
-            type="text"
-            id="lname"
-            name="lastname"
-            tuiTextfieldSize="s"
-            [tuiTextfieldLabelOutside]="true"
-            >Type here</tui-input
-          >
-
-          <!--EMAIL-->
-          <tui-input
-            formControlName="email"
-            type="text"
-            id="email"
-            name="email"
-            tuiTextfieldSize="s"
-            [tuiTextfieldLabelOutside]="true"
-            >Type here</tui-input
-          >
-
-          <!--PHONE-->
-          <tui-input-phone-international
-            formControlName="phone"
-            type="text"
-            id="phone"
-            name="phone"
-            tuiTextfieldSize="m"
-            [tuiTextfieldLabelOutside]="true"
-            [countries]="(countries | tuiSortCountries | async) || []"
-            [(countryIsoCode)]="countryIsoCode"
-          >
-            Input here
-          </tui-input-phone-international>
-
-          <!--ORGANIZATION-->
-          <tui-input
-            formControlName="organizationName"
-            type="text"
-            id="orgName"
-            name="orgName"
-            tuiTextfieldSize="s"
-            [tuiTextfieldLabelOutside]="true"
-            >Type here</tui-input
-          >
-
-          <!--ASSIGNED TO-->
-          <tui-combo-box
-            id="assignTo"
-            [formControl]="controlAssignments"
-            [stringify]="stringifyAssignment"
-            tuiTextfieldSize="s"
-          >
-            Choose/Type here
-
-            <tui-data-list-wrapper
-              *tuiDataList
-              [items]="assignments | tuiFilterByInputWith : stringifyAssignment"
-              [itemContent]="stringifyAssignment | tuiStringifyContent"
-            ></tui-data-list-wrapper>
-          </tui-combo-box>
-
-          <!--STAGES-->
-          <tui-combo-box
-            tuiTextfieldSize="s"
-            [stringify]="stringifyLife"
-            id="lifeCycleStage"
-            class="input"
-            [tuiTextfieldLabelOutside]="true"
-          >
-            Choose/Type here
-            <tui-data-list-wrapper
-              *tuiDataList
-              [items]="allLife | tuiFilterByInputWith : stringifyLife"
-              [itemContent]="stringifyLife | tuiStringifyContent"
-            ></tui-data-list-wrapper>
-          </tui-combo-box>
-
-          <!--STATUS-->
-          <tui-combo-box
-            tuiTextfieldSize="s"
-            [stringify]="stringifyStatus"
-            id="status"
-            class="input"
-            [tuiTextfieldLabelOutside]="true"
-          >
-            Choose here
-            <tui-data-list-wrapper
-              *tuiDataList
-              [items]="allStatus | tuiFilterByInputWith : stringifyStatus"
-              [itemContent]="stringifyStatus | tuiStringifyContent"
-            ></tui-data-list-wrapper>
-          </tui-combo-box>
-        </div>
-      </div>
-    </form>
-
-    <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
-    <div class="cancel-save">
-      <button class="button-cancel" type="submit">Cancel</button>
-      <button class="button-add">Update</button>
-    </div>
-  </div>
-</ng-template>

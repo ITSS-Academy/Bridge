@@ -26,8 +26,7 @@ export class CaseComponent implements OnInit {
     this.cases = (await this.caseService.getAllCases()).pipe(
       map((result: any) =>
         result.map((item: any) => {
-          // console.log(item.data());
-          return item.data().data;
+          return item.data();
         })
       )
     );

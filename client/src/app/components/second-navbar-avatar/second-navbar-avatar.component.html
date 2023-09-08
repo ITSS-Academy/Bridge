@@ -1,18 +1,18 @@
 <div style="display: block; width: 16rem">
   <div class="container">
     <div class="avatar center" id="avatar" (click)="toggleDropdown()">
-      <img src="./assets/Spinning Axe.png" class="avatarImage" />
+      <img src="{{this.currentUser.data.attributes.photo}}" class="avatarImage" />
     </div>
     <div class="avatarStatus {{option.color}}" id="statusCircle"></div>
   </div>
 
   <div class="dropdownBox closed " id="dropdownBox">
     <div class="dropdownBoxHeader center">
-        <img src="./assets/Spinning Axe.png" class="dropdownBoxAvatarImage" />
+        <img src="{{this.currentUser.data.attributes.photo}}" class="dropdownBoxAvatarImage" />
     </div>
     <div class="dropdownBoxBody center">
-      <b>Spinning Axe</b>
-      <p style="color: #2C698D;">SpinningAxe123@gmail.com</p>
+      <b>{{this.currentUser.data.attributes.full_name}}</b>
+      <p style="color: #2C698D;">{{this.currentUser.data.attributes.email1}}</p>
       <div class="statusOption" (click)="changeStatus()"><div class="avatarStatus {{option.color}}" style="top:0px;left: 0px;" id="statusCircle"></div>{{option.name}}<span class="material-symbols-outlined">expand_more</span></div>
     </div>
     <div class="dropdownBoxOptionContainer">

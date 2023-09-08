@@ -48,4 +48,16 @@ export class LeadEffect {
         ));
     
 
+    getAllLeads$ = createEffect(() =>
+        this.action$.pipe(
+            ofType(LeadAction.getLeads),
+            switchMap(() => this.leadService.getAllLeadsNgRx()),
+            map((leads: any) => {
+                return LeadAction.getLeadsSuccess({ leads: leads });
+            }),
+            catchError((error) => {
+                return of(LeadAction.getLeadsFailure({ error: error }))
+            })
+        ))
+
 }

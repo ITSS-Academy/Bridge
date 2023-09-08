@@ -1,4 +1,4 @@
-import { Component, Inject, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Observable, map } from 'rxjs';
 import { LoginState } from './ngrx/state/login.state';
@@ -7,10 +7,11 @@ import { Store } from '@ngrx/store';
 import { LoginAccount } from 'src/app/models/login-account.model';
 import { LoginAction } from './ngrx/action/login.action';
 import { Router } from '@angular/router';
-import { TuiAlertService } from '@taiga-ui/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthAccount } from 'src/app/models/auth-account.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,12 @@ import { AuthService } from 'src/app/services/auth.service';
   // encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent {
+  content = '';
+  @ViewChild('success') success: any;
+  @ViewChild('warning') warning: any;
+  @ViewChild('error') error: any;
+
+  
   
   notification = '';
   status = '';
@@ -31,7 +38,9 @@ export class LoginComponent {
     private authService: AuthService,
     private loginService: LoginService,
     private store: Store<{ login: LoginState }>,
-    public router: Router
+    public router: Router,
+    private notificationService: NotificationService,
+        
   ) {
     this.login$ = store.select('login');
 
@@ -52,9 +61,8 @@ export class LoginComponent {
       password: this.myForm.controls['password'].value,
     };
     if (account.username == '' || account.password == '') {
-      this.notification = 'Please enter username and password';
-      this.status = 'warning';
-      this.show = true;
+      this.content = 'Please enter username and password';
+      this.notificationService.showWarning(this.warning);
       return;
     }
     let check$ = this.loginService.checkAuth(account);
@@ -62,9 +70,8 @@ export class LoginComponent {
       if (data == false) {
         this.userName.setValue('');
         this.password.setValue('');
-        this.notification = 'Username or password is incorrect';
-        this.status = 'error';
-        this.show = true;
+        this.content = 'Username or password is incorrect';
+        this.notificationService.showError(this.error);
         return;
       } else {
         this.store.dispatch(LoginAction.login({ loginAccount: account }));
@@ -74,20 +81,16 @@ export class LoginComponent {
             this.authService.getCurrentUser(data.authAccount!.email)
             this.userName.setValue('');
             this.password.setValue('');
-            this.notification = 'Login success';
-            this.status = 'success';
-            this.show = true;
-            // localStorage.removeItem('currentUser');
-            // localStorage.setItem('currentUser', JSON.stringify(this.authService.currentUser));
+            this.content = 'Login success';
+            this.notificationService.showSuccess(this.success)
             setTimeout(() => {
-              this.router.navigate(['/leads']);
+              this.router.navigate(['/dashboard']);
             },1400)
             return;
           }
         });
       }
     });
-    // console.log(this.currentAccount);
     return;
   }
 }

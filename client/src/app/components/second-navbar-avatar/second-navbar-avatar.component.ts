@@ -13,6 +13,9 @@ interface option {
   styleUrls: ['./second-navbar-avatar.component.scss'],
 })
 export class SecondNavbarAvatarComponent {
+
+  currentUser: any;
+
   toggleDropdown() {
     const toggledDropdown = document.getElementById('avatar');
     const dropdownBox = document.getElementById('dropdownBox');
@@ -39,7 +42,9 @@ export class SecondNavbarAvatarComponent {
 
     this.option = this.optionBox[this.index];
   }
-  constructor(public route: Router, private authService: AuthService) {}
+  constructor(public route: Router, private authService: AuthService) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
+  }
 
   navToAdmin() {
     this.route.navigate(['/user']);

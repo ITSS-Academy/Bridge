@@ -7,6 +7,7 @@ import {
   ChangeDetectionStrategy,
   Inject,
   ViewEncapsulation,
+  ViewChild,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TuiDialogService, TuiDialogSize } from '@taiga-ui/core';
@@ -20,6 +21,7 @@ import { OrganizationState } from '../ngrx/state/organization.state';
 import { Observable } from 'rxjs';
 import { OrganizationAction } from '../ngrx/action/organization.action';
 import { AuthService } from 'src/app/services/auth.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 
 @Component({
@@ -37,6 +39,11 @@ export class ThirdNavbarComponent {
     this.addInfo.emit();
   }
 
+  content = '';
+  @ViewChild('success') success: any;
+  @ViewChild('warning') warning: any;
+  @ViewChild('error') error: any;
+
   organization$!: Observable<OrganizationState>;
   currentUser!: any;
   constructor(
@@ -45,7 +52,8 @@ export class ThirdNavbarComponent {
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
     private organizationService: OrganizationsService,
     public authService: AuthService,
-    private store: Store<{ organization: OrganizationState }>
+    private store: Store<{ organization: OrganizationState }>,
+    private notificationService: NotificationService,
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
     this.organization$ = store.select('organization');
@@ -169,27 +177,31 @@ export class ThirdNavbarComponent {
         this.exampleForm.controls['website'].value),
       (organization.data.attributes.phone_office =
         this.exampleForm.controls['phone'].value),
-      (organization.data.attributes.account_type = this.stringifyType(
-        this.controlTypes.value
-      )),
-      (organization.data.attributes.assigned_user_name = this.stringifyAssignment(
-        this.controlAssignments.value
-      )),
-      (organization.data.attributes.status_c = this.stringifyStatus(
-        this.controlStatuses.value
-      )),
-      // (organization.data.attributes.assigned_user_id = this.currentUser.data.id);
-      // organization.data.attributes.modified_user_id = this.currentUser.data.id;
-      // organization.data.attributes.modified_by_name = this.currentUser.data.attributes.full_name;
-      // // lead.data.attributes.created_by_name = this.currentUser.data.attributes.full_name;
+      organization.data.attributes.account_type = this.stringifyType(
+        this.controlTypes.value ?? ''
+      )
+      organization.data.attributes.assigned_to_name_c = this.stringifyAssignment(
+        this.controlAssignments.value ?? ''
+      )
+      organization.data.attributes.status_c = this.stringifyStatus(
+        this.controlStatuses.value ?? ''
+      )
       console.log(organization);
-    this.store.dispatch(OrganizationAction.addOrganization({ organization: organization }));
-    const subcription:any = this.organization$.subscribe({
-      next: (data) => {
-        console.log(data);
-      },
-      complete: () => subcription.unsubscribe()
-    })
+
+      if(organization.data.attributes.name == '' || organization.data.attributes.website == '' || organization.data.attributes.phone_office == '' || organization.data.attributes.account_type == '' || organization.data.attributes.assigned_to_name_c == '' || organization.data.attributes.status_c == ''){
+        this.content = 'Please fill all the fields!';
+        this.notificationService.showWarning(this.warning);
+        return;
+      }else if(organization.data.attributes.name != '' && organization.data.attributes.website != '' && organization.data.attributes.phone_office != '' && organization.data.attributes.account_type != '' && organization.data.attributes.assigned_to_name_c != '' && organization.data.attributes.status_c != ''){
+        this.content = 'Organization added successfully!';
+        this.notificationService.showSuccess(this.success);
+        this.store.dispatch(OrganizationAction.addOrganization({ organization: organization }));
+        return;        
+      }else{
+        this.content = 'Somethings went wrong!';
+        this.notificationService.showError(this.error);
+        return;
+      }
   }
 
 

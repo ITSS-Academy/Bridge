@@ -32,8 +32,8 @@ export class EventsService {
       })
       .pipe(map((response) => response.data));
     return result.pipe(
-      map((res) => {
-        this.docRef.add(res);
+      map( async (res) => {
+        await this.docRef.add(res);
         return res;
       }),
     );

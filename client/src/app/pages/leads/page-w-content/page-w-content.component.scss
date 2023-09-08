@@ -238,7 +238,6 @@ td {
   flex-direction: column;
   gap: 1rem;
   padding-top: 2rem;
-  padding-bottom: 4rem;
   align-items: center;
 
   //Style div nội dung từng dòng hiển thị và nhập dữ liệu
@@ -272,6 +271,7 @@ td {
   flex-direction: row;
   gap: 1rem;
   justify-content: center;
+  margin-top: 3rem;
 
   //Style nút cancel
   .button-cancel {

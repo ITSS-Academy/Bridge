@@ -47,7 +47,7 @@ export class PageWContentComponent {
   }
 
   updateLead(task: any) {
-    let TaskToUpdate: Lead = {
+    let TaskToUpdate: any = {
       data: {
         type: 'Tasks',
         id: '',

@@ -3,6 +3,9 @@ export interface Lead {
     type: string;
     id: string;
     attributes: {
+      email_c: string;
+      assigned_to_name_c: string;
+      assigned_to_id_c: string;
       alt_address_city: string;
       birthdate: string;
       created_by_link: string;

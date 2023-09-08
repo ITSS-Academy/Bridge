@@ -4,6 +4,8 @@ import { LeadsService } from './leads.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { LeadState } from './ngrx/state/lead.state';
 import { Store } from '@ngrx/store';
+import { Lead } from 'src/app/models/lead.model';
+import { LeadAction } from './ngrx/action/lead.action';
 
 @Component({
   selector: 'app-leads',
@@ -11,25 +13,21 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./leads.component.scss'],
 })
 export class LeadsComponent implements OnInit {
-  leads!: Observable<any>;
+  leads$!: Observable<LeadState>;
   subLeads: any[] = [];
   //ĐỔI TITLE THÀNH TÊN TRANG
   title = 'Leads';
   pageEmpty = true;
 
-  constructor(private leadService: LeadsService) {}
+  constructor(private leadService: LeadsService, private store: Store<{lead: LeadState}>) {
+  }
 
   ngOnInit(): void {
     this.getAllLeads();
   }
 
-  async getAllLeads() {
-    this.leads = (await this.leadService.getAllLeads()).pipe(
-      map((result: any) =>
-        result.map((item: any) => {
-          return item.data();
-        })
-      )
-    );
+  getAllLeads() {
+    this.leads$ = this.store.select('lead');
+    this.store.dispatch(LeadAction.getLeads());
   }
 }

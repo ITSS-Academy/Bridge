@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ContactState } from './components-contacts/ngrx/state/contact.state';
 import { Store } from '@ngrx/store';
+import { ContactAction } from './components-contacts/ngrx/action/contact.action';
 
 @Component({
   selector: 'app-contacts',
@@ -11,8 +12,10 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./contacts.component.scss'],
 })
 export class ContactsComponent implements OnInit {
-  constructor(public contactsService: ContactsService) {}
-  contacts!: Observable<any>;
+  constructor(public contactsService: ContactsService, private store: Store<{contact: ContactState}>) {
+    this.contacts$ = this.store.select('contact');
+  }
+  contacts$!: Observable<ContactState>;
   subContacts: any[] = [];
   //ĐỔI TITLE THÀNH TÊN TRANG
   title = 'Contacts';
@@ -22,15 +25,7 @@ export class ContactsComponent implements OnInit {
     this.getAllContacts();
   }
 
-  async getAllContacts() {
-    this.contacts = (await this.contactsService.getAllContacts()).pipe(
-      map((result: any) =>
-        result.map((item: any) => {
-          // console.log(item.data());
-          return item.data().data;
-        })
-      )
-    );
-    // console.log(this.leads);    // console.log(result.docs.map((item: any) => item.data()));
+  getAllContacts() {
+    this.store.dispatch(ContactAction.getContacts());
   }
 }

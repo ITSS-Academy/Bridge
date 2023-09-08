@@ -3,6 +3,7 @@ import {
   Component,
   Inject,
   Input,
+  ViewChild,
 } from '@angular/core';
 import {
   TuiDialogContext,
@@ -20,6 +21,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Contact } from 'src/app/models/contact.model';
 import { ContactAction } from '../ngrx/action/contact.action';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-navbar-contacts',
@@ -36,6 +38,12 @@ export class NavbarContactsComponent {
   currentUser!: any;
   contact$!: Observable<ContactState>;
 
+
+  content = '';
+  @ViewChild('success') success: any;
+  @ViewChild('warning') warning: any;
+  @ViewChild('error') error: any;
+
   firstName2 = '';
   lastName2 = '';
   email2 = '';
@@ -47,7 +55,8 @@ export class NavbarContactsComponent {
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
     private contactService: ContactsService,
     public authService: AuthService,
-    private store: Store<{ contact: ContactState }>
+    private store: Store<{ contact: ContactState }>,
+    private notificationService: NotificationService,
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
     this.contact$ = store.select('contact');
@@ -68,9 +77,7 @@ export class NavbarContactsComponent {
   email: FormControl = new FormControl('');
   phone: FormControl = new FormControl('');
   organizationName: FormControl = new FormControl('');
-  // assignTo: new FormControl(),
-  // lifeycleStage: new FormControl(),
-  // status: new FormControl(),
+
 
   async addContact() {
     let subContact: any = {
@@ -78,7 +85,7 @@ export class NavbarContactsComponent {
         type: 'Contact',
       },
     };
-    let contact: Contact = {
+    let contact: any = {
       data: {
         type: 'Contacts',
         attributes: {
@@ -199,31 +206,38 @@ export class NavbarContactsComponent {
         this.contactsForm.controls['firstName'].value),
       (contact.data.attributes.last_name =
         this.contactsForm.controls['lastName'].value),
-      (contact.data.attributes.email1 =
+      (contact.data.attributes.email_c =
         this.contactsForm.controls['email'].value),
       (contact.data.attributes.phone_mobile =
         this.contactsForm.controls['phone'].value),
       (contact.data.attributes.department =
         this.contactsForm.controls['organizationName'].value),
-      (contact.data.attributes.assigned_user_name = this.stringifyAssignment(
-        this.controlAssignments.value
+      (contact.data.attributes.title = this.stringifyTitle(
+        this.controlTitle.value
       )),
-      (contact.data.attributes.title = this.stringifyLife(
-        this.controlLife.value
-      )),
-      (contact.data.attributes.event_status_name = this.stringifyStatus(
+      (contact.data.attributes.status_c = this.stringifyStatus(
         this.controlStatus.value
       )),
-      (contact.data.attributes.assigned_user_id = this.currentUser.data.id);
-    contact.data.attributes.modified_user_id = this.currentUser.data.id;
-    contact.data.attributes.modified_by_name =
-      this.currentUser.data.attributes.full_name;
-    // lead.data.attributes.created_by_name = this.currentUser.data.attributes.full_name;
-    console.log(contact);
-    this.store.dispatch(ContactAction.addContact({ contact: contact }));
-    this.contact$.subscribe((data) => {
-      console.log(data);
-    });
+      (contact.data.attributes.stage_c = this.stringifyLife(
+        this.controlLife.value
+      )),
+      contact.data.attributes.assigned_to_name_c= this.stringifyAssignment(
+        this.controlAssignments.value);
+
+    if(contact.data.attributes.first_name == '' || contact.data.attributes.last_name == '' || contact.data.attributes.email_c == '' || contact.data.attributes.phone_mobile == '' || contact.data.attributes.department == '' || contact.data.attributes.title == '' || contact.data.attributes.status_c == '' || contact.data.attributes.stage_c == '' || contact.data.attributes.assigned_to_name_c == '') {
+      this.content = 'Please fill all the required fields';
+      this.notificationService.showWarning(this.warning);
+      return;
+    }else if(contact.data.attributes.first_name != '' && contact.data.attributes.last_name != '' && contact.data.attributes.email_c != '' && contact.data.attributes.phone_mobile != '' && contact.data.attributes.department != '' && contact.data.attributes.title != '' && contact.data.attributes.status_c != '' && contact.data.attributes.stage_c != '' && contact.data.attributes.assigned_to_name_c != '') {
+      this.store.dispatch(ContactAction.addContact({ contact: contact }));  
+      this.content = 'Contact created successfully';
+      this.notificationService.showSuccess(this.success);
+      return;
+    }else{
+      this.content = 'Something went wrong';
+      this.notificationService.showError(this.error);
+      return;
+    }
   }
 
   //phone
@@ -279,6 +293,24 @@ export class NavbarContactsComponent {
   readonly stringifyAssignment = (item: { assign: string }): string =>
     `${item.assign}`;
   //
+
+
+  //title
+  controlTitle = new FormControl();
+
+  allTitle = [
+    { name: 'CEO' },
+    { name: 'VP' },
+    { name: 'Director' },
+    { name: 'Sales Manager' },
+    { name: 'Support Manager' },
+    { name: 'Sale Representative' },
+    { name: 'Support Agent' },
+    { name: 'Procurment Manager' },
+  ];
+
+  stringifyTitle = (title: { name: string }): string =>
+    `${title.name} `;
 
   //Open Dialog
   showDialog(content: PolymorpheusContent, size: TuiDialogSize): void {

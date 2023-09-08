@@ -3,6 +3,8 @@ export interface Organization {
     type: string;
     id: string;
     attributes: {
+      assigned_to_name_c: string;
+      assigned_to_id_c: string;
       parent_name: string;
       account_type: string;
       shipping_address_postalcode: string;
