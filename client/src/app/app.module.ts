@@ -29,6 +29,10 @@ import { contactReducer } from './pages/contacts/components-contacts/ngrx/reduce
 import { ContactEffect } from './pages/contacts/components-contacts/ngrx/effect/contact.effect';
 import { TaskEffect } from './pages/task/ngrx/effect/task.effect';
 import { taskReducer } from './pages/task/ngrx/reducer/task.reducer';
+import { caseReducer } from './pages/case/ngrx/reducer/case.reducer';
+import { CaseEffect } from './pages/case/ngrx/effect/case.effect';
+import { dealReducer } from './pages/deals/ngrx/reducer/deal.reducer';
+import { DealEffect } from './pages/deals/ngrx/effect/deal.effect';
 
 @NgModule({
   declarations: [
@@ -49,7 +53,9 @@ import { taskReducer } from './pages/task/ngrx/reducer/task.reducer';
       lead: leadReducer,
       organization: organizationReducer,
       contact: contactReducer,
-      task: taskReducer
+      task: taskReducer,
+      case: caseReducer,
+      deal: dealReducer,
     }, {}),
     EffectsModule.forRoot([
       SignUpEffect,
@@ -57,7 +63,9 @@ import { taskReducer } from './pages/task/ngrx/reducer/task.reducer';
       LeadEffect,
       OrganizationEffect,
       ContactEffect,
-      TaskEffect
+      TaskEffect,
+      CaseEffect,
+      DealEffect,
     ]),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

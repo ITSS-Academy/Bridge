@@ -4,6 +4,7 @@ import { Observable, map } from 'rxjs';
 import { CasesService } from './case.service';
 import { Store } from '@ngrx/store';
 import { CaseState } from './ngrx/state/case.state';
+import { CaseAction } from './ngrx/action/case.action';
 
 @Component({
   selector: 'app-case',
@@ -11,8 +12,8 @@ import { CaseState } from './ngrx/state/case.state';
   styleUrls: ['./case.component.scss'],
 })
 export class CaseComponent implements OnInit {
-  constructor(public caseService: CasesService) {}
-  cases!: Observable<any>;
+  constructor(public caseService: CasesService, private store: Store<{case: CaseState}>) {}
+  case$!: Observable<CaseState>;
   subCases: any[] = [];
   //ĐỔI TITLE THÀNH TÊN TRANG
   title = 'Cases';
@@ -22,14 +23,8 @@ export class CaseComponent implements OnInit {
     this.getAllCases();
   }
 
-  async getAllCases() {
-    this.cases = (await this.caseService.getAllCases()).pipe(
-      map((result: any) =>
-        result.map((item: any) => {
-          return item.data();
-        })
-      )
-    );
-    // console.log(this.leads);    // console.log(result.docs.map((item: any) => item.data()));
+  getAllCases() {
+    this.case$ = this.store.select('case');
+    this.store.dispatch(CaseAction.getCases());
   }
 }

@@ -5,6 +5,9 @@
 
 <!-- QUAN TRỌNG: NẾU NHƯ LÀM DIALOG TUYỆT ĐỐI KHÔNG BỎ TRONG DIV NÀY -->
 <div class="background">
+  <div class="loading">
+    <app-loading *ngIf="(this.task$|async)?.loading == true"></app-loading>
+  </div>
   <app-second-navbar [title]="title"></app-second-navbar>
   <!-- THANH NAV THỨ 3 -->
   <app-third-navbar
@@ -13,15 +16,13 @@
   ></app-third-navbar>
   <div class="body" style="position: relative; z-index: 1">
     <!-- NỘI DUNG TRANG RỖNG-->
-    <app-page-w-content
-      *ngIf="(this.tasks | async)?.length != 0"
-      [tasks]="this.tasks"
-    ></app-page-w-content>
-
     <app-page-empty
-      *ngIf="(this.tasks | async)?.length == 0"
-      [title]="title"
+    *ngIf="(this.task$ | async)?.tasks?.length == 0" [title]="title"
     ></app-page-empty>
+
+
     <!-- TRANG CÓ NỘI DUNG -->
+    <app-page-w-content *ngIf="(this.task$ | async)?.tasks?.length != 0" [tasks$]="this.task$" ></app-page-w-content>
+
   </div>
 </div>

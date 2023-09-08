@@ -23,6 +23,18 @@ export class EventsService {
     return collectionSnapshots(this.collection);
   }
 
+
+  getAllEventsNgRx() {
+    return collectionSnapshots(this.collection).pipe(
+      map((result: any) =>
+        result.map((item: any) => {
+          return item.data();
+        })
+      )
+    );
+  }
+
+
   getEventById(id: string) {
     return this.http.get(`${environment.API_URL}/events/${id}`) as Observable<any>;
   }

@@ -32,10 +32,11 @@ tr{
     padding: 0.5rem 1rem;
     align-items: center;
     border-bottom: 1px solid $LightGray;
+    text-align: center;
 }
 th{
     padding: 0.5rem 1rem;
-    text-align: left;
+    text-align: center;
     color: $Blue2;
     width: 10rem;
     align-items: center;
@@ -49,6 +50,7 @@ td{
     align-items: center;
     overflow: hidden;
     width: 9rem;
+    text-align: center;
 }
 
 //CSS CỦA CHECKBOX - COPY TRÊN MẠNG TỐT NHẤT ĐỪNG ĐỤNG VÀO
@@ -118,4 +120,72 @@ td{
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+  }
+
+
+
+  .visible-data:hover {
+
+    // transition: 0.5s;
+    cursor: pointer;
+    background-color: lighten($Blue, 40);
+  
+    td {
+      // transition: 0.5s;
+  
+      color: $Blue;
+    }
+  
+    th {
+      // transition: 0.5s;
+  
+      color: $Blue;
+    }
+  
+    th>label>span {
+      // transition: 0.5s;
+  
+      border: $Blue2 0.001rem solid;
+    }
+  
+    .lead-phone:hover {
+  
+      div {
+        // transition: 0.5s;
+        background-color: $Blue;
+        color: #fff;
+      }
+  
+    }
+  
+    .lead-mail:hover {
+      div {
+        // transition: 0.5s;
+        background-color: $Blue;
+        color: #fff;
+      }
+    }
+  }
+  
+  .lead-mail div {
+    // transition: 0.5s;
+    padding: 0.312rem 0.5rem;
+    border-radius: 8px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0;
+  
+  }
+  
+  .lead-phone div {
+    // transition: 0.5s;
+    padding: 0.312rem 0.5rem;
+    border-radius: 8px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0;
   }

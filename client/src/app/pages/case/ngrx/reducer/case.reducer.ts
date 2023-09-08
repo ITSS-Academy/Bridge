@@ -54,7 +54,7 @@ export const caseReducer = createReducer(
     on(CaseAction.getCasesSuccess, (state, action) => {
         return {
             ...state,
-            cases: action.cases,
+            cases: action.Cases,
             loading: false,
             status: "Get cases success",
             error: ''
@@ -73,7 +73,7 @@ export const caseReducer = createReducer(
     on(CaseAction.updateCase, (state, action) => {
         return {
             ...state,
-            case: action.case,
+            case: action.Case,
             loading: true,
             status: "Updating case...",
             error: ''

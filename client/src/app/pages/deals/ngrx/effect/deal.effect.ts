@@ -27,6 +27,31 @@ export class DealEffect {
     )
   );
 
+  getAllDeals$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(DealAction.getDeals),
+      switchMap(() => this.DealService.getAllDealsNgRx()),
+      map((deals: any) => {
+        return DealAction.getDealsSuccess({ deals: deals });
+      }),
+      catchError((error) => {
+        return of(DealAction.getDealsFailure({ error: error }));
+      })
+    ))
+
+
+    updateDeal$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(DealAction.updateDeal),
+      switchMap((deal: any) => this.DealService.updateDeal(deal.deal)),
+      map(() => {
+        return DealAction.updateDealSuccess();
+      }),
+      catchError((error) => {
+        return of(DealAction.updateDealFailure({ error: error }));
+      })
+    ))
+
   deleteDeal$ = createEffect(() =>
     this.action$.pipe(
       ofType(DealAction.deleteDeal),

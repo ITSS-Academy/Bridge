@@ -8,6 +8,9 @@
   <div class="loading">
     <app-loading *ngIf="(this.leads$|async)?.loading == true"></app-loading>
   </div>
+  <div class="loading">
+    <app-loading *ngIf="(this.leads$|async)?.loading == true"></app-loading>
+  </div>
   <app-second-navbar [title]="title"></app-second-navbar>
   <!-- THANH NAV THỨ 3 -->
   <app-third-navbar

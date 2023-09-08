@@ -35,10 +35,22 @@ export class CaseEffect {
         )
     )
 
-    updateLead$ = createEffect(() => 
+    getAllCase$ = createEffect(() =>
+        this.action$.pipe(
+            ofType(CaseAction.getCases),
+            switchMap(() => this.caseService.getAllCasesNgRx()),
+            map((Cases: any) => {
+                return CaseAction.getCasesSuccess({ Cases: Cases });
+            }),
+            catchError((error) => {
+                return of(CaseAction.getCasesFailure({ error: error }));
+            })
+        ))
+
+    updateCase$ = createEffect(() => 
         this.action$.pipe(
             ofType(CaseAction.updateCase),
-            switchMap((Case: any) => this.caseService.updateCase(Case.case)),
+            switchMap((Case: any) => this.caseService.updateCase(Case.Case)),
             map((Case:any ) => {
                 return CaseAction.updateCaseSuccess();
             }),

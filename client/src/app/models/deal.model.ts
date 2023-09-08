@@ -3,6 +3,14 @@ export interface Deal{
         type: string;
         attributes: {
             name: string;
+            amount_deal_c: string;
+            assigned_to_name_c: string;
+            close_date_c: string;
+            lead_src_c: string;
+            org_name_c: string;
+            pipe_line_c: string;
+            stage_c: string;
+            probability_deal_c: string;
             modified_user_id: string;
             modified_by_name: string;
             created_by: string;

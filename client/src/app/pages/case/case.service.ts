@@ -21,12 +21,22 @@ export class CasesService {
     return collectionSnapshots(this.collection);
   }
 
+  getAllCasesNgRx() {
+    return collectionSnapshots(this.collection).pipe(
+      map((result: any) =>
+        result.map((item: any) => {
+          return item.data();
+        })
+      )
+    );
+  }
+
   getCaseById(id: string) {
     return this.http.get(`${environment.API_URL}/cases/${id}`) as Observable<any>;
   }
 
   updateCase(body: any) {
-    return this.http.patch(`${environment.API_URL}/cases/`, body) as Observable<any>;
+    return this.http.patch(`${environment.API_URL}/cases/update`, body) as Observable<any>;
   }
 
   deleteCase(id: string) {

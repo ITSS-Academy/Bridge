@@ -54,7 +54,7 @@ export const dealReducer = createReducer(
     on(DealAction.getDealsSuccess, (state, action) => {
         return {
             ...state,
-            Deals: action.deals,
+            deals: action.deals,
             loading: false,
             status: "Get Deals success",
             error: ''

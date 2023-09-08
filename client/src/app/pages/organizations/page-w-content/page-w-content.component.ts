@@ -23,8 +23,8 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class PageWContentComponent {
   @Input()
-  organizations!: Observable<any>;
   organization$!: Observable<OrganizationState>;
+  
   currentUser!: any;
 
   content = '';
@@ -230,7 +230,7 @@ export class PageWContentComponent {
     { type: 'Lead' },
     { type: 'Sales Qualified Lead' },
     { type: 'Customer' },
-    { type: 'Cpmpetitor' },
+    { type: 'Competitor' },
     { type: 'Partner' },
     { type: 'Analyst' },
     { type: 'Vendor' },

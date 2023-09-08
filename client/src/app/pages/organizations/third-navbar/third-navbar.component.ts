@@ -219,7 +219,7 @@ export class ThirdNavbarComponent {
     { type: 'Lead' },
     { type: 'Sales Qualified Lead' },
     { type: 'Customer' },
-    { type: 'Cpmpetitor' },
+    { type: 'Competitor' },
     { type: 'Partner' },
     { type: 'Analyst' },
     { type: 'Vendor' },

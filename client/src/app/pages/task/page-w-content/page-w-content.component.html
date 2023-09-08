@@ -1,6 +1,16 @@
+<ng-template #success>
+  <app-success id="login" [cont]="content" ></app-success>
+</ng-template>
+<ng-template #warning>
+<app-warning id="login" [cont]="content" ></app-warning>
+</ng-template>
+<ng-template #error>
+<app-error id="login" [cont]="content" ></app-error>
+</ng-template>
+
 <div class="contentPage">
   <table>
-    <tr *ngIf="this.tasks | async">
+    <tr *ngIf="(this.tasks$ | async)">
       <!-- CHECKBOX -->
       <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
         <label class="container">
@@ -14,18 +24,14 @@
       </th>
       <th><b>NAME</b></th>
       <th><b>ASSIGN TO</b></th>
-      <th><b>START DATE & TIME</b></th>
-      <th><b>DUE DATE & TIME</b></th>
+      <th><b>START DATE</b></th>
+      <th><b>DUE DATE</b></th>
       <th><b>STAGE</b></th>
       <th><b>LOCATION</b></th>
       <th><b>PRIORITY</b></th>
       <th><b>ACTION</b></th>
     </tr>
-    <tr
-      class="visible-data"
-      *ngFor="let task of this.tasks | async"
-      (click)="showDialog(dialogDetails, 'auto', task)"
-    >
+    <tr class="visible-data" *ngFor="let task of (this.tasks$ | async)?.tasks" (click)="showDialog(dialogDetails,'auto',task)">
       <!-- CHECKBOX -->
       <th style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
         <label class="container">
@@ -36,21 +42,209 @@
       <td style="width: 1rem; padding: 0.5rem">
         <span class="material-symbols-outlined">star</span>
       </td>
-      <td>{{ task.data.attributes.name }}</td>
-      <td>{{ task.data.attributes.assigned_to_c }}</td>
-      <td>16-08-2023 01:47 PM</td>
-      <td>26-08-2023 12:00 AM</td>
-      <td>{{ task.data.attributes.status }}</td>
-      <td>{{ task.data.attributes.location_c }}</td>
-      <td>{{ task.data.attributes.priority }}</td>
+      <td class="lead-mail">
+        <div>{{task.data.attributes.name}}</div>
+      </td>
+      <td class="lead-phone">
+        <div>{{task.data.attributes.assigned_to_c}}</div>
+      </td>
+      <td>{{task.data.attributes.from_date_c}}</td>
+      <td>{{task.data.attributes.to_date_c}}</td>
+      <td>{{task.data.attributes.status}}</td>
+      <td>{{task.data.attributes.location_c}}</td>
+      <td>{{task.data.attributes.priority}}</td>
       <td>
         <div class="action">
-          <span class="material-symbols-outlined" (click)="showDialog(content, 'auto',task)"
-            style="cursor: pointer">edit</span>
-          <span class="material-symbols-outlined" 
-            style="cursor: pointer">delete</span>
+          <span class="material-symbols-outlined" (click)="showDialog(dialogAddTask, 'auto', task)">edit</span>
+          <span class="material-symbols-outlined" (click)="deleteTask(task.data.id)">delete</span>
         </div>
+      </td>
+
+
+
+      <ng-template id="dialogAddTask" #dialogAddTask let-observer>
+        <!--FORM CHỨA NỘI DUNG HIÊN THỊ CỦA DIALOG-->
+        <form
+          id="form-container"
+          [formGroup]="exampleForm"
+          (ngSubmit)="observer.complete()"
+        >
+          <!--TỰA ĐỀ BỰ CỦA DIALOG-->
+          <p id="header-dialog">Update task</p>
+      
+          <!--DIV CHỨA NỘI DUNG CHÍNH VÀ NHẬP-->
+          <div class="content-dialog">
+            <!--NAME-->
+            <div class="container-dialog">
+              <p class="title-dialog">Name</p>
+              <tui-input
+                style="outline: none !important"
+                class="input-dialog"
+                tuiTextfieldSize="s"
+                [formControl]="Name"
+                [(ngModel)]="name"
+                (ngModelChange)="onModelChangeName($event)"
+              >
+                Type here
+              </tui-input>
+            </div>
+      
+            <!--ASSIGNED TO-->
+            <div class="container-dialog">
+              <p class="title-dialog">Assigned to</p>
+      
+              <tui-combo-box
+                class="input-dialog"
+                [formControl]="controlAssignments"
+                [stringify]="stringifyAssignment"
+                tuiTextfieldSize="s"
+              >
+                Choose/Type here
+      
+                <tui-data-list-wrapper
+                  *tuiDataList
+                  [items]="assignments | tuiFilterByInputWith : stringifyAssignment"
+                  [itemContent]="stringifyAssignment | tuiStringifyContent"
+                ></tui-data-list-wrapper>
+              </tui-combo-box>
+            </div>
+      
+            
+            <!--START DATE-->
+            <form [formGroup]="testForm">
+              <div  class="container-dialog">
+                <p class="title-dialog">Start date</p>
+        
+                <tui-input-date
+                  formControlName="testValue"
+                  [(ngModel)]="from"
+                  class="input-dialog"
+                  tuiTextfieldSize="s"
+                >
+                  Choose a date
+                </tui-input-date>
+              </div>
+            </form>
+      
+      
+            <!--DUE DATE-->
+            <form [formGroup]="testForm2">
+              <div  class="container-dialog">
+                <p class="title-dialog">Start date</p>
+        
+                <tui-input-date
+                  formControlName="testValue"
+                  [(ngModel)]="to"
+                  class="input-dialog"
+                  tuiTextfieldSize="s"
+                >
+                  Choose a date
+                </tui-input-date>
+              </div>
+            </form>
+      
+      
+            <!--STAGE-->
+            <div class="container-dialog">
+              <p class="title-dialog">Stage</p>
+      
+              <tui-combo-box
+                class="input-dialog"
+                [formControl]="controlStages"
+                [stringify]="stringifyStage"
+                tuiTextfieldSize="s"
+              >
+                Choose here
+      
+                <tui-data-list-wrapper
+                  *tuiDataList
+                  [items]="stages | tuiFilterByInputWith : stringifyStage"
+                  [itemContent]="stringifyStage | tuiStringifyContent"
+                ></tui-data-list-wrapper>
+              </tui-combo-box>
+            </div>
+      
+            <!--PRIORITY-->
+            <div class="container-dialog">
+              <p class="title-dialog">Priority</p>
+      
+              <tui-combo-box
+                class="input-dialog"
+                [formControl]="controlPriorities"
+                [stringify]="stringifyPriority"
+                tuiTextfieldSize="s"
+              >
+                Choose/Type here
+      
+                <tui-data-list-wrapper
+                  *tuiDataList
+                  [items]="priorities | tuiFilterByInputWith : stringifyPriority"
+                  [itemContent]="stringifyPriority | tuiStringifyContent"
+                ></tui-data-list-wrapper>
+              </tui-combo-box>
+            </div>
+      
+            <!--LOCATION-->
+            <div class="container-dialog">
+              <p class="title-dialog">Location</p>
+      
+              <tui-input
+                style="outline: none !important"
+                class="input-dialog"
+                tuiTextfieldSize="s"
+                [formControl]="Location"
+                [(ngModel)]="location"
+                (ngModelChange)="onModelChangeLocation($event)"
+              >
+                Type here
+              </tui-input>
+            </div>
+      
+            <!--TASK-->
+            <div class="container-dialog">
+              <p class="title-dialog">Task type</p>
+      
+              <tui-combo-box
+                class="input-dialog"
+                [formControl]="controlTasks"
+                [stringify]="stringifyTask"
+                tuiTextfieldSize="s"
+              >
+                Choose/Type here
+      
+                <tui-data-list-wrapper
+                  *tuiDataList
+                  [items]="tasks | tuiFilterByInputWith : stringifyTask"
+                  [itemContent]="stringifyTask | tuiStringifyContent"
+                ></tui-data-list-wrapper>
+              </tui-combo-box>
+            </div>
+      
+            <!--DESCRIPTION-->
+            <div class="container-dialog">
+              <p class="title-dialog">Description</p>
+      
+              <tui-textarea
+                style="outline: none !important"
+                class="input-dialog"
+                [formControl]="Description"
+                [expandable]="false"
+                [tuiTextfieldLabelOutside]="true"
+                >Type a text
+              </tui-textarea>
+            </div>
+          </div>
+      
+          <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
+          <div class="cancel-save">
+            <button class="button-cancel" type="submit">Cancel</button>
+            <button class="button-add" type="submit" (click)="updateTask(task)">Update</button>
+          </div>
+        </form>
+      </ng-template>
+
     </tr>
+
   </table>
 
   <!-- DETAIL DIALOG -->
@@ -64,7 +258,7 @@
           <div class="detailDiv lineLayout standard">
             <div class="detailDivCard">
               <p>Assigned To</p>
-              <span *ngFor="let task of this.tasks | async">{{
+              <span *ngFor="let task of (this.tasks$ | async)?.tasks">{{
                 task.data.attributes.assigned_to_c
               }}</span>
             </div>

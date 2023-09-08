@@ -36,6 +36,18 @@ export class OrganizationEffect {
       )
   )
 
+  getAllOrganizations$ = createEffect(() =>
+      this.action$.pipe(
+            ofType(OrganizationAction.getOrganizations),
+            switchMap(() => this.organizationService.getAllOrganizationsNgRx()),
+            map((organizations: any) => {
+                return OrganizationAction.getOrganizationsSuccess({ organizations: organizations });
+            }),
+            catchError((error) => {
+                return of(OrganizationAction.getOrganizationsFailure({ error: error }));
+            })
+      ))
+
   updateOrganization$ = createEffect(() => 
       this.action$.pipe(
           ofType(OrganizationAction.updateOrganization),

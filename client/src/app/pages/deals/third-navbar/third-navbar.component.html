@@ -1,3 +1,14 @@
+<ng-template #success>
+  <app-success id="login" [cont]="cont" ></app-success>
+</ng-template>
+<ng-template #warning>
+<app-warning id="login" [cont]="cont" ></app-warning>
+</ng-template>
+<ng-template #error>
+<app-error id="login" [cont]="cont" ></app-error>
+</ng-template>
+
+
 <div class="thirdNavbar">
   <div class="leftNavContent">
     <button class="button">
@@ -131,17 +142,20 @@
       </div>
 
       <!--COLSED DATE-->
-      <div class="container-dialog">
-        <p class="title-dialog">Expected close date</p>
-
-        <tui-input-date
-          class="input-dialog"
-          formControlName="testValue"
-          tuiTextfieldSize="s"
-        >
-          Choose a date
-        </tui-input-date>
-      </div>
+      <form [formGroup]="testForm">
+        <div class="container-dialog">
+          <p class="title-dialog">Expected close date</p>
+  
+          <tui-input-date
+            class="input-dialog"
+            formControlName="testValue"
+            tuiTextfieldSize="s"
+            [(ngModel)]="date"
+          >
+            Choose a date
+          </tui-input-date>
+        </div>
+      </form>
 
       <!--PIPELINE-->
       <div class="container-dialog">
@@ -233,8 +247,6 @@
             style="outline: none !important"
             id="input-dialog-probability"
             tuiTextfieldSize="s"
-            [(ngModel)]="probability"
-            (ngModelChange)="onModelChangeProbability($event)"
           >
             Type here
           </tui-input>
