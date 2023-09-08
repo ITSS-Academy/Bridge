@@ -69,7 +69,6 @@ export class ThirdNavbarComponent implements OnInit {
     this.exampleForm.addControl('Location', this.Location);
     this.exampleForm.addControl('Tasktype', this.Tasktype);
     this.exampleForm.addControl('Description', this.Description);
-
   }
   addTask() {
     let task: any = {
@@ -102,8 +101,7 @@ export class ThirdNavbarComponent implements OnInit {
     testValue: new FormControl()
   });  
 
-
-  exampleForm:FormGroup = new FormGroup({});
+  exampleForm: FormGroup = new FormGroup({});
 
   Name: FormControl = new FormControl('');
   Assignedto: FormControl = new FormControl('');
@@ -117,8 +115,8 @@ export class ThirdNavbarComponent implements OnInit {
 
   ngOnInit() {}
 
-  showDate(){
-    console.log(this.testForm.value.testValue)
+  showDate() {
+    console.log(this.testForm.value.testValue);
   }
 
   onModelChangeName(name: string): void {
@@ -213,5 +211,4 @@ export class ThirdNavbarComponent implements OnInit {
         complete: () => {},
       });
   }
-
 }

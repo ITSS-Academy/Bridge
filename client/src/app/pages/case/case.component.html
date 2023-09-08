@@ -20,7 +20,7 @@
       *ngIf="(this.case$ | async)?.cases?.length == 0"
       [title]="title"
     ></app-page-empty>
-    <!-- TRANG CÓ NỘI DUNG -->
+    <!--TRANG CÓ NỘI DUNG-->
     <app-page-w-content
       *ngIf="(this.case$ | async)?.cases?.length != 0"
       [case$]="this.case$"

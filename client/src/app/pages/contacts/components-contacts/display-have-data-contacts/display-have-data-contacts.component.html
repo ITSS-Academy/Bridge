@@ -81,7 +81,7 @@
           <!--FORM CHỨA NỘI DUNG HIỂN THỊ NỘI DUNG VÀ CHỈNH SỬA CHIỀU RỘNG CỦA DIALOG-->
           <form [formGroup]="contactsForm" (ngSubmit)="observer.complete()">
             <!--TỰA ĐỂ CHÍNH BỰ CỦA DIALOG CONTACT-->
-            <h2 class="title-dialog">Add Contact</h2>
+            <h2 class="title-dialog">Update Contact</h2>
 
             <!--DIV CHỨA NỘI DUNG CHÍNH CỦA DIALOG-->
             <div class="form-contacts">
@@ -164,13 +164,15 @@
                 </tui-combo-box>
               </div>
             </div>
+            
+            <div class="cancel-save">
+              <button class="button-cancel" type="submit">Cancel</button>
+              <button class="button-add" (click)="updateContact(contact)">Update</button>
+            </div>
           </form>
 
           <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
-          <div class="cancel-save">
-            <button class="button-cancel" type="submit">Cancel</button>
-            <button class="button-add" (click)="updateContact(contact)">Update</button>
-          </div>
+         
         </div>
       </ng-template>
 

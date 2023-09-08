@@ -33,15 +33,15 @@
       <th>ACTION</th>
     </tr>
 
-    <tr class="visible-data" *ngFor="let case of (this.case$ | async)?.cases">
+    <tr class="visible-data" *ngFor="let case of (this.case$ | async)?.cases" >
       <td style="width: 2rem; padding: 0 1.5rem 1rem 2rem">
         <label class="container">
           <input type="checkbox" />
-          <span class="checkmark"></span>
+          <span class="checkmark" ></span>
         </label>
       </td>
       <td style="width: 1rem; padding: 0.5rem">
-        <span class="material-symbols-outlined">star</span>
+        <span class="material-symbols-outlined" (click)="showDialog(dialogDetails,'auto',case)">star</span>
       </td>
       <td>{{ case.data.attributes.name }}</td>
       <td>
@@ -65,137 +65,134 @@
             style="cursor: pointer">delete</span>
         </div>
       </td>
-
-
-      <!-- DIALOG MAIN CASE -->
-      <ng-template id="dialogAddCase" #dialogAddCase let-observer>
-        <!--FORM CHỨA NỘI DUNG DIALOG-->
-        <form id="form-container" [formGroup]="casesForm" (ngSubmit)="observer.complete()">
-          <!--TỰA ĐỀ BỰ CỦA DIALOG CASE-->
-          <p class="header-dialog">Add Case</p>
-
-          <!--DIV CHỨA NỘI DUNG HIỂN THỊ VÀ NHẬP CHÍNH CỦA DIALOG-->
-          <div class="content-dialog-main">
-            <!--CASE TITLE-->
-            <div class="container-dialog">
-              <p class="title-dialog">Case title</p>
-              <tui-input [formControl]="caseTitle" style="outline: none !important" class="input-dialog"
-                tuiTextfieldSize="s">
-                Type here
-              </tui-input>
-            </div>
-
-            <!--STATUS-->
-            <div class="container-dialog">
-              <p class="title-dialog">Status</p>
-
-              <tui-combo-box class="input-dialog" [formControl]="controlStatuses" [stringify]="stringifyStatus"
-                tuiTextfieldSize="s">
-                Choose/Type here
-
-                <tui-data-list-wrapper *tuiDataList [items]="statuses | tuiFilterByInputWith : stringifyStatus"
-                  [itemContent]="stringifyStatus | tuiStringifyContent"></tui-data-list-wrapper>
-              </tui-combo-box>
-            </div>
-
-            <!--PRIORITY-->
-            <div class="container-dialog">
-              <p class="title-dialog">Priority</p>
-              <tui-combo-box class="input-dialog" [formControl]="controlPriorities" [stringify]="stringifyPriority"
-                tuiTextfieldSize="s">
-                Choose/Type here
-
-                <tui-data-list-wrapper *tuiDataList [items]="priorities | tuiFilterByInputWith : stringifyPriority"
-                  [itemContent]="stringifyPriority | tuiStringifyContent"></tui-data-list-wrapper>
-              </tui-combo-box>
-            </div>
-
-            <!--CONTACT NAME-->
-            <div class="container-dialog">
-              <p class="title-dialog">Contact name</p>
-
-              <div style="display: flex">
-                <tui-combo-box id="input-dialog-contact" [formControl]="controlContacts" [stringify]="stringifyContact"
-                  tuiTextfieldSize="s" style="
-              border-top-left-radius: 8px;
-              border-bottom-left-radius: 8px;
-              border-top-right-radius: 0;
-              border-bottom-right-radius: 0;
-            ">
-                  Standard
-
-                  <tui-data-list-wrapper *tuiDataList [items]="contacts | tuiFilterByInputWith : stringifyContact"
-                    [itemContent]="stringifyContact | tuiStringifyContent"></tui-data-list-wrapper>
-                </tui-combo-box>
-
-                <button class="dialog-button" (click)="showDialog(content, 'auto',case)">
-                  <span class="material-symbols-outlined"> add </span>
-                </button>
-              </div>
-            </div>
-
-            <!--GROUP-->
-            <div class="container-dialog">
-              <p class="title-dialog">Group</p>
-
-              <tui-combo-box class="input-dialog" [formControl]="controlGroups" [stringify]="stringifyGroup"
-                tuiTextfieldSize="s">
-                Choose/Type here
-
-                <tui-data-list-wrapper *tuiDataList [items]="groups | tuiFilterByInputWith : stringifyGroup"
-                  [itemContent]="stringifyGroup | tuiStringifyContent"></tui-data-list-wrapper>
-              </tui-combo-box>
-            </div>
-
-            <!--ASSIGNED TO-->
-            <div class="container-dialog">
-              <p class="title-dialog">Assigned to</p>
-
-              <tui-combo-box class="input-dialog" [formControl]="controlAssignments" [stringify]="stringifyAssignment"
-                tuiTextfieldSize="s">
-                Choose/Type here
-
-                <tui-data-list-wrapper *tuiDataList [items]="assignments | tuiFilterByInputWith : stringifyAssignment"
-                  [itemContent]="stringifyAssignment | tuiStringifyContent"></tui-data-list-wrapper>
-              </tui-combo-box>
-            </div>
-
-            <!--ORGANIZATION NAME-->
-            <div class="container-dialog">
-              <p class="title-dialog">Organization name</p>
-              <tui-input [formControl]="orgName" style="outline: none !important" class="input-dialog"
-                tuiTextfieldSize="s">
-                Type here
-              </tui-input>
-            </div>
-
-            <!--DUE DATE-->
-            <form [formGroup]="testForm">
-              <div class="container-dialog">
-                <p class="title-dialog">Resolute due</p>
-
-                <tui-input-date class="input-dialog" formControlName="testValue" tuiTextfieldSize="s"
-                  [(ngModel)]="date">
-                  Choose a date
-                </tui-input-date>
-              </div>
-            </form>
-
-
-          </div>
-
-          <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
-          <div class="cancel-save">
-            <button class="button-cancel" type="submit">Cancel</button>
-            <button class="button-add" (click)="updateCase(case)" type="submit">Update</button>
-          </div>
-        </form>
-      </ng-template>
     </tr>
   </table>
 </div>
 
+<!-- DIALOG MAIN CASE -->
+<ng-template id="dialogAddCase" #dialogAddCase let-observer >
+  <!--FORM CHỨA NỘI DUNG DIALOG-->
+  <form id="form-container" [formGroup]="casesForm" (ngSubmit)="observer.complete()">
+    <!--TỰA ĐỀ BỰ CỦA DIALOG CASE-->
+    <p class="header-dialog">Add Case</p>
 
+    <!--DIV CHỨA NỘI DUNG HIỂN THỊ VÀ NHẬP CHÍNH CỦA DIALOG-->
+    <div class="content-dialog-main">
+      <!--CASE TITLE-->
+      <div class="container-dialog">
+        <p class="title-dialog">Case title</p>
+        <tui-input [formControl]="caseTitle" style="outline: none !important" class="input-dialog"
+          tuiTextfieldSize="s">
+          Type here
+        </tui-input>
+      </div>
+
+      <!--STATUS-->
+      <div class="container-dialog">
+        <p class="title-dialog">Status</p>
+
+        <tui-combo-box class="input-dialog" [formControl]="controlStatuses" [stringify]="stringifyStatus"
+          tuiTextfieldSize="s">
+          Choose/Type here
+
+          <tui-data-list-wrapper *tuiDataList [items]="statuses | tuiFilterByInputWith : stringifyStatus"
+            [itemContent]="stringifyStatus | tuiStringifyContent"></tui-data-list-wrapper>
+        </tui-combo-box>
+      </div>
+
+      <!--PRIORITY-->
+      <div class="container-dialog">
+        <p class="title-dialog">Priority</p>
+        <tui-combo-box class="input-dialog" [formControl]="controlPriorities" [stringify]="stringifyPriority"
+          tuiTextfieldSize="s">
+          Choose/Type here
+
+          <tui-data-list-wrapper *tuiDataList [items]="priorities | tuiFilterByInputWith : stringifyPriority"
+            [itemContent]="stringifyPriority | tuiStringifyContent"></tui-data-list-wrapper>
+        </tui-combo-box>
+      </div>
+
+      <!--CONTACT NAME-->
+      <div class="container-dialog">
+        <p class="title-dialog">Contact name</p>
+
+        <div style="display: flex">
+          <tui-combo-box id="input-dialog-contact" [formControl]="controlContacts" [stringify]="stringifyContact"
+            tuiTextfieldSize="s" style="
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      ">
+            Standard
+
+            <tui-data-list-wrapper *tuiDataList [items]="contacts | tuiFilterByInputWith : stringifyContact"
+              [itemContent]="stringifyContact | tuiStringifyContent"></tui-data-list-wrapper>
+          </tui-combo-box>
+
+          <button class="dialog-button" (click)="showDialog(content, 'auto', case$)">
+            <span class="material-symbols-outlined"> add </span>
+          </button>
+        </div>
+      </div>
+
+      <!--GROUP-->
+      <div class="container-dialog">
+        <p class="title-dialog">Group</p>
+
+        <tui-combo-box class="input-dialog" [formControl]="controlGroups" [stringify]="stringifyGroup"
+          tuiTextfieldSize="s">
+          Choose/Type here
+
+          <tui-data-list-wrapper *tuiDataList [items]="groups | tuiFilterByInputWith : stringifyGroup"
+            [itemContent]="stringifyGroup | tuiStringifyContent"></tui-data-list-wrapper>
+        </tui-combo-box>
+      </div>
+
+      <!--ASSIGNED TO-->
+      <div class="container-dialog">
+        <p class="title-dialog">Assigned to</p>
+
+        <tui-combo-box class="input-dialog" [formControl]="controlAssignments" [stringify]="stringifyAssignment"
+          tuiTextfieldSize="s">
+          Choose/Type here
+
+          <tui-data-list-wrapper *tuiDataList [items]="assignments | tuiFilterByInputWith : stringifyAssignment"
+            [itemContent]="stringifyAssignment | tuiStringifyContent"></tui-data-list-wrapper>
+        </tui-combo-box>
+      </div>
+
+      <!--ORGANIZATION NAME-->
+      <div class="container-dialog">
+        <p class="title-dialog">Organization name</p>
+        <tui-input [formControl]="orgName" style="outline: none !important" class="input-dialog"
+          tuiTextfieldSize="s">
+          Type here
+        </tui-input>
+      </div>
+
+      <!--DUE DATE-->
+      <form [formGroup]="testForm">
+        <div class="container-dialog">
+          <p class="title-dialog">Resolute due</p>
+
+          <tui-input-date class="input-dialog" formControlName="testValue" tuiTextfieldSize="s"
+            [(ngModel)]="date">
+            Choose a date
+          </tui-input-date>
+        </div>
+      </form>
+
+
+    </div>
+
+    <!--DIV CHỨA NÚT CANCEL VÀ SAVE-->
+    <div class="cancel-save">
+      <button class="button-cancel" type="submit">Cancel</button>
+      <button class="button-add" (click)="updateCase(case$)" type="submit">Update</button>
+    </div>
+  </form>
+</ng-template>
 
 <!--DIALOG CONTACT SUB-->
 <ng-template #content let-observer>
@@ -280,4 +277,120 @@
       <button class="button-add" type="submit">Add</button>
     </div>
   </div>
+</ng-template>
+
+<!-- DETAIL DIALOG -->
+<ng-template id="dialogDetails" #dialogDetails let-observer>
+  <!--FORM CHỨA NỘI DUNG DIALOG-->
+  <form id="form-container" (ngSubmit)="observer.complete()">
+    <!--CHỮ TỰA ĐỀ CỦA DIALOG-->
+    <p class="header-dialog">Cases Details</p>
+    <div class="contentContainer center">
+      <div class="mainContent">
+        <div class="detailDiv lineLayout standard">
+          <div class="detailDivCard">
+            <p>Case Title</p>
+            <span class="gray">Not Set</span>
+          </div>
+          <div class="detailDivCard">
+            <p>Assigned To</p>
+            <span>Gideon Tran</span>
+          </div>
+          <div class="detailDivCard">
+            <p>Contact Name</p>
+            <span class="gray">Not Set</span>
+          </div>
+          <div class="detailDivCard">
+            <p>Priority</p>
+            <span class="gray">Not Set</span>
+          </div>
+          <div class="detailDivCard">
+            <p>Group</p>
+            <span class="gray">Not Set</span>
+          </div>
+          <div class="detailDivCard">
+            <p>Resolution Due</p>
+            <span class="gray">Not Set</span>
+          </div>
+        </div>
+
+        <p style="margin-left: 1rem; color: #2c698d; font-weight: 600">
+          Description
+        </p>
+        <div class="descriptionDiv standard center">
+          <tui-input
+            class="discriptionInput"
+            tuiTextfieldSize="l"
+            [tuiTextfieldLabelOutside]="true"
+          >
+            Description
+          </tui-input>
+        </div>
+
+        <div class="center" style="justify-content: space-between">
+          <p style="margin-left: 1rem; color: #2c698d; font-weight: 600">
+            Subtasks
+          </p>
+          <button class="standard center standardButton">Add Subtasks</button>
+        </div>
+        <div class="descriptionDiv standard center">
+          <tui-input
+            class="discriptionInput"
+            tuiTextfieldSize="l"
+            [tuiTextfieldLabelOutside]="true"
+          >
+            Add Subtasks
+          </tui-input>
+        </div>
+      </div>
+      <div class="sideContent">
+        <p
+          style="
+            margin-left: 1rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: #2c698d;
+            font-weight: 600;
+            font-size: 1.5rem;
+          "
+        >
+          One View
+        </p>
+        <div class="oneViewDiv">
+          <div class="oneViewCard standard" style="border-radius: 8px 0 0 0">
+            <p>Running Status</p>
+            <span class="gray">In Progress</span>
+          </div>
+
+          <div class="oneViewCard standard" style="border-radius: 0 8px 0 0">
+            <p>Due Date & Time</p>
+            <span class="gray">Set Due Date</span>
+          </div>
+          <div class="oneViewCard standard" style="border-radius: 0 0 0 8px">
+            <p>Organize Name</p>
+            <span class="gray">Set Name</span>
+          </div>
+          <div class="oneViewCard standard" style="border-radius: 0 0 8px 0">
+            <p>Timelog</p>
+            <span class="gray">Add Timelog</span>
+          </div>
+        </div>
+
+        <p
+          style="
+            margin-left: 1rem;
+            margin-bottom: 1rem;
+            color: #2c698d;
+            font-weight: 600;
+            font-size: 1.5rem;
+          "
+        >
+          Relation
+        </p>
+        <div class="relationDiv standard center">
+          <p class="gray">This task does not have relation</p>
+        </div>
+      </div>
+    </div>
+  </form>
 </ng-template>
